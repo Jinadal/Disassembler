@@ -54,30 +54,29 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
-  0 coll       0116 R   |     cpct_dis   **** GX  |     cpct_dra   **** GX
-    cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_pag=  0000 
-    cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
-    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
+    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
+    cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
+    cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
+    cpct_set   **** GX  |     cpct_wai   **** GX  |     e_col   =  0006 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    e_col   =  0006     |     e_h     =  0005     |     e_up_h  =  0008 
-    e_up_l  =  0007     |     e_vx    =  0002     |     e_vy    =  0003 
-    e_w     =  0004     |     e_x     =  0000     |     e_y     =  0001 
-  0 ent_clea   003E GR  |   0 ent_coll   0068 GR  |   0 ent_draw   0024 GR
-  0 ent_move   0055 GR  |   0 ent_move   00AF GR  |   0 ent_upda   004E GR
-    keys_pic   **** GX  |     llave      **** GX  |   0 no_coll    00AE R
-  0 o_no_pul   00BE R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
-    opc_JR  =  0018     |     opc_LD_D=  0016     |   0 p_a        0009 GR
-  0 p_a1       0012 GR  |   0 p_a2       001B GR  |   0 p_no_pul   00CA R
-  0 personaj   0000 GR  |   0 q_no_pul   00D6 R   |   0 w_no_pul   00E2 R
+    e_h     =  0005     |     e_up_h  =  0008     |     e_up_l  =  0007 
+    e_vx    =  0002     |     e_vy    =  0003     |     e_w     =  0004 
+    e_x     =  0000     |     e_y     =  0001     |     ent_clea   **** GX
+    ent_coll   **** GX  |     ent_draw   **** GX  |     ent_move   **** GX
+    ent_move   **** GX  |     ent_upda   **** GX  |   0 keys_pic   000A GR
+  0 llave      0001 GR  |   0 not_pick   000D R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+    p_a        **** GX  |     p_a1       **** GX  |     p_a2       **** GX
+    personaj   **** GX  |   0 picked_u   0000 R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  117   flags    0
+   0 _CODE      size    E   flags    0
 
