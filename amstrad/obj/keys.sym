@@ -68,7 +68,7 @@ Symbol Table
     e_x     =  0000     |     e_y     =  0001     |     ent_clea   **** GX
     ent_coll   **** GX  |     ent_draw   **** GX  |     ent_move   **** GX
     ent_move   **** GX  |     ent_upda   **** GX  |   0 keys_pic   000A GR
-  0 llave      0001 GR  |   0 not_pick   000D R   |     opc_DI  =  00F3 
+  0 llave      0001 R   |   0 not_pick   000D R   |     opc_DI  =  00F3 
     opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
     p_a        **** GX  |     p_a1       **** GX  |     p_a2       **** GX
     personaj   **** GX  |   0 picked_u   0000 R

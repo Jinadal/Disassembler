@@ -20,7 +20,7 @@
 .include "cpctelera.h.s"
 .include "entity.h.s"
 .include "main.h.s"
-.include "keys.h.s"
+
 ;;
 ;; Start of _DATA area 
 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
@@ -53,23 +53,26 @@ loop:
   
     ld    ix, #p_a
    call ent_clear
+     
    call ent_update
    call ent_draw
 
      ld    ix, #p_a1
    call ent_clear
+     
    call ent_update
    call ent_draw
+
 
       ld    ix, #p_a2
    call ent_clear
+
    call ent_update
    call ent_draw
 
-      ld    ix, #llave
-   call ent_clear
-   call ent_update
-   call ent_draw
+   
+
+
 
    call cpct_waitVSYNC_asm
    ;; Loop forever
