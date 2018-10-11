@@ -57,26 +57,26 @@ Symbol Table
     cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
     cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
     cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
-    cpct_set   **** GX  |     cpct_wai   **** GX  |     e_col   =  0006 
+    cpct_set   **** GX  |     cpct_wai   **** GX  |   0 drop_key   001E GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    e_h     =  0005     |     e_up_h  =  0008     |     e_up_l  =  0007 
-    e_vx    =  0002     |     e_vy    =  0003     |     e_w     =  0004 
-    e_x     =  0000     |     e_y     =  0001     |     ent_clea   **** GX
-    ent_coll   **** GX  |     ent_draw   **** GX  |     ent_move   **** GX
-    ent_move   **** GX  |     ent_upda   **** GX  |   0 keys_pic   000A GR
-  0 llave      0001 GR  |   0 not_pick   000D R   |     opc_DI  =  00F3 
-    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
-    p_a        **** GX  |     p_a1       **** GX  |     p_a2       **** GX
-    personaj   **** GX  |   0 picked_u   0000 R
+    e_col   =  0006     |     e_h     =  0005     |     e_up_h  =  0008 
+    e_up_l  =  0007     |     e_vx    =  0002     |     e_vy    =  0003 
+    e_w     =  0004     |     e_x     =  0000     |     e_y     =  0001 
+    ent_clea   **** GX  |     ent_coll   **** GX  |     ent_draw   **** GX
+    ent_move   **** GX  |     ent_move   **** GX  |     ent_upda   **** GX
+  0 keys       0000 GR  |     opc_DI  =  00F3     |     opc_EI  =  00FB 
+    opc_JR  =  0018     |     opc_LD_D=  0016     |     p_a        **** GX
+    p_a1       **** GX  |     p_a2       **** GX  |     personaj   **** GX
+  0 pick_key   0009 GR
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size    E   flags    0
+   0 _CODE      size   2B   flags    0
 
