@@ -1,9 +1,8 @@
 XL2
-H 1 areas C global symbols
+H 1 areas B global symbols
 S ent_collide Ref0000
 S personaje Ref0000
 S ent_moveKeyboard Ref0000
-S llave Ref0000
 S ent_draw Ref0000
 S ent_move Ref0000
 S .__.ABS. Def0000

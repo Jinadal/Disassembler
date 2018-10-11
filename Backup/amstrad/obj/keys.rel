@@ -1,5 +1,5 @@
 XL2
-H 1 areas 14 global symbols
+H 1 areas 15 global symbols
 M cpct_keyboard
 S ent_collide Ref0000
 S cpct_isKeyPressed_asm Ref0000
@@ -19,20 +19,21 @@ S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size E flags 0 addr 0
-S keys_picked Def000A
-S llave Def0001
-T 00 00 00
+A _CODE size 2B flags 0 addr 0
+S pick_keys Def0009
+S drop_keys Def001E
+S keys Def0000
+T 00 00
 R 00 00 00 00
-T 01 00
+T 00 00 02 15 00 00 01 04 FF 00 00
+R 00 00 00 00 02 09 04 00
+T 09 00
 R 00 00 00 00
-T 01 00 02 15 00 00 01 04 FF 0A 00
-R 00 00 00 00 00 09 00 00
-T 0A 00
+T 09 00 21 00 00 DD 7E 00 77 DD 7E 01 23 77 23 23
+R 00 00 00 00 00 03 00 00
+T 17 00 23 23 23 3E F0 77 C9
 R 00 00 00 00
-T 0A 00 CD 00 00
-R 00 00 00 00 02 03 00 00
-T 0D 00
+T 1E 00
 R 00 00 00 00
-T 0D 00 C9
-R 00 00 00 00
+T 1E 00 21 00 00 23 23 23 23 23 23 3E FF 77 C9
+R 00 00 00 00 00 03 00 00

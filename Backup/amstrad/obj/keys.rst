@@ -2506,51 +2506,54 @@ Hexadecimal [16-Bits]
 
                               6 .include "entity.h.s"
                               1 
-                              2 .globl ent_clear
-                              3 .globl ent_draw
-                              4 .globl ent_update
-                              5 .globl ent_move
-                              6 .globl ent_moveKeyboard
-                              7 .globl ent_collide
-                              8 
-                              9 
-                             10 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             11 ;;
-                             12 ;;MACROS
-                             13 ;;
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             15 
-                             16    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd
-                             17 _name: 
-                             18    .db    _x, _y     ;; X, Y
-                             19    .db   _vx, _vy    ;; VX, VY
-                             20    .db    _w, _h     ;; W, H
-                             21    .db   _col        ;; Color
-                             22    .dw   _upd        ;; Update 
-                             23 .endm
-                     0000    24 e_x = 0
-                     0001    25 e_y = 1
-                     0002    26 e_vx = 2
-                     0003    27 e_vy = 3
-                     0004    28 e_w = 4
-                     0005    29 e_h = 5
-                     0006    30 e_col = 6
-                     0007    31 e_up_l = 7
-                     0008    32 e_up_h = 8
-                             33 
-                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             35 ;;
-                             36 ;;OBJETOS CREADOS CON LA MACROS
-                             37 ;;
+                              2 
+                              3 
+                              4 
+                              5 .globl ent_clear
+                              6 .globl ent_draw
+                              7 .globl ent_update
+                              8 .globl ent_move
+                              9 .globl ent_moveKeyboard
+                             10 .globl ent_collide
+                             11 
+                             12 
+                             13 
+                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             15 ;;
+                             16 ;;MACROS
+                             17 ;;
+                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             19 
+                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd
+                             21 _name: 
+                             22    .db    _x, _y     ;; X, Y
+                             23    .db   _vx, _vy     ;; VX, VY
+                             24    .db    _w, _h     ;; W, H
+                             25    .db   _col           ;; Color
+                             26    .dw   _upd        ;; Update 
+                             27 .endm
+                     0000    28 e_x = 0
+                     0001    29 e_y = 1
+                     0002    30 e_vx = 2
+                     0003    31 e_vy = 3
+                     0004    32 e_w = 4
+                     0005    33 e_h = 5
+                     0006    34 e_col = 6
+                     0007    35 e_up_l = 7
+                     0008    36 e_up_h = 8
+                             37 
                              38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             39 
-                             40 .globl personaje
-                             41 .globl p_a
-                             42 .globl p_a1
+                             39 ;;
+                             40 ;;OBJETOS CREADOS CON LA MACROS
+                             41 ;;
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              43 
-                             44 .globl p_a2
-                             45 
-                             46 .globl llave
+                             44 .globl personaje
+                             45 .globl p_a
+                             46 .globl p_a1
+                             47 
+                             48 .globl p_a2
+                             49 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2574,30 +2577,56 @@ Hexadecimal [16-Bits]
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
                               4 
-                              5 .globl keys_picked
+                              5 .globl pick_keys
+                              6 .globl drop_keys
+                              7 .globl keys
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
                               9 
-   4165 00                   10 picked_up: .db 00
+                             10 ;;picked_up: .db 00
                              11 
-   4166                      12 DefineEntity llave, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, keys_picked
-   0001                       1 llave: 
-   4166 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   4168 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   416A 01 04                 4    .db    0x01, 0x04     ;; W, H
-   416C FF                    5    .db   0xFF        ;; Color
-   416D 6F 41                 6    .dw   keys_picked        ;; Update 
+   41A7                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
+   0000                       1 keys: 
+   41A7 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   41A9 00 00                 3    .db   0x00, 0x00     ;; VX, VY
+   41AB 01 04                 4    .db    0x01, 0x04     ;; W, H
+   41AD FF                    5    .db   0xFF           ;; Color
+   41AE 72 40                 6    .dw   ent_draw        ;; Update 
                              13 
-   416F                      14 keys_picked:
-   416F CD B6 40      [17]   15   call ent_collide
-                             16   ;;ex af,af'
-                             17   ;;jp z, not_picked ;; obs_X + obs_W - hero_X = 0
-                             18   ;;jp m, not_picked
-                             19   
-                             20   ;;ld (hl),#0xFF
-                             21   ;;ex af,af' 
-   4172                      22   not_picked:
-   4172 C9            [10]   23 ret
+                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                             15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
+                             16 ;; AND CARRIED
+                             17 ;; MODIFIED: HL, A         
+                             18 ;; EXIT: KEYS_X -> PERSONAJE_X
+                             19 ;;       KEYS_Y -> PERSONAJE_Y
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41B0                      21 pick_keys:
+   41B0 21 A7 41      [10]   22   ld hl, #keys    ;;hl -> array keys
+   41B3 DD 7E 00      [19]   23   ld a, e_x(ix)   ;;a = personaje_x
+   41B6 77            [ 7]   24   ld (hl), a      ;;keys_x = a
+   41B7 DD 7E 01      [19]   25   ld a, e_y(ix)   ;;a = personaje_y
+   41BA 23            [ 6]   26   inc hl          ;;hl -> keys_y
+   41BB 77            [ 7]   27   ld (hl), a      ;;keys_y = a
+   41BC 23            [ 6]   28   inc hl          ;;
+   41BD 23            [ 6]   29   inc hl          ;;
+   41BE 23            [ 6]   30   inc hl          ;;
+   41BF 23            [ 6]   31   inc hl          ;;
+   41C0 23            [ 6]   32   inc hl          ;;hl -> keys_col
+   41C1 3E F0         [ 7]   33   ld a, #0xF0     ;;
+   41C3 77            [ 7]   34   ld (hl),a       ;;
+   41C4 C9            [10]   35 ret
+                             36 
+   41C5                      37 drop_keys:
+   41C5 21 A7 41      [10]   38   ld hl, #keys
+   41C8 23            [ 6]   39   inc hl
+   41C9 23            [ 6]   40   inc hl
+   41CA 23            [ 6]   41   inc hl
+   41CB 23            [ 6]   42   inc hl
+   41CC 23            [ 6]   43   inc hl
+   41CD 23            [ 6]   44   inc hl
+   41CE 3E FF         [ 7]   45   ld a, #0xFF
+   41D0 77            [ 7]   46   ld (hl),a
+   41D1 C9            [10]   47 ret

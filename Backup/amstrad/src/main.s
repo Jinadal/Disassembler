@@ -53,23 +53,32 @@ loop:
   
     ld    ix, #p_a
    call ent_clear
+     
    call ent_update
    call ent_draw
 
      ld    ix, #p_a1
    call ent_clear
+     
    call ent_update
    call ent_draw
+
 
       ld    ix, #p_a2
    call ent_clear
+
    call ent_update
    call ent_draw
 
-      ld    ix, #llave
+     ld    ix, #keys
    call ent_clear
+
    call ent_update
    call ent_draw
+
+   
+
+
 
    call cpct_waitVSYNC_asm
    ;; Loop forever

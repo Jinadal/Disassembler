@@ -7,4 +7,6 @@ Hexadecimal [16-Bits]
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
                               4 
-                              5 .globl keys_picked
+                              5 .globl pick_keys
+                              6 .globl drop_keys
+                              7 .globl keys

@@ -9,8 +9,8 @@ Symbol Table
     e_vy    =  0003     |     e_w     =  0004     |     e_x     =  0000 
     e_y     =  0001     |     ent_clea   **** GX  |     ent_coll   **** GX
     ent_draw   **** GX  |     ent_move   **** GX  |     ent_move   **** GX
-    ent_upda   **** GX  |     llave      **** GX  |     p_a        **** GX
-    p_a1       **** GX  |     p_a2       **** GX  |     personaj   **** GX
+    ent_upda   **** GX  |     p_a        **** GX  |     p_a1       **** GX
+    p_a2       **** GX  |     personaj   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

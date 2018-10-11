@@ -2,4 +2,6 @@
 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
 ;;====================================================
 
-.globl keys_picked
+.globl pick_keys
+.globl drop_keys
+.globl keys
