@@ -1,0 +1,38 @@
+XL2
+H 1 areas 14 global symbols
+M cpct_keyboard
+S ent_collide Ref0000
+S cpct_isKeyPressed_asm Ref0000
+S personaje Ref0000
+S ent_moveKeyboard Ref0000
+S ent_draw Ref0000
+S ent_move Ref0000
+S .__.ABS. Def0000
+S p_a1 Ref0000
+S p_a2 Ref0000
+S ent_update Ref0000
+S ent_clear Ref0000
+S p_a Ref0000
+S cpct_setVideoMode_asm Ref0000
+S cpct_waitVSYNC_asm Ref0000
+S cpct_disableFirmware_asm Ref0000
+S cpct_drawSolidBox_asm Ref0000
+S cpct_scanKeyboard_asm Ref0000
+S cpct_getScreenPtr_asm Ref0000
+A _CODE size E flags 0 addr 0
+S keys_picked Def000A
+S llave Def0001
+T 00 00 00
+R 00 00 00 00
+T 01 00
+R 00 00 00 00
+T 01 00 02 15 00 00 01 04 FF 0A 00
+R 00 00 00 00 00 09 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00 CD 00 00
+R 00 00 00 00 02 03 00 00
+T 0D 00
+R 00 00 00 00
+T 0D 00 C9
+R 00 00 00 00
