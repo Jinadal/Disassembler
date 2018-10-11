@@ -1,5 +1,7 @@
 XL2
-H 1 areas 2 global symbols
-S keys_picked Ref0000
+H 1 areas 4 global symbols
+S pick_keys Ref0000
+S drop_keys Ref0000
 S .__.ABS. Def0000
+S keys Ref0000
 A _CODE size 0 flags 0 addr 0

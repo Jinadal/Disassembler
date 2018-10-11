@@ -54,7 +54,7 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
-  0 colision   00B0 R   |     cpct_dis   **** GX  |     cpct_dra   **** GX
+  0 colision   00C1 R   |     cpct_dis   **** GX  |     cpct_dra   **** GX
     cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_pag=  0000 
     cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
     cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
@@ -63,21 +63,22 @@ Hexadecimal [16-Bits]
 
 Symbol Table
 
-    e_col   =  0006     |     e_h     =  0005     |     e_up_h  =  0008 
-    e_up_l  =  0007     |     e_vx    =  0002     |     e_vy    =  0003 
-    e_w     =  0004     |     e_x     =  0000     |     e_y     =  0001 
-  0 ent_clea   003E GR  |   0 ent_coll   00B7 GR  |   0 ent_draw   0024 GR
-  0 ent_move   0055 GR  |   0 ent_move   0068 R   |   0 ent_move   00F5 GR
-  0 ent_upda   004E GR  |   0 no_coll    00F4 R   |   0 o_no_pul   0104 R
-    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |   0 p_a        0009 GR  |   0 p_a1       0012 GR
-  0 p_a2       001B GR  |   0 p_no_pul   0110 R   |   0 personaj   0000 GR
-  0 q_no_pul   011C R   |   0 w_no_pul   0128 R
+    drop_key   **** GX  |     e_col   =  0006     |     e_h     =  0005 
+    e_up_h  =  0008     |     e_up_l  =  0007     |     e_vx    =  0002 
+    e_vy    =  0003     |     e_w     =  0004     |     e_x     =  0000 
+    e_y     =  0001     |   0 ent_clea   003E GR  |   0 ent_coll   00C8 GR
+  0 ent_draw   0024 GR  |   0 ent_move   0055 GR  |   0 ent_move   0068 R
+  0 ent_move   0106 GR  |   0 ent_upda   004E GR  |     keys       **** GX
+  0 no_coll    0105 R   |   0 o_no_pul   0115 R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+  0 p_a        0009 GR  |   0 p_a1       0012 GR  |   0 p_a2       001B GR
+  0 p_no_pul   0121 R   |   0 personaj   0000 GR  |     pick_key   **** GX
+  0 q_no_pul   012D R   |   0 w_no_pul   0139 R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  12C   flags    0
+   0 _CODE      size  13D   flags    0
 

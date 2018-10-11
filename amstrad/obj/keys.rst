@@ -2577,30 +2577,56 @@ Hexadecimal [16-Bits]
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
                               4 
-                              5 .globl keys_picked
+                              5 .globl pick_keys
+                              6 .globl drop_keys
+                              7 .globl keys
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
                               9 
-   416D 00                   10 picked_up: .db 00
+                             10 ;;picked_up: .db 00
                              11 
-   416E                      12 DefineEntity llave, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, keys_picked
-   0001                       1 llave: 
-   416E 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   4170 00 00                 3    .db   0x00, 0x00     ;; VX, VY
-   4172 01 04                 4    .db    0x01, 0x04     ;; W, H
-   4174 FF                    5    .db   0xFF           ;; Color
-   4175 77 41                 6    .dw   keys_picked        ;; Update 
+   418B                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
+   0000                       1 keys: 
+   418B 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   418D 00 00                 3    .db   0x00, 0x00     ;; VX, VY
+   418F 01 04                 4    .db    0x01, 0x04     ;; W, H
+   4191 FF                    5    .db   0xFF           ;; Color
+   4192 72 40                 6    .dw   ent_draw        ;; Update 
                              13 
-   4177                      14 keys_picked:
-   4177 CD F8 40      [17]   15   call ent_collide
-                             16   ;;ex af,af'
-                             17   ;;jp z, not_picked ;; obs_X + obs_W - hero_X = 0
-                             18   ;;jp m, not_picked
-                             19   
-                             20   ;;ld (hl),#0xFF
-                             21   ;;ex af,af' 
-   417A                      22   not_picked:
-   417A C9            [10]   23 ret
+                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                             15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
+                             16 ;; AND CARRIED
+                             17 ;; MODIFIED: HL, A         
+                             18 ;; EXIT: KEYS_X -> PERSONAJE_X
+                             19 ;;       KEYS_Y -> PERSONAJE_Y
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   4194                      21 pick_keys:
+   4194 21 8B 41      [10]   22   ld hl, #keys    ;;hl -> array keys
+   4197 DD 7E 00      [19]   23   ld a, e_x(ix)   ;;a = personaje_x
+   419A 77            [ 7]   24   ld (hl), a      ;;keys_x = a
+   419B DD 7E 01      [19]   25   ld a, e_y(ix)   ;;a = personaje_y
+   419E 23            [ 6]   26   inc hl          ;;hl -> keys_y
+   419F 77            [ 7]   27   ld (hl), a      ;;keys_y = a
+   41A0 23            [ 6]   28   inc hl          ;;
+   41A1 23            [ 6]   29   inc hl          ;;
+   41A2 23            [ 6]   30   inc hl          ;;
+   41A3 23            [ 6]   31   inc hl          ;;
+   41A4 23            [ 6]   32   inc hl          ;;hl -> keys_col
+   41A5 3E F0         [ 7]   33   ld a, #0xF0     ;;
+   41A7 77            [ 7]   34   ld (hl),a       ;;
+   41A8 C9            [10]   35 ret
+                             36 
+   41A9                      37 drop_keys:
+   41A9 21 8B 41      [10]   38   ld hl, #keys
+   41AC 23            [ 6]   39   inc hl
+   41AD 23            [ 6]   40   inc hl
+   41AE 23            [ 6]   41   inc hl
+   41AF 23            [ 6]   42   inc hl
+   41B0 23            [ 6]   43   inc hl
+   41B1 23            [ 6]   44   inc hl
+   41B2 3E FF         [ 7]   45   ld a, #0xFF
+   41B4 77            [ 7]   46   ld (hl),a
+   41B5 C9            [10]   47 ret

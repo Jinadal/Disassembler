@@ -2587,7 +2587,19 @@ Hexadecimal [16-Bits]
 
 
 
-                             23 
+                             23 .include "keys.h.s"
+                              1 ;;====================================================
+                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
+                              3 ;;====================================================
+                              4 
+                              5 .globl pick_keys
+                              6 .globl drop_keys
+                              7 .globl keys
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
                              24 ;;
                              25 ;; Start of _DATA area 
                              26 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
@@ -2604,48 +2616,54 @@ Hexadecimal [16-Bits]
                              37 ;;
    4000                      38 _main::
                              39    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD A6 41      [17]   40       call cpct_disableFirmware_asm
+   4000 CD E1 41      [17]   40       call cpct_disableFirmware_asm
                              41 
    4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD 99 41      [17]   43    call cpct_setVideoMode_asm
+   4005 CD D4 41      [17]   43    call cpct_setVideoMode_asm
                              44 
                              45 
    4008                      46 loop:
                              47 
-   4008 DD 21 41 40   [14]   48     ld    ix, #personaje
-   400C CD 7F 40      [17]   49    call ent_clear
-   400F CD 8F 40      [17]   50    call ent_update
-   4012 CD 65 40      [17]   51    call ent_draw
+   4008 DD 21 4E 40   [14]   48     ld    ix, #personaje
+   400C CD 8C 40      [17]   49    call ent_clear
+   400F CD 9C 40      [17]   50    call ent_update
+   4012 CD 72 40      [17]   51    call ent_draw
                              52 
                              53   
-   4015 DD 21 4A 40   [14]   54     ld    ix, #p_a
-   4019 CD 7F 40      [17]   55    call ent_clear
+   4015 DD 21 57 40   [14]   54     ld    ix, #p_a
+   4019 CD 8C 40      [17]   55    call ent_clear
                              56      
-   401C CD 8F 40      [17]   57    call ent_update
-   401F CD 65 40      [17]   58    call ent_draw
+   401C CD 9C 40      [17]   57    call ent_update
+   401F CD 72 40      [17]   58    call ent_draw
                              59 
-   4022 DD 21 53 40   [14]   60      ld    ix, #p_a1
-   4026 CD 7F 40      [17]   61    call ent_clear
+   4022 DD 21 60 40   [14]   60      ld    ix, #p_a1
+   4026 CD 8C 40      [17]   61    call ent_clear
                              62      
-   4029 CD 8F 40      [17]   63    call ent_update
-   402C CD 65 40      [17]   64    call ent_draw
+   4029 CD 9C 40      [17]   63    call ent_update
+   402C CD 72 40      [17]   64    call ent_draw
                              65 
                              66 
-   402F DD 21 5C 40   [14]   67       ld    ix, #p_a2
-   4033 CD 7F 40      [17]   68    call ent_clear
+   402F DD 21 69 40   [14]   67       ld    ix, #p_a2
+   4033 CD 8C 40      [17]   68    call ent_clear
                              69 
-   4036 CD 8F 40      [17]   70    call ent_update
-   4039 CD 65 40      [17]   71    call ent_draw
+   4036 CD 9C 40      [17]   70    call ent_update
+   4039 CD 72 40      [17]   71    call ent_draw
                              72 
-                             73    
-                             74 
+   403C DD 21 8B 41   [14]   73      ld    ix, #keys
+   4040 CD 8C 40      [17]   74    call ent_clear
                              75 
-                             76 
-   403C CD 91 41      [17]   77    call cpct_waitVSYNC_asm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+   4043 CD 9C 40      [17]   76    call ent_update
+   4046 CD 72 40      [17]   77    call ent_draw
+                             78 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                             78    ;; Loop forever
-   403F 18 C7         [12]   79    jr    loop
+                             79    
+                             80 
+                             81 
+                             82 
+   4049 CD CC 41      [17]   83    call cpct_waitVSYNC_asm
+                             84    ;; Loop forever
+   404C 18 BA         [12]   85    jr    loop

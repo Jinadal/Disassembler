@@ -2587,7 +2587,19 @@ Hexadecimal [16-Bits]
 
 
 
-                             23 
+                             23 .include "keys.h.s"
+                              1 ;;====================================================
+                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
+                              3 ;;====================================================
+                              4 
+                              5 .globl pick_keys
+                              6 .globl drop_keys
+                              7 .globl keys
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
                              24 ;;
                              25 ;; Start of _DATA area 
                              26 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
@@ -2637,15 +2649,21 @@ Hexadecimal [16-Bits]
    0036 CD 00 00      [17]   70    call ent_update
    0039 CD 00 00      [17]   71    call ent_draw
                              72 
-                             73    
-                             74 
+   003C DD 21 00 00   [14]   73      ld    ix, #keys
+   0040 CD 00 00      [17]   74    call ent_clear
                              75 
-                             76 
-   003C CD 00 00      [17]   77    call cpct_waitVSYNC_asm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+   0043 CD 00 00      [17]   76    call ent_update
+   0046 CD 00 00      [17]   77    call ent_draw
+                             78 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                             78    ;; Loop forever
-   003F 18 C7         [12]   79    jr    loop
+                             79    
+                             80 
+                             81 
+                             82 
+   0049 CD 00 00      [17]   83    call cpct_waitVSYNC_asm
+                             84    ;; Loop forever
+   004C 18 BA         [12]   85    jr    loop

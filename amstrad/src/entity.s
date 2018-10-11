@@ -2,7 +2,7 @@
 .include "cpctelera.h.s"
 .include "entity.h.s"
 .include "main.h.s"
-   
+.include "keys.h.s"
 
 
 DefineEntity personaje, 0x09, 0x47, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard
@@ -143,15 +143,25 @@ ent_move2:
 
     jr nz, colision
 
-   
+   ld d, #1
 
+     ;; FOUTH OBJECT ;;
+
+     ld hl, #keys
+    call ent_collide
+
+        ld a,d
+    sub #1
+    
+    jp nz, pick_keys
+    jp z, drop_keys
     
 
  ret
     colision:
    
         ; ld  e_col(ix), #2
- ld e_x(ix), b
+    ld e_x(ix), b
     ld e_y(ix), c
    
 
@@ -168,81 +178,70 @@ ent_collide:
 
   ;; cambiar donde pone el controlo p_a
 
-      
-
   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-   ld a, e_x(ix)
-   add e_w(ix)
-   sub (hl)
    
-   jr z, no_coll
-   jp m, no_coll
+                  ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
+   ld a, e_x(ix)  ;; A = hero_X
+   add e_w(ix)    ;; A + hero_W
+   sub (hl)       ;; A - obs_X 
+   
+   jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
+   jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
 
+                  ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
+    ld a ,(hl)    ;; A = hl -> obs_X
+    inc hl        ;;
+    inc hl        ;;
+    inc hl        ;;
+    inc hl        ;; hl + 4 -> obs_W
 
-  ld a ,(hl)
-   inc hl
-   inc hl
-   inc hl
-   inc hl
+    add (hl)      ;; A + obs_W
+                  ;;
+    sub e_x(ix)   ;; A - hero_X
 
-   add (hl)
- 
-   sub e_x(ix)
-
-    jr z, no_coll
-    jp m, no_coll
+    jr z, no_coll ;; obs_X + obs_W - hero_X = 0
+    jp m, no_coll ;; obs_X + obs_W - hero_X < 0
 
 
 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-    dec hl
+                  ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
+    dec hl        ;; Puntero hl -> obs_Y
     dec hl
     dec hl
   
 
-   ld a, e_y(ix)
-   add e_h(ix)
-   sub (hl)
+   ld a, e_y(ix)  ;; A = hero__Y
+   add e_h(ix)    ;; A + hero__H
+   sub (hl)       ;; A - obs_Y
    
-   jr z, no_coll
-   jp m, no_coll
+   jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
+   jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
 
+                  ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
+   ld a ,(hl)     ;; A = obs_Y
+   inc hl         ;;
+   inc hl         ;;
+   inc hl         ;;
+   inc hl         ;; hl + 4 -> obs_H
 
-   ld a ,(hl)
-   inc hl
-   inc hl
-   inc hl
-   inc hl
+   add (hl)       ;; A + obs_H
+   sub e_y(ix)    ;; A - hero_Y
 
-   add (hl)
-   sub e_y(ix)
-
-    jr z, no_coll
-    jp m, no_coll
+    jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
+    jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
 
     dec hl
     dec hl
     dec hl
 
+    ld d, #0 
+    ;ld (0xC000), a
+    ;ld (0xC001), a
+    ;ld (0xC002), a
+    ;ld b, #1
+    ret
 
-
-
-  
-  ld d, #0 
-  ;ld (0xC000), a
-  ;ld (0xC001), a
-  ;ld (0xC002), a
-  ;ld b, #1
-
-
-
-
-ret
-   
-
-   no_coll:
-
-
-
+no_coll:
 
 ret
 
