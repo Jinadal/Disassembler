@@ -1,5 +1,6 @@
 DEF .__.ABS. 0x0
 DEF l__DATA 0x0
+<<<<<<< HEAD
 DEF l__CODE 0x356
 DEF s__CODE 0x4000
 DEF s__DATA 0x4356
@@ -39,4 +40,41 @@ DEF _cpct_mode_rom_status 0x4308
 DEF cpct_getScreenPtr_asm 0x4309
 DEF _cpct_scanKeyboard 0x4325
 DEF cpct_scanKeyboard_asm 0x4325
+=======
+DEF l__CODE 0x320
+DEF s__CODE 0x4000
+DEF s__DATA 0x4320
+DEF _main 0x4000
+DEF personaje 0x401F
+DEF p_a 0x4029
+DEF p_a1 0x4033
+DEF p_a2 0x403D
+DEF ent_draw 0x4047
+DEF ent_clear 0x4065
+DEF ent_update 0x4079
+DEF ent_move 0x4084
+DEF ent_collide 0x4118
+DEF ent_moveKeyboard 0x4156
+DEF keys 0x418D
+DEF pick_keys 0x4197
+DEF drop_keys 0x419D
+DEF key_draw 0x419E
+DEF key_update 0x41CC
+DEF key_clear 0x41D7
+DEF _cpct_isKeyPressed 0x41EB
+DEF cpct_isKeyPressed_asm 0x41EB
+DEF _cpct_keyboardStatusBuffer 0x41F7
+DEF _cpct_waitVSYNC 0x4201
+DEF cpct_waitVSYNC_asm 0x4201
+DEF cpct_setVideoMode_asm 0x4209
+DEF _cpct_disableFirmware 0x4216
+DEF _cpct_removeInterruptHandler 0x4216
+DEF cpct_disableFirmware_asm 0x4216
+DEF cpct_removeInterruptHandler_asm 0x4216
+DEF cpct_drawSolidBox_asm 0x4226
+DEF _cpct_mode_rom_status 0x42D2
+DEF cpct_getScreenPtr_asm 0x42D3
+DEF _cpct_scanKeyboard 0x42EF
+DEF cpct_scanKeyboard_asm 0x42EF
+>>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
 LOAD obj/amstrad.ihx

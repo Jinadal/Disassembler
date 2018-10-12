@@ -1,5 +1,5 @@
 XL2
-H 1 areas 15 global symbols
+H 1 areas 18 global symbols
 M cpct_keyboard
 S ent_collide Ref0000
 S cpct_isKeyPressed_asm Ref0000
@@ -19,21 +19,44 @@ S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 13 flags 0 addr 0
-S pick_keys Def000C
-S drop_keys Def0012
-S keys Def0002
-T 00 00 00 01
+A _CODE size 5E flags 0 addr 0
+S pick_keys Def000A
+S drop_keys Def0010
+S key_draw Def0011
+S key_update Def003F
+S key_clear Def004A
+S keys Def0000
+T 00 00
 R 00 00 00 00
-T 02 00
+T 00 00 02 15 00 00 01 04 C0 00 00 00
+R 00 00 00 00 02 09 05 00
+T 0A 00
 R 00 00 00 00
-T 02 00 02 15 00 00 01 04 C0 00 00 00
-R 00 00 00 00 02 09 04 00
-T 0C 00
+T 0A 00 3E 01 DD 77 09 C9
 R 00 00 00 00
-T 0C 00 3E 01 DD 77 09 C9
+T 10 00
 R 00 00 00 00
-T 12 00
+T 10 00 C9
 R 00 00 00 00
-T 12 00 C9
+T 11 00
 R 00 00 00 00
+T 11 00 DD 21 00 00 DD 7E 09 D6 01 CA 3A 00 DD 21
+R 00 00 00 00 02 04 02 00 00 0C 00 00
+T 1F 00 00 00 11 00 C0 DD 4E 00 DD 46 01 CD 00 00
+R 00 00 00 00 00 02 00 00 02 0E 11 00
+T 2D 00 EB DD 7E 06 DD 46 05 DD 4E 04 CD 00 00
+R 00 00 00 00 02 0D 0F 00
+T 3A 00
+R 00 00 00 00
+T 3A 00 DD 21 00 00 C9
+R 00 00 00 00 00 04 00 00
+T 3F 00
+R 00 00 00 00
+T 3F 00 DD 21 00 00 DD 66 08 DD 6E 07 E9
+R 00 00 00 00 00 04 00 00
+T 4A 00
+R 00 00 00 00
+T 4A 00 DD 21 00 00 DD 7E 06 08 DD 36 06 00 CD
+R 00 00 00 00 00 04 00 00
+T 57 00 11 00 08 DD 77 06 C9
+R 00 00 00 00 00 02 00 00
