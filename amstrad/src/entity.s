@@ -107,10 +107,10 @@ ent_move2:
 
 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
 
- ld    a, e_x(ix)     ;; Since screen max x is79
-  sub  #79            ;; check if is going to move further or outta screen
+; ld    a, e_x(ix)     ;; Since screen max x is79
+ ; sub  #77            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, colisionX       ;;
+; jr z, colisionX       ;;
 
 
 
@@ -133,7 +133,7 @@ ent_move2:
 
 
 
-;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
+;; CHECK MAX AND MIN SCREEN Y AND PREVENT PLAYER TO GO FURTHER
 
 
 
@@ -145,7 +145,7 @@ ent_move2:
 
 
   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
-  sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
+  sub #0            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
                     ;; position, so we put the uppest block at position 3
     jr z, colisionY  ;;
 

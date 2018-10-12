@@ -2602,86 +2602,128 @@ Hexadecimal [16-Bits]
 
 
 
-                             24 ;;
-                             25 ;; Start of _DATA area 
-                             26 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             27 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             28 ;;  right after _CODE area contents.
-                             29 ;;
-                             30 .area _DATA
-                             31 
-                             32 .area _CODE
-                             33 
-                             34 ;;
-                             35 ;; MAIN function. This is the entry point of the application.
-                             36 ;;    _main:: global symbol is required for correctly compiling and linking
-                             37 ;;
-   4000                      38 _main::
-                             39    ;; Disable firmware to prevent it from interfering with string drawing
-<<<<<<< HEAD
-   4000 CD E6 41      [17]   40       call cpct_disableFirmware_asm
-                             41 
-   4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD D9 41      [17]   43    call cpct_setVideoMode_asm
-=======
-   4000 CD 05 42      [17]   40       call cpct_disableFirmware_asm
-                             41 
-   4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD F8 41      [17]   43    call cpct_setVideoMode_asm
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
-                             44 
-                             45 
-   4008                      46 loop:
-                             47 
-   4008 DD 21 4E 40   [14]   48     ld    ix, #personaje
-   400C CD 90 40      [17]   49    call ent_clear
-   400F CD A0 40      [17]   50    call ent_update
-   4012 CD 76 40      [17]   51    call ent_draw
-                             52 
-                             53   
-   4015 DD 21 58 40   [14]   54     ld    ix, #p_a
-   4019 CD 90 40      [17]   55    call ent_clear
-                             56      
-   401C CD A0 40      [17]   57    call ent_update
-   401F CD 76 40      [17]   58    call ent_draw
-                             59 
-   4022 DD 21 62 40   [14]   60      ld    ix, #p_a1
-   4026 CD 90 40      [17]   61    call ent_clear
-                             62      
-   4029 CD A0 40      [17]   63    call ent_update
-   402C CD 76 40      [17]   64    call ent_draw
-                             65 
-                             66 
-   402F DD 21 6C 40   [14]   67       ld    ix, #p_a2
-   4033 CD 90 40      [17]   68    call ent_clear
-                             69 
-   4036 CD A0 40      [17]   70    call ent_update
-   4039 CD 76 40      [17]   71    call ent_draw
-                             72 
-<<<<<<< HEAD
-   403C DD 21 AA 41   [14]   73      ld    ix, #keys
-   4040 CD 90 40      [17]   74    call ent_clear
-=======
-   403C DD 21 AF 41   [14]   73      ld    ix, #keys
-   4040 CD 8C 40      [17]   74    call ent_clear
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
-                             75 
-   4043 CD A0 40      [17]   76    call ent_update
-   4046 CD 76 40      [17]   77    call ent_draw
-                             78 
+                             24   .include "wall.h.s"
+                              1 
+                              2 .globl wall_clear
+                              3 .globl wall_draw
+                              4 .globl wall_collide
+                              5 
+                              6 
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineWall _name, _x, _y, _w, _h, _col
+                             18 _name: 
+                             19    .db    _x, _y     ;; X, Y
+                             20    .db    _w, _h     ;; W, H
+                             21    .db   _col        ;; Color
+                             22 .endm
+                     0000    23 w_x = 0
+                     0001    24 w_y = 1
+                     0002    25 w_w = 2
+                     0003    26 w_h = 3
+                     0004    27 w_col = 4
+                             28 
+                             29 
+                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             31 ;;
+                             32 ;;OBJETOS CREADOS CON LA MACROS
+                             33 ;;
+                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             35 
+                             36 .globl w1
+                             37 .globl w2
+                             38 .globl w3
+                             39 .globl w4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                             79    
+                             25 ;;
+                             26 ;; Start of _DATA area 
+                             27 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             28 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             29 ;;  right after _CODE area contents.
+                             30 ;;
+                             31 .area _DATA
+                             32 
+                             33 .area _CODE
+                             34 
+                             35 ;;
+                             36 ;; MAIN function. This is the entry point of the application.
+                             37 ;;    _main:: global symbol is required for correctly compiling and linking
+                             38 ;;
+   4000                      39 _main::
+                             40    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD 4C 42      [17]   41       call cpct_disableFirmware_asm
+                             42 
+   4003 0E 00         [ 7]   43    ld    c, #0
+   4005 CD 3F 42      [17]   44    call cpct_setVideoMode_asm
+                             45 
+                             46 
+   4008                      47 loop:
+                             48 
+                             49   
+                             50 
+                             51 
+                             52 
+   4008 DD 21 5F 40   [14]   53     ld    ix, #personaje
+   400C CD A1 40      [17]   54    call ent_clear
+   400F CD B1 40      [17]   55    call ent_update
+   4012 CD 87 40      [17]   56    call ent_draw
+                             57 
+                             58   
+   4015 DD 21 69 40   [14]   59     ld    ix, #p_a
+   4019 CD A1 40      [17]   60    call ent_clear
+                             61      
+   401C CD B1 40      [17]   62    call ent_update
+   401F CD 87 40      [17]   63    call ent_draw
+                             64 
+   4022 DD 21 73 40   [14]   65      ld    ix, #p_a1
+   4026 CD A1 40      [17]   66    call ent_clear
+                             67      
+   4029 CD B1 40      [17]   68    call ent_update
+   402C CD 87 40      [17]   69    call ent_draw
+                             70 
+                             71 
+   402F DD 21 7D 40   [14]   72       ld    ix, #p_a2
+   4033 CD A1 40      [17]   73    call ent_clear
+                             74 
+   4036 CD B1 40      [17]   75    call ent_update
+   4039 CD 87 40      [17]   76    call ent_draw
+                             77 
+   403C DD 21 10 42   [14]   78      ld    ix, #keys
+   4040 CD A1 40      [17]   79    call ent_clear
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
+Hexadecimal [16-Bits]
+
+
+
                              80 
-                             81 
-                             82 
-<<<<<<< HEAD
-   4049 CD D1 41      [17]   83    call cpct_waitVSYNC_asm
-=======
-   4049 CD F0 41      [17]   83    call cpct_waitVSYNC_asm
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
-                             84    ;; Loop forever
-   404C 18 BA         [12]   85    jr    loop
+   4043 CD B1 40      [17]   81    call ent_update
+   4046 CD 87 40      [17]   82    call ent_draw
+                             83 
+   4049 DD 21 BA 41   [14]   84           ld    ix, #w1
+   404D CD CE 41      [17]   85    call wall_draw
+   4050 CD F8 41      [17]   86     call wall_collide
+                             87 
+   4053 DD 21 BF 41   [14]   88           ld    ix, #w2
+   4057 CD CE 41      [17]   89    call wall_draw
+                             90 
+                             91 
+                             92 
+                             93 
+                             94 
+                             95 
+                             96 
+   405A CD 37 42      [17]   97    call cpct_waitVSYNC_asm
+                             98    ;; Loop forever
+   405D 18 A9         [12]   99    jr    loop

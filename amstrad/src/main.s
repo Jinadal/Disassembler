@@ -21,6 +21,7 @@
 .include "entity.h.s"
 .include "main.h.s"
 .include "keys.h.s"
+  .include "wall.h.s"
 ;;
 ;; Start of _DATA area 
 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
@@ -44,6 +45,10 @@ _main::
 
 
 loop:
+
+  
+
+
 
     ld    ix, #personaje
    call ent_clear
@@ -76,7 +81,16 @@ loop:
    call ent_update
    call ent_draw
 
-   
+          ld    ix, #w1
+   call wall_draw
+    call wall_collide
+
+          ld    ix, #w2
+   call wall_draw
+
+
+
+
 
 
 

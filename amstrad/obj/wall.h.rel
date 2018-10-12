@@ -1,0 +1,11 @@
+XL2
+H 1 areas 8 global symbols
+S wall_clear Ref0000
+S .__.ABS. Def0000
+S w1 Ref0000
+S w2 Ref0000
+S w3 Ref0000
+S w4 Ref0000
+S wall_collide Ref0000
+S wall_draw Ref0000
+A _CODE size 0 flags 0 addr 0
