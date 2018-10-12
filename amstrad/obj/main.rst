@@ -2521,56 +2521,53 @@ Hexadecimal [16-Bits]
 
                              21 .include "entity.h.s"
                               1 
-                              2 
-                              3 
-                              4 
-                              5 .globl ent_clear
-                              6 .globl ent_draw
-                              7 .globl ent_update
-                              8 .globl ent_move
-                              9 .globl ent_moveKeyboard
-                             10 .globl ent_collide
-                             11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             15 ;;
-                             16 ;;MACROS
-                             17 ;;
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             19 
-                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
-                             21 _name: 
-                             22    .db    _x, _y     ;; X, Y
-                             23    .db   _vx, _vy    ;; VX, VY
-                             24    .db    _w, _h     ;; W, H
-                             25    .db   _col        ;; Color
-                             26    .dw   _upd        ;; Update 
-                             27    .db   _key        ;; Key   
-                             28 .endm
-                     0000    29 e_x = 0
-                     0001    30 e_y = 1
-                     0002    31 e_vx = 2
-                     0003    32 e_vy = 3
-                     0004    33 e_w = 4
-                     0005    34 e_h = 5
-                     0006    35 e_col = 6
-                     0007    36 e_up_l = 7
-                     0008    37 e_up_h = 8
-                     0009    38 e_key = 9
-                             39 
-                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             41 ;;
-                             42 ;;OBJETOS CREADOS CON LA MACROS
-                             43 ;;
-                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             45 
-                             46 .globl personaje
-                             47 .globl p_a
-                             48 .globl p_a1
-                             49 
-                             50 .globl p_a2
-                             51 
+                              2 .globl ent_clear
+                              3 .globl ent_draw
+                              4 .globl ent_update
+                              5 .globl ent_move
+                              6 .globl ent_moveKeyboard
+                              7 .globl ent_collide
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+                             18 _name: 
+                             19    .db    _x, _y     ;; X, Y
+                             20    .db   _vx, _vy    ;; VX, VY
+                             21    .db    _w, _h     ;; W, H
+                             22    .db   _col        ;; Color
+                             23    .dw   _upd        ;; Update 
+                             24    .db   _key        ;; Key   
+                             25 .endm
+                     0000    26 e_x = 0
+                     0001    27 e_y = 1
+                     0002    28 e_vx = 2
+                     0003    29 e_vy = 3
+                     0004    30 e_w = 4
+                     0005    31 e_h = 5
+                     0006    32 e_col = 6
+                     0007    33 e_up_l = 7
+                     0008    34 e_up_h = 8
+                     0009    35 e_key = 9
+                             36 
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             38 ;;
+                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             40 ;;
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             42 
+                             43 .globl personaje
+                             44 .globl p_a
+                             45 .globl p_a1
+                             46 
+                             47 .globl p_a2
+                             48 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2593,95 +2590,76 @@ Hexadecimal [16-Bits]
                               1 ;;====================================================
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
-                              4 
-                              5 .globl pick_keys
-                              6 .globl drop_keys
-                              7 .globl keys
+                              4 .globl key_draw
+                              5 .globl key_update
+                              6 .globl key_clear
+                              7 .globl pick_keys
+                              8 .globl drop_keys
+                              9 .globl keys
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             24 ;;
-                             25 ;; Start of _DATA area 
-                             26 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             27 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             28 ;;  right after _CODE area contents.
-                             29 ;;
-                             30 .area _DATA
-                             31 
-                             32 .area _CODE
-                             33 
-                             34 ;;
-                             35 ;; MAIN function. This is the entry point of the application.
-                             36 ;;    _main:: global symbol is required for correctly compiling and linking
-                             37 ;;
-   4000                      38 _main::
-                             39    ;; Disable firmware to prevent it from interfering with string drawing
-<<<<<<< HEAD
-   4000 CD E6 41      [17]   40       call cpct_disableFirmware_asm
-                             41 
-   4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD D9 41      [17]   43    call cpct_setVideoMode_asm
-=======
-   4000 CD 05 42      [17]   40       call cpct_disableFirmware_asm
-                             41 
-   4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD F8 41      [17]   43    call cpct_setVideoMode_asm
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+                             24 ;; Start of _DATA area 
+                             25 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             26 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             27 ;;  right after _CODE area contents.
+                             28 ;;
+                             29 .area _DATA
+                             30 
+                             31 .area _CODE
+                             32 
+                             33 ;;
+                             34 ;; MAIN function. This is the entry point of the application.
+                             35 ;;    _main:: global symbol is required for correctly compiling and linking
+                             36 ;;
+   4000                      37 _main::
+                             38    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD 16 42      [17]   39       call cpct_disableFirmware_asm
+                             40 
+   4003 0E 00         [ 7]   41    ld    c, #0
+   4005 CD 09 42      [17]   42    call cpct_setVideoMode_asm
+                             43 
                              44 
-                             45 
-   4008                      46 loop:
-                             47 
-   4008 DD 21 4E 40   [14]   48     ld    ix, #personaje
-   400C CD 90 40      [17]   49    call ent_clear
-   400F CD A0 40      [17]   50    call ent_update
-   4012 CD 76 40      [17]   51    call ent_draw
-                             52 
-                             53   
-   4015 DD 21 58 40   [14]   54     ld    ix, #p_a
-   4019 CD 90 40      [17]   55    call ent_clear
-                             56      
-   401C CD A0 40      [17]   57    call ent_update
-   401F CD 76 40      [17]   58    call ent_draw
-                             59 
-   4022 DD 21 62 40   [14]   60      ld    ix, #p_a1
-   4026 CD 90 40      [17]   61    call ent_clear
-                             62      
-   4029 CD A0 40      [17]   63    call ent_update
-   402C CD 76 40      [17]   64    call ent_draw
-                             65 
-                             66 
-   402F DD 21 6C 40   [14]   67       ld    ix, #p_a2
-   4033 CD 90 40      [17]   68    call ent_clear
-                             69 
-   4036 CD A0 40      [17]   70    call ent_update
-   4039 CD 76 40      [17]   71    call ent_draw
-                             72 
-<<<<<<< HEAD
-   403C DD 21 AA 41   [14]   73      ld    ix, #keys
-   4040 CD 90 40      [17]   74    call ent_clear
-=======
-   403C DD 21 AF 41   [14]   73      ld    ix, #keys
-   4040 CD 8C 40      [17]   74    call ent_clear
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+   4008                      45 loop:
+                             46   
+   4008 CD D7 41      [17]   47    call key_clear
+                             48   
+                             49   
+                             50 
+   400B CD 65 40      [17]   51    call ent_clear
+   400E CD CC 41      [17]   52     call key_update
+   4011 CD 79 40      [17]   53    call ent_update
+   4014 CD 9E 41      [17]   54     call key_draw
+   4017 CD 47 40      [17]   55    call ent_draw
+                             56 
+                             57   
+                             58   ;;  ld    ix, #p_a
+                             59   ;; call ent_clear
+                             60   ;; call ent_update
+                             61   ;; call ent_draw
+                             62 
+                             63   ;;  ld    ix, #p_a1
+                             64   ;; call ent_clear
+                             65   ;; call ent_update
+                             66   ;; call ent_draw
+                             67 
+                             68 
+                             69   ;;  ld    ix, #p_a2
+                             70   ;; call ent_clear
+                             71   ;; call ent_update
+                             72   ;; call ent_draw
+                             73 
+                             74    
                              75 
-   4043 CD A0 40      [17]   76    call ent_update
-   4046 CD 76 40      [17]   77    call ent_draw
-                             78 
+                             76 
+                             77 
+   401A CD 01 42      [17]   78    call cpct_waitVSYNC_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                             79    
-                             80 
-                             81 
-                             82 
-<<<<<<< HEAD
-   4049 CD D1 41      [17]   83    call cpct_waitVSYNC_asm
-=======
-   4049 CD F0 41      [17]   83    call cpct_waitVSYNC_asm
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
-                             84    ;; Loop forever
-   404C 18 BA         [12]   85    jr    loop
+                             79    ;; Loop forever
+   401D 18 E9         [12]   80    jr    loop

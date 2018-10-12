@@ -2503,56 +2503,53 @@ Hexadecimal [16-Bits]
 
                               3 .include "entity.h.s"
                               1 
-                              2 
-                              3 
-                              4 
-                              5 .globl ent_clear
-                              6 .globl ent_draw
-                              7 .globl ent_update
-                              8 .globl ent_move
-                              9 .globl ent_moveKeyboard
-                             10 .globl ent_collide
-                             11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             15 ;;
-                             16 ;;MACROS
-                             17 ;;
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             19 
-                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
-                             21 _name: 
-                             22    .db    _x, _y     ;; X, Y
-                             23    .db   _vx, _vy    ;; VX, VY
-                             24    .db    _w, _h     ;; W, H
-                             25    .db   _col        ;; Color
-                             26    .dw   _upd        ;; Update 
-                             27    .db   _key        ;; Key   
-                             28 .endm
-                     0000    29 e_x = 0
-                     0001    30 e_y = 1
-                     0002    31 e_vx = 2
-                     0003    32 e_vy = 3
-                     0004    33 e_w = 4
-                     0005    34 e_h = 5
-                     0006    35 e_col = 6
-                     0007    36 e_up_l = 7
-                     0008    37 e_up_h = 8
-                     0009    38 e_key = 9
-                             39 
-                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             41 ;;
-                             42 ;;OBJETOS CREADOS CON LA MACROS
-                             43 ;;
-                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             45 
-                             46 .globl personaje
-                             47 .globl p_a
-                             48 .globl p_a1
-                             49 
-                             50 .globl p_a2
-                             51 
+                              2 .globl ent_clear
+                              3 .globl ent_draw
+                              4 .globl ent_update
+                              5 .globl ent_move
+                              6 .globl ent_moveKeyboard
+                              7 .globl ent_collide
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+                             18 _name: 
+                             19    .db    _x, _y     ;; X, Y
+                             20    .db   _vx, _vy    ;; VX, VY
+                             21    .db    _w, _h     ;; W, H
+                             22    .db   _col        ;; Color
+                             23    .dw   _upd        ;; Update 
+                             24    .db   _key        ;; Key   
+                             25 .endm
+                     0000    26 e_x = 0
+                     0001    27 e_y = 1
+                     0002    28 e_vx = 2
+                     0003    29 e_vy = 3
+                     0004    30 e_w = 4
+                     0005    31 e_h = 5
+                     0006    32 e_col = 6
+                     0007    33 e_up_l = 7
+                     0008    34 e_up_h = 8
+                     0009    35 e_key = 9
+                             36 
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             38 ;;
+                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             40 ;;
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             42 
+                             43 .globl personaje
+                             44 .globl p_a
+                             45 .globl p_a1
+                             46 
+                             47 .globl p_a2
+                             48 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2575,32 +2572,28 @@ Hexadecimal [16-Bits]
                               1 ;;====================================================
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
-                              4 
-                              5 .globl pick_keys
-                              6 .globl drop_keys
-                              7 .globl keys
+                              4 .globl key_draw
+                              5 .globl key_update
+                              6 .globl key_clear
+                              7 .globl pick_keys
+                              8 .globl drop_keys
+                              9 .globl keys
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
                               6 
-                              7 
-   0000                       8 DefineEntity personaje, 0x09, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00
+   0000                       7 DefineEntity personaje, 0x09, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00
    0000                       1 personaje: 
    0000 09 48                 2    .db    0x09, 0x48     ;; X, Y
    0002 00 00                 3    .db   0x00, 0x00    ;; VX, VY
    0004 02 08                 4    .db    0x02, 0x08     ;; W, H
-<<<<<<< HEAD
    0006 0F                    5    .db   0x0F        ;; Color
-   0007 23 01                 6    .dw   ent_moveKeyboard        ;; Update 
+   0007 37 01                 6    .dw   ent_moveKeyboard        ;; Update 
    0009 00                    7    .db   0x00        ;; Key   
-=======
-   0006 0F                    5    .db   0x0F           ;; Color
-   0007 2A 01                 6    .dw   ent_moveKeyboard        ;; Update 
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
-                              9 
-   000A                      10 DefineEntity p_a, 0x08, 0x40, 0x00, 0x00, 0x02, 0x08, 0x0C, ent_draw, 0x00
+                              8 
+   000A                       9 DefineEntity p_a, 0x08, 0x40, 0x00, 0x00, 0x02, 0x08, 0x0C, ent_draw, 0x00
    000A                       1 p_a: 
    000A 08 40                 2    .db    0x08, 0x40     ;; X, Y
    000C 00 00                 3    .db   0x00, 0x00    ;; VX, VY
@@ -2608,16 +2601,16 @@ Hexadecimal [16-Bits]
    0010 0C                    5    .db   0x0C        ;; Color
    0011 28 00                 6    .dw   ent_draw        ;; Update 
    0013 00                    7    .db   0x00        ;; Key   
-   0014                      11 DefineEntity p_a1, 0x12, 0x80, 0x00, 0x01, 0x02, 0x08, 0xFF, ent_move, 0x00
+   0014                      10 DefineEntity p_a1, 0x12, 0x80, 0x00, 0x01, 0x02, 0x08, 0xFF, ent_move, 0x00
    0014                       1 p_a1: 
    0014 12 80                 2    .db    0x12, 0x80     ;; X, Y
    0016 00 01                 3    .db   0x00, 0x01    ;; VX, VY
    0018 02 08                 4    .db    0x02, 0x08     ;; W, H
    001A FF                    5    .db   0xFF        ;; Color
-   001B 59 00                 6    .dw   ent_move        ;; Update 
+   001B 65 00                 6    .dw   ent_move        ;; Update 
    001D 00                    7    .db   0x00        ;; Key   
-                             12 
-   001E                      13 DefineEntity p_a2, 0x02, 0x65, 0x00, 0x00, 0x02, 0x08, 0xC0, ent_draw, 0x00
+                             11 
+   001E                      12 DefineEntity p_a2, 0x02, 0x65, 0x00, 0x00, 0x02, 0x08, 0xC0, ent_draw, 0x00
    001E                       1 p_a2: 
    001E 02 65                 2    .db    0x02, 0x65     ;; X, Y
    0020 00 00                 3    .db   0x00, 0x00    ;; VX, VY
@@ -2625,674 +2618,397 @@ Hexadecimal [16-Bits]
    0024 C0                    5    .db   0xC0        ;; Color
    0025 28 00                 6    .dw   ent_draw        ;; Update 
    0027 00                    7    .db   0x00        ;; Key   
+                             13 
                              14 
                              15 
-                             16 
-                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             18 ;; DIBUJAR UNA ENTIDAD
-                             19 ;; PARA CUADRADOS UNICAMENTE
-                             20 ;; ENTRADA: IX -> Puntero a entidad
-                             21 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0028                      22 ent_draw:
-   0028 11 00 C0      [10]   23    ld    de, #0xC000       ;;Comienzo memoria de video
-   002B DD 4E 00      [19]   24    ld     c, e_x(ix)         ;; C = Entity Y
-   002E DD 46 01      [19]   25    ld     b, e_y(ix)         ;; B = Entity X
-   0031 CD 00 00      [17]   26    call cpct_getScreenPtr_asm
-                             27 
-   0034 EB            [ 4]   28    ex    de, hl   ;; DE = Puntero a memoria
-   0035 DD 7E 06      [19]   29    ld  a, e_col(ix)   ;; Color
-   0038 DD 46 05      [19]   30    ld  b, e_h(ix)   ;; alto
-   003B DD 4E 04      [19]   31    ld  c, e_w(ix)   ;; Ancho
-                             32 
+                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             17 ;; DIBUJAR UNA ENTIDAD
+                             18 ;; PARA CUADRADOS UNICAMENTE
+                             19 ;; ENTRADA: IX -> Puntero a entidad
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0028                      21 ent_draw:
+   0028 DD 21 00 00   [14]   22       ld ix,#personaje
+                             23 
+   002C 11 00 C0      [10]   24    ld    de, #0xC000       ;;Comienzo memoria de video
+   002F DD 4E 00      [19]   25    ld     c, e_x(ix)         ;; C = Entity Y
+   0032 DD 46 01      [19]   26    ld     b, e_y(ix)         ;; B = Entity X
+   0035 CD 00 00      [17]   27    call cpct_getScreenPtr_asm
+                             28 
+   0038 EB            [ 4]   29    ex    de, hl   ;; DE = Puntero a memoria
+   0039 DD 7E 06      [19]   30    ld  a, e_col(ix)   ;; Color
+   003C DD 46 05      [19]   31    ld  b, e_h(ix)   ;; alto
+   003F DD 4E 04      [19]   32    ld  c, e_w(ix)   ;; Ancho
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-   003E CD 00 00      [17]   33    call cpct_drawSolidBox_asm
-                             34 
-   0041 C9            [10]   35    ret
-                             36 
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             38 ;; BORRA UNA ENTIDAD
-                             39 ;; PARA CUADRADOS UNICAMENTE
-                             40 ;; ENTRADA: IX -> Puntero a entidad
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0042                      42 ent_clear:
-   0042 DD 7E 06      [19]   43    ld  a, e_col(ix)
-   0045 08            [ 4]   44    ex af, af'
+                             33 
+   0042 CD 00 00      [17]   34    call cpct_drawSolidBox_asm
+                             35 
+   0045 C9            [10]   36    ret
+                             37 
+                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             39 ;; BORRA UNA ENTIDAD
+                             40 ;; PARA CUADRADOS UNICAMENTE
+                             41 ;; ENTRADA: IX -> Puntero a entidad
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0046                      43 ent_clear:
+   0046 DD 21 00 00   [14]   44   ld ix,#personaje
                              45 
-   0046 DD 36 06 00   [19]   46    ld  e_col(ix), #0
-                             47 
-   004A CD 28 00      [17]   48    call ent_draw
-   004D 08            [ 4]   49    ex af, af'
-   004E DD 77 06      [19]   50    ld e_col(ix), a
-                             51 
-   0051 C9            [10]   52    ret
-                             53 
-                             54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             55 ;; ACTUALIZAR UNA ENTIDAD
-                             56 ;; LLAMA A SU FUNCION DIFERENCIATIVA
-                             57 ;; ENTRADA: IX -> Puntero a entidad
-                             58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0052                      59 ent_update:
-   0052 DD 66 08      [19]   60     ld     h, e_up_h(ix)
-   0055 DD 6E 07      [19]   61     ld     l, e_up_l(ix)
-   0058 E9            [ 4]   62     jp    (hl)  
-                             63 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             64 ;; MOVER UNA ENTIDAD
-                             65 ;; 
-                             66 ;; ENTRADA: IX -> Puntero a entidad
-                             67 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             68 
-   0059                      69 ent_move:
-   0059 DD 7E 00      [19]   70    ld    a, e_x(ix) 
-   005C DD 86 02      [19]   71    add   e_vx(ix)
-   005F DD 77 00      [19]   72    ld    e_x(ix), a
+   004A DD 7E 06      [19]   46    ld  a, e_col(ix)
+   004D 08            [ 4]   47    ex af, af'
+                             48 
+   004E DD 36 06 00   [19]   49    ld  e_col(ix), #0
+                             50 
+   0052 CD 28 00      [17]   51    call ent_draw
+   0055 08            [ 4]   52    ex af, af'
+   0056 DD 77 06      [19]   53    ld e_col(ix), a
+                             54 
+   0059 C9            [10]   55    ret
+                             56 
+                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             58 ;; ACTUALIZAR UNA ENTIDAD
+                             59 ;; LLAMA A SU FUNCION DIFERENCIATIVA
+                             60 ;; ENTRADA: IX -> Puntero a entidad
+                             61 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   005A                      62 ent_update:
+   005A DD 21 00 00   [14]   63   ld ix,#personaje
+                             64 
+   005E DD 66 08      [19]   65     ld     h, e_up_h(ix)
+   0061 DD 6E 07      [19]   66     ld     l, e_up_l(ix)
+   0064 E9            [ 4]   67     jp    (hl)  
+                             68 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             69 ;; MOVER UNA ENTIDAD
+                             70 ;; 
+                             71 ;; ENTRADA: IX -> Puntero a entidad
+                             72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              73 
-   0062 DD 7E 01      [19]   74    ld    a, e_y(ix) 
-   0065 DD 86 03      [19]   75    add   e_vy(ix)
-   0068 DD 77 01      [19]   76    ld    e_y(ix), a
-                             77 
-                             78    
-   006B C9            [10]   79    ret
-                             80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             81 ;; VERSION ACTUALIZADA DEL MOVE PARA EL PERSONAJE
-                             82 ;;  
-                             83 ;; ENTRADA: IX -> Puntero al personaje
-                             84 ;; HL IS USED TO POINT THE COLLISIONABLE ENTITIES
-                             85 ;; SUMMONS COLLIDE FOR EVERY COLLISIONABLE ENTITY 
-                             86 ;; 
-                             87 ;; Saves current position
+   0065                      74 ent_move:
+   0065 DD 7E 00      [19]   75    ld    a, e_x(ix) 
+   0068 DD 86 02      [19]   76    add   e_vx(ix)
+   006B DD 77 00      [19]   77    ld    e_x(ix), a
+                             78 
+   006E DD 7E 01      [19]   79    ld    a, e_y(ix) 
+   0071 DD 86 03      [19]   80    add   e_vy(ix)
+   0074 DD 77 01      [19]   81    ld    e_y(ix), a
+                             82 
+                             83    
+   0077 C9            [10]   84    ret
+                             85 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             86 ;; VERSION ACTUALIZADA DEL MOVE PARA EL PERSONAJE
+                             87 ;;  
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-                             88 ;; Calculates next position with its velocity
-                             89 ;; If no colition detected with collide, continues normaly
-                             90 ;; If colition detected, next position will be overwritten with the previously saved 
-                             91 ;; ------------------- VERSION 1.2-----------------
-                             92 ;; When next position (x or y) is calculated it will check if will go out of bounds or
-                             93 ;; out of the screen
-                             94 ;;
-                             95 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             96 
-   006C                      97 ent_move2:   
-   006C DD 46 00      [19]   98     ld b, e_x(ix) ;; save current x position in b
-   006F DD 4E 01      [19]   99     ld c, e_y(ix) ;; save current y position in c
-                            100 
-   0072 DD 7E 00      [19]  101    ld    a, e_x(ix) ;;
-   0075 DD 86 02      [19]  102    add   e_vx(ix)   ;;
-   0078 DD 77 00      [19]  103    ld    e_x(ix), a ;; next "x" postion = current "x" + velocity
-                            104 
+                             88 ;; ENTRADA: IX -> Puntero al personaje
+                             89 ;; HL IS USED TO POINT THE COLLISIONABLE ENTITIES
+                             90 ;; SUMMONS COLLIDE FOR EVERY COLLISIONABLE ENTITY 
+                             91 ;; 
+                             92 ;; Saves current position
+                             93 ;; Calculates next position with its velocity
+                             94 ;; If no colition detected with collide, continues normaly
+                             95 ;; If colition detected, next position will be overwritten with the previously saved 
+                             96 ;; ------------------- VERSION 1.2-----------------
+                             97 ;; When next position (x or y) is calculated it will check if will go out of bounds or
+                             98 ;; out of the screen
+                             99 ;;
+                            100 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            101 
+   0078                     102 ent_move2:   
+   0078 DD 46 00      [19]  103     ld b, e_x(ix) ;; save current x position in b
+   007B DD 4E 01      [19]  104     ld c, e_y(ix) ;; save current y position in c
                             105 
-                            106 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
-                            107 
-   007B DD 7E 00      [19]  108  ld    a, e_x(ix)     ;; Since screen max x is79
-   007E D6 4F         [ 7]  109   sub  #79            ;; check if is going to move further or outta screen
-                            110                       ;; if true we will go to the reassingnament part
-   0080 28 5C         [12]  111  jr z, colision       ;;
+   007E DD 7E 00      [19]  106    ld    a, e_x(ix) ;;
+   0081 DD 86 02      [19]  107    add   e_vx(ix)   ;;
+   0084 DD 77 00      [19]  108    ld    e_x(ix), a ;; next "x" postion = current "x" + velocity
+                            109 
+   0087 DD 36 02 00   [19]  110      ld e_vx(ix), #0;;
+                            111    
                             112 
-                            113 
+                            113 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             114 
-   0082 DD 7E 00      [19]  115   ld    a, e_x(ix)  ;; Same as before but now with the leftest position
-   0085 D6 00         [ 7]  116   sub #0            ;;
-                            117                     ;;
-   0087 28 55         [12]  118     jr z, colision  ;;
+   008B DD 7E 00      [19]  115  ld    a, e_x(ix)     ;; Since screen max x is79
+   008E D6 4F         [ 7]  116   sub  #79            ;; check if is going to move further or outta screen
+                            117                       ;; if true we will go to the reassingnament part
+   0090 28 5F         [12]  118  jr z, colisionX       ;;
                             119 
-                            120 ;;  END MAX MIN X CHECK
+                            120 
                             121 
-                            122 
-                            123 
-   0089 DD 7E 01      [19]  124    ld    a, e_y(ix) ;;
-   008C DD 86 03      [19]  125    add   e_vy(ix)   ;;
-   008F DD 77 01      [19]  126    ld    e_y(ix), a ;; next "y" postion = current "y" + velocity
-                            127 
+   0092 DD 7E 00      [19]  122   ld    a, e_x(ix)  ;; Same as before but now with the leftest position
+   0095 D6 00         [ 7]  123   sub #0            ;;
+                            124                     ;;
+   0097 28 58         [12]  125     jr z, colisionX  ;;
+                            126 
+                            127 ;;  END MAX MIN X CHECK
                             128 
                             129 
                             130 
-                            131 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
-                            132 
-                            133 
+   0099 DD 7E 01      [19]  131    ld    a, e_y(ix) ;;
+   009C DD 86 03      [19]  132    add   e_vy(ix)   ;;
+   009F DD 77 01      [19]  133    ld    e_y(ix), a ;; next "y" postion = current "y" + velocity
                             134 
-   0092 DD 7E 01      [19]  135   ld    a, e_y(ix)  ;; Same as x check but now we apply the 192 max y position
-   0095 D6 C0         [ 7]  136   sub  #192         ;;
-                            137                     ;;
-   0097 28 45         [12]  138     jr z, colision  ;;
-                            139 
-                            140 
-                            141 
-   0099 DD 7E 01      [19]  142   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
-=======
-                             92 ;; If colition detected, next position will be overwritten with the previously saved 
-                             93 ;; ------------------- VERSION 1.2-----------------
-                             94 ;; When next position (x or y) is calculated it will check if will go out of bounds or
-                             95 ;; out of the screen
-                             96 ;;
-                             97 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             98 
-   0068                      99 ent_move2:   
-   0068 DD 46 00      [19]  100     ld b, e_x(ix) ;; save current x position in b
-   006B DD 4E 01      [19]  101     ld c, e_y(ix) ;; save current y position in c
-                            102 
-   006E DD 7E 00      [19]  103    ld    a, e_x(ix) ;;
-   0071 DD 86 02      [19]  104    add   e_vx(ix)   ;;
-   0074 DD 77 00      [19]  105    ld    e_x(ix), a ;; next "x" postion = current "x" + velocity
-                            106 
-   0077 DD 36 02 00   [19]  107      ld e_vx(ix), #0;;
-                            108    
-                            109 
-                            110 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
-                            111 
-   007B DD 7E 00      [19]  112  ld    a, e_x(ix)     ;; Since screen max x is79
-   007E D6 4F         [ 7]  113   sub  #79            ;; check if is going to move further or outta screen
-                            114                       ;; if true we will go to the reassingnament part
-   0080 28 62         [12]  115  jr z, colisionX       ;;
-                            116 
-                            117 
-                            118 
-   0082 DD 7E 00      [19]  119   ld    a, e_x(ix)  ;; Same as before but now with the leftest position
-   0085 D6 00         [ 7]  120   sub #0            ;;
-                            121                     ;;
-   0087 28 5B         [12]  122     jr z, colisionX  ;;
-                            123 
-                            124 ;;  END MAX MIN X CHECK
-                            125 
-                            126 
-                            127 
-   0089 DD 7E 01      [19]  128    ld    a, e_y(ix) ;;
-   008C DD 86 03      [19]  129    add   e_vy(ix)   ;;
-   008F DD 77 01      [19]  130    ld    e_y(ix), a ;; next "y" postion = current "y" + velocity
-                            131 
-   0092 DD 36 03 00   [19]  132     ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
-                            133 
-                            134 
-                            135 
+   00A2 DD 36 03 00   [19]  135     ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
                             136 
                             137 
-                            138 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
+                            138 
                             139 
                             140 
-                            141 
-   0096 DD 7E 01      [19]  142   ld    a, e_y(ix)  ;; Same as x check but now we apply the 192 max y position
-   0099 D6 C0         [ 7]  143   sub  #192         ;;
-                            144                     ;;
-   009B 28 4B         [12]  145     jr z, colisionY  ;;
-                            146 
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+                            141 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
+                            142 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-   009C D6 03         [ 7]  143   sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
-                            144                     ;; position, so we put the uppest block at position 3
-   009E 28 3E         [12]  145     jr z, colision  ;;
-                            146 
-                            147 ;;  END MAX MIN X CHECK
-                            148 
+                            143 
+                            144 
+   00A6 DD 7E 01      [19]  145   ld    a, e_y(ix)  ;; Same as x check but now we apply the 192 max y position
+   00A9 D6 C0         [ 7]  146   sub  #192         ;;
+                            147                     ;;
+   00AB 28 48         [12]  148     jr z, colisionY  ;;
                             149 
                             150 
                             151 
-   00A0 DD 36 02 00   [19]  152        ld e_vx(ix), #0;;
-   00A4 DD 36 03 00   [19]  153     ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
-                            154 
-                            155 
-                            156  ;; FIRST OBJECT ;;
-                            157 
-   00A8 16 01         [ 7]  158     ld d, #1          ;; Prepare check flag by saving a 1 in d
-   00AA 21 0A 00      [10]  159     ld hl, #p_a       ;; Save wall pointer in hl
-   00AD CD E5 00      [17]  160     call ent_collide  ;; check collision
-                            161 
-   00B0 7A            [ 4]  162         ld a,d          ;;d is changed in collide if a collision happened 
-   00B1 D6 01         [ 7]  163     sub #1              ;;holding a 0 otherwise it will be a 1
-   00B3 20 29         [12]  164     jr nz, colision  ;;and if it is a 0 we will go to the reassingnament part
-                            165 
-                            166    
-                            167  ;; SECOND OBJECT ;;
-                            168 
-   00B5 16 01         [ 7]  169     ld d, #1
-   00B7 21 14 00      [10]  170     ld hl, #p_a1
-   00BA CD E5 00      [17]  171     call ent_collide
-                            172 
-   00BD 7A            [ 4]  173         ld a,d
-   00BE D6 01         [ 7]  174     sub #1
-                            175 
-   00C0 20 1C         [12]  176     jr nz, colision
-                            177 
-   00C2 16 01         [ 7]  178     ld d, #1
-                            179 
-                            180      ;; THIRD OBJECT ;;
-                            181 
-   00C4 21 1E 00      [10]  182      ld hl, #p_a2
-   00C7 CD E5 00      [17]  183     call ent_collide
-                            184 
-   00CA 7A            [ 4]  185         ld a,d
-   00CB D6 01         [ 7]  186     sub #1
-                            187 
-   00CD 20 0F         [12]  188     jr nz, colision
-                            189 
-   00CF 16 01         [ 7]  190    ld d, #1
-                            191 
-                            192      ;; FOUTH OBJECT ;;
-                            193 
-   00D1 21 00 00      [10]  194      ld hl, #keys
-   00D4 CD E5 00      [17]  195     call ent_collide
-                            196 
-   00D7 7A            [ 4]  197         ld a,d
-=======
-                            147 
-                            148 
-   009D DD 7E 01      [19]  149   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
-   00A0 D6 03         [ 7]  150   sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
-                            151                     ;; position, so we put the uppest block at position 3
-   00A2 28 44         [12]  152     jr z, colisionY  ;;
-                            153 
-                            154 ;;  END MAX MIN X CHECK
-                            155 
+   00AD DD 7E 01      [19]  152   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
+   00B0 D6 03         [ 7]  153   sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
+                            154                     ;; position, so we put the uppest block at position 3
+   00B2 28 41         [12]  155     jr z, colisionY  ;;
                             156 
-                            157 
+                            157 ;;  END MAX MIN X CHECK
                             158 
-                            159      
+                            159 
                             160 
                             161 
-                            162  ;; FIRST OBJECT ;;
+                            162      
                             163 
-   00A4 16 01         [ 7]  164     ld d, #1          ;; Prepare check flag by saving a 1 in d
-   00A6 21 09 00      [10]  165     ld hl, #p_a       ;; Save wall pointer in hl
-   00A9 CD EC 00      [17]  166     call ent_collide  ;; check collision
-                            167 
-   00AC 7A            [ 4]  168         ld a,d          ;;d is changed in collide if a collision happened 
-   00AD D6 01         [ 7]  169     sub #1              ;;holding a 0 otherwise it will be a 1
-   00AF 20 2C         [12]  170     jr nz, colision  ;;and if it is a 0 we will go to the reassingnament part
-                            171 
-                            172    
-                            173  ;; SECOND OBJECT ;;
+                            164 
+                            165  ;; FIRST OBJECT ;;
+                            166 
+   00B4 16 01         [ 7]  167     ld d, #1          ;; Prepare check flag by saving a 1 in d
+   00B6 21 0A 00      [10]  168     ld hl, #p_a       ;; Save wall pointer in hl
+   00B9 CD F9 00      [17]  169     call ent_collide  ;; check collision
+                            170 
+   00BC 7A            [ 4]  171         ld a,d          ;;d is changed in collide if a collision happened 
+   00BD D6 01         [ 7]  172     sub #1              ;;holding a 0 otherwise it will be a 1
+   00BF 20 29         [12]  173     jr nz, colision  ;;and if it is a 0 we will go to the reassingnament part
                             174 
-   00B1 16 01         [ 7]  175     ld d, #1
-   00B3 21 12 00      [10]  176     ld hl, #p_a1
-   00B6 CD EC 00      [17]  177     call ent_collide
-                            178 
-   00B9 7A            [ 4]  179         ld a,d
-   00BA D6 01         [ 7]  180     sub #1
+                            175    
+                            176  ;; SECOND OBJECT ;;
+                            177 
+   00C1 16 01         [ 7]  178     ld d, #1
+   00C3 21 14 00      [10]  179     ld hl, #p_a1
+   00C6 CD F9 00      [17]  180     call ent_collide
                             181 
-   00BC 20 1F         [12]  182     jr nz, colision
-                            183 
-   00BE 16 01         [ 7]  184     ld d, #1
-                            185 
-                            186      ;; THIRD OBJECT ;;
-                            187 
-   00C0 21 1B 00      [10]  188      ld hl, #p_a2
-   00C3 CD EC 00      [17]  189     call ent_collide
+   00C9 7A            [ 4]  182         ld a,d
+   00CA D6 01         [ 7]  183     sub #1
+                            184 
+   00CC 20 1C         [12]  185     jr nz, colision
+                            186 
+   00CE 16 01         [ 7]  187     ld d, #1
+                            188 
+                            189      ;; THIRD OBJECT ;;
                             190 
-   00C6 7A            [ 4]  191         ld a,d
-   00C7 D6 01         [ 7]  192     sub #1
+   00D0 21 1E 00      [10]  191      ld hl, #p_a2
+   00D3 CD F9 00      [17]  192     call ent_collide
                             193 
-   00C9 20 12         [12]  194     jr nz, colision
-                            195 
-   00CB 16 01         [ 7]  196    ld d, #1
-                            197 
-                            198      ;; FOUTH OBJECT ;;
-                            199 
-   00CD 21 00 00      [10]  200      ld hl, #keys
-   00D0 CD EC 00      [17]  201     call ent_collide
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+   00D6 7A            [ 4]  194         ld a,d
+   00D7 D6 01         [ 7]  195     sub #1
+                            196 
+   00D9 20 0F         [12]  197     jr nz, colision
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-   00D8 D6 01         [ 7]  198     sub #1
-                            199     
-                            200     
-   00DA C2 00 00      [10]  201     jp nz, pick_keys
-                            202     ;;jp z,drop_keys
-                            203     
-                            204 
-   00DD C9            [10]  205  ret
-   00DE                     206     colision:
-                            207    
-                            208         ; ld  e_col(ix), #2
-   00DE DD 70 00      [19]  209     ld e_x(ix), b
-   00E1 DD 71 01      [19]  210     ld e_y(ix), c
-                            211    
-                            212 
-                            213    
-   00E4 C9            [10]  214    ret
-                            215 
-                            216 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            217 ;; COMPROBACION COLISIONES BOUNDING BOXES
-                            218 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-                            219 ;; LA CAJA Y EL PERSONAJE
-                            220 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            221 
-   00E5                     222 ent_collide:
-                            223 
-                            224 
-                            225   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-                            226    
-                            227                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
-   00E5 DD 7E 00      [19]  228    ld a, e_x(ix)  ;; A = hero_X
-   00E8 DD 86 04      [19]  229    add e_w(ix)    ;; A + hero_W
-   00EB 96            [ 7]  230    sub (hl)       ;; A - obs_X 
-                            231    
-   00EC 28 34         [12]  232    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
-   00EE FA 22 01      [10]  233    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
-                            234 
-                            235                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
-   00F1 7E            [ 7]  236     ld a ,(hl)    ;; A = hl -> obs_X
-   00F2 23            [ 6]  237     inc hl        ;;
-   00F3 23            [ 6]  238     inc hl        ;;
-   00F4 23            [ 6]  239     inc hl        ;;
-   00F5 23            [ 6]  240     inc hl        ;; hl + 4 -> obs_W
-                            241 
-   00F6 86            [ 7]  242     add (hl)      ;; A + obs_W
-                            243                   ;;
-   00F7 DD 96 00      [19]  244     sub e_x(ix)   ;; A - hero_X
-                            245 
-   00FA 28 26         [12]  246     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
-   00FC FA 22 01      [10]  247     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
-                            248 
-                            249 
-                            250 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-                            251                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
-   00FF 2B            [ 6]  252     dec hl        ;; Puntero hl -> obs_Y
-=======
+                            198 
+   00DB 16 01         [ 7]  199    ld d, #1
+                            200 
+                            201      ;; FOUTH OBJECT ;;
                             202 
-   00D3 7A            [ 4]  203         ld a,d
-   00D4 D6 01         [ 7]  204     sub #1
-                            205     
-   00D6 C2 00 00      [10]  206     jp nz, pick_keys
-   00D9 CA 00 00      [10]  207     jp z, drop_keys
+   00DD 21 00 00      [10]  203      ld hl, #keys
+   00E0 CD F9 00      [17]  204     call ent_collide
+                            205 
+   00E3 7A            [ 4]  206         ld a,d
+   00E4 D6 01         [ 7]  207     sub #1
                             208     
-                            209 
-   00DC C9            [10]  210  ret
-   00DD                     211     colision:
-                            212    
-                            213        
-   00DD DD 70 00      [19]  214     ld e_x(ix), b
-   00E0 DD 71 01      [19]  215     ld e_y(ix), c
-                            216 
-   00E3 C9            [10]  217   ret
-   00E4                     218      colisionX:
-                            219    
-                            220      
-   00E4 DD 70 00      [19]  221     ld e_x(ix), b
-   00E7 C9            [10]  222   ret
+                            209     
+   00E6 C2 00 00      [10]  210     jp nz, pick_keys
+                            211     ;;jp z,drop_keys
+                            212     
+                            213 
+   00E9 C9            [10]  214  ret
+   00EA                     215     colision:
+                            216    
+                            217        
+   00EA DD 70 00      [19]  218     ld e_x(ix), b
+   00ED DD 71 01      [19]  219     ld e_y(ix), c
+                            220 
+   00F0 C9            [10]  221   ret
+   00F1                     222      colisionX:
                             223    
-   00E8                     224     colisionY:
-                            225    
-                            226      
-                            227     
-   00E8 DD 71 01      [19]  228     ld e_y(ix), c
-                            229    
-                            230    
+                            224      
+   00F1 DD 70 00      [19]  225     ld e_x(ix), b
+   00F4 C9            [10]  226   ret
+                            227    
+   00F5                     228     colisionY:
+                            229  
+   00F5 DD 71 01      [19]  230     ld e_y(ix), c
                             231 
-                            232    
-   00EB C9            [10]  233    ret
-                            234 
-                            235 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            236 ;; COMPROBACION COLISIONES BOUNDING BOXES
-                            237 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-                            238 ;; LA CAJA Y EL PERSONAJE
-                            239 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            240 
-   00EC                     241 ent_collide:
+   00F8 C9            [10]  232    ret
+                            233 
+                            234 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                            235 ;; COMPROBACION COLISIONES BOUNDING BOXES
+                            236 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
+                            237 ;; LA CAJA Y EL PERSONAJE
+                            238 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            239 
+   00F9                     240 ent_collide:
+                            241 
                             242 
-                            243 
-                            244   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-                            245    
-                            246                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
-   00EC DD 7E 00      [19]  247    ld a, e_x(ix)  ;; A = hero_X
-   00EF DD 86 04      [19]  248    add e_w(ix)    ;; A + hero_W
-   00F2 96            [ 7]  249    sub (hl)       ;; A - obs_X 
-                            250    
-   00F3 28 34         [12]  251    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
-   00F5 FA 29 01      [10]  252    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
-                            253 
-                            254                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
-   00F8 7E            [ 7]  255     ld a ,(hl)    ;; A = hl -> obs_X
-   00F9 23            [ 6]  256     inc hl        ;;
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+                            243   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
+                            244    
+                            245                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
+   00F9 DD 7E 00      [19]  246    ld a, e_x(ix)  ;; A = hero_X
+   00FC DD 86 04      [19]  247    add e_w(ix)    ;; A + hero_W
+   00FF 96            [ 7]  248    sub (hl)       ;; A - obs_X 
+                            249    
+   0100 28 34         [12]  250    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
+   0102 FA 36 01      [10]  251    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
+                            252 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 58.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-   0100 2B            [ 6]  253     dec hl
-   0101 2B            [ 6]  254     dec hl
-                            255   
-                            256 
-   0102 DD 7E 01      [19]  257    ld a, e_y(ix)  ;; A = hero__Y
-   0105 DD 86 05      [19]  258    add e_h(ix)    ;; A + hero__H
-   0108 96            [ 7]  259    sub (hl)       ;; A - obs_Y
-                            260    
-   0109 28 17         [12]  261    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
-   010B FA 22 01      [10]  262    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
+                            253                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
+   0105 7E            [ 7]  254     ld a ,(hl)    ;; A = hl -> obs_X
+   0106 23            [ 6]  255     inc hl        ;;
+   0107 23            [ 6]  256     inc hl        ;;
+   0108 23            [ 6]  257     inc hl        ;;
+   0109 23            [ 6]  258     inc hl        ;; hl + 4 -> obs_W
+                            259 
+   010A 86            [ 7]  260     add (hl)      ;; A + obs_W
+                            261                   ;;
+   010B DD 96 00      [19]  262     sub e_x(ix)   ;; A - hero_X
                             263 
-                            264                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
-   010E 7E            [ 7]  265    ld a ,(hl)     ;; A = obs_Y
-   010F 23            [ 6]  266    inc hl         ;;
-   0110 23            [ 6]  267    inc hl         ;;
-   0111 23            [ 6]  268    inc hl         ;;
-   0112 23            [ 6]  269    inc hl         ;; hl + 4 -> obs_H
-                            270 
-   0113 86            [ 7]  271    add (hl)       ;; A + obs_H
-   0114 DD 96 01      [19]  272    sub e_y(ix)    ;; A - hero_Y
-                            273 
-   0117 28 09         [12]  274     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
-   0119 FA 22 01      [10]  275     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
-                            276 
-   011C 2B            [ 6]  277     dec hl
-   011D 2B            [ 6]  278     dec hl
-   011E 2B            [ 6]  279     dec hl
-                            280 
-   011F 16 00         [ 7]  281     ld d, #0 
-                            282     ;ld (0xC000), a
-                            283     ;ld (0xC001), a
-                            284     ;ld (0xC002), a
-                            285     ;ld b, #1
-   0121 C9            [10]  286     ret
-                            287 
-   0122                     288 no_coll:
-                            289 
-   0122 C9            [10]  290 ret
-                            291 
-                            292 
-                            293 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            294 ;; MOVIENTO MEDIANTE TECLADO
-                            295 ;;          W(ARRIBA)
-                            296 ;; A (IZDA) S(ABAJO) D(DERECHA)
-                            297 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0123                     298 ent_moveKeyboard:
-   0123 CD 00 00      [17]  299     call cpct_scanKeyboard_asm
-                            300       
-   0126 21 08 20      [10]  301    ld hl, #Key_A ;;O
-   0129 CD 00 00      [17]  302     call cpct_isKeyPressed_asm
-   012C 28 04         [12]  303     jr z, o_no_pulsada
-                            304     
-   012E DD 36 02 FF   [19]  305     ld e_vx(ix), #-1
-                            306     
-   0132                     307  o_no_pulsada:   
-=======
-   00FA 23            [ 6]  257     inc hl        ;;
-   00FB 23            [ 6]  258     inc hl        ;;
-   00FC 23            [ 6]  259     inc hl        ;; hl + 4 -> obs_W
-                            260 
-   00FD 86            [ 7]  261     add (hl)      ;; A + obs_W
-                            262                   ;;
-   00FE DD 96 00      [19]  263     sub e_x(ix)   ;; A - hero_X
-                            264 
-   0101 28 26         [12]  265     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
-   0103 FA 29 01      [10]  266     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
+   010E 28 26         [12]  264     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
+   0110 FA 36 01      [10]  265     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
+                            266 
                             267 
-                            268 
-                            269 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-                            270                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
-   0106 2B            [ 6]  271     dec hl        ;; Puntero hl -> obs_Y
-   0107 2B            [ 6]  272     dec hl
-   0108 2B            [ 6]  273     dec hl
-                            274   
-                            275 
-   0109 DD 7E 01      [19]  276    ld a, e_y(ix)  ;; A = hero__Y
-   010C DD 86 05      [19]  277    add e_h(ix)    ;; A + hero__H
-   010F 96            [ 7]  278    sub (hl)       ;; A - obs_Y
-                            279    
-   0110 28 17         [12]  280    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
-   0112 FA 29 01      [10]  281    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
-                            282 
-                            283                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
-   0115 7E            [ 7]  284    ld a ,(hl)     ;; A = obs_Y
-   0116 23            [ 6]  285    inc hl         ;;
-   0117 23            [ 6]  286    inc hl         ;;
-   0118 23            [ 6]  287    inc hl         ;;
-   0119 23            [ 6]  288    inc hl         ;; hl + 4 -> obs_H
-                            289 
-   011A 86            [ 7]  290    add (hl)       ;; A + obs_H
-   011B DD 96 01      [19]  291    sub e_y(ix)    ;; A - hero_Y
-                            292 
-   011E 28 09         [12]  293     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
-   0120 FA 29 01      [10]  294     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
-                            295 
-   0123 2B            [ 6]  296     dec hl
-   0124 2B            [ 6]  297     dec hl
-   0125 2B            [ 6]  298     dec hl
-                            299 
-   0126 16 00         [ 7]  300     ld d, #0 
-                            301     ;ld (0xC000), a
-                            302     ;ld (0xC001), a
-                            303     ;ld (0xC002), a
-                            304     ;ld b, #1
-   0128 C9            [10]  305     ret
-                            306 
-   0129                     307 no_coll:
-                            308 
-   0129 C9            [10]  309 ret
-                            310 
-                            311 
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+                            268 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
+                            269                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
+   0113 2B            [ 6]  270     dec hl        ;; Puntero hl -> obs_Y
+   0114 2B            [ 6]  271     dec hl
+   0115 2B            [ 6]  272     dec hl
+                            273   
+                            274 
+   0116 DD 7E 01      [19]  275    ld a, e_y(ix)  ;; A = hero__Y
+   0119 DD 86 05      [19]  276    add e_h(ix)    ;; A + hero__H
+   011C 96            [ 7]  277    sub (hl)       ;; A - obs_Y
+                            278    
+   011D 28 17         [12]  279    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
+   011F FA 36 01      [10]  280    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
+                            281 
+                            282                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
+   0122 7E            [ 7]  283    ld a ,(hl)     ;; A = obs_Y
+   0123 23            [ 6]  284    inc hl         ;;
+   0124 23            [ 6]  285    inc hl         ;;
+   0125 23            [ 6]  286    inc hl         ;;
+   0126 23            [ 6]  287    inc hl         ;; hl + 4 -> obs_H
+                            288 
+   0127 86            [ 7]  289    add (hl)       ;; A + obs_H
+   0128 DD 96 01      [19]  290    sub e_y(ix)    ;; A - hero_Y
+                            291 
+   012B 28 09         [12]  292     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
+   012D FA 36 01      [10]  293     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
+                            294 
+   0130 2B            [ 6]  295     dec hl
+   0131 2B            [ 6]  296     dec hl
+   0132 2B            [ 6]  297     dec hl
+                            298 
+   0133 16 00         [ 7]  299     ld d, #0 
+                            300     ;ld (0xC000), a
+                            301     ;ld (0xC001), a
+                            302     ;ld (0xC002), a
+                            303     ;ld b, #1
+   0135 C9            [10]  304     ret
+                            305 
+   0136                     306 no_coll:
+                            307 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-                            308     
-                            309     
-   0132 21 07 20      [10]  310       ld hl, #Key_D ;;P
-   0135 CD 00 00      [17]  311     call cpct_isKeyPressed_asm
-   0138 28 04         [12]  312     jr z, p_no_pulsada
-                            313     
-   013A DD 36 02 01   [19]  314     ld e_vx(ix), #1
-                            315     
-   013E                     316  p_no_pulsada:
-                            317 
-   013E 21 07 08      [10]  318    ld hl, #Key_W;;Q
-   0141 CD 00 00      [17]  319    call cpct_isKeyPressed_asm
-   0144 28 04         [12]  320    jr z, q_no_pulsada
-                            321 
-   0146 DD 36 03 FD   [19]  322    ld e_vy(ix), #-3
-                            323 
-   014A                     324  q_no_pulsada:
-   014A 21 07 10      [10]  325     ld hl, #Key_S ;;W
-   014D CD 00 00      [17]  326     call cpct_isKeyPressed_asm
-   0150 28 04         [12]  327     jr z, w_no_pulsada
-                            328 
-   0152 DD 36 03 03   [19]  329     ld e_vy(ix), #3
-                            330 
-   0156                     331  w_no_pulsada:
-                            332     
-                            333     
-   0156 CD 6C 00      [17]  334     call ent_move2
-                            335     
-                            336 
-                            337 
-                            338 
-                            339 
-                            340   
-                            341 
-                            342  ;    ld a, #0x00
-                            343  ;ld (0xC000), a
-                            344  ; ld (0xC001), a
-                            345   ;ld (0xC002), a
-                            346     
-                            347 
-                            348 
-                            349 
-                            350 
-                            351 
-                            352 
-   0159 C9            [10]  353    ret
-=======
-                            312 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            313 ;; MOVIENTO MEDIANTE TECLADO
-                            314 ;;          W(ARRIBA)
-                            315 ;; A (IZDA) S(ABAJO) D(DERECHA)
-                            316 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   012A                     317 ent_moveKeyboard:
-   012A CD 00 00      [17]  318     call cpct_scanKeyboard_asm
-                            319       
-   012D 21 08 20      [10]  320    ld hl, #Key_A ;;O
-   0130 CD 00 00      [17]  321     call cpct_isKeyPressed_asm
-   0133 28 04         [12]  322     jr z, o_no_pulsada
-                            323     
-   0135 DD 36 02 FF   [19]  324     ld e_vx(ix), #-1
-                            325     
-   0139                     326  o_no_pulsada:   
+   0136 C9            [10]  308 ret
+                            309 
+                            310 
+                            311 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                            312 ;; MOVIENTO MEDIANTE TECLADO
+                            313 ;;          W(ARRIBA)
+                            314 ;; A (IZDA) S(ABAJO) D(DERECHA)
+                            315 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0137                     316 ent_moveKeyboard:
+   0137 CD 00 00      [17]  317     call cpct_scanKeyboard_asm
+                            318       
+   013A 21 08 20      [10]  319    ld hl, #Key_A ;;O
+   013D CD 00 00      [17]  320     call cpct_isKeyPressed_asm
+   0140 28 04         [12]  321     jr z, o_no_pulsada
+                            322     
+   0142 DD 36 02 FF   [19]  323     ld e_vx(ix), #-1
+                            324     
+   0146                     325  o_no_pulsada:   
+                            326     
                             327     
-                            328     
-   0139 21 07 20      [10]  329       ld hl, #Key_D ;;P
-   013C CD 00 00      [17]  330     call cpct_isKeyPressed_asm
-   013F 28 04         [12]  331     jr z, p_no_pulsada
-                            332     
-   0141 DD 36 02 01   [19]  333     ld e_vx(ix), #1
-                            334     
-   0145                     335  p_no_pulsada:
-                            336 
-   0145 21 07 08      [10]  337    ld hl, #Key_W;;Q
-   0148 CD 00 00      [17]  338    call cpct_isKeyPressed_asm
-   014B 28 04         [12]  339    jr z, q_no_pulsada
-                            340 
-   014D DD 36 03 FD   [19]  341    ld e_vy(ix), #-3
-                            342 
-   0151                     343  q_no_pulsada:
-   0151 21 07 10      [10]  344     ld hl, #Key_S ;;W
-   0154 CD 00 00      [17]  345     call cpct_isKeyPressed_asm
-   0157 28 04         [12]  346     jr z, w_no_pulsada
-                            347 
-   0159 DD 36 03 03   [19]  348     ld e_vy(ix), #3
-                            349 
-   015D                     350  w_no_pulsada:
+   0146 21 07 20      [10]  328       ld hl, #Key_D ;;P
+   0149 CD 00 00      [17]  329     call cpct_isKeyPressed_asm
+   014C 28 04         [12]  330     jr z, p_no_pulsada
+                            331     
+   014E DD 36 02 01   [19]  332     ld e_vx(ix), #1
+                            333     
+   0152                     334  p_no_pulsada:
+                            335 
+   0152 21 07 08      [10]  336    ld hl, #Key_W;;Q
+   0155 CD 00 00      [17]  337    call cpct_isKeyPressed_asm
+   0158 28 04         [12]  338    jr z, q_no_pulsada
+                            339 
+   015A DD 36 03 FD   [19]  340    ld e_vy(ix), #-3
+                            341 
+   015E                     342  q_no_pulsada:
+   015E 21 07 10      [10]  343     ld hl, #Key_S ;;W
+   0161 CD 00 00      [17]  344     call cpct_isKeyPressed_asm
+   0164 28 04         [12]  345     jr z, w_no_pulsada
+                            346 
+   0166 DD 36 03 03   [19]  347     ld e_vy(ix), #3
+                            348 
+   016A                     349  w_no_pulsada:
+                            350     
                             351     
-                            352     
-   015D CD 68 00      [17]  353     call ent_move2
-                            354     
+   016A CD 78 00      [17]  352     call ent_move2
+                            353     
+                            354 
                             355 
                             356 
                             357 
-                            358 
-                            359   
-                            360 
-                            361  ;    ld a, #0x00
-                            362  ;ld (0xC000), a
-                            363  ; ld (0xC001), a
-                            364   ;ld (0xC002), a
-                            365     
-                            366 
+                            358   
+                            359 
+                            360  ;    ld a, #0x00
+                            361  ;ld (0xC000), a
+                            362  ; ld (0xC001), a
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
+                            363   ;ld (0xC002), a
+                            364     
+                            365 
+                            366 
                             367 
                             368 
                             369 
                             370 
-                            371 
-   0160 C9            [10]  372    ret
->>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
+   016D C9            [10]  371    ret

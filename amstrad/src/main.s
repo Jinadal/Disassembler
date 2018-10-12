@@ -21,7 +21,6 @@
 .include "entity.h.s"
 .include "main.h.s"
 .include "keys.h.s"
-;;
 ;; Start of _DATA area 
 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
@@ -44,37 +43,30 @@ _main::
 
 
 loop:
-
-    ld    ix, #personaje
-   call ent_clear
-   call ent_update
-   call ent_draw
+  
+  call key_clear
+  call ent_clear
+  call key_update
+  call ent_update
+  call key_draw
+  call ent_draw
 
   
-    ld    ix, #p_a
-   call ent_clear
-     
-   call ent_update
-   call ent_draw
+  ;;  ld    ix, #p_a
+  ;; call ent_clear
+  ;; call ent_update
+  ;; call ent_draw
 
-     ld    ix, #p_a1
-   call ent_clear
-     
-   call ent_update
-   call ent_draw
+  ;;  ld    ix, #p_a1
+  ;; call ent_clear
+  ;; call ent_update
+  ;; call ent_draw
 
 
-      ld    ix, #p_a2
-   call ent_clear
-
-   call ent_update
-   call ent_draw
-
-     ld    ix, #keys
-   call ent_clear
-
-   call ent_update
-   call ent_draw
+  ;;  ld    ix, #p_a2
+  ;; call ent_clear
+  ;; call ent_update
+  ;; call ent_draw
 
    
 

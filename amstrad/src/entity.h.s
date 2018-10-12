@@ -1,7 +1,4 @@
 
-
-
-
 .globl ent_clear
 .globl ent_draw
 .globl ent_update

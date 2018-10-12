@@ -4,7 +4,6 @@
 .include "main.h.s"
 .include "keys.h.s"
 
-
 DefineEntity personaje, 0x09, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00
 
 DefineEntity p_a, 0x08, 0x40, 0x00, 0x00, 0x02, 0x08, 0x0C, ent_draw, 0x00
@@ -20,6 +19,8 @@ DefineEntity p_a2, 0x02, 0x65, 0x00, 0x00, 0x02, 0x08, 0xC0, ent_draw, 0x00
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ent_draw:
+      ld ix,#personaje
+
    ld    de, #0xC000       ;;Comienzo memoria de video
    ld     c, e_x(ix)         ;; C = Entity Y
    ld     b, e_y(ix)         ;; B = Entity X
@@ -40,6 +41,8 @@ ent_draw:
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ent_clear:
+  ld ix,#personaje
+
    ld  a, e_col(ix)
    ex af, af'
 
@@ -57,6 +60,8 @@ ent_clear:
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ent_update:
+  ld ix,#personaje
+
     ld     h, e_up_h(ix)
     ld     l, e_up_l(ix)
     jp    (hl)  
@@ -221,14 +226,9 @@ ent_move2:
   ret
    
     colisionY:
-   
-     
-    
+ 
     ld e_y(ix), c
-   
-   
 
-   
    ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
