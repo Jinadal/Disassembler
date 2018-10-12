@@ -2588,13 +2588,13 @@ Hexadecimal [16-Bits]
                               9 
                              10 ;;picked_up: .db 00
                              11 
-   41A7                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
+   41AF                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
    0000                       1 keys: 
-   41A7 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   41A9 00 00                 3    .db   0x00, 0x00     ;; VX, VY
-   41AB 01 04                 4    .db    0x01, 0x04     ;; W, H
-   41AD FF                    5    .db   0xFF           ;; Color
-   41AE 72 40                 6    .dw   ent_draw        ;; Update 
+   41AF 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   41B1 00 00                 3    .db   0x00, 0x00     ;; VX, VY
+   41B3 01 04                 4    .db    0x01, 0x04     ;; W, H
+   41B5 FF                    5    .db   0xFF           ;; Color
+   41B6 72 40                 6    .dw   ent_draw        ;; Update 
                              13 
                              14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
                              15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
@@ -2603,30 +2603,30 @@ Hexadecimal [16-Bits]
                              18 ;; EXIT: KEYS_X -> PERSONAJE_X
                              19 ;;       KEYS_Y -> PERSONAJE_Y
                              20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41B0                      21 pick_keys:
-   41B0 21 A7 41      [10]   22   ld hl, #keys    ;;hl -> array keys
-   41B3 DD 7E 00      [19]   23   ld a, e_x(ix)   ;;a = personaje_x
-   41B6 77            [ 7]   24   ld (hl), a      ;;keys_x = a
-   41B7 DD 7E 01      [19]   25   ld a, e_y(ix)   ;;a = personaje_y
-   41BA 23            [ 6]   26   inc hl          ;;hl -> keys_y
-   41BB 77            [ 7]   27   ld (hl), a      ;;keys_y = a
-   41BC 23            [ 6]   28   inc hl          ;;
-   41BD 23            [ 6]   29   inc hl          ;;
-   41BE 23            [ 6]   30   inc hl          ;;
-   41BF 23            [ 6]   31   inc hl          ;;
-   41C0 23            [ 6]   32   inc hl          ;;hl -> keys_col
-   41C1 3E F0         [ 7]   33   ld a, #0xF0     ;;
-   41C3 77            [ 7]   34   ld (hl),a       ;;
-   41C4 C9            [10]   35 ret
+   41B8                      21 pick_keys:
+   41B8 21 AF 41      [10]   22   ld hl, #keys    ;;hl -> array keys
+   41BB DD 7E 00      [19]   23   ld a, e_x(ix)   ;;a = personaje_x
+   41BE 77            [ 7]   24   ld (hl), a      ;;keys_x = a
+   41BF DD 7E 01      [19]   25   ld a, e_y(ix)   ;;a = personaje_y
+   41C2 23            [ 6]   26   inc hl          ;;hl -> keys_y
+   41C3 77            [ 7]   27   ld (hl), a      ;;keys_y = a
+   41C4 23            [ 6]   28   inc hl          ;;
+   41C5 23            [ 6]   29   inc hl          ;;
+   41C6 23            [ 6]   30   inc hl          ;;
+   41C7 23            [ 6]   31   inc hl          ;;
+   41C8 23            [ 6]   32   inc hl          ;;hl -> keys_col
+   41C9 3E F0         [ 7]   33   ld a, #0xF0     ;;
+   41CB 77            [ 7]   34   ld (hl),a       ;;
+   41CC C9            [10]   35 ret
                              36 
-   41C5                      37 drop_keys:
-   41C5 21 A7 41      [10]   38   ld hl, #keys
-   41C8 23            [ 6]   39   inc hl
-   41C9 23            [ 6]   40   inc hl
-   41CA 23            [ 6]   41   inc hl
-   41CB 23            [ 6]   42   inc hl
-   41CC 23            [ 6]   43   inc hl
-   41CD 23            [ 6]   44   inc hl
-   41CE 3E FF         [ 7]   45   ld a, #0xFF
-   41D0 77            [ 7]   46   ld (hl),a
-   41D1 C9            [10]   47 ret
+   41CD                      37 drop_keys:
+   41CD 21 AF 41      [10]   38   ld hl, #keys
+   41D0 23            [ 6]   39   inc hl
+   41D1 23            [ 6]   40   inc hl
+   41D2 23            [ 6]   41   inc hl
+   41D3 23            [ 6]   42   inc hl
+   41D4 23            [ 6]   43   inc hl
+   41D5 23            [ 6]   44   inc hl
+   41D6 3E FF         [ 7]   45   ld a, #0xFF
+   41D8 77            [ 7]   46   ld (hl),a
+   41D9 C9            [10]   47 ret
