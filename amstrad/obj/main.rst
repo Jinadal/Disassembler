@@ -2618,10 +2618,17 @@ Hexadecimal [16-Bits]
                              37 ;;
    4000                      38 _main::
                              39    ;; Disable firmware to prevent it from interfering with string drawing
+<<<<<<< HEAD
    4000 CD E6 41      [17]   40       call cpct_disableFirmware_asm
                              41 
    4003 0E 00         [ 7]   42    ld    c, #0
    4005 CD D9 41      [17]   43    call cpct_setVideoMode_asm
+=======
+   4000 CD 05 42      [17]   40       call cpct_disableFirmware_asm
+                             41 
+   4003 0E 00         [ 7]   42    ld    c, #0
+   4005 CD F8 41      [17]   43    call cpct_setVideoMode_asm
+>>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
                              44 
                              45 
    4008                      46 loop:
@@ -2651,8 +2658,13 @@ Hexadecimal [16-Bits]
    4036 CD A0 40      [17]   70    call ent_update
    4039 CD 76 40      [17]   71    call ent_draw
                              72 
+<<<<<<< HEAD
    403C DD 21 AA 41   [14]   73      ld    ix, #keys
    4040 CD 90 40      [17]   74    call ent_clear
+=======
+   403C DD 21 AF 41   [14]   73      ld    ix, #keys
+   4040 CD 8C 40      [17]   74    call ent_clear
+>>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
                              75 
    4043 CD A0 40      [17]   76    call ent_update
    4046 CD 76 40      [17]   77    call ent_draw
@@ -2666,6 +2678,10 @@ Hexadecimal [16-Bits]
                              80 
                              81 
                              82 
+<<<<<<< HEAD
    4049 CD D1 41      [17]   83    call cpct_waitVSYNC_asm
+=======
+   4049 CD F0 41      [17]   83    call cpct_waitVSYNC_asm
+>>>>>>> ee9a41e561df4dfc876e7ad9956b735f7210a57c
                              84    ;; Loop forever
    404C 18 BA         [12]   85    jr    loop

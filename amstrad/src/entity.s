@@ -102,20 +102,22 @@ ent_move2:
    add   e_vx(ix)   ;;
    ld    e_x(ix), a ;; next "x" postion = current "x" + velocity
 
+     ld e_vx(ix), #0;;
+   
 
 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
 
  ld    a, e_x(ix)     ;; Since screen max x is79
   sub  #79            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, colision       ;;
+ jr z, colisionX       ;;
 
 
 
   ld    a, e_x(ix)  ;; Same as before but now with the leftest position
   sub #0            ;;
                     ;;
-    jr z, colision  ;;
+    jr z, colisionX  ;;
 
 ;;  END MAX MIN X CHECK
 
@@ -124,6 +126,9 @@ ent_move2:
    ld    a, e_y(ix) ;;
    add   e_vy(ix)   ;;
    ld    e_y(ix), a ;; next "y" postion = current "y" + velocity
+
+    ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
+
 
 
 
@@ -135,22 +140,21 @@ ent_move2:
   ld    a, e_y(ix)  ;; Same as x check but now we apply the 192 max y position
   sub  #192         ;;
                     ;;
-    jr z, colision  ;;
+    jr z, colisionY  ;;
 
 
 
   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
   sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
                     ;; position, so we put the uppest block at position 3
-    jr z, colision  ;;
+    jr z, colisionY  ;;
 
 ;;  END MAX MIN X CHECK
 
 
 
 
-       ld e_vx(ix), #0;;
-    ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
+     
 
 
  ;; FIRST OBJECT ;;
@@ -205,9 +209,23 @@ ent_move2:
  ret
     colision:
    
-        ; ld  e_col(ix), #2
+       
     ld e_x(ix), b
     ld e_y(ix), c
+
+  ret
+     colisionX:
+   
+     
+    ld e_x(ix), b
+  ret
+   
+    colisionY:
+   
+     
+    
+    ld e_y(ix), c
+   
    
 
    
