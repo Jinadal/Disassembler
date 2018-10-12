@@ -7,9 +7,9 @@
 .include "main.h.s"
 .include "keys.h.s"
 
-;;picked_up: .db 00
-
-DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
+picked_up: .db #0x00
+coloration: .db 1
+DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_draw, 0x00
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
@@ -19,29 +19,10 @@ DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xFF, ent_draw
 ;;       KEYS_Y -> PERSONAJE_Y
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 pick_keys:
-  ld hl, #keys    ;;hl -> array keys
-  ld a, e_x(ix)   ;;a = personaje_x
-  ld (hl), a      ;;keys_x = a
-  ld a, e_y(ix)   ;;a = personaje_y
-  inc hl          ;;hl -> keys_y
-  ld (hl), a      ;;keys_y = a
-  inc hl          ;;
-  inc hl          ;;
-  inc hl          ;;
-  inc hl          ;;
-  inc hl          ;;hl -> keys_col
-  ld a, #0xF0     ;;
-  ld (hl),a       ;;
+  ld a,#1
+  ld e_key(ix), a
 ret
 
 drop_keys:
-  ld hl, #keys
-  inc hl
-  inc hl
-  inc hl
-  inc hl
-  inc hl
-  inc hl
-  ld a, #0xFF
-  ld (hl),a
+  
 ret

@@ -19,21 +19,21 @@ S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 2B flags 0 addr 0
-S pick_keys Def0009
-S drop_keys Def001E
-S keys Def0000
-T 00 00
+A _CODE size 13 flags 0 addr 0
+S pick_keys Def000C
+S drop_keys Def0012
+S keys Def0002
+T 00 00 00 01
 R 00 00 00 00
-T 00 00 02 15 00 00 01 04 FF 00 00
+T 02 00
+R 00 00 00 00
+T 02 00 02 15 00 00 01 04 C0 00 00 00
 R 00 00 00 00 02 09 04 00
-T 09 00
+T 0C 00
 R 00 00 00 00
-T 09 00 21 00 00 DD 7E 00 77 DD 7E 01 23 77 23 23
-R 00 00 00 00 00 03 00 00
-T 17 00 23 23 23 3E F0 77 C9
+T 0C 00 3E 01 DD 77 09 C9
 R 00 00 00 00
-T 1E 00
+T 12 00
 R 00 00 00 00
-T 1E 00 21 00 00 23 23 23 23 23 23 3E FF 77 C9
-R 00 00 00 00 00 03 00 00
+T 12 00 C9
+R 00 00 00 00

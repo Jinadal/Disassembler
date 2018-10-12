@@ -2539,36 +2539,38 @@ Hexadecimal [16-Bits]
                              17 ;;
                              18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              19 
-                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd
+                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
                              21 _name: 
                              22    .db    _x, _y     ;; X, Y
-                             23    .db   _vx, _vy     ;; VX, VY
+                             23    .db   _vx, _vy    ;; VX, VY
                              24    .db    _w, _h     ;; W, H
-                             25    .db   _col           ;; Color
+                             25    .db   _col        ;; Color
                              26    .dw   _upd        ;; Update 
-                             27 .endm
-                     0000    28 e_x = 0
-                     0001    29 e_y = 1
-                     0002    30 e_vx = 2
-                     0003    31 e_vy = 3
-                     0004    32 e_w = 4
-                     0005    33 e_h = 5
-                     0006    34 e_col = 6
-                     0007    35 e_up_l = 7
-                     0008    36 e_up_h = 8
-                             37 
-                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             39 ;;
-                             40 ;;OBJETOS CREADOS CON LA MACROS
+                             27    .db   _key        ;; Key   
+                             28 .endm
+                     0000    29 e_x = 0
+                     0001    30 e_y = 1
+                     0002    31 e_vx = 2
+                     0003    32 e_vy = 3
+                     0004    33 e_w = 4
+                     0005    34 e_h = 5
+                     0006    35 e_col = 6
+                     0007    36 e_up_l = 7
+                     0008    37 e_up_h = 8
+                     0009    38 e_key = 9
+                             39 
+                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              41 ;;
-                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             43 
-                             44 .globl personaje
-                             45 .globl p_a
-                             46 .globl p_a1
-                             47 
-                             48 .globl p_a2
+                             42 ;;OBJETOS CREADOS CON LA MACROS
+                             43 ;;
+                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             45 
+                             46 .globl personaje
+                             47 .globl p_a
+                             48 .globl p_a1
                              49 
+                             50 .globl p_a2
+                             51 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2616,44 +2618,44 @@ Hexadecimal [16-Bits]
                              37 ;;
    4000                      38 _main::
                              39    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD FD 41      [17]   40       call cpct_disableFirmware_asm
+   4000 CD E6 41      [17]   40       call cpct_disableFirmware_asm
                              41 
    4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD F0 41      [17]   43    call cpct_setVideoMode_asm
+   4005 CD D9 41      [17]   43    call cpct_setVideoMode_asm
                              44 
                              45 
    4008                      46 loop:
                              47 
    4008 DD 21 4E 40   [14]   48     ld    ix, #personaje
-   400C CD 8C 40      [17]   49    call ent_clear
-   400F CD 9C 40      [17]   50    call ent_update
-   4012 CD 72 40      [17]   51    call ent_draw
+   400C CD 90 40      [17]   49    call ent_clear
+   400F CD A0 40      [17]   50    call ent_update
+   4012 CD 76 40      [17]   51    call ent_draw
                              52 
                              53   
-   4015 DD 21 57 40   [14]   54     ld    ix, #p_a
-   4019 CD 8C 40      [17]   55    call ent_clear
+   4015 DD 21 58 40   [14]   54     ld    ix, #p_a
+   4019 CD 90 40      [17]   55    call ent_clear
                              56      
-   401C CD 9C 40      [17]   57    call ent_update
-   401F CD 72 40      [17]   58    call ent_draw
+   401C CD A0 40      [17]   57    call ent_update
+   401F CD 76 40      [17]   58    call ent_draw
                              59 
-   4022 DD 21 60 40   [14]   60      ld    ix, #p_a1
-   4026 CD 8C 40      [17]   61    call ent_clear
+   4022 DD 21 62 40   [14]   60      ld    ix, #p_a1
+   4026 CD 90 40      [17]   61    call ent_clear
                              62      
-   4029 CD 9C 40      [17]   63    call ent_update
-   402C CD 72 40      [17]   64    call ent_draw
+   4029 CD A0 40      [17]   63    call ent_update
+   402C CD 76 40      [17]   64    call ent_draw
                              65 
                              66 
-   402F DD 21 69 40   [14]   67       ld    ix, #p_a2
-   4033 CD 8C 40      [17]   68    call ent_clear
+   402F DD 21 6C 40   [14]   67       ld    ix, #p_a2
+   4033 CD 90 40      [17]   68    call ent_clear
                              69 
-   4036 CD 9C 40      [17]   70    call ent_update
-   4039 CD 72 40      [17]   71    call ent_draw
+   4036 CD A0 40      [17]   70    call ent_update
+   4039 CD 76 40      [17]   71    call ent_draw
                              72 
-   403C DD 21 A7 41   [14]   73      ld    ix, #keys
-   4040 CD 8C 40      [17]   74    call ent_clear
+   403C DD 21 AA 41   [14]   73      ld    ix, #keys
+   4040 CD 90 40      [17]   74    call ent_clear
                              75 
-   4043 CD 9C 40      [17]   76    call ent_update
-   4046 CD 72 40      [17]   77    call ent_draw
+   4043 CD A0 40      [17]   76    call ent_update
+   4046 CD 76 40      [17]   77    call ent_draw
                              78 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
@@ -2664,6 +2666,6 @@ Hexadecimal [16-Bits]
                              80 
                              81 
                              82 
-   4049 CD E8 41      [17]   83    call cpct_waitVSYNC_asm
+   4049 CD D1 41      [17]   83    call cpct_waitVSYNC_asm
                              84    ;; Loop forever
    404C 18 BA         [12]   85    jr    loop
