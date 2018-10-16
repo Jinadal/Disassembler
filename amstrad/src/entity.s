@@ -3,13 +3,11 @@
 .include "entity.h.s"
 .include "main.h.s"
 .include "keys.h.s"
+ .include "wall.h.s"
 
-DefineEntity personaje, 0x09, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00
 
-DefineEntity p_a, 0x08, 0x40, 0x00, 0x00, 0x02, 0x08, 0x0C, ent_draw, 0x00
-DefineEntity p_a1, 0x12, 0x80, 0x00, 0x01, 0x02, 0x08, 0xFF, ent_move, 0x00
+DefineEntity personaje, 0x20, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00, 0x03
 
-DefineEntity p_a2, 0x02, 0x65, 0x00, 0x00, 0x02, 0x08, 0xC0, ent_draw, 0x00
 
 
 
@@ -87,6 +85,7 @@ ent_move:
 ;;  
 ;; ENTRADA: IX -> Puntero al personaje
 ;; HL IS USED TO POINT THE COLLISIONABLE ENTITIES
+;; E is used to control the amount of walls left to check in the loop
 ;; SUMMONS COLLIDE FOR EVERY COLLISIONABLE ENTITY 
 ;; 
 ;; Saves current position
@@ -96,12 +95,18 @@ ent_move:
 ;; ------------------- VERSION 1.2-----------------
 ;; When next position (x or y) is calculated it will check if will go out of bounds or
 ;; out of the screen
+;;--------------------VERSION 1.3 -----------------
+;; Since now there are n walls this collide no longer works with the same short of entity as 
+;;player (no more instances, just hero) and it will check by a loop if player collides with those 
+;;walls. 
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ent_move2:   
     ld b, e_x(ix) ;; save current x position in b
     ld c, e_y(ix) ;; save current y position in c
+
+
 
    ld    a, e_x(ix) ;;
    add   e_vx(ix)   ;;
@@ -112,10 +117,10 @@ ent_move2:
 
 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
 
-; ld    a, e_x(ix)     ;; Since screen max x is79
- ; sub  #77            ;; check if is going to move further or outta screen
+ ld    a, e_x(ix)     ;; Since screen max x is79
+  sub  #77            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
-; jr z, colisionX       ;;
+ jr z, colisionX       ;;
 
 
 
@@ -150,7 +155,7 @@ ent_move2:
 
 
   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
-  sub #0            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
+  sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
                     ;; position, so we put the uppest block at position 3
     jr z, colisionY  ;;
 
@@ -159,46 +164,38 @@ ent_move2:
 
 
 
-     
+     ld hl, #w1       ;; Save first wall pointer or head of the vector in hl
 
+     ld e , #num_walls ;; Load in E the amount of walls to check
 
- ;; FIRST OBJECT ;;
-
+ ;; WALL CHECKING LOOP ;;
+  bucl:
     ld d, #1          ;; Prepare check flag by saving a 1 in d
-    ld hl, #p_a       ;; Save wall pointer in hl
+    
     call ent_collide  ;; check collision
 
         ld a,d          ;;d is changed in collide if a collision happened 
     sub #1              ;;holding a 0 otherwise it will be a 1
-    jr nz, colision  ;;and if it is a 0 we will go to the reassingnament part
+    
+    inc hl          ;;
+    inc hl          ;;
+    inc hl          ;;
+    inc hl          ;;
+    inc hl          ;; by jumping 5 times we head to first item in the next wall
+    
+    
+    jr nz, colision  ;; if there is a 0 in D we will go to the reassingnament part
+  
+
+    ld a,e          ;; load current loop lap in e in a
+    sub #1          ;; discount 1 since 1 wall was just checked
+    ld e,a          ;; return new lap counter to e
+    jr nz , bucl    ;; if next lap is not 0 (there are walls yet to check) we return to the top of the loop
 
    
- ;; SECOND OBJECT ;;
 
-    ld d, #1
-    ld hl, #p_a1
-    call ent_collide
 
-        ld a,d
-    sub #1
-
-    jr nz, colision
-
-    ld d, #1
-
-     ;; THIRD OBJECT ;;
-
-     ld hl, #p_a2
-    call ent_collide
-
-        ld a,d
-    sub #1
-
-    jr nz, colision
-
-   ld d, #1
-
-     ;; FOUTH OBJECT ;;
+     ;; KEY  ;;
 
      ld hl, #keys
     call ent_collide
@@ -234,7 +231,9 @@ ent_move2:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; COMPROBACION COLISIONES BOUNDING BOXES
 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-;; LA CAJA Y EL PERSONAJE
+;; UN OBSTACULO Y EL PERSONAJE
+;; ----- VERSION 1.2----------
+;; ADAPTED SO IT WILL WORK ALSO FOR WALLS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ent_collide:
@@ -253,13 +252,16 @@ ent_collide:
                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
     ld a ,(hl)    ;; A = hl -> obs_X
     inc hl        ;;
-    inc hl        ;;
-    inc hl        ;;
-    inc hl        ;; hl + 4 -> obs_W
+   
+    inc hl        ;; hl + 2 -> obs_W
 
     add (hl)      ;; A + obs_W
                   ;;
     sub e_x(ix)   ;; A - hero_X
+
+    dec hl        ;;
+    dec hl        ;; return to the first item in the object
+
 
     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
@@ -267,40 +269,39 @@ ent_collide:
 
 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
-    dec hl        ;; Puntero hl -> obs_Y
-    dec hl
-    dec hl
+    inc hl        ;; Puntero hl -> obs_Y
+
   
 
    ld a, e_y(ix)  ;; A = hero__Y
    add e_h(ix)    ;; A + hero__H
    sub (hl)       ;; A - obs_Y
    
+   dec hl         ;; return to the first item in the object
+
    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
 
+   inc hl         ;; hl + -> obs_y
                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
    ld a ,(hl)     ;; A = obs_Y
    inc hl         ;;
-   inc hl         ;;
-   inc hl         ;;
-   inc hl         ;; hl + 4 -> obs_H
+
+   inc hl         ;; hl + 2 -> obs_H
 
    add (hl)       ;; A + obs_H
    sub e_y(ix)    ;; A - hero_Y
 
+    dec hl        ;;
+    dec hl        ;;
+    dec hl        ;;  return to the first item in the object
+
     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
 
-    dec hl
-    dec hl
-    dec hl
 
-    ld d, #0 
-    ;ld (0xC000), a
-    ;ld (0xC001), a
-    ;ld (0xC002), a
-    ;ld b, #1
+    ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
+ 
     ret
 
 no_coll:

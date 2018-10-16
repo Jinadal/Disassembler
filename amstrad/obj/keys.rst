@@ -2510,9 +2510,9 @@ Hexadecimal [16-Bits]
                               3 .globl ent_draw
                               4 .globl ent_update
                               5 .globl ent_move
-                              6 .globl ent_moveKeyboard
-                              7 .globl ent_collide
-                              8 
+                              6 .globl ent_move2
+                              7 .globl ent_moveKeyboard
+                              8 .globl ent_collide
                               9 
                              10 
                              11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
@@ -2521,7 +2521,7 @@ Hexadecimal [16-Bits]
                              14 ;;
                              15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              16 
-                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
                              18 _name: 
                              19    .db    _x, _y     ;; X, Y
                              20    .db   _vx, _vy    ;; VX, VY
@@ -2529,30 +2529,28 @@ Hexadecimal [16-Bits]
                              22    .db   _col        ;; Color
                              23    .dw   _upd        ;; Update 
                              24    .db   _key        ;; Key   
-                             25 .endm
-                     0000    26 e_x = 0
-                     0001    27 e_y = 1
-                     0002    28 e_vx = 2
-                     0003    29 e_vy = 3
-                     0004    30 e_w = 4
-                     0005    31 e_h = 5
-                     0006    32 e_col = 6
-                     0007    33 e_up_l = 7
-                     0008    34 e_up_h = 8
-                     0009    35 e_key = 9
-                             36 
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             38 ;;
-                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             25    .db 	 _hp         ;; HP
+                             26 .endm
+                     0000    27 e_x = 0
+                     0001    28 e_y = 1
+                     0002    29 e_vx = 2
+                     0003    30 e_vy = 3
+                     0004    31 e_w = 4
+                     0005    32 e_h = 5
+                     0006    33 e_col = 6
+                     0007    34 e_up_l = 7
+                     0008    35 e_up_h = 8
+                     0009    36 e_key = 9
+                     000A    37 e_hp = 10	
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              40 ;;
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             42 
-                             43 .globl personaje
-                             44 .globl p_a
-                             45 .globl p_a1
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl personaje
                              46 
-                             47 .globl p_a2
-                             48 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2587,17 +2585,17 @@ Hexadecimal [16-Bits]
 
 
                               9 
-<<<<<<< HEAD
-   420E 00                   10 picked_up: .db #0x00
-   420F 01                   11 coloration: .db 1
-   4210                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_draw, 0x00
-   0002                       1 keys: 
-   4210 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   4212 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   4214 01 04                 4    .db    0x01, 0x04     ;; W, H
-   4216 C0                    5    .db   0xC0        ;; Color
-   4217 87 40                 6    .dw   ent_draw        ;; Update 
-   4219 00                    7    .db   0x00        ;; Key   
+                             10 
+                             11 
+   4201                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00, 0x03
+   0000                       1 keys: 
+   4201 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   4203 00 00                 3    .db   0x00, 0x00    ;; VX, VY
+   4205 01 04                 4    .db    0x01, 0x04     ;; W, H
+   4207 C0                    5    .db   0xC0        ;; Color
+   4208 98 40                 6    .dw   ent_move        ;; Update 
+   420A 00                    7    .db   0x00        ;; Key   
+   420B 03                    8    .db 	 0x03         ;; HP
                              13 
                              14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
                              15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
@@ -2606,86 +2604,60 @@ Hexadecimal [16-Bits]
                              18 ;; EXIT: KEYS_X -> PERSONAJE_X
                              19 ;;       KEYS_Y -> PERSONAJE_Y
                              20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   421A                      21 pick_keys:
-   421A 3E 01         [ 7]   22   ld a,#1
-   421C DD 77 09      [19]   23   ld e_key(ix), a
-   421F C9            [10]   24 ret
+   420C                      21 pick_keys:
+   420C 3E 01         [ 7]   22   ld a,#1
+   420E DD 77 09      [19]   23   ld e_key(ix), a
+   4211 C9            [10]   24 ret
                              25 
-   4220                      26 drop_keys:
+   4212                      26 drop_keys:
                              27   
-   4220 C9            [10]   28 ret
-=======
-   418D                      10 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00
-   0000                       1 keys: 
-   418D 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   418F 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   4191 01 04                 4    .db    0x01, 0x04     ;; W, H
-   4193 C0                    5    .db   0xC0        ;; Color
-   4194 84 40                 6    .dw   ent_move        ;; Update 
-   4196 00                    7    .db   0x00        ;; Key   
-                             11 
-                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                             13 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
-                             14 ;; AND CARRIED
-                             15 ;; MODIFIED: HL, A         
-                             16 ;; EXIT: KEYS_X -> PERSONAJE_X
-                             17 ;;       KEYS_Y -> PERSONAJE_Y
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4197                      19 pick_keys:
-   4197 3E 01         [ 7]   20   ld a,#1
-   4199 DD 77 09      [19]   21   ld e_key(ix), a
-   419C C9            [10]   22 ret
-                             23 
-   419D                      24 drop_keys:
-                             25   
-   419D C9            [10]   26 ret
-                             27 
-   419E                      28 key_draw:
+   4212 C9            [10]   28 ret
                              29 
-   419E DD 21 1F 40   [14]   30   ld ix,#personaje
-   41A2 DD 7E 09      [19]   31   ld a, e_key(ix)
-   41A5 D6 01         [ 7]   32   sub #1
-                             33 
-   41A7 CA C7 41      [10]   34   jp z, not_draw_key
+   4213                      30 key_draw:
+                             31 
+   4213 DD 21 50 40   [14]   32   ld ix,#personaje
+   4217 DD 7E 09      [19]   33   ld a, e_key(ix)
+   421A D6 01         [ 7]   34   sub #1
                              35 
-   41AA DD 21 8D 41   [14]   36     ld ix,#keys
-   41AE 11 00 C0      [10]   37     ld    de, #0xC000       ;;Comienzo memoria de video
-   41B1 DD 4E 00      [19]   38     ld     c, e_x(ix)         ;; C = Entity Y
-   41B4 DD 46 01      [19]   39     ld     b, e_y(ix)         ;; B = Entity X
-   41B7 CD D3 42      [17]   40     call cpct_getScreenPtr_asm
-                             41 
-   41BA EB            [ 4]   42     ex    de, hl   ;; DE = Puntero a memoria
-   41BB DD 7E 06      [19]   43     ld  a, e_col(ix)   ;; Color
-   41BE DD 46 05      [19]   44     ld  b, e_h(ix)   ;; alto
-   41C1 DD 4E 04      [19]   45     ld  c, e_w(ix)   ;; Ancho
-                             46 
-   41C4 CD 26 42      [17]   47     call cpct_drawSolidBox_asm
-                             48   
-   41C7                      49   not_draw_key:
-   41C7 DD 21 8D 41   [14]   50   ld ix,#keys
-   41CB C9            [10]   51 ret
-                             52 
-   41CC                      53 key_update:
-   41CC DD 21 8D 41   [14]   54   ld ix,#keys
-   41D0 DD 66 08      [19]   55   ld     h, e_up_h(ix)
-   41D3 DD 6E 07      [19]   56   ld     l, e_up_l(ix)
+   421C CA 3C 42      [10]   36   jp z, not_draw_key
+                             37 
+   421F DD 21 01 42   [14]   38     ld ix,#keys
+   4223 11 00 C0      [10]   39     ld    de, #0xC000       ;;Comienzo memoria de video
+   4226 DD 4E 00      [19]   40     ld     c, e_x(ix)         ;; C = Entity Y
+   4229 DD 46 01      [19]   41     ld     b, e_y(ix)         ;; B = Entity X
+   422C CD 48 43      [17]   42     call cpct_getScreenPtr_asm
+                             43 
+   422F EB            [ 4]   44     ex    de, hl   ;; DE = Puntero a memoria
+   4230 DD 7E 06      [19]   45     ld  a, e_col(ix)   ;; Color
+   4233 DD 46 05      [19]   46     ld  b, e_h(ix)   ;; alto
+   4236 DD 4E 04      [19]   47     ld  c, e_w(ix)   ;; Ancho
+                             48 
+   4239 CD 9B 42      [17]   49     call cpct_drawSolidBox_asm
+                             50   
+   423C                      51   not_draw_key:
+   423C DD 21 01 42   [14]   52   ld ix,#keys
+   4240 C9            [10]   53 ret
+                             54 
+   4241                      55 key_update:
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-   41D6 E9            [ 4]   57 jp    (hl)  
-                             58 
-   41D7                      59 key_clear:
-   41D7 DD 21 8D 41   [14]   60   ld ix,#keys
-   41DB DD 7E 06      [19]   61   ld  a, e_col(ix)
-   41DE 08            [ 4]   62   ex af, af'
-                             63 
-   41DF DD 36 06 00   [19]   64   ld  e_col(ix), #0
+   4241 DD 21 01 42   [14]   56   ld ix,#keys
+   4245 DD 66 08      [19]   57   ld     h, e_up_h(ix)
+   4248 DD 6E 07      [19]   58   ld     l, e_up_l(ix)
+   424B E9            [ 4]   59 jp    (hl)  
+                             60 
+   424C                      61 key_clear:
+   424C DD 21 01 42   [14]   62   ld ix,#keys
+   4250 DD 7E 06      [19]   63   ld  a, e_col(ix)
+   4253 08            [ 4]   64   ex af, af'
                              65 
-   41E3 CD 9E 41      [17]   66   call key_draw
-   41E6 08            [ 4]   67   ex af, af'
-   41E7 DD 77 06      [19]   68   ld e_col(ix), a
-                             69 
-   41EA C9            [10]   70 ret
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
+   4254 DD 36 06 00   [19]   66   ld  e_col(ix), #0
+                             67 
+   4258 CD 13 42      [17]   68   call key_draw
+   425B 08            [ 4]   69   ex af, af'
+   425C DD 77 06      [19]   70   ld e_col(ix), a
+                             71 
+   425F C9            [10]   72 ret

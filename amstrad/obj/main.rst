@@ -2525,9 +2525,9 @@ Hexadecimal [16-Bits]
                               3 .globl ent_draw
                               4 .globl ent_update
                               5 .globl ent_move
-                              6 .globl ent_moveKeyboard
-                              7 .globl ent_collide
-                              8 
+                              6 .globl ent_move2
+                              7 .globl ent_moveKeyboard
+                              8 .globl ent_collide
                               9 
                              10 
                              11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
@@ -2536,7 +2536,7 @@ Hexadecimal [16-Bits]
                              14 ;;
                              15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              16 
-                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
                              18 _name: 
                              19    .db    _x, _y     ;; X, Y
                              20    .db   _vx, _vy    ;; VX, VY
@@ -2544,30 +2544,28 @@ Hexadecimal [16-Bits]
                              22    .db   _col        ;; Color
                              23    .dw   _upd        ;; Update 
                              24    .db   _key        ;; Key   
-                             25 .endm
-                     0000    26 e_x = 0
-                     0001    27 e_y = 1
-                     0002    28 e_vx = 2
-                     0003    29 e_vy = 3
-                     0004    30 e_w = 4
-                     0005    31 e_h = 5
-                     0006    32 e_col = 6
-                     0007    33 e_up_l = 7
-                     0008    34 e_up_h = 8
-                     0009    35 e_key = 9
-                             36 
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             38 ;;
-                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             25    .db 	 _hp         ;; HP
+                             26 .endm
+                     0000    27 e_x = 0
+                     0001    28 e_y = 1
+                     0002    29 e_vx = 2
+                     0003    30 e_vy = 3
+                     0004    31 e_w = 4
+                     0005    32 e_h = 5
+                     0006    33 e_col = 6
+                     0007    34 e_up_l = 7
+                     0008    35 e_up_h = 8
+                     0009    36 e_key = 9
+                     000A    37 e_hp = 10	
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              40 ;;
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             42 
-                             43 .globl personaje
-                             44 .globl p_a
-                             45 .globl p_a1
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl personaje
                              46 
-                             47 .globl p_a2
-                             48 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2601,12 +2599,54 @@ Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-                             24   .include "wall.h.s"
+                             24 .include "hp.h.s"
+                              1 
+                              2 .globl HP_clear
+                              3 .globl HP_draw
+                              4 
+                              5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                              6 ;;
+                              7 ;;MACROS
+                              8 ;;
+                              9 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             10 
+                             11    .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
+                             12 _name: 
+                             13    .db    _x, _y     ;; X, Y
+                             14    .db    _w, _h     ;; W, H
+                             15    .db   _col        ;; Color
+                             16    .db   _UP         ;; is up?
+                             17 
+                             18 .endm
+                     0000    19 hp_x = 0
+                     0001    20 hp_y = 1
+                     0002    21 hp_w = 2
+                     0003    22 hp_h = 3
+                     0004    23 hp_col = 4
+                     0005    24 hp_UP = 5
+                             25 
+                             26 
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             29 ;;
+                             30 ;;OBJETOS CREADOS CON LA MACROS
+                             31 ;;
+                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 
+                             34 .globl hp1
+                             35 .globl hp2
+                             36 .globl hp3
+                             37 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
+Hexadecimal [16-Bits]
+
+
+
+                             25   .include "wall.h.s"
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
-                              4 .globl wall_collide
+                              4 .globl num_walls
                               5 
                               6 
                               7 
@@ -2640,153 +2680,92 @@ Hexadecimal [16-Bits]
                              35 
                              36 .globl w1
                              37 .globl w2
-                             38 .globl w3
-                             39 .globl w4
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
-                             25 ;;
-                             26 ;; Start of _DATA area 
-                             27 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             28 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             29 ;;  right after _CODE area contents.
-                             30 ;;
-                             31 .area _DATA
-                             32 
-                             33 .area _CODE
-                             34 
-                             35 ;;
-                             36 ;; MAIN function. This is the entry point of the application.
-                             37 ;;    _main:: global symbol is required for correctly compiling and linking
-                             38 ;;
-   4000                      39 _main::
-                             40    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 4C 42      [17]   41       call cpct_disableFirmware_asm
-                             42 
-   4003 0E 00         [ 7]   43    ld    c, #0
-   4005 CD 3F 42      [17]   44    call cpct_setVideoMode_asm
-                             45 
-                             46 
-   4008                      47 loop:
-                             48 
-                             49   
-                             50 
-                             51 
-                             52 
-   4008 DD 21 5F 40   [14]   53     ld    ix, #personaje
-   400C CD A1 40      [17]   54    call ent_clear
-   400F CD B1 40      [17]   55    call ent_update
-   4012 CD 87 40      [17]   56    call ent_draw
-                             57 
-                             58   
-   4015 DD 21 69 40   [14]   59     ld    ix, #p_a
-   4019 CD A1 40      [17]   60    call ent_clear
-                             61      
-   401C CD B1 40      [17]   62    call ent_update
-   401F CD 87 40      [17]   63    call ent_draw
-                             64 
-   4022 DD 21 73 40   [14]   65      ld    ix, #p_a1
-   4026 CD A1 40      [17]   66    call ent_clear
-                             67      
-   4029 CD B1 40      [17]   68    call ent_update
-   402C CD 87 40      [17]   69    call ent_draw
-                             70 
-                             71 
-   402F DD 21 7D 40   [14]   72       ld    ix, #p_a2
-   4033 CD A1 40      [17]   73    call ent_clear
-                             74 
-   4036 CD B1 40      [17]   75    call ent_update
-   4039 CD 87 40      [17]   76    call ent_draw
-                             77 
-   403C DD 21 10 42   [14]   78      ld    ix, #keys
-   4040 CD A1 40      [17]   79    call ent_clear
+                             38 ;.globl w3
+                             39 ;.globl w4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
-=======
-                             24 ;; Start of _DATA area 
-                             25 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             26 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             27 ;;  right after _CODE area contents.
-                             28 ;;
-                             29 .area _DATA
-                             30 
-                             31 .area _CODE
-                             32 
-                             33 ;;
-                             34 ;; MAIN function. This is the entry point of the application.
-                             35 ;;    _main:: global symbol is required for correctly compiling and linking
-                             36 ;;
-   4000                      37 _main::
-                             38    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 16 42      [17]   39       call cpct_disableFirmware_asm
-                             40 
-   4003 0E 00         [ 7]   41    ld    c, #0
-   4005 CD 09 42      [17]   42    call cpct_setVideoMode_asm
-                             43 
-                             44 
-   4008                      45 loop:
-                             46   
-   4008 CD D7 41      [17]   47    call key_clear
-                             48   
-                             49   
-                             50 
-   400B CD 65 40      [17]   51    call ent_clear
-   400E CD CC 41      [17]   52     call key_update
-   4011 CD 79 40      [17]   53    call ent_update
-   4014 CD 9E 41      [17]   54     call key_draw
-   4017 CD 47 40      [17]   55    call ent_draw
-                             56 
-                             57   
-                             58   ;;  ld    ix, #p_a
-                             59   ;; call ent_clear
-                             60   ;; call ent_update
-                             61   ;; call ent_draw
-                             62 
-                             63   ;;  ld    ix, #p_a1
-                             64   ;; call ent_clear
-                             65   ;; call ent_update
-                             66   ;; call ent_draw
-                             67 
-                             68 
-                             69   ;;  ld    ix, #p_a2
-                             70   ;; call ent_clear
-                             71   ;; call ent_update
-                             72   ;; call ent_draw
-                             73 
-                             74    
-                             75 
-                             76 
-                             77 
-   401A CD 01 42      [17]   78    call cpct_waitVSYNC_asm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-                             80 
-   4043 CD B1 40      [17]   81    call ent_update
-   4046 CD 87 40      [17]   82    call ent_draw
-                             83 
-   4049 DD 21 BA 41   [14]   84           ld    ix, #w1
-   404D CD CE 41      [17]   85    call wall_draw
-   4050 CD F8 41      [17]   86     call wall_collide
+                             26 ;;
+                             27 
+                             28 ;; Start of _DATA area 
+                             29 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             30 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             31 ;;  right after _CODE area contents.
+                             32 ;;
+                             33 .area _DATA
+                             34 
+                             35 .area _CODE
+                             36 
+                             37 ;;
+                             38 ;; MAIN function. This is the entry point of the application.
+                             39 ;;    _main:: global symbol is required for correctly compiling and linking
+                             40 ;;
+   4000                      41 _main::
+                             42    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD 8B 42      [17]   43       call cpct_disableFirmware_asm
+                             44 
+   4003 0E 00         [ 7]   45    ld    c, #0
+   4005 CD 7E 42      [17]   46    call cpct_setVideoMode_asm
+                             47 
+                             48 
+   4008                      49 loop:
+                             50 
+                             51   
+   4008 CD 4C 42      [17]   52   call key_clear
+   400B CD 79 40      [17]   53   call ent_clear
+                             54   
+   400E DD 21 91 41   [14]   55     ld ix, #w1
+   4012 CD B5 41      [17]   56   call wall_clear
+   4015 DD 21 96 41   [14]   57   ld ix, #w2
+   4019 CD B5 41      [17]   58   call wall_clear
+   401C CD 41 42      [17]   59   call key_update
+   401F CD 8D 40      [17]   60   call ent_update
+   4022 CD 13 42      [17]   61   call key_draw
+   4025 CD 5B 40      [17]   62   call ent_draw
+                             63 
+   4028 DD 21 91 41   [14]   64     ld ix, #w1
+   402C CD 9B 41      [17]   65   call wall_draw
+   402F DD 21 96 41   [14]   66   ld ix, #w2
+   4033 CD 9B 41      [17]   67   call wall_draw
+                             68 
+   4036 DD 21 C5 41   [14]   69        ld ix, #hp1
+   403A CD D7 41      [17]   70   call HP_draw
+   403D DD 21 CB 41   [14]   71   ld ix, #hp2
+   4041 CD D7 41      [17]   72   call HP_draw
+   4044 DD 21 D1 41   [14]   73     ld ix, #hp3
+   4048 CD D7 41      [17]   74   call HP_draw
+                             75 
+                             76   
+                             77   ;;  ld    ix, #p_a
+                             78   ;; call ent_clear
+                             79   ;; call ent_update
+                             80   ;; call ent_draw
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
+Hexadecimal [16-Bits]
+
+
+
+                             81 
+                             82   ;;  ld    ix, #p_a1
+                             83   ;; call ent_clear
+                             84   ;; call ent_update
+                             85   ;; call ent_draw
+                             86 
                              87 
-   4053 DD 21 BF 41   [14]   88           ld    ix, #w2
-   4057 CD CE 41      [17]   89    call wall_draw
-                             90 
-                             91 
+                             88   ;;  ld    ix, #p_a2
+                             89   ;; call ent_clear
+                             90   ;; call ent_update
+                             91   ;; call ent_draw
                              92 
-                             93 
+                             93     
                              94 
                              95 
                              96 
-   405A CD 37 42      [17]   97    call cpct_waitVSYNC_asm
-                             98    ;; Loop forever
-   405D 18 A9         [12]   99    jr    loop
-=======
-                             79    ;; Loop forever
-   401D 18 E9         [12]   80    jr    loop
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
+                             97 
+                             98 
+                             99 
+   404B CD 76 42      [17]  100    call cpct_waitVSYNC_asm
+                            101    ;; Loop forever
+   404E 18 B8         [12]  102    jr    loop

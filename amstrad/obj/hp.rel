@@ -6,7 +6,6 @@ S cpct_isKeyPressed_asm Ref0000
 S personaje Ref0000
 S ent_moveKeyboard Ref0000
 S ent_move2 Ref0000
-S num_walls Def0002
 S ent_draw Ref0000
 S ent_move Ref0000
 S .__.ABS. Def0000
@@ -18,30 +17,33 @@ S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 35 flags 0 addr 0
-S wall_clear Def0025
-S w1 Def0001
-S w2 Def0006
-S wall_draw Def000B
-T 00 00 05
+A _CODE size 3C flags 0 addr 0
+S hp1 Def0000
+S hp2 Def0006
+S hp3 Def000C
+S HP_draw Def0012
+S HP_clear Def002C
+T 00 00
 R 00 00 00 00
-T 01 00
-R 00 00 00 00
-T 01 00 14 14 02 14 0A
+T 00 00 00 00 02 04 FF 01
 R 00 00 00 00
 T 06 00
 R 00 00 00 00
-T 06 00 19 28 0A 08 0A
+T 06 00 04 00 02 04 FF 01
 R 00 00 00 00
-T 0B 00
+T 0C 00
 R 00 00 00 00
-T 0B 00 11 00 C0 DD 4E 00 DD 46 01 CD 00 00 EB DD
-R 00 00 00 00 02 0C 10 00
-T 19 00 7E 04 DD 46 03 DD 4E 02 CD 00 00 C9
-R 00 00 00 00 02 0B 0E 00
-T 25 00
+T 0C 00 08 00 02 04 FF 01
 R 00 00 00 00
-T 25 00 DD 7E 04 08 DD 36 04 00 CD 0B 00 08 DD 77
+T 12 00
+R 00 00 00 00
+T 12 00 11 00 C0 DD 4E 00 DD 46 01 CD 00 00 EB DD
+R 00 00 00 00 02 0C 0F 00
+T 20 00 7E 04 DD 46 03 DD 4E 02 CD 00 00 C9
+R 00 00 00 00 02 0B 0D 00
+T 2C 00
+R 00 00 00 00
+T 2C 00 DD 7E 04 08 DD 36 04 00 CD 12 00 08 DD 77
 R 00 00 00 00 00 0B 00 00
-T 33 00 04 C9
+T 3A 00 04 C9
 R 00 00 00 00

@@ -1,12 +1,6 @@
 
-.globl wall_clear
-.globl wall_draw
-.globl num_walls
-
-
-
-
-
+.globl HP_clear
+.globl HP_draw
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 ;;
@@ -14,17 +8,21 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-   .macro DefineWall _name, _x, _y, _w, _h, _col
+   .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
 _name: 
    .db    _x, _y     ;; X, Y
    .db    _w, _h     ;; W, H
    .db   _col        ;; Color
+   .db   _UP         ;; is up?
+
 .endm
-w_x = 0
-w_y = 1
-w_w = 2
-w_h = 3
-w_col = 4
+hp_x = 0
+hp_y = 1
+hp_w = 2
+hp_h = 3
+hp_col = 4
+hp_UP = 5
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -33,7 +31,7 @@ w_col = 4
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-.globl w1
-.globl w2
-;.globl w3
-;.globl w4
+.globl hp1
+.globl hp2
+.globl hp3
+

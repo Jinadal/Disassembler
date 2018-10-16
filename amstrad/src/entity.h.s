@@ -3,9 +3,9 @@
 .globl ent_draw
 .globl ent_update
 .globl ent_move
+.globl ent_move2
 .globl ent_moveKeyboard
 .globl ent_collide
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
@@ -14,7 +14,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-   .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+   .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
 _name: 
    .db    _x, _y     ;; X, Y
    .db   _vx, _vy    ;; VX, VY
@@ -22,6 +22,7 @@ _name:
    .db   _col        ;; Color
    .dw   _upd        ;; Update 
    .db   _key        ;; Key   
+   .db 	 _hp         ;; HP
 .endm
 e_x = 0
 e_y = 1
@@ -33,6 +34,7 @@ e_col = 6
 e_up_l = 7
 e_up_h = 8
 e_key = 9
+e_hp = 10	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -41,8 +43,4 @@ e_key = 9
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .globl personaje
-.globl p_a
-.globl p_a1
-
-.globl p_a2
 

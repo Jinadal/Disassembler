@@ -2497,56 +2497,51 @@ Hexadecimal [16-Bits]
 
                               2 .include "entity.h.s"
                               1 
-                              2 
-                              3 
-                              4 
-                              5 .globl ent_clear
-                              6 .globl ent_draw
-                              7 .globl ent_update
-                              8 .globl ent_move
-                              9 .globl ent_moveKeyboard
-                             10 .globl ent_collide
-                             11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             15 ;;
-                             16 ;;MACROS
-                             17 ;;
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             19 
-                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
-                             21 _name: 
-                             22    .db    _x, _y     ;; X, Y
-                             23    .db   _vx, _vy    ;; VX, VY
-                             24    .db    _w, _h     ;; W, H
-                             25    .db   _col        ;; Color
-                             26    .dw   _upd        ;; Update 
-                             27    .db   _key        ;; Key   
-                             28 .endm
-                     0000    29 e_x = 0
-                     0001    30 e_y = 1
-                     0002    31 e_vx = 2
-                     0003    32 e_vy = 3
-                     0004    33 e_w = 4
-                     0005    34 e_h = 5
-                     0006    35 e_col = 6
-                     0007    36 e_up_l = 7
-                     0008    37 e_up_h = 8
-                     0009    38 e_key = 9
-                             39 
-                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             41 ;;
-                             42 ;;OBJETOS CREADOS CON LA MACROS
-                             43 ;;
-                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             45 
-                             46 .globl personaje
-                             47 .globl p_a
-                             48 .globl p_a1
-                             49 
-                             50 .globl p_a2
-                             51 
+                              2 .globl ent_clear
+                              3 .globl ent_draw
+                              4 .globl ent_update
+                              5 .globl ent_move
+                              6 .globl ent_move2
+                              7 .globl ent_moveKeyboard
+                              8 .globl ent_collide
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
+                             18 _name: 
+                             19    .db    _x, _y     ;; X, Y
+                             20    .db   _vx, _vy    ;; VX, VY
+                             21    .db    _w, _h     ;; W, H
+                             22    .db   _col        ;; Color
+                             23    .dw   _upd        ;; Update 
+                             24    .db   _key        ;; Key   
+                             25    .db 	 _hp         ;; HP
+                             26 .endm
+                     0000    27 e_x = 0
+                     0001    28 e_y = 1
+                     0002    29 e_vx = 2
+                     0003    30 e_vy = 3
+                     0004    31 e_w = 4
+                     0005    32 e_h = 5
+                     0006    33 e_col = 6
+                     0007    34 e_up_l = 7
+                     0008    35 e_up_h = 8
+                     0009    36 e_key = 9
+                     000A    37 e_hp = 10	
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             40 ;;
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl personaje
+                             46 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
@@ -2569,7 +2564,7 @@ Hexadecimal [16-Bits]
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
-                              4 .globl wall_collide
+                              4 .globl num_walls
                               5 
                               6 
                               7 
@@ -2603,8 +2598,8 @@ Hexadecimal [16-Bits]
                              35 
                              36 .globl w1
                              37 .globl w2
-                             38 .globl w3
-                             39 .globl w4
+                             38 ;.globl w3
+                             39 ;.globl w4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
@@ -2612,103 +2607,93 @@ Hexadecimal [16-Bits]
 
                               5 
                               6 
-   41BA                       7 	DefineWall w1, 78, 2, 2,190,0x0A
-   0000                       1 w1: 
-   41BA 4E 02                 2    .db    78, 2     ;; X, Y
-   41BC 02 BE                 3    .db    2, 190     ;; W, H
-   41BE 0A                    4    .db   0x0A        ;; Color
-   41BF                       8 	DefineWall w2, 2, 8, 77,8,0x0A
-   0005                       1 w2: 
-   41BF 02 08                 2    .db    2, 8     ;; X, Y
-   41C1 4D 08                 3    .db    77, 8     ;; W, H
-   41C3 0A                    4    .db   0x0A        ;; Color
-   41C4                       9 	DefineWall w3, 0, 0, 2,190,0x0A
-   000A                       1 w3: 
-   41C4 00 00                 2    .db    0, 0     ;; X, Y
-   41C6 02 BE                 3    .db    2, 190     ;; W, H
-   41C8 0A                    4    .db   0x0A        ;; Color
-   41C9                      10 	DefineWall w4, 0, 190, 77,8,0x0A
-   000F                       1 w4: 
-   41C9 00 BE                 2    .db    0, 190     ;; X, Y
-   41CB 4D 08                 3    .db    77, 8     ;; W, H
-   41CD 0A                    4    .db   0x0A        ;; Color
+                              7 	;DefineWall w1, 78, 2, 2,190,0x0A
+                              8 	;DefineWall w2, 2, 8, 77,8,0x0A
+                              9 	;DefineWall w3, 0, 0, 2,190,0x0A
+                             10 	;DefineWall w4, 0, 190, 77,8,0x0A
                              11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             15 ;; DIBUJAR UNA ENTIDAD
-                             16 ;; PARA CUADRADOS UNICAMENTE
-                             17 ;; ENTRADA: IX -> Puntero a entidad
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41CE                      19 wall_draw:
-   41CE 11 00 C0      [10]   20    ld    de, #0xC000       ;;Comienzo memoria de video
-   41D1 DD 4E 00      [19]   21    ld     c, w_x(ix)         ;; C = Entity Y
-   41D4 DD 46 01      [19]   22    ld     b, w_y(ix)         ;; B = Entity X
-   41D7 CD 09 43      [17]   23    call cpct_getScreenPtr_asm
-                             24 
-   41DA EB            [ 4]   25    ex    de, hl   ;; DE = Puntero a memoria
-   41DB DD 7E 04      [19]   26    ld  a, w_col(ix)   ;; Color
-   41DE DD 46 03      [19]   27    ld  b, w_h(ix)   ;; alto
-   41E1 DD 4E 02      [19]   28    ld  c, w_w(ix)   ;; Ancho
-                             29 
-   41E4 CD 5C 42      [17]   30    call cpct_drawSolidBox_asm
-                             31 
-   41E7 C9            [10]   32    ret
-                             33 
-                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             35 ;; BORRA UNA ENTIDAD
-                             36 ;; PARA CUADRADOS UNICAMENTE
-                             37 ;; ENTRADA: IX -> Puntero a entidad
-                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41E8                      39 wall_clear:
-   41E8 DD 7E 04      [19]   40    ld  a, w_col(ix)
-   41EB 08            [ 4]   41    ex af, af'
-                             42 
-   41EC DD 36 04 00   [19]   43    ld  w_col(ix), #0
+                     0002    12 	num_walls = 2
+   4190 05                   13 	wall_size: .db 05
+                             14 
+   4191                      15 	DefineWall w1, 20, 20, 2,20,0x0A
+   0001                       1 w1: 
+   4191 14 14                 2    .db    20, 20     ;; X, Y
+   4193 02 14                 3    .db    2, 20     ;; W, H
+   4195 0A                    4    .db   0x0A        ;; Color
+   4196                      16 	DefineWall w2, 25, 40, 10,8,0x0A
+   0006                       1 w2: 
+   4196 19 28                 2    .db    25, 40     ;; X, Y
+   4198 0A 08                 3    .db    10, 8     ;; W, H
+   419A 0A                    4    .db   0x0A        ;; Color
+                             17 	;DefineWall w3, 0, 0, 2,190,0x0A
+                             18 	;DefineWall w4, 0, 190, 77,8,0x0A
+                             19 
+                             20 
+                             21 
+                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             23 ;; DIBUJAR UNA ENTIDAD
+                             24 ;; PARA CUADRADOS UNICAMENTE
+                             25 ;; ENTRADA: IX -> Puntero a entidad
+                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   419B                      27 wall_draw:
+                             28 
+                             29 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
+                             30 ; ld e' , #num_walls
+                             31  ; ld ix, #w1
+                             32 
+                             33  ;bucl:
+                             34 	
+   419B 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
+   419E DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
+   41A1 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
+   41A4 CD 48 43      [17]   38    call cpct_getScreenPtr_asm
+                             39 
+   41A7 EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
+   41A8 DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
+   41AB DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
+   41AE DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
+                             44 
+   41B1 CD 9B 42      [17]   45    call cpct_drawSolidBox_asm
+                             46 
+                             47 
+                             48   ;  inc ix
+                             49    ; inc ix
+                             50     ;inc ix
+                             51     ;inc ix
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             44 
-   41F0 CD CE 41      [17]   45    call wall_draw
-   41F3 08            [ 4]   46    ex af, af'
-   41F4 DD 77 04      [19]   47    ld w_col(ix), a
-                             48 
-   41F7 C9            [10]   49    ret
-                             50 
-                             51 
-                             52 
+                             52     ;inc ix
                              53 
-   41F8                      54  wall_collide:
-                             55 
-   41F8 7E            [ 7]   56      ld a ,(hl)    ;; A = hl -> hero_X
-   41F9 23            [ 6]   57     inc hl        ;;
-   41FA 23            [ 6]   58     inc hl        ;;
-   41FB 23            [ 6]   59     inc hl        ;;
-   41FC 23            [ 6]   60     inc hl        ;; hl + 4 -> hero_W
+                             54 
+                             55     ;ld a,e'
+                             56     ;sub #1
+                             57     ;ld e',a
+                             58     ;jr nz , bucl
+                             59 
+   41B4 C9            [10]   60    ret
                              61 
-   41FD 86            [ 7]   62     add (hl)      ;; A + hero_W
-                             63                   ;;
-   41FE DD 96 00      [19]   64     sub e_x(ix)   ;; A - wall_X
-                             65 
-   4201 28 0A         [12]   66     jr z, no_coll ;; hero_X + hero_W - wall_X = 0
-   4203 FA 0D 42      [10]   67     jp m, no_coll ;; hero_X + hero_W - wall_X < 0
-                             68 
-                             69 
-                             70 
-   4206 2B            [ 6]   71     dec hl
-   4207 2B            [ 6]   72     dec hl
-   4208 2B            [ 6]   73     dec hl
-   4209 2B            [ 6]   74     dec hl
-                             75 
-   420A D6 01         [ 7]   76     sub #1
+                             62 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             63 ;; BORRA UNA ENTIDAD
+                             64 ;; PARA CUADRADOS UNICAMENTE
+                             65 ;; ENTRADA: IX -> Puntero a entidad
+                             66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41B5                      67 wall_clear:
+                             68 	
+   41B5 DD 7E 04      [19]   69    ld  a, w_col(ix)
+   41B8 08            [ 4]   70    ex af, af'
+                             71 
+   41B9 DD 36 04 00   [19]   72    ld  w_col(ix), #0
+                             73 
+   41BD CD 9B 41      [17]   74    call wall_draw
+   41C0 08            [ 4]   75    ex af, af'
+   41C1 DD 77 04      [19]   76    ld w_col(ix), a
                              77 
-   420C 77            [ 7]   78     ld (hl),a
+   41C4 C9            [10]   78    ret
                              79 
-   420D                      80     no_coll:
+                             80 
                              81 
                              82 
-                             83 
-                             84 
-   420D C9            [10]   85     ret
+                             83  

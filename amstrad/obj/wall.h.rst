@@ -6,7 +6,7 @@ Hexadecimal [16-Bits]
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
-                              4 .globl wall_collide
+                              4 .globl num_walls
                               5 
                               6 
                               7 
@@ -40,5 +40,5 @@ Hexadecimal [16-Bits]
                              35 
                              36 .globl w1
                              37 .globl w2
-                             38 .globl w3
-                             39 .globl w4
+                             38 ;.globl w3
+                             39 ;.globl w4

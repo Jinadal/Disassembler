@@ -12,8 +12,10 @@ obj/entity.rel
 obj/entity.h.rel
 obj/wall.rel
 obj/keys.h.rel
+obj/hp.h.rel
 obj/main.h.rel
 obj/wall.h.rel
+obj/hp.rel
 obj/keys.rel
 
 -e

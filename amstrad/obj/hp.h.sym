@@ -4,10 +4,10 @@ Hexadecimal [16-Bits]
 Symbol Table
 
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
-    .__.H$L.=  0000 L   |     num_wall   **** GX  |     w1         **** GX
-    w2         **** GX  |     w_col   =  0004     |     w_h     =  0003 
-    w_w     =  0002     |     w_x     =  0000     |     w_y     =  0001 
-    wall_cle   **** GX  |     wall_dra   **** GX
+    .__.H$L.=  0000 L   |     HP_clear   **** GX  |     HP_draw    **** GX
+    hp1        **** GX  |     hp2        **** GX  |     hp3        **** GX
+    hp_UP   =  0005     |     hp_col  =  0004     |     hp_h    =  0003 
+    hp_w    =  0002     |     hp_x    =  0000     |     hp_y    =  0001 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

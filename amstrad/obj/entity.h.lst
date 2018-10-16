@@ -8,9 +8,9 @@ Hexadecimal [16-Bits]
                               3 .globl ent_draw
                               4 .globl ent_update
                               5 .globl ent_move
-                              6 .globl ent_moveKeyboard
-                              7 .globl ent_collide
-                              8 
+                              6 .globl ent_move2
+                              7 .globl ent_moveKeyboard
+                              8 .globl ent_collide
                               9 
                              10 
                              11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
@@ -19,7 +19,7 @@ Hexadecimal [16-Bits]
                              14 ;;
                              15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              16 
-                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key
+                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
                              18 _name: 
                              19    .db    _x, _y     ;; X, Y
                              20    .db   _vx, _vy    ;; VX, VY
@@ -27,27 +27,25 @@ Hexadecimal [16-Bits]
                              22    .db   _col        ;; Color
                              23    .dw   _upd        ;; Update 
                              24    .db   _key        ;; Key   
-                             25 .endm
-                     0000    26 e_x = 0
-                     0001    27 e_y = 1
-                     0002    28 e_vx = 2
-                     0003    29 e_vy = 3
-                     0004    30 e_w = 4
-                     0005    31 e_h = 5
-                     0006    32 e_col = 6
-                     0007    33 e_up_l = 7
-                     0008    34 e_up_h = 8
-                     0009    35 e_key = 9
-                             36 
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             38 ;;
-                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             25    .db 	 _hp         ;; HP
+                             26 .endm
+                     0000    27 e_x = 0
+                     0001    28 e_y = 1
+                     0002    29 e_vx = 2
+                     0003    30 e_vy = 3
+                     0004    31 e_w = 4
+                     0005    32 e_h = 5
+                     0006    33 e_col = 6
+                     0007    34 e_up_l = 7
+                     0008    35 e_up_h = 8
+                     0009    36 e_key = 9
+                     000A    37 e_hp = 10	
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              40 ;;
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             42 
-                             43 .globl personaje
-                             44 .globl p_a
-                             45 .globl p_a1
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl personaje
                              46 
-                             47 .globl p_a2
-                             48 

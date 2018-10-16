@@ -15,7 +15,7 @@ Symbol Table
     FW_PINK =  0010     |     FW_PURPL=  0007     |     FW_RED  =  0003 
     FW_SEA_G=  0013     |     FW_SKY_B=  000B     |     FW_WHITE=  000D 
     FW_YELLO=  000C     |     GA_port =  7F00     |     GA_port_=  007F 
-    HP_clear   **** GX  |     HP_draw    **** GX  |     HW_BLACK=  0014 
+  0 HP_clear   002C GR  |   0 HP_draw    0012 GR  |     HW_BLACK=  0014 
     HW_BLUE =  0004     |     HW_BRIGH=  0015     |     HW_BRIGH=  0013 
     HW_BRIGH=  0012     |     HW_BRIGH=  000D     |     HW_BRIGH=  000C 
     HW_BRIGH=  000B     |     HW_BRIGH=  000A     |     HW_CYAN =  0006 
@@ -54,38 +54,31 @@ Symbol Table
     Key_T   =  0806     |     Key_Tab =  1008     |     Key_U   =  0405 
     Key_V   =  8006     |     Key_W   =  0807     |     Key_X   =  8007 
     Key_Y   =  0805     |     Key_Z   =  8008     |     PAL_INKR=  0040 
-    PAL_PENR=  0000     |     PPI_PORT=  00F5     |   0 _main      0000 GR
-    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
-    cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
-    cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
+    PAL_PENR=  0000     |     PPI_PORT=  00F5     |     cpct_dis   **** GX
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
+    cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    cpct_set   **** GX  |     cpct_wai   **** GX  |     drop_key   **** GX
-    e_col   =  0006     |     e_h     =  0005     |     e_hp    =  000A 
-    e_key   =  0009     |     e_up_h  =  0008     |     e_up_l  =  0007 
-    e_vx    =  0002     |     e_vy    =  0003     |     e_w     =  0004 
-    e_x     =  0000     |     e_y     =  0001     |     ent_clea   **** GX
-    ent_coll   **** GX  |     ent_draw   **** GX  |     ent_move   **** GX
-    ent_move   **** GX  |     ent_move   **** GX  |     ent_upda   **** GX
-    hp1        **** GX  |     hp2        **** GX  |     hp3        **** GX
-    hp_UP   =  0005     |     hp_col  =  0004     |     hp_h    =  0003 
-    hp_w    =  0002     |     hp_x    =  0000     |     hp_y    =  0001 
-    key_clea   **** GX  |     key_draw   **** GX  |     key_upda   **** GX
-    keys       **** GX  |   0 loop       0008 R   |     num_wall   **** GX
-    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |     personaj   **** GX  |     pick_key   **** GX
-    w1         **** GX  |     w2         **** GX  |     w_col   =  0004 
-    w_h     =  0003     |     w_w     =  0002     |     w_x     =  0000 
-    w_y     =  0001     |     wall_cle   **** GX  |     wall_dra   **** GX
+    cpct_wai   **** GX  |     e_col   =  0006     |     e_h     =  0005 
+    e_hp    =  000A     |     e_key   =  0009     |     e_up_h  =  0008 
+    e_up_l  =  0007     |     e_vx    =  0002     |     e_vy    =  0003 
+    e_w     =  0004     |     e_x     =  0000     |     e_y     =  0001 
+    ent_clea   **** GX  |     ent_coll   **** GX  |     ent_draw   **** GX
+    ent_move   **** GX  |     ent_move   **** GX  |     ent_move   **** GX
+    ent_upda   **** GX  |   0 hp1        0000 GR  |   0 hp2        0006 GR
+  0 hp3        000C GR  |     hp_UP   =  0005     |     hp_col  =  0004 
+    hp_h    =  0003     |     hp_w    =  0002     |     hp_x    =  0000 
+    hp_y    =  0001     |     opc_DI  =  00F3     |     opc_EI  =  00FB 
+    opc_JR  =  0018     |     opc_LD_D=  0016     |     personaj   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   50   flags    0
-   1 _DATA      size    0   flags    0
+   0 _CODE      size   3C   flags    0
 

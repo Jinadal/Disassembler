@@ -9,100 +9,58 @@ Area                                    Addr        Size        Decimal Bytes (A
       -----  --------------------------------   ------------------------
      00000000  .__.ABS.                           cpct_keyboard
      00000000  l__DATA                         
-<<<<<<< HEAD
-     00000356  l__CODE                         
+     00000002  num_walls                          cpct_keyboard
+     00000395  l__CODE                         
      00004000  s__CODE                         
-     00004356  s__DATA                         
-=======
-     00000320  l__CODE                         
-     00004000  s__CODE                         
-     00004320  s__DATA                         
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
-
+     00004395  s__DATA                         
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-<<<<<<< HEAD
-_CODE                               00004000    00000356 =         854. bytes (REL,CON)
-=======
-_CODE                               00004000    00000320 =         800. bytes (REL,CON)
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
+_CODE                               00004000    00000395 =         917. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00004000  _main                              cpct_keyboard
-<<<<<<< HEAD
-     0000405F  personaje                          cpct_keyboard
-     00004069  p_a                                cpct_keyboard
-     00004073  p_a1                               cpct_keyboard
-     0000407D  p_a2                               cpct_keyboard
-     00004087  ent_draw                           cpct_keyboard
-     000040A1  ent_clear                          cpct_keyboard
-     000040B1  ent_update                         cpct_keyboard
-     000040B8  ent_move                           cpct_keyboard
-     00004145  ent_collide                        cpct_keyboard
-     00004183  ent_moveKeyboard                   cpct_keyboard
-     000041BA  w1                                 cpct_keyboard
-     000041BF  w2                                 cpct_keyboard
-     000041C4  w3                                 cpct_keyboard
-     000041C9  w4                                 cpct_keyboard
-     000041CE  wall_draw                          cpct_keyboard
-     000041E8  wall_clear                         cpct_keyboard
-     000041F8  wall_collide                       cpct_keyboard
-     00004210  keys                               cpct_keyboard
-     0000421A  pick_keys                          cpct_keyboard
-     00004220  drop_keys                          cpct_keyboard
-     00004221  _cpct_isKeyPressed                 cpct_keyboard
-     00004221  cpct_isKeyPressed_asm              cpct_keyboard
-     0000422D  _cpct_keyboardStatusBuffer         cpct_keyboard
-     00004237  _cpct_waitVSYNC                    cpct_video
-     00004237  cpct_waitVSYNC_asm                 cpct_video
-     0000423F  cpct_setVideoMode_asm              cpct_video
-     0000424C  _cpct_disableFirmware              cpct_firmware
-     0000424C  _cpct_removeInterruptHandler       cpct_firmware
-     0000424C  cpct_disableFirmware_asm           cpct_firmware
-     0000424C  cpct_removeInterruptHandler_asm    cpct_firmware
-     0000425C  cpct_drawSolidBox_asm              cpct_sprites
-     00004308  _cpct_mode_rom_status              cpct_firmware
-     00004309  cpct_getScreenPtr_asm              cpct_video
-     00004325  _cpct_scanKeyboard                 cpct_keyboard
-     00004325  cpct_scanKeyboard_asm              cpct_keyboard
-=======
-     0000401F  personaje                          cpct_keyboard
-     00004029  p_a                                cpct_keyboard
-     00004033  p_a1                               cpct_keyboard
-     0000403D  p_a2                               cpct_keyboard
-     00004047  ent_draw                           cpct_keyboard
-     00004065  ent_clear                          cpct_keyboard
-     00004079  ent_update                         cpct_keyboard
-     00004084  ent_move                           cpct_keyboard
-     00004118  ent_collide                        cpct_keyboard
-     00004156  ent_moveKeyboard                   cpct_keyboard
-     0000418D  keys                               cpct_keyboard
-     00004197  pick_keys                          cpct_keyboard
-     0000419D  drop_keys                          cpct_keyboard
-     0000419E  key_draw                           cpct_keyboard
-     000041CC  key_update                         cpct_keyboard
-     000041D7  key_clear                          cpct_keyboard
-     000041EB  _cpct_isKeyPressed                 cpct_keyboard
-     000041EB  cpct_isKeyPressed_asm              cpct_keyboard
-     000041F7  _cpct_keyboardStatusBuffer         cpct_keyboard
-     00004201  _cpct_waitVSYNC                    cpct_video
-     00004201  cpct_waitVSYNC_asm                 cpct_video
-     00004209  cpct_setVideoMode_asm              cpct_video
-     00004216  _cpct_disableFirmware              cpct_firmware
-     00004216  _cpct_removeInterruptHandler       cpct_firmware
-     00004216  cpct_disableFirmware_asm           cpct_firmware
-     00004216  cpct_removeInterruptHandler_asm    cpct_firmware
-     00004226  cpct_drawSolidBox_asm              cpct_sprites
-     000042D2  _cpct_mode_rom_status              cpct_firmware
-     000042D3  cpct_getScreenPtr_asm              cpct_video
-     000042EF  _cpct_scanKeyboard                 cpct_keyboard
-     000042EF  cpct_scanKeyboard_asm              cpct_keyboard
-
->>>>>>> 69da3c45218b447bb9b514341260ff6a98159189
+     00004050  personaje                          cpct_keyboard
+     0000405B  ent_draw                           cpct_keyboard
+     00004079  ent_clear                          cpct_keyboard
+     0000408D  ent_update                         cpct_keyboard
+     00004098  ent_move                           cpct_keyboard
+     000040AB  ent_move2                          cpct_keyboard
+     0000411D  ent_collide                        cpct_keyboard
+     00004159  ent_moveKeyboard                   cpct_keyboard
+     00004191  w1                                 cpct_keyboard
+     00004196  w2                                 cpct_keyboard
+     0000419B  wall_draw                          cpct_keyboard
+     000041B5  wall_clear                         cpct_keyboard
+     000041C5  hp1                                cpct_keyboard
+     000041CB  hp2                                cpct_keyboard
+     000041D1  hp3                                cpct_keyboard
+     000041D7  HP_draw                            cpct_keyboard
+     000041F1  HP_clear                           cpct_keyboard
+     00004201  keys                               cpct_keyboard
+     0000420C  pick_keys                          cpct_keyboard
+     00004212  drop_keys                          cpct_keyboard
+     00004213  key_draw                           cpct_keyboard
+     00004241  key_update                         cpct_keyboard
+     0000424C  key_clear                          cpct_keyboard
+     00004260  _cpct_isKeyPressed                 cpct_keyboard
+     00004260  cpct_isKeyPressed_asm              cpct_keyboard
+     0000426C  _cpct_keyboardStatusBuffer         cpct_keyboard
+     00004276  _cpct_waitVSYNC                    cpct_video
+     00004276  cpct_waitVSYNC_asm                 cpct_video
+     0000427E  cpct_setVideoMode_asm              cpct_video
+     0000428B  _cpct_disableFirmware              cpct_firmware
+     0000428B  _cpct_removeInterruptHandler       cpct_firmware
+     0000428B  cpct_disableFirmware_asm           cpct_firmware
+     0000428B  cpct_removeInterruptHandler_asm    cpct_firmware
+     0000429B  cpct_drawSolidBox_asm              cpct_sprites
+     00004347  _cpct_mode_rom_status              cpct_firmware
+     00004348  cpct_getScreenPtr_asm              cpct_video
+     00004364  _cpct_scanKeyboard                 cpct_keyboard
+     00004364  cpct_scanKeyboard_asm              cpct_keyboard
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 
 Files Linked                              [ module(s) ]
@@ -112,8 +70,10 @@ obj/entity.rel                            [ cpct_keyboard ]
 obj/entity.h.rel                          [  ]
 obj/wall.rel                              [ cpct_keyboard ]
 obj/keys.h.rel                            [  ]
+obj/hp.h.rel                              [  ]
 obj/main.h.rel                            [  ]
 obj/wall.h.rel                            [  ]
+obj/hp.rel                                [ cpct_keyboard ]
 obj/keys.rel                              [ cpct_keyboard ]
 
 
