@@ -1,6 +1,7 @@
 DEF .__.ABS. 0x0
 DEF l__DATA 0x0
 DEF num_walls 0x2
+<<<<<<< HEAD
 DEF l__CODE 0x3B6
 DEF s__CODE 0x4000
 DEF s__DATA 0x43B6
@@ -43,4 +44,53 @@ DEF _cpct_mode_rom_status 0x4368
 DEF cpct_getScreenPtr_asm 0x4369
 DEF _cpct_scanKeyboard 0x4385
 DEF cpct_scanKeyboard_asm 0x4385
+=======
+DEF l__CODE 0x407
+DEF s__CODE 0x4000
+DEF s__DATA 0x4407
+DEF _main 0x4000
+DEF personaje 0x4056
+DEF ent_draw 0x4061
+DEF ent_clear 0x407F
+DEF ent_update 0x4093
+DEF ent_move 0x409E
+DEF ent_move2 0x40B1
+DEF ent_collide 0x4123
+DEF ent_moveKeyboard 0x415F
+DEF w1 0x4196
+DEF w2 0x419B
+DEF wall_draw 0x41A0
+DEF wall_clear 0x41BA
+DEF door0 0x41CA
+DEF door_draw 0x41D0
+DEF door_clear 0x4209
+DEF check_door 0x421D
+DEF open_door 0x422D
+DEF keys 0x4237
+DEF pick_keys 0x4242
+DEF drop_keys 0x4248
+DEF key_draw 0x4249
+DEF key_update 0x4277
+DEF key_clear 0x4282
+DEF hp1 0x4296
+DEF hp2 0x429C
+DEF hp3 0x42A2
+DEF HP_draw 0x42A8
+DEF HP_clear 0x42C2
+DEF _cpct_isKeyPressed 0x42D2
+DEF cpct_isKeyPressed_asm 0x42D2
+DEF _cpct_keyboardStatusBuffer 0x42DE
+DEF _cpct_waitVSYNC 0x42E8
+DEF cpct_waitVSYNC_asm 0x42E8
+DEF cpct_setVideoMode_asm 0x42F0
+DEF _cpct_disableFirmware 0x42FD
+DEF _cpct_removeInterruptHandler 0x42FD
+DEF cpct_disableFirmware_asm 0x42FD
+DEF cpct_removeInterruptHandler_asm 0x42FD
+DEF cpct_drawSolidBox_asm 0x430D
+DEF _cpct_mode_rom_status 0x43B9
+DEF cpct_getScreenPtr_asm 0x43BA
+DEF _cpct_scanKeyboard 0x43D6
+DEF cpct_scanKeyboard_asm 0x43D6
+>>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
 LOAD obj/amstrad.ihx

@@ -2615,6 +2615,7 @@ Hexadecimal [16-Bits]
                      0002    12 	num_walls = 2
                      0005    13 	wall_size = 5
                              14 
+<<<<<<< HEAD
    4168                      15 	DefineWall w1, 20, 20, 2,20,0x0A
    0000                       1 w1: 
    4168 14 14                 2    .db    20, 20     ;; X, Y
@@ -2625,11 +2626,24 @@ Hexadecimal [16-Bits]
    416D 19 28                 2    .db    25, 40     ;; X, Y
    416F 0A 08                 3    .db    10, 8     ;; W, H
    4171 0A                    4    .db   0x0A        ;; Color
+=======
+   4196                      15 	DefineWall w1, 20, 20, 2,20,0x0A
+   0000                       1 w1: 
+   4196 14 14                 2    .db    20, 20     ;; X, Y
+   4198 02 14                 3    .db    2, 20     ;; W, H
+   419A 0A                    4    .db   0x0A        ;; Color
+   419B                      16 	DefineWall w2, 25, 40, 10,8,0x0A
+   0005                       1 w2: 
+   419B 19 28                 2    .db    25, 40     ;; X, Y
+   419D 0A 08                 3    .db    10, 8     ;; W, H
+   419F 0A                    4    .db   0x0A        ;; Color
+>>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
                              17 	;DefineWall w3, 0, 0, 2,190,0x0A
                              18 	;DefineWall w4, 0, 190, 77,8,0x0A
                              19 
                              20 
                              21 
+<<<<<<< HEAD
                              22 
                              23 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              24 ;; DIBUJAR LAS PAREDES
@@ -2660,6 +2674,38 @@ Hexadecimal [16-Bits]
                              49 
    418D EB            [ 4]   50    ex    de, hl   ;; DE = Puntero a memoria
    418E DD 7E 04      [19]   51    ld  a, w_col(ix)   ;; Color
+=======
+                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             23 ;; DIBUJAR UNA ENTIDAD
+                             24 ;; PARA CUADRADOS UNICAMENTE
+                             25 ;; ENTRADA: IX -> Puntero a entidad
+                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41A0                      27 wall_draw:
+                             28 
+                             29 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
+                             30 ; ld e' , #num_walls
+                             31  ; ld ix, #w1
+                             32 
+                             33  ;bucl:
+                             34 	
+   41A0 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
+   41A3 DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
+   41A6 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
+   41A9 CD BA 43      [17]   38    call cpct_getScreenPtr_asm
+                             39 
+   41AC EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
+   41AD DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
+   41B0 DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
+   41B3 DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
+                             44 
+   41B6 CD 0D 43      [17]   45    call cpct_drawSolidBox_asm
+                             46 
+                             47 
+                             48   ;  inc ix
+                             49    ; inc ix
+                             50     ;inc ix
+                             51     ;inc ix
+>>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
@@ -2673,13 +2719,18 @@ Hexadecimal [16-Bits]
                              57 
                              58   
                              59 
+<<<<<<< HEAD
    419A C9            [10]   60    ret
+=======
+   41B9 C9            [10]   60    ret
+>>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
                              61 
                              62 
                              63 
                              64 
                              65 
                              66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<<<<<<< HEAD
                              67 ;; BORRAR LAS PAREDES
                              68 ;; PARA CUADRADOS UNICAMENTE
                              69 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2715,3 +2766,22 @@ Hexadecimal [16-Bits]
                              99 
                             100 
                             101  
+=======
+   41BA                      67 wall_clear:
+                             68 	
+   41BA DD 7E 04      [19]   69    ld  a, w_col(ix)
+   41BD 08            [ 4]   70    ex af, af'
+                             71 
+   41BE DD 36 04 00   [19]   72    ld  w_col(ix), #0
+                             73 
+   41C2 CD A0 41      [17]   74    call wall_draw
+   41C5 08            [ 4]   75    ex af, af'
+   41C6 DD 77 04      [19]   76    ld w_col(ix), a
+                             77 
+   41C9 C9            [10]   78    ret
+                             79 
+                             80 
+                             81 
+                             82 
+                             83  
+>>>>>>> f47b550acaef241e937a063a67df189497f7ec6d

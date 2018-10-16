@@ -1,0 +1,18 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     check_do   **** GX  |     d_col   =  0004 
+    d_h     =  0003     |     d_op    =  0005     |     d_w     =  0002 
+    d_x     =  0000     |     d_y     =  0001     |     door0      **** GX
+    door_cle   **** GX  |     door_dra   **** GX  |     open_doo   **** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size    0   flags    0
+
