@@ -19,18 +19,28 @@
 
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DIBUJAR LAS PAREDES
+;; PARA CUADRADOS UNICAMENTE
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+wall_draw:
+
+	ld ix, #w1
+	call wall_draw_single
+
+	ld ix, #w2
+	call wall_draw_single
+	
+	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DIBUJAR UNA ENTIDAD
 ;; PARA CUADRADOS UNICAMENTE
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-wall_draw:
+wall_draw_single:
 
-	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-; ld e' , #num_walls
- ; ld ix, #w1
-
- ;bucl:
 	
    ld    de, #0xC000       ;;Comienzo memoria de video
    ld     c, w_x(ix)         ;; C = Entity Y
@@ -45,33 +55,41 @@ wall_draw:
    call cpct_drawSolidBox_asm
 
 
-  ;  inc ix
-   ; inc ix
-    ;inc ix
-    ;inc ix
-    ;inc ix
-
-
-    ;ld a,e'
-    ;sub #1
-    ;ld e',a
-    ;jr nz , bucl
+  
 
    ret
 
+
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; BORRA UNA ENTIDAD
+;; BORRAR LAS PAREDES
+;; PARA CUADRADOS UNICAMENTE
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+wall_clear:
+
+	ld ix, #w1
+	call wall_clear_single
+
+	ld ix, #w2
+	call wall_clear_single
+	
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BORRA UN MURO
 ;; PARA CUADRADOS UNICAMENTE
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-wall_clear:
+wall_clear_single:
 	
    ld  a, w_col(ix)
    ex af, af'
 
    ld  w_col(ix), #0
 
-   call wall_draw
+   call wall_draw_single
    ex af, af'
    ld w_col(ix), a
 

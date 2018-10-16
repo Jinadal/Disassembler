@@ -11,21 +11,33 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; DIBUJAR UNA VIDA
+;; DIBUJAR LAS PAREDES
+;; PARA CUADRADOS UNICAMENTE
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+hp_draw:
+
+	ld ix, #hp1
+	call hp_draw_single
+
+	ld ix, #hp2
+	call hp_draw_single
+
+	ld ix, #hp3
+	call hp_draw_single
+	
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DIBUJAR UNA ENTIDAD
 ;; PARA CUADRADOS UNICAMENTE
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-HP_draw:
+hp_draw_single:
 
-	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-; ld e' , #num_walls
- ; ld ix, #w1
-
- ;bucl:
 	
    ld    de, #0xC000       ;;Comienzo memoria de video
-   ld     c, hp_x(ix)         ;; C = Entity Y
-   ld     b, hp_y(ix)         ;; B = Entity X
+   ld     c, hp_x(ix)         ;; C = X
+   ld     b, hp_y(ix)         ;; B = Y
    call cpct_getScreenPtr_asm
 
    ex    de, hl   ;; DE = Puntero a memoria
@@ -36,37 +48,50 @@ HP_draw:
    call cpct_drawSolidBox_asm
 
 
-  ;  inc ix
-   ; inc ix
-    ;inc ix
-    ;inc ix
-    ;inc ix
-
-
-    ;ld a,e'
-    ;sub #1
-    ;ld e',a
-    ;jr nz , bucl
+  
 
    ret
 
 
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; BORRA UNA VIDA
+;; BORRAR LAS PAREDES
+;; PARA CUADRADOS UNICAMENTE
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+hp_clear:
+
+	ld ix, #hp1
+	call hp_clear_single
+
+	ld ix, #hp2
+	call hp_clear_single
+
+	ld ix, #hp3
+	call hp_clear_single
+	
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BORRA UN MURO
 ;; PARA CUADRADOS UNICAMENTE
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-HP_clear:
+hp_clear_single:
 	
    ld  a, hp_col(ix)
    ex af, af'
 
    ld  hp_col(ix), #0
 
-   call HP_draw
+   call hp_draw_single
    ex af, af'
    ld hp_col(ix), a
 
    ret
 
 
+
+
+ 

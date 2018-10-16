@@ -70,15 +70,16 @@ Symbol Table
     ent_draw   **** GX  |     ent_move   **** GX  |     ent_move   **** GX
     ent_move   **** GX  |     ent_upda   **** GX  |     num_wall=  0002 G
     opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |     personaj   **** GX  |   0 w1         0001 GR
-  0 w2         0006 GR  |     w_col   =  0004     |     w_h     =  0003 
+    opc_LD_D=  0016     |     personaj   **** GX  |   0 w1         0000 GR
+  0 w2         0005 GR  |     w_col   =  0004     |     w_h     =  0003 
     w_w     =  0002     |     w_x     =  0000     |     w_y     =  0001 
-  0 wall_cle   0025 GR  |   0 wall_dra   000B GR  |   0 wall_siz   0000 R
+  0 wall_cle   0033 GR  |   0 wall_cle   0042 R   |   0 wall_dra   000A GR
+  0 wall_dra   0019 R   |     wall_siz=  0005 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   35   flags    0
+   0 _CODE      size   52   flags    0
 

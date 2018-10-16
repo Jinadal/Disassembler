@@ -2562,8 +2562,8 @@ Hexadecimal [16-Bits]
 
                               4 .include "hp.h.s"
                               1 
-                              2 .globl HP_clear
-                              3 .globl HP_draw
+                              2 .globl hp_clear
+                              3 .globl hp_draw
                               4 
                               5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
                               6 ;;
@@ -2630,67 +2630,97 @@ Hexadecimal [16-Bits]
                              11 
                              12 
                              13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             14 ;; DIBUJAR UNA VIDA
+                             14 ;; DIBUJAR LAS PAREDES
                              15 ;; PARA CUADRADOS UNICAMENTE
-                             16 ;; ENTRADA: IX -> Puntero a entidad
-                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0012                      18 HP_draw:
+                             16 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             17 
+   0012                      18 hp_draw:
                              19 
-                             20 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-                             21 ; ld e' , #num_walls
-                             22  ; ld ix, #w1
-                             23 
-                             24  ;bucl:
-                             25 	
-   0012 11 00 C0      [10]   26    ld    de, #0xC000       ;;Comienzo memoria de video
-   0015 DD 4E 00      [19]   27    ld     c, hp_x(ix)         ;; C = Entity Y
-   0018 DD 46 01      [19]   28    ld     b, hp_y(ix)         ;; B = Entity X
-   001B CD 00 00      [17]   29    call cpct_getScreenPtr_asm
-                             30 
-   001E EB            [ 4]   31    ex    de, hl   ;; DE = Puntero a memoria
-   001F DD 7E 04      [19]   32    ld  a, hp_col(ix)   ;; Color
-   0022 DD 46 03      [19]   33    ld  b, hp_h(ix)   ;; alto
-   0025 DD 4E 02      [19]   34    ld  c, hp_w(ix)   ;; Ancho
-                             35 
-   0028 CD 00 00      [17]   36    call cpct_drawSolidBox_asm
-                             37 
-                             38 
-                             39   ;  inc ix
-                             40    ; inc ix
-                             41     ;inc ix
+   0012 DD 21 00 00   [14]   20 	ld ix, #hp1
+   0016 CD 28 00      [17]   21 	call hp_draw_single
+                             22 
+   0019 DD 21 06 00   [14]   23 	ld ix, #hp2
+   001D CD 28 00      [17]   24 	call hp_draw_single
+                             25 
+   0020 DD 21 0C 00   [14]   26 	ld ix, #hp3
+   0024 CD 28 00      [17]   27 	call hp_draw_single
+                             28 	
+   0027 C9            [10]   29 	ret
+                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             31 ;; DIBUJAR UNA ENTIDAD
+                             32 ;; PARA CUADRADOS UNICAMENTE
+                             33 ;; ENTRADA: IX -> Puntero a entidad
+                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0028                      35 hp_draw_single:
+                             36 
+                             37 	
+   0028 11 00 C0      [10]   38    ld    de, #0xC000       ;;Comienzo memoria de video
+   002B DD 4E 00      [19]   39    ld     c, hp_x(ix)         ;; C = X
+   002E DD 46 01      [19]   40    ld     b, hp_y(ix)         ;; B = Y
+   0031 CD 00 00      [17]   41    call cpct_getScreenPtr_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             42     ;inc ix
-                             43     ;inc ix
-                             44 
-                             45 
-                             46     ;ld a,e'
-                             47     ;sub #1
-                             48     ;ld e',a
-                             49     ;jr nz , bucl
+                             42 
+   0034 EB            [ 4]   43    ex    de, hl   ;; DE = Puntero a memoria
+   0035 DD 7E 04      [19]   44    ld  a, hp_col(ix)   ;; Color
+   0038 DD 46 03      [19]   45    ld  b, hp_h(ix)   ;; alto
+   003B DD 4E 02      [19]   46    ld  c, hp_w(ix)   ;; Ancho
+                             47 
+   003E CD 00 00      [17]   48    call cpct_drawSolidBox_asm
+                             49 
                              50 
-   002B C9            [10]   51    ret
+                             51   
                              52 
-                             53 
-                             54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             55 ;; BORRA UNA VIDA
-                             56 ;; PARA CUADRADOS UNICAMENTE
-                             57 ;; ENTRADA: IX -> Puntero a entidad
-                             58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   002C                      59 HP_clear:
-                             60 	
-   002C DD 7E 04      [19]   61    ld  a, hp_col(ix)
-   002F 08            [ 4]   62    ex af, af'
+   0041 C9            [10]   53    ret
+                             54 
+                             55 
+                             56 
+                             57 
+                             58 
+                             59 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             60 ;; BORRAR LAS PAREDES
+                             61 ;; PARA CUADRADOS UNICAMENTE
+                             62 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              63 
-   0030 DD 36 04 00   [19]   64    ld  hp_col(ix), #0
+   0042                      64 hp_clear:
                              65 
-   0034 CD 12 00      [17]   66    call HP_draw
-   0037 08            [ 4]   67    ex af, af'
-   0038 DD 77 04      [19]   68    ld hp_col(ix), a
-                             69 
-   003B C9            [10]   70    ret
+   0042 DD 21 00 00   [14]   66 	ld ix, #hp1
+   0046 CD 58 00      [17]   67 	call hp_clear_single
+                             68 
+   0049 DD 21 06 00   [14]   69 	ld ix, #hp2
+   004D CD 58 00      [17]   70 	call hp_clear_single
                              71 
-                             72 
+   0050 DD 21 0C 00   [14]   72 	ld ix, #hp3
+   0054 CD 58 00      [17]   73 	call hp_clear_single
+                             74 	
+   0057 C9            [10]   75 	ret
+                             76 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             77 ;; BORRA UN MURO
+                             78 ;; PARA CUADRADOS UNICAMENTE
+                             79 ;; ENTRADA: IX -> Puntero a entidad
+                             80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0058                      81 hp_clear_single:
+                             82 	
+   0058 DD 7E 04      [19]   83    ld  a, hp_col(ix)
+   005B 08            [ 4]   84    ex af, af'
+                             85 
+   005C DD 36 04 00   [19]   86    ld  hp_col(ix), #0
+                             87 
+   0060 CD 28 00      [17]   88    call hp_draw_single
+   0063 08            [ 4]   89    ex af, af'
+   0064 DD 77 04      [19]   90    ld hp_col(ix), a
+                             91 
+   0067 C9            [10]   92    ret
+                             93 
+                             94 
+                             95 
+                             96 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
+Hexadecimal [16-Bits]
+
+
+
+                             97  

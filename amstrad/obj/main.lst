@@ -2594,6 +2594,8 @@ Hexadecimal [16-Bits]
                               7 .globl pick_keys
                               8 .globl drop_keys
                               9 .globl keys
+                             10 
+                             11 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
@@ -2601,8 +2603,8 @@ Hexadecimal [16-Bits]
 
                              24 .include "hp.h.s"
                               1 
-                              2 .globl HP_clear
-                              3 .globl HP_draw
+                              2 .globl hp_clear
+                              3 .globl hp_draw
                               4 
                               5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
                               6 ;;
@@ -2715,57 +2717,48 @@ Hexadecimal [16-Bits]
                              51   
    0008 CD 00 00      [17]   52   call key_clear
    000B CD 00 00      [17]   53   call ent_clear
-                             54   
-   000E DD 21 00 00   [14]   55     ld ix, #w1
-   0012 CD 00 00      [17]   56   call wall_clear
-   0015 DD 21 00 00   [14]   57   ld ix, #w2
-   0019 CD 00 00      [17]   58   call wall_clear
-   001C CD 00 00      [17]   59   call key_update
-   001F CD 00 00      [17]   60   call ent_update
-   0022 CD 00 00      [17]   61   call key_draw
-   0025 CD 00 00      [17]   62   call ent_draw
-                             63 
-   0028 DD 21 00 00   [14]   64     ld ix, #w1
-   002C CD 00 00      [17]   65   call wall_draw
-   002F DD 21 00 00   [14]   66   ld ix, #w2
-   0033 CD 00 00      [17]   67   call wall_draw
-                             68 
-   0036 DD 21 00 00   [14]   69        ld ix, #hp1
-   003A CD 00 00      [17]   70   call HP_draw
-   003D DD 21 00 00   [14]   71   ld ix, #hp2
-   0041 CD 00 00      [17]   72   call HP_draw
-   0044 DD 21 00 00   [14]   73     ld ix, #hp3
-   0048 CD 00 00      [17]   74   call HP_draw
-                             75 
-                             76   
-                             77   ;;  ld    ix, #p_a
-                             78   ;; call ent_clear
-                             79   ;; call ent_update
-                             80   ;; call ent_draw
+   000E CD 00 00      [17]   54   call wall_clear
+                             55   ;call hp_clear
+                             56 
+                             57   
+   0011 CD 00 00      [17]   58   call key_update
+   0014 CD 00 00      [17]   59   call ent_update
+                             60 
+   0017 CD 00 00      [17]   61   call key_draw
+   001A CD 00 00      [17]   62   call ent_draw
+   001D CD 00 00      [17]   63   call wall_draw
+   0020 CD 00 00      [17]   64   call hp_draw
+                             65 
+                             66 
+                             67   
+                             68   ;;  ld    ix, #p_a
+                             69   ;; call ent_clear
+                             70   ;; call ent_update
+                             71   ;; call ent_draw
+                             72 
+                             73   ;;  ld    ix, #p_a1
+                             74   ;; call ent_clear
+                             75   ;; call ent_update
+                             76   ;; call ent_draw
+                             77 
+                             78 
+                             79   ;;  ld    ix, #p_a2
+                             80   ;; call ent_clear
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-                             81 
-                             82   ;;  ld    ix, #p_a1
-                             83   ;; call ent_clear
-                             84   ;; call ent_update
-                             85   ;; call ent_draw
+                             81   ;; call ent_update
+                             82   ;; call ent_draw
+                             83 
+                             84     
+                             85 
                              86 
                              87 
-                             88   ;;  ld    ix, #p_a2
-                             89   ;; call ent_clear
-                             90   ;; call ent_update
-                             91   ;; call ent_draw
-                             92 
-                             93     
-                             94 
-                             95 
-                             96 
-                             97 
-                             98 
-                             99 
-   004B CD 00 00      [17]  100    call cpct_waitVSYNC_asm
-                            101    ;; Loop forever
-   004E 18 B8         [12]  102    jr    loop
+                             88 
+                             89 
+                             90 
+   0023 CD 00 00      [17]   91    call cpct_waitVSYNC_asm
+                             92    ;; Loop forever
+   0026 18 E0         [12]   93    jr    loop
