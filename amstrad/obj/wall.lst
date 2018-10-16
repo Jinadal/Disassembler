@@ -2630,70 +2630,88 @@ Hexadecimal [16-Bits]
                              19 
                              20 
                              21 
-                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             23 ;; DIBUJAR UNA ENTIDAD
-                             24 ;; PARA CUADRADOS UNICAMENTE
-                             25 ;; ENTRADA: IX -> Puntero a entidad
-                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   000A                      27 wall_draw:
-                             28 
-                             29 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-                             30 ; ld e' , #num_walls
-                             31  ; ld ix, #w1
+                             22 
+                             23 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             24 ;; DIBUJAR LAS PAREDES
+                             25 ;; PARA CUADRADOS UNICAMENTE
+                             26 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             27 
+   000A                      28 wall_draw:
+                             29 
+   000A DD 21 00 00   [14]   30 	ld ix, #w1
+   000E CD 19 00      [17]   31 	call wall_draw_single
                              32 
-                             33  ;bucl:
-                             34 	
-   000A 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
-   000D DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
-   0010 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
-   0013 CD 00 00      [17]   38    call cpct_getScreenPtr_asm
-                             39 
-   0016 EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
-   0017 DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
-   001A DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
-   001D DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
-                             44 
-   0020 CD 00 00      [17]   45    call cpct_drawSolidBox_asm
-                             46 
-                             47 
-                             48   ;  inc ix
-                             49    ; inc ix
-                             50     ;inc ix
-                             51     ;inc ix
+   0011 DD 21 05 00   [14]   33 	ld ix, #w2
+   0015 CD 19 00      [17]   34 	call wall_draw_single
+                             35 	
+   0018 C9            [10]   36 	ret
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             38 ;; DIBUJAR UNA ENTIDAD
+                             39 ;; PARA CUADRADOS UNICAMENTE
+                             40 ;; ENTRADA: IX -> Puntero a entidad
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0019                      42 wall_draw_single:
+                             43 
+                             44 	
+   0019 11 00 C0      [10]   45    ld    de, #0xC000       ;;Comienzo memoria de video
+   001C DD 4E 00      [19]   46    ld     c, w_x(ix)         ;; C = Entity Y
+   001F DD 46 01      [19]   47    ld     b, w_y(ix)         ;; B = Entity X
+   0022 CD 00 00      [17]   48    call cpct_getScreenPtr_asm
+                             49 
+   0025 EB            [ 4]   50    ex    de, hl   ;; DE = Puntero a memoria
+   0026 DD 7E 04      [19]   51    ld  a, w_col(ix)   ;; Color
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             52     ;inc ix
-                             53 
+   0029 DD 46 03      [19]   52    ld  b, w_h(ix)   ;; alto
+   002C DD 4E 02      [19]   53    ld  c, w_w(ix)   ;; Ancho
                              54 
-                             55     ;ld a,e'
-                             56     ;sub #1
-                             57     ;ld e',a
-                             58     ;jr nz , bucl
+   002F CD 00 00      [17]   55    call cpct_drawSolidBox_asm
+                             56 
+                             57 
+                             58   
                              59 
-   0023 C9            [10]   60    ret
+   0032 C9            [10]   60    ret
                              61 
-                             62 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             63 ;; BORRA UNA ENTIDAD
-                             64 ;; PARA CUADRADOS UNICAMENTE
-                             65 ;; ENTRADA: IX -> Puntero a entidad
+                             62 
+                             63 
+                             64 
+                             65 
                              66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0024                      67 wall_clear:
-                             68 	
-   0024 DD 7E 04      [19]   69    ld  a, w_col(ix)
-   0027 08            [ 4]   70    ex af, af'
-                             71 
-   0028 DD 36 04 00   [19]   72    ld  w_col(ix), #0
-                             73 
-   002C CD 0A 00      [17]   74    call wall_draw
-   002F 08            [ 4]   75    ex af, af'
-   0030 DD 77 04      [19]   76    ld w_col(ix), a
-                             77 
-   0033 C9            [10]   78    ret
-                             79 
-                             80 
-                             81 
-                             82 
-                             83  
+                             67 ;; BORRAR LAS PAREDES
+                             68 ;; PARA CUADRADOS UNICAMENTE
+                             69 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             70 
+   0033                      71 wall_clear:
+                             72 
+   0033 DD 21 00 00   [14]   73 	ld ix, #w1
+   0037 CD 42 00      [17]   74 	call wall_clear_single
+                             75 
+   003A DD 21 05 00   [14]   76 	ld ix, #w2
+   003E CD 42 00      [17]   77 	call wall_clear_single
+                             78 	
+   0041 C9            [10]   79 	ret
+                             80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             81 ;; BORRA UN MURO
+                             82 ;; PARA CUADRADOS UNICAMENTE
+                             83 ;; ENTRADA: IX -> Puntero a entidad
+                             84 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0042                      85 wall_clear_single:
+                             86 	
+   0042 DD 7E 04      [19]   87    ld  a, w_col(ix)
+   0045 08            [ 4]   88    ex af, af'
+                             89 
+   0046 DD 36 04 00   [19]   90    ld  w_col(ix), #0
+                             91 
+   004A CD 19 00      [17]   92    call wall_draw_single
+   004D 08            [ 4]   93    ex af, af'
+   004E DD 77 04      [19]   94    ld w_col(ix), a
+                             95 
+   0051 C9            [10]   96    ret
+                             97 
+                             98 
+                             99 
+                            100 
+                            101  

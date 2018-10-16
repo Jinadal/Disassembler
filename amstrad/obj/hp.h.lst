@@ -4,8 +4,8 @@ Hexadecimal [16-Bits]
 
 
                               1 
-                              2 .globl HP_clear
-                              3 .globl HP_draw
+                              2 .globl hp_clear
+                              3 .globl hp_draw
                               4 
                               5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
                               6 ;;

@@ -54,26 +54,18 @@ loop:
   call key_clear
   call ent_clear
   call door_clear
-    ld ix, #w1
   call wall_clear
-  ld ix, #w2
-  call wall_clear
+  call hp_clear
+  
   call key_update
   call ent_update
+
   call key_draw
   call ent_draw
   call door_draw
-    ld ix, #w1
   call wall_draw
-  ld ix, #w2
-  call wall_draw
+  call hp_draw
 
-       ld ix, #hp1
-  call HP_draw
-  ld ix, #hp2
-  call HP_draw
-    ld ix, #hp3
-  call HP_draw
 
   
   ;;  ld    ix, #p_a

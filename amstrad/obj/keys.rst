@@ -2579,6 +2579,8 @@ Hexadecimal [16-Bits]
                               7 .globl pick_keys
                               8 .globl drop_keys
                               9 .globl keys
+                             10 
+                             11 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
@@ -2587,15 +2589,15 @@ Hexadecimal [16-Bits]
                               9 
                              10 
                              11 
-   4237                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00, 0x03
+   4215                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00, 0x03
    0000                       1 keys: 
-   4237 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   4239 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   423B 01 04                 4    .db    0x01, 0x04     ;; W, H
-   423D C0                    5    .db   0xC0        ;; Color
-   423E 9E 40                 6    .dw   ent_move        ;; Update 
-   4240 00                    7    .db   0x00        ;; Key   
-   4241 03                    8    .db 	 0x03         ;; HP
+   4215 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   4217 00 00                 3    .db   0x00, 0x00    ;; VX, VY
+   4219 01 04                 4    .db    0x01, 0x04     ;; W, H
+   421B C0                    5    .db   0xC0        ;; Color
+   421C 79 40                 6    .dw   ent_move        ;; Update 
+   421E 00                    7    .db   0x00        ;; Key   
+   421F 03                    8    .db 	 0x03         ;; HP
                              13 
                              14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
                              15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
@@ -2604,60 +2606,60 @@ Hexadecimal [16-Bits]
                              18 ;; EXIT: KEYS_X -> PERSONAJE_X
                              19 ;;       KEYS_Y -> PERSONAJE_Y
                              20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4242                      21 pick_keys:
-   4242 3E 01         [ 7]   22   ld a,#1
-   4244 DD 77 09      [19]   23   ld e_key(ix), a
-   4247 C9            [10]   24 ret
+   4220                      21 pick_keys:
+   4220 3E 01         [ 7]   22   ld a,#1
+   4222 DD 77 09      [19]   23   ld e_key(ix), a
+   4225 C9            [10]   24 ret
                              25 
-   4248                      26 drop_keys:
+   4226                      26 drop_keys:
                              27   
-   4248 C9            [10]   28 ret
+   4226 C9            [10]   28 ret
                              29 
-   4249                      30 key_draw:
+   4227                      30 key_draw:
                              31 
-   4249 DD 21 56 40   [14]   32   ld ix,#personaje
-   424D DD 7E 09      [19]   33   ld a, e_key(ix)
-   4250 D6 01         [ 7]   34   sub #1
+   4227 DD 21 31 40   [14]   32   ld ix,#personaje
+   422B DD 7E 09      [19]   33   ld a, e_key(ix)
+   422E D6 01         [ 7]   34   sub #1
                              35 
-   4252 CA 72 42      [10]   36   jp z, not_draw_key
+   4230 CA 50 42      [10]   36   jp z, not_draw_key
                              37 
-   4255 DD 21 37 42   [14]   38     ld ix,#keys
-   4259 11 00 C0      [10]   39     ld    de, #0xC000       ;;Comienzo memoria de video
-   425C DD 4E 00      [19]   40     ld     c, e_x(ix)         ;; C = Entity Y
-   425F DD 46 01      [19]   41     ld     b, e_y(ix)         ;; B = Entity X
-   4262 CD BA 43      [17]   42     call cpct_getScreenPtr_asm
+   4233 DD 21 15 42   [14]   38     ld ix,#keys
+   4237 11 00 C0      [10]   39     ld    de, #0xC000       ;;Comienzo memoria de video
+   423A DD 4E 00      [19]   40     ld     c, e_x(ix)         ;; C = Entity Y
+   423D DD 46 01      [19]   41     ld     b, e_y(ix)         ;; B = Entity X
+   4240 CD C4 43      [17]   42     call cpct_getScreenPtr_asm
                              43 
-   4265 EB            [ 4]   44     ex    de, hl   ;; DE = Puntero a memoria
-   4266 DD 7E 06      [19]   45     ld  a, e_col(ix)   ;; Color
-   4269 DD 46 05      [19]   46     ld  b, e_h(ix)   ;; alto
-   426C DD 4E 04      [19]   47     ld  c, e_w(ix)   ;; Ancho
+   4243 EB            [ 4]   44     ex    de, hl   ;; DE = Puntero a memoria
+   4244 DD 7E 06      [19]   45     ld  a, e_col(ix)   ;; Color
+   4247 DD 46 05      [19]   46     ld  b, e_h(ix)   ;; alto
+   424A DD 4E 04      [19]   47     ld  c, e_w(ix)   ;; Ancho
                              48 
-   426F CD 0D 43      [17]   49     call cpct_drawSolidBox_asm
+   424D CD 17 43      [17]   49     call cpct_drawSolidBox_asm
                              50   
-   4272                      51   not_draw_key:
-   4272 DD 21 37 42   [14]   52   ld ix,#keys
-   4276 C9            [10]   53 ret
+   4250                      51   not_draw_key:
+   4250 DD 21 15 42   [14]   52   ld ix,#keys
+   4254 C9            [10]   53 ret
                              54 
-   4277                      55 key_update:
+   4255                      55 key_update:
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-   4277 DD 21 37 42   [14]   56   ld ix,#keys
-   427B DD 66 08      [19]   57   ld     h, e_up_h(ix)
-   427E DD 6E 07      [19]   58   ld     l, e_up_l(ix)
-   4281 E9            [ 4]   59 jp    (hl)  
+   4255 DD 21 15 42   [14]   56   ld ix,#keys
+   4259 DD 66 08      [19]   57   ld     h, e_up_h(ix)
+   425C DD 6E 07      [19]   58   ld     l, e_up_l(ix)
+   425F E9            [ 4]   59 jp    (hl)  
                              60 
-   4282                      61 key_clear:
-   4282 DD 21 37 42   [14]   62   ld ix,#keys
-   4286 DD 7E 06      [19]   63   ld  a, e_col(ix)
-   4289 08            [ 4]   64   ex af, af'
+   4260                      61 key_clear:
+   4260 DD 21 15 42   [14]   62   ld ix,#keys
+   4264 DD 7E 06      [19]   63   ld  a, e_col(ix)
+   4267 08            [ 4]   64   ex af, af'
                              65 
-   428A DD 36 06 00   [19]   66   ld  e_col(ix), #0
+   4268 DD 36 06 00   [19]   66   ld  e_col(ix), #0
                              67 
-   428E CD 49 42      [17]   68   call key_draw
-   4291 08            [ 4]   69   ex af, af'
-   4292 DD 77 06      [19]   70   ld e_col(ix), a
+   426C CD 27 42      [17]   68   call key_draw
+   426F 08            [ 4]   69   ex af, af'
+   4270 DD 77 06      [19]   70   ld e_col(ix), a
                              71 
-   4295 C9            [10]   72 ret
+   4273 C9            [10]   72 ret

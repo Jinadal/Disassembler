@@ -1,6 +1,6 @@
 
-.globl HP_clear
-.globl HP_draw
+.globl hp_clear
+.globl hp_draw
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 ;;

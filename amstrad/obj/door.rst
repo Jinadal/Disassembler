@@ -2658,18 +2658,20 @@ Hexadecimal [16-Bits]
                               7 .globl pick_keys
                               8 .globl drop_keys
                               9 .globl keys
+                             10 
+                             11 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
                               7 
-   41CA                       8 	DefineDoor door0, 100, 150, 3, 50, 0xC0, 0
+   41C3                       8 	DefineDoor door0, 100, 150, 3, 50, 0xC0, 0
    0000                       1 door0: 
-   41CA 64 96                 2     .db     100, 150      ;; X, Y
-   41CC 03 32                 3     .db     3, 50      ;; W, H
-   41CE C0                    4     .db     0xC0        ;; Color
-   41CF 00                    5     .db     0         ;;Open-close 
+   41C3 64 96                 2     .db     100, 150      ;; X, Y
+   41C5 03 32                 3     .db     3, 50      ;; W, H
+   41C7 C0                    4     .db     0xC0        ;; Color
+   41C8 00                    5     .db     0         ;;Open-close 
                               9 	
                              10 
                              11 
@@ -2678,41 +2680,41 @@ Hexadecimal [16-Bits]
                              14 ;; PARA CUADRADOS UNICAMENTE
                              15 ;; ENTRADA: IX -> Puntero a entidad
                              16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41D0                      17 door_draw:
-   41D0 DD 21 CA 41   [14]   18     ld ix,#door0
+   41C9                      17 door_draw:
+   41C9 DD 21 C3 41   [14]   18     ld ix,#door0
                              19 
-   41D4 DD 7E 05      [19]   20     ld a, d_op(ix)
-   41D7 D6 01         [ 7]   21     sub #1
+                             20 ;;    ld a, d_op(ix)
+                             21 ;;    sub #1
                              22 
-   41D9 C2 E7 41      [10]   23     jp nz,prueba
+                             23 ;;    jp nz,prueba
                              24 
-   41DC 3E FF         [ 7]   25     ld a, #0xFF
-   41DE 32 01 C0      [13]   26     ld (0xC001),a
-   41E1 32 02 C0      [13]   27     ld (0xC002),a
-   41E4 32 03 C0      [13]   28     ld (0xC003),a
+                             25 ;;    ld a, #0xFF
+                             26 ;;    ld (0xC001),a
+                             27 ;;    ld (0xC002),a
+                             28 ;;    ld (0xC003),a
                              29 
-   41E7                      30     prueba:
+                             30 ;;    prueba:
                              31     
-   41E7 DD 7E 05      [19]   32     ld a, d_op(ix)
-   41EA D6 01         [ 7]   33     sub #1
+                             32 ;;    ld a, d_op(ix)
+                             33 ;;    sub #1
                              34 
-   41EC CA 08 42      [10]   35     jp z, not_draw_door
+                             35 ;;    jp z, not_draw_door
                              36 
-   41EF 11 00 C0      [10]   37     ld    de, #0xC000       ;;Comienzo memoria de video
-   41F2 DD 4E 00      [19]   38     ld     c, w_x(ix)         ;; C = Entity Y
-   41F5 DD 46 01      [19]   39     ld     b, w_y(ix)         ;; B = Entity X
-   41F8 CD BA 43      [17]   40     call cpct_getScreenPtr_asm
+   41CD 11 00 C0      [10]   37     ld    de, #0xC000       ;;Comienzo memoria de video
+   41D0 DD 4E 00      [19]   38     ld     c, w_x(ix)         ;; C = Entity Y
+   41D3 DD 46 01      [19]   39     ld     b, w_y(ix)         ;; B = Entity X
+   41D6 CD C4 43      [17]   40     call cpct_getScreenPtr_asm
                              41 
-   41FB EB            [ 4]   42     ex    de, hl   ;; DE = Puntero a memoria
-   41FC DD 7E 04      [19]   43     ld  a, w_col(ix)   ;; Color
-   41FF DD 46 03      [19]   44     ld  b, w_h(ix)   ;; alto
-   4202 DD 4E 02      [19]   45     ld  c, w_w(ix)   ;; Ancho
+   41D9 EB            [ 4]   42     ex    de, hl   ;; DE = Puntero a memoria
+   41DA DD 7E 04      [19]   43     ld  a, w_col(ix)   ;; Color
+   41DD DD 46 03      [19]   44     ld  b, w_h(ix)   ;; alto
+   41E0 DD 4E 02      [19]   45     ld  c, w_w(ix)   ;; Ancho
                              46 
-   4205 CD 0D 43      [17]   47     call cpct_drawSolidBox_asm
+   41E3 CD 17 43      [17]   47     call cpct_drawSolidBox_asm
                              48 
-   4208                      49     not_draw_door:
+                             49   ;;  not_draw_door:
                              50 
-   4208 C9            [10]   51 ret
+   41E6 C9            [10]   51 ret
                              52 
                              53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              54 ;; BORRA UNA ENTIDAD
@@ -2724,38 +2726,38 @@ Hexadecimal [16-Bits]
 
 
                              57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4209                      58 door_clear:
-   4209 DD 21 CA 41   [14]   59     ld ix,#door0
-   420D DD 7E 04      [19]   60     ld  a, w_col(ix)
-   4210 08            [ 4]   61     ex af, af'
+   41E7                      58 door_clear:
+   41E7 DD 21 C3 41   [14]   59     ld ix,#door0
+   41EB DD 7E 04      [19]   60     ld  a, w_col(ix)
+   41EE 08            [ 4]   61     ex af, af'
                              62 
-   4211 DD 36 04 00   [19]   63     ld  w_col(ix), #0
+   41EF DD 36 04 00   [19]   63     ld  w_col(ix), #0
                              64 
-   4215 CD A0 41      [17]   65     call wall_draw
-   4218 08            [ 4]   66     ex af, af'
-   4219 DD 77 04      [19]   67     ld w_col(ix), a
+   41F3 CD 7B 41      [17]   65     call wall_draw
+   41F6 08            [ 4]   66     ex af, af'
+   41F7 DD 77 04      [19]   67     ld w_col(ix), a
                              68 
-   421C C9            [10]   69     ret
+   41FA C9            [10]   69     ret
                              70 
                              71 
-   421D                      72 check_door:
-   421D DD 21 56 40   [14]   73     ld ix,#personaje
-   4221 DD 7E 09      [19]   74     ld a, e_key(ix)
-   4224 D6 01         [ 7]   75     sub #1
+   41FB                      72 check_door:
+   41FB DD 21 31 40   [14]   73     ld ix,#personaje
+   41FF DD 7E 09      [19]   74     ld a, e_key(ix)
+   4202 D6 01         [ 7]   75     sub #1
                              76 
-   4226 C2 2C 42      [10]   77     jp nz, no_key
+   4204 C2 0A 42      [10]   77     jp nz, no_key
                              78 
-   4229 CD 2D 42      [17]   79     call open_door
+   4207 CD 0B 42      [17]   79     call open_door
                              80 
-   422C                      81     no_key:
+   420A                      81     no_key:
                              82 
-   422C C9            [10]   83 ret
+   420A C9            [10]   83 ret
                              84 
-   422D                      85 open_door:
+   420B                      85 open_door:
                              86     
-   422D DD 21 CA 41   [14]   87     ld ix, #door0
-   4231 3E 01         [ 7]   88     ld a,#1
-   4233 DD 77 05      [19]   89     ld d_op(ix), a
+   420B DD 21 C3 41   [14]   87     ld ix, #door0
+   420F 3E 01         [ 7]   88     ld a,#1
+   4211 DD 77 05      [19]   89     ld d_op(ix), a
                              90 
                              91     
-   4236 C9            [10]   92 ret
+   4214 C9            [10]   92 ret

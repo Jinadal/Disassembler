@@ -2615,85 +2615,103 @@ Hexadecimal [16-Bits]
                      0002    12 	num_walls = 2
                      0005    13 	wall_size = 5
                              14 
-   4196                      15 	DefineWall w1, 20, 20, 2,20,0x0A
+   4171                      15 	DefineWall w1, 20, 20, 2,20,0x0A
    0000                       1 w1: 
-   4196 14 14                 2    .db    20, 20     ;; X, Y
-   4198 02 14                 3    .db    2, 20     ;; W, H
-   419A 0A                    4    .db   0x0A        ;; Color
-   419B                      16 	DefineWall w2, 25, 40, 10,8,0x0A
+   4171 14 14                 2    .db    20, 20     ;; X, Y
+   4173 02 14                 3    .db    2, 20     ;; W, H
+   4175 0A                    4    .db   0x0A        ;; Color
+   4176                      16 	DefineWall w2, 25, 40, 10,8,0x0A
    0005                       1 w2: 
-   419B 19 28                 2    .db    25, 40     ;; X, Y
-   419D 0A 08                 3    .db    10, 8     ;; W, H
-   419F 0A                    4    .db   0x0A        ;; Color
+   4176 19 28                 2    .db    25, 40     ;; X, Y
+   4178 0A 08                 3    .db    10, 8     ;; W, H
+   417A 0A                    4    .db   0x0A        ;; Color
                              17 	;DefineWall w3, 0, 0, 2,190,0x0A
                              18 	;DefineWall w4, 0, 190, 77,8,0x0A
                              19 
                              20 
                              21 
-                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             23 ;; DIBUJAR UNA ENTIDAD
-                             24 ;; PARA CUADRADOS UNICAMENTE
-                             25 ;; ENTRADA: IX -> Puntero a entidad
-                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41A0                      27 wall_draw:
-                             28 
-                             29 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-                             30 ; ld e' , #num_walls
-                             31  ; ld ix, #w1
+                             22 
+                             23 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             24 ;; DIBUJAR LAS PAREDES
+                             25 ;; PARA CUADRADOS UNICAMENTE
+                             26 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             27 
+   417B                      28 wall_draw:
+                             29 
+   417B DD 21 71 41   [14]   30 	ld ix, #w1
+   417F CD 8A 41      [17]   31 	call wall_draw_single
                              32 
-                             33  ;bucl:
-                             34 	
-   41A0 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
-   41A3 DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
-   41A6 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
-   41A9 CD BA 43      [17]   38    call cpct_getScreenPtr_asm
-                             39 
-   41AC EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
-   41AD DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
-   41B0 DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
-   41B3 DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
-                             44 
-   41B6 CD 0D 43      [17]   45    call cpct_drawSolidBox_asm
-                             46 
-                             47 
-                             48   ;  inc ix
-                             49    ; inc ix
-                             50     ;inc ix
-                             51     ;inc ix
+   4182 DD 21 76 41   [14]   33 	ld ix, #w2
+   4186 CD 8A 41      [17]   34 	call wall_draw_single
+                             35 	
+   4189 C9            [10]   36 	ret
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             38 ;; DIBUJAR UNA ENTIDAD
+                             39 ;; PARA CUADRADOS UNICAMENTE
+                             40 ;; ENTRADA: IX -> Puntero a entidad
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   418A                      42 wall_draw_single:
+                             43 
+                             44 	
+   418A 11 00 C0      [10]   45    ld    de, #0xC000       ;;Comienzo memoria de video
+   418D DD 4E 00      [19]   46    ld     c, w_x(ix)         ;; C = Entity Y
+   4190 DD 46 01      [19]   47    ld     b, w_y(ix)         ;; B = Entity X
+   4193 CD C4 43      [17]   48    call cpct_getScreenPtr_asm
+                             49 
+   4196 EB            [ 4]   50    ex    de, hl   ;; DE = Puntero a memoria
+   4197 DD 7E 04      [19]   51    ld  a, w_col(ix)   ;; Color
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             52     ;inc ix
-                             53 
+   419A DD 46 03      [19]   52    ld  b, w_h(ix)   ;; alto
+   419D DD 4E 02      [19]   53    ld  c, w_w(ix)   ;; Ancho
                              54 
-                             55     ;ld a,e'
-                             56     ;sub #1
-                             57     ;ld e',a
-                             58     ;jr nz , bucl
+   41A0 CD 17 43      [17]   55    call cpct_drawSolidBox_asm
+                             56 
+                             57 
+                             58   
                              59 
-   41B9 C9            [10]   60    ret
+   41A3 C9            [10]   60    ret
                              61 
-                             62 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             63 ;; BORRA UNA ENTIDAD
-                             64 ;; PARA CUADRADOS UNICAMENTE
-                             65 ;; ENTRADA: IX -> Puntero a entidad
+                             62 
+                             63 
+                             64 
+                             65 
                              66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41BA                      67 wall_clear:
-                             68 	
-   41BA DD 7E 04      [19]   69    ld  a, w_col(ix)
-   41BD 08            [ 4]   70    ex af, af'
-                             71 
-   41BE DD 36 04 00   [19]   72    ld  w_col(ix), #0
-                             73 
-   41C2 CD A0 41      [17]   74    call wall_draw
-   41C5 08            [ 4]   75    ex af, af'
-   41C6 DD 77 04      [19]   76    ld w_col(ix), a
-                             77 
-   41C9 C9            [10]   78    ret
-                             79 
-                             80 
-                             81 
-                             82 
-                             83  
+                             67 ;; BORRAR LAS PAREDES
+                             68 ;; PARA CUADRADOS UNICAMENTE
+                             69 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             70 
+   41A4                      71 wall_clear:
+                             72 
+   41A4 DD 21 71 41   [14]   73 	ld ix, #w1
+   41A8 CD B3 41      [17]   74 	call wall_clear_single
+                             75 
+   41AB DD 21 76 41   [14]   76 	ld ix, #w2
+   41AF CD B3 41      [17]   77 	call wall_clear_single
+                             78 	
+   41B2 C9            [10]   79 	ret
+                             80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             81 ;; BORRA UN MURO
+                             82 ;; PARA CUADRADOS UNICAMENTE
+                             83 ;; ENTRADA: IX -> Puntero a entidad
+                             84 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41B3                      85 wall_clear_single:
+                             86 	
+   41B3 DD 7E 04      [19]   87    ld  a, w_col(ix)
+   41B6 08            [ 4]   88    ex af, af'
+                             89 
+   41B7 DD 36 04 00   [19]   90    ld  w_col(ix), #0
+                             91 
+   41BB CD 8A 41      [17]   92    call wall_draw_single
+   41BE 08            [ 4]   93    ex af, af'
+   41BF DD 77 04      [19]   94    ld w_col(ix), a
+                             95 
+   41C2 C9            [10]   96    ret
+                             97 
+                             98 
+                             99 
+                            100 
+                            101  
