@@ -3,13 +3,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-
-
-                              2 .include "cpctelera.h.s"
+                              1 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -29,7 +23,7 @@ Hexadecimal [16-Bits]
                              17 ;;-------------------------------------------------------------------------------
                              18 
                              19 ;; All CPCtelera include files
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 
@@ -53,7 +47,7 @@ Hexadecimal [16-Bits]
                              16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
                              17 ;;-------------------------------------------------------------------------------
                              18 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 
@@ -113,7 +107,7 @@ Hexadecimal [16-Bits]
                              52 ;;    5 bytes
                              53 ;;
                              54 ;; Time Measures:
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
 Hexadecimal [16-Bits]
 
 
@@ -173,7 +167,7 @@ Hexadecimal [16-Bits]
                             107 ;; ------------------------------------
                             108 ;; (end code)
                             109 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
 Hexadecimal [16-Bits]
 
 
@@ -233,7 +227,7 @@ Hexadecimal [16-Bits]
                             162 ;;
                             163 ;; Parameters:
                             164 ;;    None
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
 
 
@@ -293,7 +287,7 @@ Hexadecimal [16-Bits]
                             217 ;;    This macro performs the subtraction of RH:RL - A and stores it directly on RH:RL.
                             218 ;; It uses only RH:RL and A to perform the operation.
                             219 ;;    With respect to the optional label ?JMPLBL, it is often better not to provide 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
 Hexadecimal [16-Bits]
 
 
@@ -353,7 +347,7 @@ Hexadecimal [16-Bits]
                             272 ;;
                             273 ;; Required memory:
                             274 ;;    7 bytes
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
 Hexadecimal [16-Bits]
 
 
@@ -413,7 +407,7 @@ Hexadecimal [16-Bits]
                             327 ;;
                             328 ;;    Performs the operation BC = BC - A. BC is any given pair of 8-bit registers.
                             329 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
 Hexadecimal [16-Bits]
 
 
@@ -449,7 +443,7 @@ Hexadecimal [16-Bits]
                             358 .macro sub_bc_a
                             359    sub_REGPAIR_a  b, c
                             360 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
 Hexadecimal [16-Bits]
 
 
@@ -495,7 +489,7 @@ Hexadecimal [16-Bits]
                              38 ;; Constant: opc_DI
                              39 ;;    Opcode for "DI" instruction. 
                      00F3    40 opc_DI = 0xF3
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
 Hexadecimal [16-Bits]
 
 
@@ -555,7 +549,7 @@ Hexadecimal [16-Bits]
                              52 ;;    3. Combines both reorders into final result using a *SelectionMask*. Each 
                              53 ;; 0 bit from the selection mask means "select bit from A2", whereas each 1 bit
                              54 ;; means "select bit from TReg2".
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
 Hexadecimal [16-Bits]
 
 
@@ -615,7 +609,7 @@ Hexadecimal [16-Bits]
                             107    xor TReg          ;; [1]   A2 = [xxxxxxxx] final value: bits of A reversed and selected using *SelectionMask*
                             108 .endm
                             109 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
 Hexadecimal [16-Bits]
 
 
@@ -675,7 +669,7 @@ Hexadecimal [16-Bits]
                             162 ;;
                             163 ;; Parameters:
                             164 ;;    TReg - An 8-bits register that will be used for intermediate calculations.
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
 Hexadecimal [16-Bits]
 
 
@@ -735,7 +729,7 @@ Hexadecimal [16-Bits]
                             217 ;; This register may be one of these: B, C, D, E, H, L
                             218 ;; 
                             219 ;; Input Registers: 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
 Hexadecimal [16-Bits]
 
 
@@ -784,7 +778,7 @@ Hexadecimal [16-Bits]
                             261    xor TReg        ;; [1] |   A2 = [03254761]
                             262    rrca            ;; [1] Rotate right to get pixels reversed A = [10325476]
                             263 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
 Hexadecimal [16-Bits]
 
 
@@ -844,7 +838,7 @@ Hexadecimal [16-Bits]
                              52 
                              53 ;; Macro: sll__d
                              54 ;;    Opcode for "SLL d" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
 Hexadecimal [16-Bits]
 
 
@@ -904,7 +898,7 @@ Hexadecimal [16-Bits]
                             107 .macro ld__ixl    Value 
                             108    .db #0xDD, #0x2E, Value  ;; Opcode for ld ixl, Value
                             109 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
 Hexadecimal [16-Bits]
 
 
@@ -964,7 +958,7 @@ Hexadecimal [16-Bits]
                             162 ;; 
                             163 .macro ld__b_ixl
                             164    .dw #0x45DD  ;; Opcode for ld b, ixl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
 Hexadecimal [16-Bits]
 
 
@@ -1024,7 +1018,7 @@ Hexadecimal [16-Bits]
                             217 ;;    Opcode for "AND ixl" instruction
                             218 ;; 
                             219 .macro and__ixl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
 Hexadecimal [16-Bits]
 
 
@@ -1084,7 +1078,7 @@ Hexadecimal [16-Bits]
                             272    .db #0xDD, #0x26, Value  ;; Opcode for ld ixh, Value
                             273 .endm
                             274 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
 Hexadecimal [16-Bits]
 
 
@@ -1144,7 +1138,7 @@ Hexadecimal [16-Bits]
                             327 .macro ld__b_ixh
                             328    .dw #0x44DD  ;; Opcode for ld b, ixh
                             329 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
 Hexadecimal [16-Bits]
 
 
@@ -1204,7 +1198,7 @@ Hexadecimal [16-Bits]
                             382 ;; 
                             383 .macro and__ixh
                             384    .dw #0xA4DD  ;; Opcode for and ixh
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
 Hexadecimal [16-Bits]
 
 
@@ -1264,7 +1258,7 @@ Hexadecimal [16-Bits]
                             437 
                             438 ;; Macro: ld__iyl_a
                             439 ;;    Opcode for "LD iyl, a" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
 Hexadecimal [16-Bits]
 
 
@@ -1324,7 +1318,7 @@ Hexadecimal [16-Bits]
                             492 .endm
                             493 
                             494 ;; Macro: ld__c_iyl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
 Hexadecimal [16-Bits]
 
 
@@ -1384,7 +1378,7 @@ Hexadecimal [16-Bits]
                             547    .dw #0xA5FD  ;; Opcode for and iyl
                             548 .endm
                             549 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
 Hexadecimal [16-Bits]
 
 
@@ -1444,7 +1438,7 @@ Hexadecimal [16-Bits]
                             602 ;;    Opcode for "LD iyh, a" instruction
                             603 ;; 
                             604 .macro ld__iyh_a
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
 Hexadecimal [16-Bits]
 
 
@@ -1504,7 +1498,7 @@ Hexadecimal [16-Bits]
                             657 ;; Macro: ld__c_iyh
                             658 ;;    Opcode for "LD c, iyh" instruction
                             659 ;; 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
 Hexadecimal [16-Bits]
 
 
@@ -1564,7 +1558,7 @@ Hexadecimal [16-Bits]
                             712 
                             713 ;; Macro: or__iyh
                             714 ;;    Opcode for "OR iyh" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
 Hexadecimal [16-Bits]
 
 
@@ -1601,7 +1595,7 @@ Hexadecimal [16-Bits]
                             744 .macro inc__iyh
                             745    .dw #0x24FD  ;; Opcode for inc iyh
                             746 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
 Hexadecimal [16-Bits]
 
 
@@ -1657,7 +1651,7 @@ Hexadecimal [16-Bits]
                              71       halt
                              72    .endm
                              73 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
 Hexadecimal [16-Bits]
 
 
@@ -1717,7 +1711,7 @@ Hexadecimal [16-Bits]
                              52 ;;   0x4001 | Key_F2          ||  0x0205 | Key_7         ||  0x1008 |  Key_Tab
                              53 ;;   0x8001 | Key_F0          ||  0x0405 | Key_U         ||  0x2008 |  Key_A
                              54 ;;   0x0102 | Key_Clr         ||  0x0805 | Key_Y         ||  0x4008 |  Key_CapsLock
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 33.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
 Hexadecimal [16-Bits]
 
 
@@ -1777,7 +1771,7 @@ Hexadecimal [16-Bits]
                      0803   107 Key_P            = #0x0803
                      1003   108 Key_SemiColon    = #0x1003
                      2003   109 Key_Colon        = #0x2003
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 34.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 33.
 Hexadecimal [16-Bits]
 
 
@@ -1837,7 +1831,7 @@ Hexadecimal [16-Bits]
                      4008   162 Key_CapsLock     = #0x4008
                      8008   163 Key_Z            = #0x8008
                             164 ;; Matrix Line 0x09
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 35.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 34.
 Hexadecimal [16-Bits]
 
 
@@ -1850,7 +1844,7 @@ Hexadecimal [16-Bits]
                      2009   170 Joy0_Fire2       = #0x2009
                      4009   171 Joy0_Fire3       = #0x4009
                      8009   172 Key_Del          = #0x8009
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 36.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 35.
 Hexadecimal [16-Bits]
 
 
@@ -1878,7 +1872,7 @@ Hexadecimal [16-Bits]
                              20 ;;
                              21 ;; Includes
                              22 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 37.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 36.
 Hexadecimal [16-Bits]
 
 
@@ -1938,7 +1932,7 @@ Hexadecimal [16-Bits]
                      0030    52 cpct_pageC0_asm = 0x30
                      0020    53 cpct_page80_asm = 0x20
                      0010    54 cpct_page40_asm = 0x10
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 38.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 37.
 Hexadecimal [16-Bits]
 
 
@@ -1998,7 +1992,7 @@ Hexadecimal [16-Bits]
                             107 ;; Parameters:
                             108 ;;    (__) REG16 - 16-bits register where the resulting value will be loaded
                             109 ;;    (2B) VMEM  - Start of video memory buffer where (*X*, *Y*) coordinates will be calculated
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 39.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 38.
 Hexadecimal [16-Bits]
 
 
@@ -2058,7 +2052,7 @@ Hexadecimal [16-Bits]
                             162 ;; Macro: cpctm_setCRTCReg
                             163 ;;
                             164 ;;    Macro that sets a new value for a given CRTC register.
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 40.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 39.
 Hexadecimal [16-Bits]
 
 
@@ -2118,7 +2112,7 @@ Hexadecimal [16-Bits]
                             217 ;;
                             218 ;; Macro: cpctm_setBorder_asm
                             219 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 41.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 40.
 Hexadecimal [16-Bits]
 
 
@@ -2178,7 +2172,7 @@ Hexadecimal [16-Bits]
                             272 ;; ASM Definition:
                             273 ;;   .macro <cpct_clearScreen_asm> COL
                             274 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 42.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 41.
 Hexadecimal [16-Bits]
 
 
@@ -2216,7 +2210,7 @@ Hexadecimal [16-Bits]
                             305    ld   (hl), #COL      ;; [3] First Byte = given Colour
                             306    ldir                 ;; [98297] Perform the copy
                             307 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 43.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 42.
 Hexadecimal [16-Bits]
 
 
@@ -2276,7 +2270,7 @@ Hexadecimal [16-Bits]
                      0001    52 FW_BLUE           =  1
                      0002    53 FW_BRIGHT_BLUE    =  2
                      0003    54 FW_RED            =  3
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 44.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 43.
 Hexadecimal [16-Bits]
 
 
@@ -2336,7 +2330,7 @@ Hexadecimal [16-Bits]
                      0015   107 HW_BRIGHT_BLUE    = 0x15
                      001C   108 HW_RED            = 0x1C
                      0018   109 HW_MAGENTA        = 0x18
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 45.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 44.
 Hexadecimal [16-Bits]
 
 
@@ -2363,7 +2357,7 @@ Hexadecimal [16-Bits]
                      000A   129 HW_BRIGHT_YELLOW  = 0x0A
                      0003   130 HW_PASTEL_YELLOW  = 0x03
                      000B   131 HW_BRIGHT_WHITE   = 0x0B
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 46.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 45.
 Hexadecimal [16-Bits]
 
 
@@ -2379,7 +2373,7 @@ Hexadecimal [16-Bits]
                      00F5    33 PPI_PORT_B     = 0xF5    ;; Port B of the PPI, used to read Vsync/Jumpers/PrinterBusy/CasIn/Exp information
                      00BC    34 CRTC_SELECTREG = 0xBC    ;; CRTC Port and command "Select Register"
                      00BD    35 CRTC_SETVAL    = 0xBD    ;; CRTC Port and command "Set Value"
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 47.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 46.
 Hexadecimal [16-Bits]
 
 
@@ -2410,7 +2404,7 @@ Hexadecimal [16-Bits]
                              23 ;;### in assembler code
                              24 ;;#####################################################################
                              25 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 48.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 47.
 Hexadecimal [16-Bits]
 
 
@@ -2470,7 +2464,7 @@ Hexadecimal [16-Bits]
                              52 ;;
                              53 ;; Returns:
                              54 ;;    REG = X * (Y - 1) ;; Register loaded with the offset
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 48.
 Hexadecimal [16-Bits]
 
 
@@ -2496,12 +2490,12 @@ Hexadecimal [16-Bits]
                              73 .macro cpctm_ld_sblo REG, X, Y
                              74    ld    REG, #X * (Y-1)
                              75 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
 Hexadecimal [16-Bits]
 
 
 
-                              3 .include "entity.h.s"
+                              2 .include "entity.h.s"
                               1 
                               2 .globl ent_clear
                               3 .globl ent_draw
@@ -2548,12 +2542,12 @@ Hexadecimal [16-Bits]
                              44 
                              45 .globl personaje
                              46 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
 
 
-                              4 .include "main.h.s"
+                              3 .include "main.h.s"
                               1 .globl cpct_disableFirmware_asm
                               2 .globl cpct_drawSolidBox_asm
                               3 .globl cpct_getScreenPtr_asm
@@ -2561,27 +2555,12 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
                               7 .globl cpct_isKeyPressed_asm    
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
-                              5 .include "keys.h.s"
-                              1 ;;====================================================
-                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
-                              3 ;;====================================================
-                              4 .globl key_draw
-                              5 .globl key_update
-                              6 .globl key_clear
-                              7 .globl pick_keys
-                              8 .globl drop_keys
-                              9 .globl keys
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
-Hexadecimal [16-Bits]
-
-
-
-                              6  .include "wall.h.s"
+                              4 .include "wall.h.s"
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
@@ -2621,412 +2600,162 @@ Hexadecimal [16-Bits]
                              37 .globl w2
                              38 ;.globl w3
                              39 ;.globl w4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+Hexadecimal [16-Bits]
+
+
+
+                              5 .include "door.h.s"
+                              1 
+                              2 .globl door_draw
+                              3 .globl door_clear
+                              4 .globl check_door
+                              5 .globl open_door
+                              6 
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineDoor _name, _x, _y, _w, _h, _col, _op
+                             18 _name: 
+                             19     .db     _x, _y      ;; X, Y
+                             20     .db     _w, _h      ;; W, H
+                             21     .db     _col        ;; Color
+                             22     .db     _op         ;;Open-close 
+                             23 .endm
+                     0000    24 d_x = 0
+                     0001    25 d_y = 1
+                     0002    26 d_w = 2
+                     0003    27 d_h = 3
+                     0004    28 d_col = 4
+                     0005    29 d_op = 5
+                             30 
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             32 ;;
+                             33 ;;OBJETOS CREADOS CON LA MACROS
+                             34 ;;
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             36 
+                             37 .globl door0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
+                              6 .include "keys.h.s"
+                              1 ;;====================================================
+                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
+                              3 ;;====================================================
+                              4 .globl key_draw
+                              5 .globl key_update
+                              6 .globl key_clear
+                              7 .globl pick_keys
+                              8 .globl drop_keys
+                              9 .globl keys
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
                               7 
-                              8 
-   4056                       9 DefineEntity personaje, 0x20, 0x48, 0x00, 0x00, 0x04, 0x08, 0x0F, ent_moveKeyboard, 0x00, 0x03
-   0000                       1 personaje: 
-   4056 20 48                 2    .db    0x20, 0x48     ;; X, Y
-   4058 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   405A 04 08                 4    .db    0x04, 0x08     ;; W, H
-   405C 0F                    5    .db   0x0F        ;; Color
-   405D 5F 41                 6    .dw   ent_moveKeyboard        ;; Update 
-   405F 00                    7    .db   0x00        ;; Key   
-   4060 03                    8    .db 	 0x03         ;; HP
+   41CA                       8 	DefineDoor door0, 100, 150, 3, 50, 0xC0, 0
+   0000                       1 door0: 
+   41CA 64 96                 2     .db     100, 150      ;; X, Y
+   41CC 03 32                 3     .db     3, 50      ;; W, H
+   41CE C0                    4     .db     0xC0        ;; Color
+   41CF 00                    5     .db     0         ;;Open-close 
+                              9 	
                              10 
                              11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             15 ;; DIBUJAR UNA ENTIDAD
-                             16 ;; PARA CUADRADOS UNICAMENTE
-                             17 ;; ENTRADA: IX -> Puntero a entidad
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4061                      19 ent_draw:
-   4061 DD 21 56 40   [14]   20       ld ix,#personaje
-                             21 
-   4065 11 00 C0      [10]   22    ld    de, #0xC000       ;;Comienzo memoria de video
-   4068 DD 4E 00      [19]   23    ld     c, e_x(ix)         ;; C = Entity Y
-   406B DD 46 01      [19]   24    ld     b, e_y(ix)         ;; B = Entity X
-   406E CD BA 43      [17]   25    call cpct_getScreenPtr_asm
-                             26 
-   4071 EB            [ 4]   27    ex    de, hl   ;; DE = Puntero a memoria
-   4072 DD 7E 06      [19]   28    ld  a, e_col(ix)   ;; Color
-   4075 DD 46 05      [19]   29    ld  b, e_h(ix)   ;; alto
-   4078 DD 4E 04      [19]   30    ld  c, e_w(ix)   ;; Ancho
-                             31 
-   407B CD 0D 43      [17]   32    call cpct_drawSolidBox_asm
-                             33 
-   407E C9            [10]   34    ret
-                             35 
-                             36 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             37 ;; BORRA UNA ENTIDAD
-                             38 ;; PARA CUADRADOS UNICAMENTE
-                             39 ;; ENTRADA: IX -> Puntero a entidad
-                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   407F                      41 ent_clear:
-   407F DD 21 56 40   [14]   42   ld ix,#personaje
-                             43 
-   4083 DD 7E 06      [19]   44    ld  a, e_col(ix)
-   4086 08            [ 4]   45    ex af, af'
+                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             13 ;; DIBUJAR UNA ENTIDAD
+                             14 ;; PARA CUADRADOS UNICAMENTE
+                             15 ;; ENTRADA: IX -> Puntero a entidad
+                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41D0                      17 door_draw:
+   41D0 DD 21 CA 41   [14]   18     ld ix,#door0
+                             19 
+   41D4 DD 7E 05      [19]   20     ld a, d_op(ix)
+   41D7 D6 01         [ 7]   21     sub #1
+                             22 
+   41D9 C2 E7 41      [10]   23     jp nz,prueba
+                             24 
+   41DC 3E FF         [ 7]   25     ld a, #0xFF
+   41DE 32 01 C0      [13]   26     ld (0xC001),a
+   41E1 32 02 C0      [13]   27     ld (0xC002),a
+   41E4 32 03 C0      [13]   28     ld (0xC003),a
+                             29 
+   41E7                      30     prueba:
+                             31     
+   41E7 DD 7E 05      [19]   32     ld a, d_op(ix)
+   41EA D6 01         [ 7]   33     sub #1
+                             34 
+   41EC CA 08 42      [10]   35     jp z, not_draw_door
+                             36 
+   41EF 11 00 C0      [10]   37     ld    de, #0xC000       ;;Comienzo memoria de video
+   41F2 DD 4E 00      [19]   38     ld     c, w_x(ix)         ;; C = Entity Y
+   41F5 DD 46 01      [19]   39     ld     b, w_y(ix)         ;; B = Entity X
+   41F8 CD BA 43      [17]   40     call cpct_getScreenPtr_asm
+                             41 
+   41FB EB            [ 4]   42     ex    de, hl   ;; DE = Puntero a memoria
+   41FC DD 7E 04      [19]   43     ld  a, w_col(ix)   ;; Color
+   41FF DD 46 03      [19]   44     ld  b, w_h(ix)   ;; alto
+   4202 DD 4E 02      [19]   45     ld  c, w_w(ix)   ;; Ancho
                              46 
-   4087 DD 36 06 00   [19]   47    ld  e_col(ix), #0
+   4205 CD 0D 43      [17]   47     call cpct_drawSolidBox_asm
                              48 
-   408B CD 61 40      [17]   49    call ent_draw
-   408E 08            [ 4]   50    ex af, af'
-   408F DD 77 06      [19]   51    ld e_col(ix), a
+   4208                      49     not_draw_door:
+                             50 
+   4208 C9            [10]   51 ret
                              52 
-   4092 C9            [10]   53    ret
+                             53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             54 ;; BORRA UNA ENTIDAD
+                             55 ;; PARA CUADRADOS UNICAMENTE
+                             56 ;; ENTRADA: IX -> Puntero a entidad
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
 
-                             54 
-                             55 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             56 ;; ACTUALIZAR UNA ENTIDAD
-                             57 ;; LLAMA A SU FUNCION DIFERENCIATIVA
-                             58 ;; ENTRADA: IX -> Puntero a entidad
-                             59 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4093                      60 ent_update:
-   4093 DD 21 56 40   [14]   61   ld ix,#personaje
+                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   4209                      58 door_clear:
+   4209 DD 21 CA 41   [14]   59     ld ix,#door0
+   420D DD 7E 04      [19]   60     ld  a, w_col(ix)
+   4210 08            [ 4]   61     ex af, af'
                              62 
-   4097 DD 66 08      [19]   63     ld     h, e_up_h(ix)
-   409A DD 6E 07      [19]   64     ld     l, e_up_l(ix)
-   409D E9            [ 4]   65     jp    (hl)  
-                             66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             67 ;; MOVER UNA ENTIDAD
-                             68 ;; 
-                             69 ;; ENTRADA: IX -> Puntero a entidad
-                             70 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   4211 DD 36 04 00   [19]   63     ld  w_col(ix), #0
+                             64 
+   4215 CD A0 41      [17]   65     call wall_draw
+   4218 08            [ 4]   66     ex af, af'
+   4219 DD 77 04      [19]   67     ld w_col(ix), a
+                             68 
+   421C C9            [10]   69     ret
+                             70 
                              71 
-   409E                      72 ent_move:
-   409E DD 7E 00      [19]   73    ld    a, e_x(ix) 
-   40A1 DD 86 02      [19]   74    add   e_vx(ix)
-   40A4 DD 77 00      [19]   75    ld    e_x(ix), a
+   421D                      72 check_door:
+   421D DD 21 56 40   [14]   73     ld ix,#personaje
+   4221 DD 7E 09      [19]   74     ld a, e_key(ix)
+   4224 D6 01         [ 7]   75     sub #1
                              76 
-   40A7 DD 7E 01      [19]   77    ld    a, e_y(ix) 
-   40AA DD 86 03      [19]   78    add   e_vy(ix)
-   40AD DD 77 01      [19]   79    ld    e_y(ix), a
+   4226 C2 2C 42      [10]   77     jp nz, no_key
+                             78 
+   4229 CD 2D 42      [17]   79     call open_door
                              80 
-                             81    
-   40B0 C9            [10]   82    ret
-                             83 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             84 ;; VERSION ACTUALIZADA DEL MOVE PARA EL PERSONAJE
-                             85 ;;  
-                             86 ;; ENTRADA: IX -> Puntero al personaje
-                             87 ;; HL IS USED TO POINT THE COLLISIONABLE ENTITIES
-                             88 ;; E is used to control the amount of walls left to check in the loop
-                             89 ;; SUMMONS COLLIDE FOR EVERY COLLISIONABLE ENTITY 
-                             90 ;; 
-                             91 ;; Saves current position
-                             92 ;; Calculates next position with its velocity
-                             93 ;; If no colition detected with collide, continues normaly
-                             94 ;; If colition detected, next position will be overwritten with the previously saved 
-                             95 ;; ------------------- VERSION 1.2-----------------
-                             96 ;; When next position (x or y) is calculated it will check if will go out of bounds or
-                             97 ;; out of the screen
-                             98 ;;--------------------VERSION 1.3 -----------------
-                             99 ;; Since now there are n walls this collide no longer works with the same short of entity as 
-                            100 ;;player (no more instances, just hero) and it will check by a loop if player collides with those 
-                            101 ;;walls. 
-                            102 ;;
-                            103 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            104 
-   40B1                     105 ent_move2:   
-   40B1 DD 46 00      [19]  106     ld b, e_x(ix) ;; save current x position in b
-   40B4 DD 4E 01      [19]  107     ld c, e_y(ix) ;; save current y position in c
-                            108 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
-Hexadecimal [16-Bits]
-
-
-
-                            109 
-                            110 
-   40B7 DD 7E 00      [19]  111    ld    a, e_x(ix) ;;
-   40BA DD 86 02      [19]  112    add   e_vx(ix)   ;;
-   40BD DD 77 00      [19]  113    ld    e_x(ix), a ;; next "x" postion = current "x" + velocity
-                            114 
-   40C0 DD 36 02 00   [19]  115      ld e_vx(ix), #0;;
-                            116    
-                            117 
-                            118 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
-                            119 
-   40C4 DD 7E 00      [19]  120  ld    a, e_x(ix)     ;; Since screen max x is79
-   40C7 D6 4D         [ 7]  121   sub  #77            ;; check if is going to move further or outta screen
-                            122                       ;; if true we will go to the reassingnament part
-   40C9 28 50         [12]  123  jr z, colisionX       ;;
-                            124 
-                            125 
-                            126 
-   40CB DD 7E 00      [19]  127   ld    a, e_x(ix)  ;; Same as before but now with the leftest position
-   40CE D6 00         [ 7]  128   sub #0            ;;
-                            129                     ;;
-   40D0 28 49         [12]  130     jr z, colisionX  ;;
-                            131 
-                            132 ;;  END MAX MIN X CHECK
-                            133 
-                            134 
-                            135 
-   40D2 DD 7E 01      [19]  136    ld    a, e_y(ix) ;;
-   40D5 DD 86 03      [19]  137    add   e_vy(ix)   ;;
-   40D8 DD 77 01      [19]  138    ld    e_y(ix), a ;; next "y" postion = current "y" + velocity
-                            139 
-   40DB DD 36 03 00   [19]  140     ld e_vy(ix), #0   ;; reset both velocities since they only are modified in ent_moveKeyboard
-                            141 
-                            142 
-                            143 
-                            144 
-                            145 
-                            146 ;; CHECK MAX AND MIN SCREEN Y AND PREVENT PLAYER TO GO FURTHER
-                            147 
-                            148 
-                            149 
-   40DF DD 7E 01      [19]  150   ld    a, e_y(ix)  ;; Same as x check but now we apply the 192 max y position
-   40E2 D6 C0         [ 7]  151   sub  #192         ;;
-                            152                     ;;
-   40E4 28 39         [12]  153     jr z, colisionY  ;;
-                            154 
-                            155 
-                            156 
-   40E6 DD 7E 01      [19]  157   ld    a, e_y(ix)  ;; In theory, min y must be 0, but after some tests it seems that
-   40E9 D6 03         [ 7]  158   sub #3            ;; after gitting 3 it skips 2,1,0 and jumps to FD or to a non-wished
-                            159                     ;; position, so we put the uppest block at position 3
-   40EB 28 32         [12]  160     jr z, colisionY  ;;
-                            161 
-                            162 ;;  END MAX MIN X CHECK
-                            163 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
-Hexadecimal [16-Bits]
-
-
-
-                            164 
-                            165 
-                            166 
-   40ED 21 96 41      [10]  167      ld hl, #w1       ;; Save first wall pointer or head of the vector in hl
-                            168 
-   40F0 1E 02         [ 7]  169      ld e , #num_walls ;; Load in E the amount of walls to check
-                            170 
-                            171  ;; WALL CHECKING LOOP ;;
-   40F2                     172   bucl:
-   40F2 16 01         [ 7]  173     ld d, #1          ;; Prepare check flag by saving a 1 in d
-                            174     
-   40F4 CD 23 41      [17]  175     call ent_collide  ;; check collision
-                            176 
-   40F7 7A            [ 4]  177         ld a,d          ;;d is changed in collide if a collision happened 
-   40F8 D6 01         [ 7]  178     sub #1              ;;holding a 0 otherwise it will be a 1
-                            179     
-   40FA 23            [ 6]  180     inc hl          ;;
-   40FB 23            [ 6]  181     inc hl          ;;
-   40FC 23            [ 6]  182     inc hl          ;;
-   40FD 23            [ 6]  183     inc hl          ;;
-   40FE 23            [ 6]  184     inc hl          ;; by jumping 5 times we head to first item in the next wall
-                            185     
-                            186     
-   40FF 20 13         [12]  187     jr nz, colision  ;; if there is a 0 in D we will go to the reassingnament part
-                            188   
-                            189 
-   4101 7B            [ 4]  190     ld a,e          ;; load current loop lap in e in a
-   4102 D6 01         [ 7]  191     sub #1          ;; discount 1 since 1 wall was just checked
-   4104 5F            [ 4]  192     ld e,a          ;; return new lap counter to e
-   4105 20 EB         [12]  193     jr nz , bucl    ;; if next lap is not 0 (there are walls yet to check) we return to the top of the loop
-                            194 
-                            195    
-                            196 
-                            197 
-                            198      ;; KEY  ;;
-                            199 
-   4107 21 37 42      [10]  200      ld hl, #keys
-   410A CD 23 41      [17]  201     call ent_collide
-                            202 
-   410D 7A            [ 4]  203         ld a,d
-   410E D6 01         [ 7]  204     sub #1
-                            205     
-                            206     
-   4110 C2 42 42      [10]  207     jp nz, pick_keys
-                            208     ;;jp z,drop_keys
-                            209     
-                            210 
-   4113 C9            [10]  211  ret
-   4114                     212     colision:
-                            213    
-                            214        
-   4114 DD 70 00      [19]  215     ld e_x(ix), b
-   4117 DD 71 01      [19]  216     ld e_y(ix), c
-                            217 
-   411A C9            [10]  218   ret
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 58.
-Hexadecimal [16-Bits]
-
-
-
-   411B                     219      colisionX:
-                            220    
-                            221      
-   411B DD 70 00      [19]  222     ld e_x(ix), b
-   411E C9            [10]  223   ret
-                            224    
-   411F                     225     colisionY:
-                            226  
-   411F DD 71 01      [19]  227     ld e_y(ix), c
-                            228 
-   4122 C9            [10]  229    ret
-                            230 
-                            231 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            232 ;; COMPROBACION COLISIONES BOUNDING BOXES
-                            233 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-                            234 ;; UN OBSTACULO Y EL PERSONAJE
-                            235 ;; ----- VERSION 1.2----------
-                            236 ;; ADAPTED SO IT WILL WORK ALSO FOR WALLS
-                            237 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            238 
-   4123                     239 ent_collide:
-                            240 
-                            241 
-                            242   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-                            243    
-                            244                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
-   4123 DD 7E 00      [19]  245    ld a, e_x(ix)  ;; A = hero_X
-   4126 DD 86 04      [19]  246    add e_w(ix)    ;; A + hero_W
-   4129 96            [ 7]  247    sub (hl)       ;; A - obs_X 
-                            248    
-   412A 28 32         [12]  249    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
-   412C FA 5E 41      [10]  250    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
-                            251 
-                            252                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
-   412F 7E            [ 7]  253     ld a ,(hl)    ;; A = hl -> obs_X
-   4130 23            [ 6]  254     inc hl        ;;
-                            255    
-   4131 23            [ 6]  256     inc hl        ;; hl + 2 -> obs_W
-                            257 
-   4132 86            [ 7]  258     add (hl)      ;; A + obs_W
-                            259                   ;;
-   4133 DD 96 00      [19]  260     sub e_x(ix)   ;; A - hero_X
-                            261 
-   4136 2B            [ 6]  262     dec hl        ;;
-   4137 2B            [ 6]  263     dec hl        ;; return to the first item in the object
-                            264 
-                            265 
-   4138 28 24         [12]  266     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
-   413A FA 5E 41      [10]  267     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
-                            268 
-                            269 
-                            270 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-                            271                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
-   413D 23            [ 6]  272     inc hl        ;; Puntero hl -> obs_Y
-                            273 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
-Hexadecimal [16-Bits]
-
-
-
-                            274   
-                            275 
-   413E DD 7E 01      [19]  276    ld a, e_y(ix)  ;; A = hero__Y
-   4141 DD 86 05      [19]  277    add e_h(ix)    ;; A + hero__H
-   4144 96            [ 7]  278    sub (hl)       ;; A - obs_Y
-                            279    
-   4145 2B            [ 6]  280    dec hl         ;; return to the first item in the object
-                            281 
-   4146 28 16         [12]  282    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
-   4148 FA 5E 41      [10]  283    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
-                            284 
-   414B 23            [ 6]  285    inc hl         ;; hl + -> obs_y
-                            286                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
-   414C 7E            [ 7]  287    ld a ,(hl)     ;; A = obs_Y
-   414D 23            [ 6]  288    inc hl         ;;
-                            289 
-   414E 23            [ 6]  290    inc hl         ;; hl + 2 -> obs_H
-                            291 
-   414F 86            [ 7]  292    add (hl)       ;; A + obs_H
-   4150 DD 96 01      [19]  293    sub e_y(ix)    ;; A - hero_Y
-                            294 
-   4153 2B            [ 6]  295     dec hl        ;;
-   4154 2B            [ 6]  296     dec hl        ;;
-   4155 2B            [ 6]  297     dec hl        ;;  return to the first item in the object
-                            298 
-   4156 28 06         [12]  299     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
-   4158 FA 5E 41      [10]  300     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
-                            301 
-                            302 
-   415B 16 00         [ 7]  303     ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
-                            304  
-   415D C9            [10]  305     ret
-                            306 
-   415E                     307 no_coll:
-                            308 
-   415E C9            [10]  309 ret
-                            310 
-                            311 
-                            312 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            313 ;; MOVIENTO MEDIANTE TECLADO
-                            314 ;;          W(ARRIBA)
-                            315 ;; A (IZDA) S(ABAJO) D(DERECHA)
-                            316 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   415F                     317 ent_moveKeyboard:
-   415F CD D6 43      [17]  318     call cpct_scanKeyboard_asm
-                            319       
-   4162 21 08 20      [10]  320    ld hl, #Key_A ;;O
-   4165 CD D2 42      [17]  321     call cpct_isKeyPressed_asm
-   4168 28 04         [12]  322     jr z, o_no_pulsada
-                            323     
-   416A DD 36 02 FF   [19]  324     ld e_vx(ix), #-1
-                            325     
-   416E                     326  o_no_pulsada:   
-                            327     
-                            328     
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
-Hexadecimal [16-Bits]
-
-
-
-   416E 21 07 20      [10]  329       ld hl, #Key_D ;;P
-   4171 CD D2 42      [17]  330     call cpct_isKeyPressed_asm
-   4174 28 04         [12]  331     jr z, p_no_pulsada
-                            332     
-   4176 DD 36 02 01   [19]  333     ld e_vx(ix), #1
-                            334     
-   417A                     335  p_no_pulsada:
-                            336 
-   417A 21 07 08      [10]  337    ld hl, #Key_W;;Q
-   417D CD D2 42      [17]  338    call cpct_isKeyPressed_asm
-   4180 28 04         [12]  339    jr z, q_no_pulsada
-                            340 
-   4182 DD 36 03 FD   [19]  341    ld e_vy(ix), #-3
-                            342 
-   4186                     343  q_no_pulsada:
-   4186 21 07 10      [10]  344     ld hl, #Key_S ;;W
-   4189 CD D2 42      [17]  345     call cpct_isKeyPressed_asm
-   418C 28 04         [12]  346     jr z, w_no_pulsada
-                            347 
-   418E DD 36 03 03   [19]  348     ld e_vy(ix), #3
-                            349 
-   4192                     350  w_no_pulsada:
-                            351     
-                            352     
-   4192 CD B1 40      [17]  353     call ent_move2
-                            354     
-                            355 
-                            356 
-                            357 
-                            358 
-                            359   
-                            360 
-                            361  ;    ld a, #0x00
-                            362  ;ld (0xC000), a
-                            363  ; ld (0xC001), a
-                            364   ;ld (0xC002), a
-                            365     
-                            366 
-                            367 
-                            368 
-                            369 
-                            370 
-                            371 
-   4195 C9            [10]  372    ret
+   422C                      81     no_key:
+                             82 
+   422C C9            [10]   83 ret
+                             84 
+   422D                      85 open_door:
+                             86     
+   422D DD 21 CA 41   [14]   87     ld ix, #door0
+   4231 3E 01         [ 7]   88     ld a,#1
+   4233 DD 77 05      [19]   89     ld d_op(ix), a
+                             90 
+                             91     
+   4236 C9            [10]   92 ret

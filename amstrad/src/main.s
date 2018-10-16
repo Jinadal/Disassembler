@@ -22,7 +22,9 @@
 .include "main.h.s"
 .include "keys.h.s"
 .include "hp.h.s"
-  .include "wall.h.s"
+.include "wall.h.s"
+.include "door.h.s"
+
 ;;
 
 ;; Start of _DATA area 
@@ -51,7 +53,7 @@ loop:
   
   call key_clear
   call ent_clear
-  
+  call door_clear
     ld ix, #w1
   call wall_clear
   ld ix, #w2
@@ -60,7 +62,7 @@ loop:
   call ent_update
   call key_draw
   call ent_draw
-
+  call door_draw
     ld ix, #w1
   call wall_draw
   ld ix, #w2

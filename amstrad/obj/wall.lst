@@ -2613,18 +2613,18 @@ Hexadecimal [16-Bits]
                              10 	;DefineWall w4, 0, 190, 77,8,0x0A
                              11 
                      0002    12 	num_walls = 2
-   0000 05                   13 	wall_size: .db 05
+                     0005    13 	wall_size = 5
                              14 
-   0001                      15 	DefineWall w1, 20, 20, 2,20,0x0A
-   0001                       1 w1: 
-   0001 14 14                 2    .db    20, 20     ;; X, Y
-   0003 02 14                 3    .db    2, 20     ;; W, H
-   0005 0A                    4    .db   0x0A        ;; Color
-   0006                      16 	DefineWall w2, 25, 40, 10,8,0x0A
-   0006                       1 w2: 
-   0006 19 28                 2    .db    25, 40     ;; X, Y
-   0008 0A 08                 3    .db    10, 8     ;; W, H
-   000A 0A                    4    .db   0x0A        ;; Color
+   0000                      15 	DefineWall w1, 20, 20, 2,20,0x0A
+   0000                       1 w1: 
+   0000 14 14                 2    .db    20, 20     ;; X, Y
+   0002 02 14                 3    .db    2, 20     ;; W, H
+   0004 0A                    4    .db   0x0A        ;; Color
+   0005                      16 	DefineWall w2, 25, 40, 10,8,0x0A
+   0005                       1 w2: 
+   0005 19 28                 2    .db    25, 40     ;; X, Y
+   0007 0A 08                 3    .db    10, 8     ;; W, H
+   0009 0A                    4    .db   0x0A        ;; Color
                              17 	;DefineWall w3, 0, 0, 2,190,0x0A
                              18 	;DefineWall w4, 0, 190, 77,8,0x0A
                              19 
@@ -2635,7 +2635,7 @@ Hexadecimal [16-Bits]
                              24 ;; PARA CUADRADOS UNICAMENTE
                              25 ;; ENTRADA: IX -> Puntero a entidad
                              26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   000B                      27 wall_draw:
+   000A                      27 wall_draw:
                              28 
                              29 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
                              30 ; ld e' , #num_walls
@@ -2643,17 +2643,17 @@ Hexadecimal [16-Bits]
                              32 
                              33  ;bucl:
                              34 	
-   000B 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
-   000E DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
-   0011 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
-   0014 CD 00 00      [17]   38    call cpct_getScreenPtr_asm
+   000A 11 00 C0      [10]   35    ld    de, #0xC000       ;;Comienzo memoria de video
+   000D DD 4E 00      [19]   36    ld     c, w_x(ix)         ;; C = Entity Y
+   0010 DD 46 01      [19]   37    ld     b, w_y(ix)         ;; B = Entity X
+   0013 CD 00 00      [17]   38    call cpct_getScreenPtr_asm
                              39 
-   0017 EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
-   0018 DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
-   001B DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
-   001E DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
+   0016 EB            [ 4]   40    ex    de, hl   ;; DE = Puntero a memoria
+   0017 DD 7E 04      [19]   41    ld  a, w_col(ix)   ;; Color
+   001A DD 46 03      [19]   42    ld  b, w_h(ix)   ;; alto
+   001D DD 4E 02      [19]   43    ld  c, w_w(ix)   ;; Ancho
                              44 
-   0021 CD 00 00      [17]   45    call cpct_drawSolidBox_asm
+   0020 CD 00 00      [17]   45    call cpct_drawSolidBox_asm
                              46 
                              47 
                              48   ;  inc ix
@@ -2673,25 +2673,25 @@ Hexadecimal [16-Bits]
                              57     ;ld e',a
                              58     ;jr nz , bucl
                              59 
-   0024 C9            [10]   60    ret
+   0023 C9            [10]   60    ret
                              61 
                              62 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              63 ;; BORRA UNA ENTIDAD
                              64 ;; PARA CUADRADOS UNICAMENTE
                              65 ;; ENTRADA: IX -> Puntero a entidad
                              66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0025                      67 wall_clear:
+   0024                      67 wall_clear:
                              68 	
-   0025 DD 7E 04      [19]   69    ld  a, w_col(ix)
-   0028 08            [ 4]   70    ex af, af'
+   0024 DD 7E 04      [19]   69    ld  a, w_col(ix)
+   0027 08            [ 4]   70    ex af, af'
                              71 
-   0029 DD 36 04 00   [19]   72    ld  w_col(ix), #0
+   0028 DD 36 04 00   [19]   72    ld  w_col(ix), #0
                              73 
-   002D CD 0B 00      [17]   74    call wall_draw
-   0030 08            [ 4]   75    ex af, af'
-   0031 DD 77 04      [19]   76    ld w_col(ix), a
+   002C CD 0A 00      [17]   74    call wall_draw
+   002F 08            [ 4]   75    ex af, af'
+   0030 DD 77 04      [19]   76    ld w_col(ix), a
                              77 
-   0034 C9            [10]   78    ret
+   0033 C9            [10]   78    ret
                              79 
                              80 
                              81 

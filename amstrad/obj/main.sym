@@ -55,37 +55,41 @@ Symbol Table
     Key_V   =  8006     |     Key_W   =  0807     |     Key_X   =  8007 
     Key_Y   =  0805     |     Key_Z   =  8008     |     PAL_INKR=  0040 
     PAL_PENR=  0000     |     PPI_PORT=  00F5     |   0 _main      0000 GR
-    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
-    cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
-    cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
+    check_do   **** GX  |     cpct_dis   **** GX  |     cpct_dra   **** GX
+    cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_pag=  0000 
+    cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    cpct_set   **** GX  |     cpct_wai   **** GX  |     drop_key   **** GX
-    e_col   =  0006     |     e_h     =  0005     |     e_hp    =  000A 
-    e_key   =  0009     |     e_up_h  =  0008     |     e_up_l  =  0007 
-    e_vx    =  0002     |     e_vy    =  0003     |     e_w     =  0004 
-    e_x     =  0000     |     e_y     =  0001     |     ent_clea   **** GX
-    ent_coll   **** GX  |     ent_draw   **** GX  |     ent_move   **** GX
-    ent_move   **** GX  |     ent_move   **** GX  |     ent_upda   **** GX
-    hp1        **** GX  |     hp2        **** GX  |     hp3        **** GX
-    hp_UP   =  0005     |     hp_col  =  0004     |     hp_h    =  0003 
-    hp_w    =  0002     |     hp_x    =  0000     |     hp_y    =  0001 
-    key_clea   **** GX  |     key_draw   **** GX  |     key_upda   **** GX
-    keys       **** GX  |   0 loop       0008 R   |     num_wall   **** GX
-    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |     personaj   **** GX  |     pick_key   **** GX
-    w1         **** GX  |     w2         **** GX  |     w_col   =  0004 
-    w_h     =  0003     |     w_w     =  0002     |     w_x     =  0000 
-    w_y     =  0001     |     wall_cle   **** GX  |     wall_dra   **** GX
+    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
+    d_col   =  0004     |     d_h     =  0003     |     d_op    =  0005 
+    d_w     =  0002     |     d_x     =  0000     |     d_y     =  0001 
+    door0      **** GX  |     door_cle   **** GX  |     door_dra   **** GX
+    drop_key   **** GX  |     e_col   =  0006     |     e_h     =  0005 
+    e_hp    =  000A     |     e_key   =  0009     |     e_up_h  =  0008 
+    e_up_l  =  0007     |     e_vx    =  0002     |     e_vy    =  0003 
+    e_w     =  0004     |     e_x     =  0000     |     e_y     =  0001 
+    ent_clea   **** GX  |     ent_coll   **** GX  |     ent_draw   **** GX
+    ent_move   **** GX  |     ent_move   **** GX  |     ent_move   **** GX
+    ent_upda   **** GX  |     hp1        **** GX  |     hp2        **** GX
+    hp3        **** GX  |     hp_UP   =  0005     |     hp_col  =  0004 
+    hp_h    =  0003     |     hp_w    =  0002     |     hp_x    =  0000 
+    hp_y    =  0001     |     key_clea   **** GX  |     key_draw   **** GX
+    key_upda   **** GX  |     keys       **** GX  |   0 loop       0008 R
+    num_wall   **** GX  |     opc_DI  =  00F3     |     opc_EI  =  00FB 
+    opc_JR  =  0018     |     opc_LD_D=  0016     |     open_doo   **** GX
+    personaj   **** GX  |     pick_key   **** GX  |     w1         **** GX
+    w2         **** GX  |     w_col   =  0004     |     w_h     =  0003 
+    w_w     =  0002     |     w_x     =  0000     |     w_y     =  0001 
+    wall_cle   **** GX  |     wall_dra   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   50   flags    0
+   0 _CODE      size   56   flags    0
    1 _DATA      size    0   flags    0
 

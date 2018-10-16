@@ -2628,11 +2628,11 @@ Hexadecimal [16-Bits]
 
                               7 
                               8 
-   0000                       9 DefineEntity personaje, 0x20, 0x48, 0x00, 0x00, 0x02, 0x08, 0x0F, ent_moveKeyboard, 0x00, 0x03
+   0000                       9 DefineEntity personaje, 0x20, 0x48, 0x00, 0x00, 0x04, 0x08, 0x0F, ent_moveKeyboard, 0x00, 0x03
    0000                       1 personaje: 
    0000 20 48                 2    .db    0x20, 0x48     ;; X, Y
    0002 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   0004 02 08                 4    .db    0x02, 0x08     ;; W, H
+   0004 04 08                 4    .db    0x04, 0x08     ;; W, H
    0006 0F                    5    .db   0x0F        ;; Color
    0007 09 01                 6    .dw   ent_moveKeyboard        ;; Update 
    0009 00                    7    .db   0x00        ;; Key   
@@ -2822,213 +2822,211 @@ Hexadecimal [16-Bits]
    00A1 7A            [ 4]  177         ld a,d          ;;d is changed in collide if a collision happened 
    00A2 D6 01         [ 7]  178     sub #1              ;;holding a 0 otherwise it will be a 1
                             179     
-q  00A4                     180     ld bc', bc
-                            181 
-u  00A4 01 00 00      [10]  182     ld bc, #wall_size
-                            183 
-   00A7 DD 09         [15]  184     add ix, bc
-                            185 
-aq 00A9               [15]  186     ld bc, bc'
-                            187 
-                            188     
-   00A9 20 13         [12]  189     jr nz, colision  ;; if there is a 0 in D we will go to the reassingnament part
-                            190   
-                            191 
-   00AB 7B            [ 4]  192     ld a,e          ;; load current loop lap in e in a
-   00AC D6 01         [ 7]  193     sub #1          ;; discount 1 since 1 wall was just checked
-   00AE 5F            [ 4]  194     ld e,a          ;; return new lap counter to e
-   00AF 20 EB         [12]  195     jr nz , bucl    ;; if next lap is not 0 (there are walls yet to check) we return to the top of the loop
+   00A4 23            [ 6]  180     inc hl          ;;
+   00A5 23            [ 6]  181     inc hl          ;;
+   00A6 23            [ 6]  182     inc hl          ;;
+   00A7 23            [ 6]  183     inc hl          ;;
+   00A8 23            [ 6]  184     inc hl          ;; by jumping 5 times we head to first item in the next wall
+                            185     
+                            186     
+   00A9 20 13         [12]  187     jr nz, colision  ;; if there is a 0 in D we will go to the reassingnament part
+                            188   
+                            189 
+   00AB 7B            [ 4]  190     ld a,e          ;; load current loop lap in e in a
+   00AC D6 01         [ 7]  191     sub #1          ;; discount 1 since 1 wall was just checked
+   00AE 5F            [ 4]  192     ld e,a          ;; return new lap counter to e
+   00AF 20 EB         [12]  193     jr nz , bucl    ;; if next lap is not 0 (there are walls yet to check) we return to the top of the loop
+                            194 
+                            195    
                             196 
-                            197    
-                            198 
+                            197 
+                            198      ;; KEY  ;;
                             199 
-                            200      ;; KEY  ;;
-                            201 
-   00B1 21 00 00      [10]  202      ld hl, #keys
-   00B4 CD CD 00      [17]  203     call ent_collide
-                            204 
-   00B7 7A            [ 4]  205         ld a,d
-   00B8 D6 01         [ 7]  206     sub #1
-                            207     
-                            208     
-   00BA C2 00 00      [10]  209     jp nz, pick_keys
-                            210     ;;jp z,drop_keys
-                            211     
-                            212 
-   00BD C9            [10]  213  ret
-   00BE                     214     colision:
-                            215    
-                            216        
-   00BE DD 70 00      [19]  217     ld e_x(ix), b
-   00C1 DD 71 01      [19]  218     ld e_y(ix), c
+   00B1 21 00 00      [10]  200      ld hl, #keys
+   00B4 CD CD 00      [17]  201     call ent_collide
+                            202 
+   00B7 7A            [ 4]  203         ld a,d
+   00B8 D6 01         [ 7]  204     sub #1
+                            205     
+                            206     
+   00BA C2 00 00      [10]  207     jp nz, pick_keys
+                            208     ;;jp z,drop_keys
+                            209     
+                            210 
+   00BD C9            [10]  211  ret
+   00BE                     212     colision:
+                            213    
+                            214        
+   00BE DD 70 00      [19]  215     ld e_x(ix), b
+   00C1 DD 71 01      [19]  216     ld e_y(ix), c
+                            217 
+   00C4 C9            [10]  218   ret
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 58.
 Hexadecimal [16-Bits]
 
 
 
-                            219 
-   00C4 C9            [10]  220   ret
-   00C5                     221      colisionX:
-                            222    
-                            223      
-   00C5 DD 70 00      [19]  224     ld e_x(ix), b
-   00C8 C9            [10]  225   ret
-                            226    
-   00C9                     227     colisionY:
-                            228  
-   00C9 DD 71 01      [19]  229     ld e_y(ix), c
+   00C5                     219      colisionX:
+                            220    
+                            221      
+   00C5 DD 70 00      [19]  222     ld e_x(ix), b
+   00C8 C9            [10]  223   ret
+                            224    
+   00C9                     225     colisionY:
+                            226  
+   00C9 DD 71 01      [19]  227     ld e_y(ix), c
+                            228 
+   00CC C9            [10]  229    ret
                             230 
-   00CC C9            [10]  231    ret
-                            232 
-                            233 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            234 ;; COMPROBACION COLISIONES BOUNDING BOXES
-                            235 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-                            236 ;; UN OBSTACULO Y EL PERSONAJE
-                            237 ;; ----- VERSION 1.2----------
-                            238 ;; ADAPTED SO IT WILL WORK ALSO FOR WALLS
-                            239 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            231 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                            232 ;; COMPROBACION COLISIONES BOUNDING BOXES
+                            233 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
+                            234 ;; UN OBSTACULO Y EL PERSONAJE
+                            235 ;; ----- VERSION 1.2----------
+                            236 ;; ADAPTED SO IT WILL WORK ALSO FOR WALLS
+                            237 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            238 
+   00CD                     239 ent_collide:
                             240 
-   00CD                     241 ent_collide:
-                            242 
-                            243 
-                            244   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-                            245    
-                            246                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
-   00CD DD 7E 00      [19]  247    ld a, e_x(ix)  ;; A = hero_X
-   00D0 DD 86 04      [19]  248    add e_w(ix)    ;; A + hero_W
-   00D3 96            [ 7]  249    sub (hl)       ;; A - obs_X 
-                            250    
-   00D4 28 32         [12]  251    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
-   00D6 FA 08 01      [10]  252    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
-                            253 
-                            254                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
-   00D9 7E            [ 7]  255     ld a ,(hl)    ;; A = hl -> obs_X
-   00DA 23            [ 6]  256     inc hl        ;;
-                            257    
-   00DB 23            [ 6]  258     inc hl        ;; hl + 2 -> obs_W
-                            259 
-   00DC 86            [ 7]  260     add (hl)      ;; A + obs_W
-                            261                   ;;
-   00DD DD 96 00      [19]  262     sub e_x(ix)   ;; A - hero_X
-                            263 
-   00E0 2B            [ 6]  264     dec hl        ;;
-   00E1 2B            [ 6]  265     dec hl        ;; return to the first item in the object
-                            266 
-                            267 
-   00E2 28 24         [12]  268     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
-   00E4 FA 08 01      [10]  269     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
-                            270 
-                            271 
-                            272 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-                            273                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
+                            241 
+                            242   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
+                            243    
+                            244                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
+   00CD DD 7E 00      [19]  245    ld a, e_x(ix)  ;; A = hero_X
+   00D0 DD 86 04      [19]  246    add e_w(ix)    ;; A + hero_W
+   00D3 96            [ 7]  247    sub (hl)       ;; A - obs_X 
+                            248    
+   00D4 28 32         [12]  249    jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
+   00D6 FA 08 01      [10]  250    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
+                            251 
+                            252                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
+   00D9 7E            [ 7]  253     ld a ,(hl)    ;; A = hl -> obs_X
+   00DA 23            [ 6]  254     inc hl        ;;
+                            255    
+   00DB 23            [ 6]  256     inc hl        ;; hl + 2 -> obs_W
+                            257 
+   00DC 86            [ 7]  258     add (hl)      ;; A + obs_W
+                            259                   ;;
+   00DD DD 96 00      [19]  260     sub e_x(ix)   ;; A - hero_X
+                            261 
+   00E0 2B            [ 6]  262     dec hl        ;;
+   00E1 2B            [ 6]  263     dec hl        ;; return to the first item in the object
+                            264 
+                            265 
+   00E2 28 24         [12]  266     jr z, no_coll ;; obs_X + obs_W - hero_X = 0
+   00E4 FA 08 01      [10]  267     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
+                            268 
+                            269 
+                            270 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
+                            271                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
+   00E7 23            [ 6]  272     inc hl        ;; Puntero hl -> obs_Y
+                            273 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
 Hexadecimal [16-Bits]
 
 
 
-   00E7 23            [ 6]  274     inc hl        ;; Puntero hl -> obs_Y
+                            274   
                             275 
-                            276   
-                            277 
-   00E8 DD 7E 01      [19]  278    ld a, e_y(ix)  ;; A = hero__Y
-   00EB DD 86 05      [19]  279    add e_h(ix)    ;; A + hero__H
-   00EE 96            [ 7]  280    sub (hl)       ;; A - obs_Y
-                            281    
-   00EF 2B            [ 6]  282    dec hl         ;; return to the first item in the object
-                            283 
-   00F0 28 16         [12]  284    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
-   00F2 FA 08 01      [10]  285    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
-                            286 
-   00F5 23            [ 6]  287    inc hl         ;; hl + -> obs_y
-                            288                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
-   00F6 7E            [ 7]  289    ld a ,(hl)     ;; A = obs_Y
-   00F7 23            [ 6]  290    inc hl         ;;
+   00E8 DD 7E 01      [19]  276    ld a, e_y(ix)  ;; A = hero__Y
+   00EB DD 86 05      [19]  277    add e_h(ix)    ;; A + hero__H
+   00EE 96            [ 7]  278    sub (hl)       ;; A - obs_Y
+                            279    
+   00EF 2B            [ 6]  280    dec hl         ;; return to the first item in the object
+                            281 
+   00F0 28 16         [12]  282    jr z, no_coll  ;; hero__Y + hero__H - obs_Y = 0
+   00F2 FA 08 01      [10]  283    jp m, no_coll  ;; hero__Y + hero__H - obs_Y < 0
+                            284 
+   00F5 23            [ 6]  285    inc hl         ;; hl + -> obs_y
+                            286                   ;;Comprobacion de colision ARRIBA if(obs_Y + obs_H - hero_Y <= 0)
+   00F6 7E            [ 7]  287    ld a ,(hl)     ;; A = obs_Y
+   00F7 23            [ 6]  288    inc hl         ;;
+                            289 
+   00F8 23            [ 6]  290    inc hl         ;; hl + 2 -> obs_H
                             291 
-   00F8 23            [ 6]  292    inc hl         ;; hl + 2 -> obs_H
-                            293 
-   00F9 86            [ 7]  294    add (hl)       ;; A + obs_H
-   00FA DD 96 01      [19]  295    sub e_y(ix)    ;; A - hero_Y
-                            296 
-   00FD 2B            [ 6]  297     dec hl        ;;
-   00FE 2B            [ 6]  298     dec hl        ;;
-   00FF 2B            [ 6]  299     dec hl        ;;  return to the first item in the object
-                            300 
-   0100 28 06         [12]  301     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
-   0102 FA 08 01      [10]  302     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
-                            303 
-                            304 
-   0105 16 00         [ 7]  305     ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
-                            306  
-   0107 C9            [10]  307     ret
+   00F9 86            [ 7]  292    add (hl)       ;; A + obs_H
+   00FA DD 96 01      [19]  293    sub e_y(ix)    ;; A - hero_Y
+                            294 
+   00FD 2B            [ 6]  295     dec hl        ;;
+   00FE 2B            [ 6]  296     dec hl        ;;
+   00FF 2B            [ 6]  297     dec hl        ;;  return to the first item in the object
+                            298 
+   0100 28 06         [12]  299     jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
+   0102 FA 08 01      [10]  300     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
+                            301 
+                            302 
+   0105 16 00         [ 7]  303     ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
+                            304  
+   0107 C9            [10]  305     ret
+                            306 
+   0108                     307 no_coll:
                             308 
-   0108                     309 no_coll:
+   0108 C9            [10]  309 ret
                             310 
-   0108 C9            [10]  311 ret
-                            312 
-                            313 
-                            314 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            315 ;; MOVIENTO MEDIANTE TECLADO
-                            316 ;;          W(ARRIBA)
-                            317 ;; A (IZDA) S(ABAJO) D(DERECHA)
-                            318 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0109                     319 ent_moveKeyboard:
-   0109 CD 00 00      [17]  320     call cpct_scanKeyboard_asm
-                            321       
-   010C 21 08 20      [10]  322    ld hl, #Key_A ;;O
-   010F CD 00 00      [17]  323     call cpct_isKeyPressed_asm
-   0112 28 04         [12]  324     jr z, o_no_pulsada
+                            311 
+                            312 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                            313 ;; MOVIENTO MEDIANTE TECLADO
+                            314 ;;          W(ARRIBA)
+                            315 ;; A (IZDA) S(ABAJO) D(DERECHA)
+                            316 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0109                     317 ent_moveKeyboard:
+   0109 CD 00 00      [17]  318     call cpct_scanKeyboard_asm
+                            319       
+   010C 21 08 20      [10]  320    ld hl, #Key_A ;;O
+   010F CD 00 00      [17]  321     call cpct_isKeyPressed_asm
+   0112 28 04         [12]  322     jr z, o_no_pulsada
+                            323     
+   0114 DD 36 02 FF   [19]  324     ld e_vx(ix), #-1
                             325     
-   0114 DD 36 02 FF   [19]  326     ld e_vx(ix), #-1
+   0118                     326  o_no_pulsada:   
                             327     
-   0118                     328  o_no_pulsada:   
+                            328     
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
-                            329     
-                            330     
-   0118 21 07 20      [10]  331       ld hl, #Key_D ;;P
-   011B CD 00 00      [17]  332     call cpct_isKeyPressed_asm
-   011E 28 04         [12]  333     jr z, p_no_pulsada
+   0118 21 07 20      [10]  329       ld hl, #Key_D ;;P
+   011B CD 00 00      [17]  330     call cpct_isKeyPressed_asm
+   011E 28 04         [12]  331     jr z, p_no_pulsada
+                            332     
+   0120 DD 36 02 01   [19]  333     ld e_vx(ix), #1
                             334     
-   0120 DD 36 02 01   [19]  335     ld e_vx(ix), #1
-                            336     
-   0124                     337  p_no_pulsada:
-                            338 
-   0124 21 07 08      [10]  339    ld hl, #Key_W;;Q
-   0127 CD 00 00      [17]  340    call cpct_isKeyPressed_asm
-   012A 28 04         [12]  341    jr z, q_no_pulsada
+   0124                     335  p_no_pulsada:
+                            336 
+   0124 21 07 08      [10]  337    ld hl, #Key_W;;Q
+   0127 CD 00 00      [17]  338    call cpct_isKeyPressed_asm
+   012A 28 04         [12]  339    jr z, q_no_pulsada
+                            340 
+   012C DD 36 03 FD   [19]  341    ld e_vy(ix), #-3
                             342 
-   012C DD 36 03 FD   [19]  343    ld e_vy(ix), #-3
-                            344 
-   0130                     345  q_no_pulsada:
-   0130 21 07 10      [10]  346     ld hl, #Key_S ;;W
-   0133 CD 00 00      [17]  347     call cpct_isKeyPressed_asm
-   0136 28 04         [12]  348     jr z, w_no_pulsada
+   0130                     343  q_no_pulsada:
+   0130 21 07 10      [10]  344     ld hl, #Key_S ;;W
+   0133 CD 00 00      [17]  345     call cpct_isKeyPressed_asm
+   0136 28 04         [12]  346     jr z, w_no_pulsada
+                            347 
+   0138 DD 36 03 03   [19]  348     ld e_vy(ix), #3
                             349 
-   0138 DD 36 03 03   [19]  350     ld e_vy(ix), #3
-                            351 
-   013C                     352  w_no_pulsada:
-                            353     
+   013C                     350  w_no_pulsada:
+                            351     
+                            352     
+   013C CD 5B 00      [17]  353     call ent_move2
                             354     
-   013C CD 5B 00      [17]  355     call ent_move2
-                            356     
+                            355 
+                            356 
                             357 
                             358 
-                            359 
+                            359   
                             360 
-                            361   
-                            362 
-                            363  ;    ld a, #0x00
-                            364  ;ld (0xC000), a
-                            365  ; ld (0xC001), a
-                            366   ;ld (0xC002), a
-                            367     
+                            361  ;    ld a, #0x00
+                            362  ;ld (0xC000), a
+                            363  ; ld (0xC001), a
+                            364   ;ld (0xC002), a
+                            365     
+                            366 
+                            367 
                             368 
                             369 
                             370 
                             371 
-                            372 
-                            373 
-   013F C9            [10]  374    ret
+   013F C9            [10]  372    ret

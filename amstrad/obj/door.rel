@@ -1,0 +1,78 @@
+XL2
+H 1 areas 20 global symbols
+M cpct_keyboard
+S pick_keys Ref0000
+S ent_collide Ref0000
+S cpct_isKeyPressed_asm Ref0000
+S personaje Ref0000
+S ent_moveKeyboard Ref0000
+S ent_move2 Ref0000
+S drop_keys Ref0000
+S num_walls Ref0000
+S ent_draw Ref0000
+S key_draw Ref0000
+S wall_clear Ref0000
+S ent_move Ref0000
+S .__.ABS. Def0000
+S w1 Ref0000
+S w2 Ref0000
+S ent_update Ref0000
+S key_update Ref0000
+S ent_clear Ref0000
+S key_clear Ref0000
+S cpct_setVideoMode_asm Ref0000
+S cpct_waitVSYNC_asm Ref0000
+S cpct_disableFirmware_asm Ref0000
+S cpct_drawSolidBox_asm Ref0000
+S keys Ref0000
+S wall_draw Ref0000
+S cpct_scanKeyboard_asm Ref0000
+S cpct_getScreenPtr_asm Ref0000
+A _CODE size 6D flags 0 addr 0
+S door_draw Def0006
+S open_door Def0063
+S check_door Def0053
+S door_clear Def003F
+S door0 Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 64 96 03 32 C0 00
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00 DD 21 00 00 DD 7E 05 D6 01 C2 1D 00 3E FF
+R 00 00 00 00 00 04 00 00 00 0C 00 00
+T 14 00 32 01 C0 32 02 C0 32 03 C0
+R 00 00 00 00
+T 1D 00
+R 00 00 00 00
+T 1D 00 DD 7E 05 D6 01 CA 3E 00 11 00 C0 DD 4E 00
+R 00 00 00 00 00 08 00 00
+T 2B 00 DD 46 01 CD 00 00 EB DD 7E 04 DD 46 03 DD
+R 00 00 00 00 02 06 1A 00
+T 39 00 4E 02 CD 00 00
+R 00 00 00 00 02 05 16 00
+T 3E 00
+R 00 00 00 00
+T 3E 00 C9
+R 00 00 00 00
+T 3F 00
+R 00 00 00 00
+T 3F 00 DD 21 00 00 DD 7E 04 08 DD 36 04 00 CD
+R 00 00 00 00 00 04 00 00
+T 4C 00 00 00 08 DD 77 04 C9
+R 00 00 00 00 02 02 18 00
+T 53 00
+R 00 00 00 00
+T 53 00 DD 21 00 00 DD 7E 09 D6 01 C2 62 00 CD
+R 00 00 00 00 02 04 03 00 00 0C 00 00
+T 60 00 63 00
+R 00 00 00 00 00 02 00 00
+T 62 00
+R 00 00 00 00
+T 62 00 C9
+R 00 00 00 00
+T 63 00
+R 00 00 00 00
+T 63 00 DD 21 00 00 3E 01 DD 77 05 C9
+R 00 00 00 00 00 04 00 00

@@ -1,0 +1,9 @@
+XL2
+H 1 areas 6 global symbols
+S door_draw Ref0000
+S open_door Ref0000
+S check_door Ref0000
+S door_clear Ref0000
+S .__.ABS. Def0000
+S door0 Ref0000
+A _CODE size 0 flags 0 addr 0

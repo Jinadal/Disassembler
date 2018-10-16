@@ -78,7 +78,7 @@ Symbol Table
   0 q_no_pul   0130 R   |     w1         **** GX  |     w2         **** GX
     w_col   =  0004     |     w_h     =  0003     |   0 w_no_pul   013C R
     w_w     =  0002     |     w_x     =  0000     |     w_y     =  0001 
-    wall_cle   **** GX  |     wall_dra   **** GX  |     wall_siz   **** X
+    wall_cle   **** GX  |     wall_dra   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]

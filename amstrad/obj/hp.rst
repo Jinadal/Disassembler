@@ -2605,26 +2605,26 @@ Hexadecimal [16-Bits]
 
                               5 
                               6 
-   41C5                       7 	DefineHP hp1, 0, 0, 2,4,0xFF, 0x01
+   4296                       7 	DefineHP hp1, 0, 0, 2,4,0xFF, 0x01
    0000                       1 hp1: 
-   41C5 00 00                 2    .db    0, 0     ;; X, Y
-   41C7 02 04                 3    .db    2, 4     ;; W, H
-   41C9 FF                    4    .db   0xFF        ;; Color
-   41CA 01                    5    .db   0x01         ;; is up?
+   4296 00 00                 2    .db    0, 0     ;; X, Y
+   4298 02 04                 3    .db    2, 4     ;; W, H
+   429A FF                    4    .db   0xFF        ;; Color
+   429B 01                    5    .db   0x01         ;; is up?
                               6 
-   41CB                       8 	DefineHP hp2, 4, 0, 2,4,0xFF, 0x01
+   429C                       8 	DefineHP hp2, 4, 0, 2,4,0xFF, 0x01
    0006                       1 hp2: 
-   41CB 04 00                 2    .db    4, 0     ;; X, Y
-   41CD 02 04                 3    .db    2, 4     ;; W, H
-   41CF FF                    4    .db   0xFF        ;; Color
-   41D0 01                    5    .db   0x01         ;; is up?
+   429C 04 00                 2    .db    4, 0     ;; X, Y
+   429E 02 04                 3    .db    2, 4     ;; W, H
+   42A0 FF                    4    .db   0xFF        ;; Color
+   42A1 01                    5    .db   0x01         ;; is up?
                               6 
-   41D1                       9 	DefineHP hp3, 8, 0, 2,4,0xFF, 0x01
+   42A2                       9 	DefineHP hp3, 8, 0, 2,4,0xFF, 0x01
    000C                       1 hp3: 
-   41D1 08 00                 2    .db    8, 0     ;; X, Y
-   41D3 02 04                 3    .db    2, 4     ;; W, H
-   41D5 FF                    4    .db   0xFF        ;; Color
-   41D6 01                    5    .db   0x01         ;; is up?
+   42A2 08 00                 2    .db    8, 0     ;; X, Y
+   42A4 02 04                 3    .db    2, 4     ;; W, H
+   42A6 FF                    4    .db   0xFF        ;; Color
+   42A7 01                    5    .db   0x01         ;; is up?
                               6 
                              10 
                              11 
@@ -2634,7 +2634,7 @@ Hexadecimal [16-Bits]
                              15 ;; PARA CUADRADOS UNICAMENTE
                              16 ;; ENTRADA: IX -> Puntero a entidad
                              17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41D7                      18 HP_draw:
+   42A8                      18 HP_draw:
                              19 
                              20 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
                              21 ; ld e' , #num_walls
@@ -2642,17 +2642,17 @@ Hexadecimal [16-Bits]
                              23 
                              24  ;bucl:
                              25 	
-   41D7 11 00 C0      [10]   26    ld    de, #0xC000       ;;Comienzo memoria de video
-   41DA DD 4E 00      [19]   27    ld     c, hp_x(ix)         ;; C = Entity Y
-   41DD DD 46 01      [19]   28    ld     b, hp_y(ix)         ;; B = Entity X
-   41E0 CD 48 43      [17]   29    call cpct_getScreenPtr_asm
+   42A8 11 00 C0      [10]   26    ld    de, #0xC000       ;;Comienzo memoria de video
+   42AB DD 4E 00      [19]   27    ld     c, hp_x(ix)         ;; C = Entity Y
+   42AE DD 46 01      [19]   28    ld     b, hp_y(ix)         ;; B = Entity X
+   42B1 CD BA 43      [17]   29    call cpct_getScreenPtr_asm
                              30 
-   41E3 EB            [ 4]   31    ex    de, hl   ;; DE = Puntero a memoria
-   41E4 DD 7E 04      [19]   32    ld  a, hp_col(ix)   ;; Color
-   41E7 DD 46 03      [19]   33    ld  b, hp_h(ix)   ;; alto
-   41EA DD 4E 02      [19]   34    ld  c, hp_w(ix)   ;; Ancho
+   42B4 EB            [ 4]   31    ex    de, hl   ;; DE = Puntero a memoria
+   42B5 DD 7E 04      [19]   32    ld  a, hp_col(ix)   ;; Color
+   42B8 DD 46 03      [19]   33    ld  b, hp_h(ix)   ;; alto
+   42BB DD 4E 02      [19]   34    ld  c, hp_w(ix)   ;; Ancho
                              35 
-   41ED CD 9B 42      [17]   36    call cpct_drawSolidBox_asm
+   42BE CD 0D 43      [17]   36    call cpct_drawSolidBox_asm
                              37 
                              38 
                              39   ;  inc ix
@@ -2672,7 +2672,7 @@ Hexadecimal [16-Bits]
                              48     ;ld e',a
                              49     ;jr nz , bucl
                              50 
-   41F0 C9            [10]   51    ret
+   42C1 C9            [10]   51    ret
                              52 
                              53 
                              54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2680,17 +2680,17 @@ Hexadecimal [16-Bits]
                              56 ;; PARA CUADRADOS UNICAMENTE
                              57 ;; ENTRADA: IX -> Puntero a entidad
                              58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41F1                      59 HP_clear:
+   42C2                      59 HP_clear:
                              60 	
-   41F1 DD 7E 04      [19]   61    ld  a, hp_col(ix)
-   41F4 08            [ 4]   62    ex af, af'
+   42C2 DD 7E 04      [19]   61    ld  a, hp_col(ix)
+   42C5 08            [ 4]   62    ex af, af'
                              63 
-   41F5 DD 36 04 00   [19]   64    ld  hp_col(ix), #0
+   42C6 DD 36 04 00   [19]   64    ld  hp_col(ix), #0
                              65 
-   41F9 CD D7 41      [17]   66    call HP_draw
-   41FC 08            [ 4]   67    ex af, af'
-   41FD DD 77 04      [19]   68    ld hp_col(ix), a
+   42CA CD A8 42      [17]   66    call HP_draw
+   42CD 08            [ 4]   67    ex af, af'
+   42CE DD 77 04      [19]   68    ld hp_col(ix), a
                              69 
-   4200 C9            [10]   70    ret
+   42D1 C9            [10]   70    ret
                              71 
                              72 

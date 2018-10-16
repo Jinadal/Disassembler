@@ -2642,7 +2642,7 @@ Hexadecimal [16-Bits]
 
 
 
-                             25   .include "wall.h.s"
+                             25 .include "wall.h.s"
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
@@ -2687,85 +2687,129 @@ Hexadecimal [16-Bits]
 
 
 
-                             26 ;;
-                             27 
-                             28 ;; Start of _DATA area 
-                             29 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             30 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             31 ;;  right after _CODE area contents.
+                             26 .include "door.h.s"
+                              1 
+                              2 .globl door_draw
+                              3 .globl door_clear
+                              4 .globl check_door
+                              5 .globl open_door
+                              6 
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineDoor _name, _x, _y, _w, _h, _col, _op
+                             18 _name: 
+                             19     .db     _x, _y      ;; X, Y
+                             20     .db     _w, _h      ;; W, H
+                             21     .db     _col        ;; Color
+                             22     .db     _op         ;;Open-close 
+                             23 .endm
+                     0000    24 d_x = 0
+                     0001    25 d_y = 1
+                     0002    26 d_w = 2
+                     0003    27 d_h = 3
+                     0004    28 d_col = 4
+                     0005    29 d_op = 5
+                             30 
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              32 ;;
-                             33 .area _DATA
-                             34 
-                             35 .area _CODE
+                             33 ;;OBJETOS CREADOS CON LA MACROS
+                             34 ;;
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              36 
-                             37 ;;
-                             38 ;; MAIN function. This is the entry point of the application.
-                             39 ;;    _main:: global symbol is required for correctly compiling and linking
-                             40 ;;
-   4000                      41 _main::
-                             42    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 8B 42      [17]   43       call cpct_disableFirmware_asm
-                             44 
-   4003 0E 00         [ 7]   45    ld    c, #0
-   4005 CD 7E 42      [17]   46    call cpct_setVideoMode_asm
-                             47 
-                             48 
-   4008                      49 loop:
-                             50 
-                             51   
-   4008 CD 4C 42      [17]   52   call key_clear
-   400B CD 79 40      [17]   53   call ent_clear
-                             54   
-   400E DD 21 91 41   [14]   55     ld ix, #w1
-   4012 CD B5 41      [17]   56   call wall_clear
-   4015 DD 21 96 41   [14]   57   ld ix, #w2
-   4019 CD B5 41      [17]   58   call wall_clear
-   401C CD 41 42      [17]   59   call key_update
-   401F CD 8D 40      [17]   60   call ent_update
-   4022 CD 13 42      [17]   61   call key_draw
-   4025 CD 5B 40      [17]   62   call ent_draw
-                             63 
-   4028 DD 21 91 41   [14]   64     ld ix, #w1
-   402C CD 9B 41      [17]   65   call wall_draw
-   402F DD 21 96 41   [14]   66   ld ix, #w2
-   4033 CD 9B 41      [17]   67   call wall_draw
-                             68 
-   4036 DD 21 C5 41   [14]   69        ld ix, #hp1
-   403A CD D7 41      [17]   70   call HP_draw
-   403D DD 21 CB 41   [14]   71   ld ix, #hp2
-   4041 CD D7 41      [17]   72   call HP_draw
-   4044 DD 21 D1 41   [14]   73     ld ix, #hp3
-   4048 CD D7 41      [17]   74   call HP_draw
-                             75 
-                             76   
-                             77   ;;  ld    ix, #p_a
-                             78   ;; call ent_clear
-                             79   ;; call ent_update
-                             80   ;; call ent_draw
+                             37 .globl door0
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-                             81 
-                             82   ;;  ld    ix, #p_a1
-                             83   ;; call ent_clear
-                             84   ;; call ent_update
-                             85   ;; call ent_draw
-                             86 
-                             87 
-                             88   ;;  ld    ix, #p_a2
-                             89   ;; call ent_clear
-                             90   ;; call ent_update
-                             91   ;; call ent_draw
-                             92 
-                             93     
+                             27 
+                             28 ;;
+                             29 
+                             30 ;; Start of _DATA area 
+                             31 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             32 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             33 ;;  right after _CODE area contents.
+                             34 ;;
+                             35 .area _DATA
+                             36 
+                             37 .area _CODE
+                             38 
+                             39 ;;
+                             40 ;; MAIN function. This is the entry point of the application.
+                             41 ;;    _main:: global symbol is required for correctly compiling and linking
+                             42 ;;
+   4000                      43 _main::
+                             44    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD FD 42      [17]   45       call cpct_disableFirmware_asm
+                             46 
+   4003 0E 00         [ 7]   47    ld    c, #0
+   4005 CD F0 42      [17]   48    call cpct_setVideoMode_asm
+                             49 
+                             50 
+   4008                      51 loop:
+                             52 
+                             53   
+   4008 CD 82 42      [17]   54   call key_clear
+   400B CD 7F 40      [17]   55   call ent_clear
+   400E CD 09 42      [17]   56   call door_clear
+   4011 DD 21 96 41   [14]   57     ld ix, #w1
+   4015 CD BA 41      [17]   58   call wall_clear
+   4018 DD 21 9B 41   [14]   59   ld ix, #w2
+   401C CD BA 41      [17]   60   call wall_clear
+   401F CD 77 42      [17]   61   call key_update
+   4022 CD 93 40      [17]   62   call ent_update
+   4025 CD 49 42      [17]   63   call key_draw
+   4028 CD 61 40      [17]   64   call ent_draw
+   402B CD D0 41      [17]   65   call door_draw
+   402E DD 21 96 41   [14]   66     ld ix, #w1
+   4032 CD A0 41      [17]   67   call wall_draw
+   4035 DD 21 9B 41   [14]   68   ld ix, #w2
+   4039 CD A0 41      [17]   69   call wall_draw
+                             70 
+   403C DD 21 96 42   [14]   71        ld ix, #hp1
+   4040 CD A8 42      [17]   72   call HP_draw
+   4043 DD 21 9C 42   [14]   73   ld ix, #hp2
+   4047 CD A8 42      [17]   74   call HP_draw
+   404A DD 21 A2 42   [14]   75     ld ix, #hp3
+   404E CD A8 42      [17]   76   call HP_draw
+                             77 
+                             78   
+                             79   ;;  ld    ix, #p_a
+                             80   ;; call ent_clear
+                             81   ;; call ent_update
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
+Hexadecimal [16-Bits]
+
+
+
+                             82   ;; call ent_draw
+                             83 
+                             84   ;;  ld    ix, #p_a1
+                             85   ;; call ent_clear
+                             86   ;; call ent_update
+                             87   ;; call ent_draw
+                             88 
+                             89 
+                             90   ;;  ld    ix, #p_a2
+                             91   ;; call ent_clear
+                             92   ;; call ent_update
+                             93   ;; call ent_draw
                              94 
-                             95 
+                             95     
                              96 
                              97 
                              98 
                              99 
-   404B CD 76 42      [17]  100    call cpct_waitVSYNC_asm
-                            101    ;; Loop forever
-   404E 18 B8         [12]  102    jr    loop
+                            100 
+                            101 
+   4051 CD E8 42      [17]  102    call cpct_waitVSYNC_asm
+                            103    ;; Loop forever
+   4054 18 B2         [12]  104    jr    loop
