@@ -2560,7 +2560,67 @@ Hexadecimal [16-Bits]
 
 
 
-                              4  .include "wall.h.s"
+                              4 .include "keys.h.s"
+                              1 ;;====================================================
+                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
+                              3 ;;====================================================
+                              4 .globl key_draw
+                              5 .globl key_update
+                              6 .globl key_clear
+                              7 .globl pick_keys
+                              8 .globl drop_keys
+                              9 .globl keys
+                             10 
+                             11 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+Hexadecimal [16-Bits]
+
+
+
+                              5 .include "hp.h.s"
+                              1 
+                              2 .globl hp_clear
+                              3 .globl hp_draw
+                              4 
+                              5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                              6 ;;
+                              7 ;;MACROS
+                              8 ;;
+                              9 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             10 
+                             11    .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
+                             12 _name: 
+                             13    .db    _x, _y     ;; X, Y
+                             14    .db    _w, _h     ;; W, H
+                             15    .db   _col        ;; Color
+                             16    .db   _UP         ;; is up?
+                             17 
+                             18 .endm
+                     0000    19 hp_x = 0
+                     0001    20 hp_y = 1
+                     0002    21 hp_w = 2
+                     0003    22 hp_h = 3
+                     0004    23 hp_col = 4
+                     0005    24 hp_UP = 5
+                             25 
+                             26 
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             29 ;;
+                             30 ;;OBJETOS CREADOS CON LA MACROS
+                             31 ;;
+                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 
+                             34 .globl hp1
+                             35 .globl hp2
+                             36 .globl hp3
+                             37 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
+                              6 .include "wall.h.s"
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
@@ -2600,118 +2660,159 @@ Hexadecimal [16-Bits]
                              37 .globl w2
                              38 ;.globl w3
                              39 ;.globl w4
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                              5 
+                              7 .include "door.h.s"
+                              1 
+                              2 .globl door_draw
+                              3 .globl door_clear
+                              4 .globl check_door
+                              5 .globl open_door
                               6 
-                              7 	;DefineWall w1, 78, 2, 2,190,0x0A
-                              8 	;DefineWall w2, 2, 8, 77,8,0x0A
-                              9 	;DefineWall w3, 0, 0, 2,190,0x0A
-                             10 	;DefineWall w4, 0, 190, 77,8,0x0A
-                             11 
-                     0002    12 	num_walls = 2
-                     0005    13 	wall_size = 5
-                             14 
-   4171                      15 	DefineWall w1, 20, 20, 2,20,0x0A
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineDoor _name, _x, _y, _w, _h, _col, _op
+                             18 _name: 
+                             19     .db     _x, _y      ;; X, Y
+                             20     .db     _w, _h      ;; W, H
+                             21     .db     _col        ;; Color
+                             22     .db     _op         ;;Open-close 
+                             23 .endm
+                     0000    24 d_x = 0
+                     0001    25 d_y = 1
+                     0002    26 d_w = 2
+                     0003    27 d_h = 3
+                     0004    28 d_col = 4
+                     0005    29 d_op = 5
+                             30 
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             32 ;;
+                             33 ;;OBJETOS CREADOS CON LA MACROS
+                             34 ;;
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             36 
+                             37 .globl door0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
+Hexadecimal [16-Bits]
+
+
+
+                              8 
+                              9 	;DefineWall w1, 78, 2, 2,190,0x0A
+                             10 	;DefineWall w2, 2, 8, 77,8,0x0A
+                             11 	;DefineWall w3, 0, 0, 2,190,0x0A
+                             12 	;DefineWall w4, 0, 190, 77,8,0x0A
+                             13 
+                     0002    14 	num_walls = 2
+                     0005    15 	wall_size = 5
+                             16 
+   4165                      17 	DefineWall w1, 20, 20, 2,20,0x0A
    0000                       1 w1: 
-   4171 14 14                 2    .db    20, 20     ;; X, Y
-   4173 02 14                 3    .db    2, 20     ;; W, H
-   4175 0A                    4    .db   0x0A        ;; Color
-   4176                      16 	DefineWall w2, 25, 40, 10,8,0x0A
+   4165 14 14                 2    .db    20, 20     ;; X, Y
+   4167 02 14                 3    .db    2, 20     ;; W, H
+   4169 0A                    4    .db   0x0A        ;; Color
+   416A                      18 	DefineWall w2, 25, 40, 10,8,0x0A
    0005                       1 w2: 
-   4176 19 28                 2    .db    25, 40     ;; X, Y
-   4178 0A 08                 3    .db    10, 8     ;; W, H
-   417A 0A                    4    .db   0x0A        ;; Color
-                             17 	;DefineWall w3, 0, 0, 2,190,0x0A
-                             18 	;DefineWall w4, 0, 190, 77,8,0x0A
-                             19 
-                             20 
+   416A 19 28                 2    .db    25, 40     ;; X, Y
+   416C 0A 08                 3    .db    10, 8     ;; W, H
+   416E 0A                    4    .db   0x0A        ;; Color
+                             19 	;DefineWall w3, 0, 0, 2,190,0x0A
+                             20 	;DefineWall w4, 0, 190, 77,8,0x0A
                              21 
                              22 
-                             23 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             24 ;; DIBUJAR LAS PAREDES
-                             25 ;; PARA CUADRADOS UNICAMENTE
-                             26 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             27 
-   417B                      28 wall_draw:
+                             23 
+                             24 
+                             25 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             26 ;; DIBUJAR LAS PAREDES
+                             27 ;; PARA CUADRADOS UNICAMENTE
+                             28 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              29 
-   417B DD 21 71 41   [14]   30 	ld ix, #w1
-   417F CD 8A 41      [17]   31 	call wall_draw_single
-                             32 
-   4182 DD 21 76 41   [14]   33 	ld ix, #w2
-   4186 CD 8A 41      [17]   34 	call wall_draw_single
-                             35 	
-   4189 C9            [10]   36 	ret
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             38 ;; DIBUJAR UNA ENTIDAD
-                             39 ;; PARA CUADRADOS UNICAMENTE
-                             40 ;; ENTRADA: IX -> Puntero a entidad
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   418A                      42 wall_draw_single:
-                             43 
-                             44 	
-   418A 11 00 C0      [10]   45    ld    de, #0xC000       ;;Comienzo memoria de video
-   418D DD 4E 00      [19]   46    ld     c, w_x(ix)         ;; C = Entity Y
-   4190 DD 46 01      [19]   47    ld     b, w_y(ix)         ;; B = Entity X
-   4193 CD C4 43      [17]   48    call cpct_getScreenPtr_asm
-                             49 
-   4196 EB            [ 4]   50    ex    de, hl   ;; DE = Puntero a memoria
-   4197 DD 7E 04      [19]   51    ld  a, w_col(ix)   ;; Color
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+   416F                      30 wall_draw:
+                             31 
+   416F DD 21 65 41   [14]   32 	ld ix, #w1
+   4173 CD 7E 41      [17]   33 	call wall_draw_single
+                             34 
+   4176 DD 21 6A 41   [14]   35 	ld ix, #w2
+   417A CD 7E 41      [17]   36 	call wall_draw_single
+                             37 	
+   417D C9            [10]   38 	ret
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             40 ;; DIBUJAR UNA ENTIDAD
+                             41 ;; PARA CUADRADOS UNICAMENTE
+                             42 ;; ENTRADA: IX -> Puntero a entidad
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   417E                      44 wall_draw_single:
+                             45 
+   417E 11 00 C0      [10]   46    ld    de, #0xC000       ;;Comienzo memoria de video
+   4181 DD 4E 00      [19]   47    ld     c, w_x(ix)         ;; C = Entity Y
+   4184 DD 46 01      [19]   48    ld     b, w_y(ix)         ;; B = Entity X
+   4187 CD B8 43      [17]   49    call cpct_getScreenPtr_asm
+                             50 
+   418A EB            [ 4]   51    ex    de, hl   ;; DE = Puntero a memoria
+   418B DD 7E 04      [19]   52    ld  a, w_col(ix)   ;; Color
+   418E DD 46 03      [19]   53    ld  b, w_h(ix)   ;; alto
+   4191 DD 4E 02      [19]   54    ld  c, w_w(ix)   ;; Ancho
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-   419A DD 46 03      [19]   52    ld  b, w_h(ix)   ;; alto
-   419D DD 4E 02      [19]   53    ld  c, w_w(ix)   ;; Ancho
-                             54 
-   41A0 CD 17 43      [17]   55    call cpct_drawSolidBox_asm
-                             56 
+                             55 
+   4194 CD 0B 43      [17]   56    call cpct_drawSolidBox_asm
                              57 
-                             58   
-                             59 
-   41A3 C9            [10]   60    ret
-                             61 
+                             58 
+                             59   
+                             60 
+   4197 C9            [10]   61    ret
                              62 
                              63 
                              64 
                              65 
-                             66 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             67 ;; BORRAR LAS PAREDES
-                             68 ;; PARA CUADRADOS UNICAMENTE
-                             69 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             70 
-   41A4                      71 wall_clear:
-                             72 
-   41A4 DD 21 71 41   [14]   73 	ld ix, #w1
-   41A8 CD B3 41      [17]   74 	call wall_clear_single
-                             75 
-   41AB DD 21 76 41   [14]   76 	ld ix, #w2
-   41AF CD B3 41      [17]   77 	call wall_clear_single
-                             78 	
-   41B2 C9            [10]   79 	ret
-                             80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             81 ;; BORRA UN MURO
-                             82 ;; PARA CUADRADOS UNICAMENTE
-                             83 ;; ENTRADA: IX -> Puntero a entidad
-                             84 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41B3                      85 wall_clear_single:
-                             86 	
-   41B3 DD 7E 04      [19]   87    ld  a, w_col(ix)
-   41B6 08            [ 4]   88    ex af, af'
-                             89 
-   41B7 DD 36 04 00   [19]   90    ld  w_col(ix), #0
-                             91 
-   41BB CD 8A 41      [17]   92    call wall_draw_single
-   41BE 08            [ 4]   93    ex af, af'
-   41BF DD 77 04      [19]   94    ld w_col(ix), a
-                             95 
-   41C2 C9            [10]   96    ret
-                             97 
+                             66 
+                             67 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             68 ;; BORRAR LAS PAREDES
+                             69 ;; PARA CUADRADOS UNICAMENTE
+                             70 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             71 
+   4198                      72 wall_clear:
+                             73 
+   4198 DD 21 65 41   [14]   74 	ld ix, #w1
+   419C CD A7 41      [17]   75 	call wall_clear_single
+                             76 
+   419F DD 21 6A 41   [14]   77 	ld ix, #w2
+   41A3 CD A7 41      [17]   78 	call wall_clear_single
+                             79 	
+   41A6 C9            [10]   80 	ret
+                             81 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             82 ;; BORRA UN MURO
+                             83 ;; PARA CUADRADOS UNICAMENTE
+                             84 ;; ENTRADA: IX -> Puntero a entidad
+                             85 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41A7                      86 wall_clear_single:
+                             87 	
+   41A7 DD 7E 04      [19]   88    ld  a, w_col(ix)
+   41AA 08            [ 4]   89    ex af, af'
+                             90 
+   41AB DD 36 04 00   [19]   91    ld  w_col(ix), #0
+                             92 
+   41AF CD 7E 41      [17]   93    call wall_draw_single
+   41B2 08            [ 4]   94    ex af, af'
+   41B3 DD 77 04      [19]   95    ld w_col(ix), a
+                             96 
+   41B6 C9            [10]   97    ret
                              98 
                              99 
                             100 
-                            101  
+                            101 
+                            102  

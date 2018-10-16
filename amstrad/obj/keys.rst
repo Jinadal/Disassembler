@@ -6,13 +6,12 @@ Hexadecimal [16-Bits]
                               1 ;;====================================================
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
-                              4 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 
 
-                              5 .include "cpctelera.h.s"
+                              4 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -2504,7 +2503,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              6 .include "entity.h.s"
+                              5 .include "entity.h.s"
                               1 
                               2 .globl ent_clear
                               3 .globl ent_draw
@@ -2556,7 +2555,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              7 .include "main.h.s"
+                              6 .include "main.h.s"
                               1 .globl cpct_disableFirmware_asm
                               2 .globl cpct_drawSolidBox_asm
                               3 .globl cpct_getScreenPtr_asm
@@ -2569,7 +2568,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              8 .include "keys.h.s"
+                              7 .include "keys.h.s"
                               1 ;;====================================================
                               2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
                               3 ;;====================================================
@@ -2586,80 +2585,210 @@ Hexadecimal [16-Bits]
 
 
 
-                              9 
+                              8 .include "hp.h.s"
+                              1 
+                              2 .globl hp_clear
+                              3 .globl hp_draw
+                              4 
+                              5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                              6 ;;
+                              7 ;;MACROS
+                              8 ;;
+                              9 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              10 
-                             11 
-   4215                      12 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00, 0x03
-   0000                       1 keys: 
-   4215 02 15                 2    .db    0x02, 0x15     ;; X, Y
-   4217 00 00                 3    .db   0x00, 0x00    ;; VX, VY
-   4219 01 04                 4    .db    0x01, 0x04     ;; W, H
-   421B C0                    5    .db   0xC0        ;; Color
-   421C 79 40                 6    .dw   ent_move        ;; Update 
-   421E 00                    7    .db   0x00        ;; Key   
-   421F 03                    8    .db 	 0x03         ;; HP
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                             15 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
-                             16 ;; AND CARRIED
-                             17 ;; MODIFIED: HL, A         
-                             18 ;; EXIT: KEYS_X -> PERSONAJE_X
-                             19 ;;       KEYS_Y -> PERSONAJE_Y
-                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4220                      21 pick_keys:
-   4220 3E 01         [ 7]   22   ld a,#1
-   4222 DD 77 09      [19]   23   ld e_key(ix), a
-   4225 C9            [10]   24 ret
+                             11    .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
+                             12 _name: 
+                             13    .db    _x, _y     ;; X, Y
+                             14    .db    _w, _h     ;; W, H
+                             15    .db   _col        ;; Color
+                             16    .db   _UP         ;; is up?
+                             17 
+                             18 .endm
+                     0000    19 hp_x = 0
+                     0001    20 hp_y = 1
+                     0002    21 hp_w = 2
+                     0003    22 hp_h = 3
+                     0004    23 hp_col = 4
+                     0005    24 hp_UP = 5
                              25 
-   4226                      26 drop_keys:
-                             27   
-   4226 C9            [10]   28 ret
-                             29 
-   4227                      30 key_draw:
-                             31 
-   4227 DD 21 31 40   [14]   32   ld ix,#personaje
-   422B DD 7E 09      [19]   33   ld a, e_key(ix)
-   422E D6 01         [ 7]   34   sub #1
-                             35 
-   4230 CA 50 42      [10]   36   jp z, not_draw_key
+                             26 
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             29 ;;
+                             30 ;;OBJETOS CREADOS CON LA MACROS
+                             31 ;;
+                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 
+                             34 .globl hp1
+                             35 .globl hp2
+                             36 .globl hp3
                              37 
-   4233 DD 21 15 42   [14]   38     ld ix,#keys
-   4237 11 00 C0      [10]   39     ld    de, #0xC000       ;;Comienzo memoria de video
-   423A DD 4E 00      [19]   40     ld     c, e_x(ix)         ;; C = Entity Y
-   423D DD 46 01      [19]   41     ld     b, e_y(ix)         ;; B = Entity X
-   4240 CD C4 43      [17]   42     call cpct_getScreenPtr_asm
-                             43 
-   4243 EB            [ 4]   44     ex    de, hl   ;; DE = Puntero a memoria
-   4244 DD 7E 06      [19]   45     ld  a, e_col(ix)   ;; Color
-   4247 DD 46 05      [19]   46     ld  b, e_h(ix)   ;; alto
-   424A DD 4E 04      [19]   47     ld  c, e_w(ix)   ;; Ancho
-                             48 
-   424D CD 17 43      [17]   49     call cpct_drawSolidBox_asm
-                             50   
-   4250                      51   not_draw_key:
-   4250 DD 21 15 42   [14]   52   ld ix,#keys
-   4254 C9            [10]   53 ret
-                             54 
-   4255                      55 key_update:
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-   4255 DD 21 15 42   [14]   56   ld ix,#keys
-   4259 DD 66 08      [19]   57   ld     h, e_up_h(ix)
-   425C DD 6E 07      [19]   58   ld     l, e_up_l(ix)
-   425F E9            [ 4]   59 jp    (hl)  
-                             60 
-   4260                      61 key_clear:
-   4260 DD 21 15 42   [14]   62   ld ix,#keys
-   4264 DD 7E 06      [19]   63   ld  a, e_col(ix)
-   4267 08            [ 4]   64   ex af, af'
-                             65 
-   4268 DD 36 06 00   [19]   66   ld  e_col(ix), #0
-                             67 
-   426C CD 27 42      [17]   68   call key_draw
-   426F 08            [ 4]   69   ex af, af'
-   4270 DD 77 06      [19]   70   ld e_col(ix), a
-                             71 
-   4273 C9            [10]   72 ret
+                              9 .include "wall.h.s"
+                              1 
+                              2 .globl wall_clear
+                              3 .globl wall_draw
+                              4 .globl num_walls
+                              5 
+                              6 
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineWall _name, _x, _y, _w, _h, _col
+                             18 _name: 
+                             19    .db    _x, _y     ;; X, Y
+                             20    .db    _w, _h     ;; W, H
+                             21    .db   _col        ;; Color
+                             22 .endm
+                     0000    23 w_x = 0
+                     0001    24 w_y = 1
+                     0002    25 w_w = 2
+                     0003    26 w_h = 3
+                     0004    27 w_col = 4
+                             28 
+                             29 
+                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             31 ;;
+                             32 ;;OBJETOS CREADOS CON LA MACROS
+                             33 ;;
+                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             35 
+                             36 .globl w1
+                             37 .globl w2
+                             38 ;.globl w3
+                             39 ;.globl w4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
+Hexadecimal [16-Bits]
+
+
+
+                             10 .include "door.h.s"
+                              1 
+                              2 .globl door_draw
+                              3 .globl door_clear
+                              4 .globl check_door
+                              5 .globl open_door
+                              6 
+                              7 
+                              8 
+                              9 
+                             10 
+                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             12 ;;
+                             13 ;;MACROS
+                             14 ;;
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             16 
+                             17    .macro DefineDoor _name, _x, _y, _w, _h, _col, _op
+                             18 _name: 
+                             19     .db     _x, _y      ;; X, Y
+                             20     .db     _w, _h      ;; W, H
+                             21     .db     _col        ;; Color
+                             22     .db     _op         ;;Open-close 
+                             23 .endm
+                     0000    24 d_x = 0
+                     0001    25 d_y = 1
+                     0002    26 d_w = 2
+                     0003    27 d_h = 3
+                     0004    28 d_col = 4
+                     0005    29 d_op = 5
+                             30 
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             32 ;;
+                             33 ;;OBJETOS CREADOS CON LA MACROS
+                             34 ;;
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             36 
+                             37 .globl door0
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
+Hexadecimal [16-Bits]
+
+
+
+                             11 
+                             12 
+   4209                      13 DefineEntity keys, 0x02, 0x15, 0x00, 0x00, 0x01,0x04, 0xC0,ent_move, 0x00, 0x03
+   0000                       1 keys: 
+   4209 02 15                 2    .db    0x02, 0x15     ;; X, Y
+   420B 00 00                 3    .db   0x00, 0x00    ;; VX, VY
+   420D 01 04                 4    .db    0x01, 0x04     ;; W, H
+   420F C0                    5    .db   0xC0        ;; Color
+   4210 6D 40                 6    .dw   ent_move        ;; Update 
+   4212 00                    7    .db   0x00        ;; Key   
+   4213 03                    8    .db 	 0x03         ;; HP
+                             14 
+                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                             16 ;; IF KEYS COLISION WITH CHARACTER THEY ARE PICKED UP
+                             17 ;; AND CARRIED
+                             18 ;; MODIFIED: HL, A         
+                             19 ;; EXIT: KEYS_X -> PERSONAJE_X
+                             20 ;;       KEYS_Y -> PERSONAJE_Y
+                             21 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   4214                      22 pick_keys:
+   4214 3E 01         [ 7]   23   ld a,#1
+   4216 DD 77 09      [19]   24   ld e_key(ix), a
+   4219 C9            [10]   25 ret
+                             26 
+   421A                      27 drop_keys:
+                             28   
+   421A C9            [10]   29 ret
+                             30 
+   421B                      31 key_draw:
+                             32 
+   421B DD 21 25 40   [14]   33   ld ix,#personaje
+   421F DD 7E 09      [19]   34   ld a, e_key(ix)
+   4222 D6 01         [ 7]   35   sub #1
+                             36 
+   4224 CA 44 42      [10]   37   jp z, not_draw_key
+                             38 
+   4227 DD 21 09 42   [14]   39     ld ix,#keys
+   422B 11 00 C0      [10]   40     ld    de, #0xC000       ;;Comienzo memoria de video
+   422E DD 4E 00      [19]   41     ld     c, e_x(ix)         ;; C = Entity Y
+   4231 DD 46 01      [19]   42     ld     b, e_y(ix)         ;; B = Entity X
+   4234 CD B8 43      [17]   43     call cpct_getScreenPtr_asm
+                             44 
+   4237 EB            [ 4]   45     ex    de, hl   ;; DE = Puntero a memoria
+   4238 DD 7E 06      [19]   46     ld  a, e_col(ix)   ;; Color
+   423B DD 46 05      [19]   47     ld  b, e_h(ix)   ;; alto
+   423E DD 4E 04      [19]   48     ld  c, e_w(ix)   ;; Ancho
+                             49 
+   4241 CD 0B 43      [17]   50     call cpct_drawSolidBox_asm
+                             51   
+   4244                      52   not_draw_key:
+   4244 DD 21 09 42   [14]   53   ld ix,#keys
+   4248 C9            [10]   54 ret
+                             55 
+   4249                      56 key_update:
+   4249 DD 21 09 42   [14]   57   ld ix,#keys
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
+Hexadecimal [16-Bits]
+
+
+
+   424D DD 66 08      [19]   58   ld     h, e_up_h(ix)
+   4250 DD 6E 07      [19]   59   ld     l, e_up_l(ix)
+   4253 E9            [ 4]   60 jp    (hl)  
+                             61 
+   4254                      62 key_clear:
+   4254 DD 21 09 42   [14]   63   ld ix,#keys
+   4258 DD 7E 06      [19]   64   ld  a, e_col(ix)
+   425B 08            [ 4]   65   ex af, af'
+                             66 
+   425C DD 36 06 00   [19]   67   ld  e_col(ix), #0
+                             68 
+   4260 CD 1B 42      [17]   69   call key_draw
+   4263 08            [ 4]   70   ex af, af'
+   4264 DD 77 06      [19]   71   ld e_col(ix), a
+                             72 
+   4267 C9            [10]   73 ret

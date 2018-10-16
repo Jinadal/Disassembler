@@ -2750,29 +2750,29 @@ Hexadecimal [16-Bits]
                              42 ;;
    4000                      43 _main::
                              44    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 07 43      [17]   45       call cpct_disableFirmware_asm
+   4000 CD FB 42      [17]   45       call cpct_disableFirmware_asm
                              46 
    4003 0E 00         [ 7]   47    ld    c, #0
-   4005 CD FA 42      [17]   48    call cpct_setVideoMode_asm
+   4005 CD EE 42      [17]   48    call cpct_setVideoMode_asm
                              49 
                              50 
    4008                      51 loop:
                              52 
                              53   
-   4008 CD 60 42      [17]   54   call key_clear
-   400B CD 5A 40      [17]   55   call ent_clear
-   400E CD E7 41      [17]   56   call door_clear
-   4011 CD A4 41      [17]   57   call wall_clear
-   4014 CD B6 42      [17]   58   call hp_clear
+   4008 CD 54 42      [17]   54   call key_clear
+   400B CD 4E 40      [17]   55   call ent_clear
+   400E CD DB 41      [17]   56   call door_clear
+                             57 ;;  call wall_clear
+                             58 ;;  call hp_clear
                              59   
-   4017 CD 55 42      [17]   60   call key_update
-   401A CD 6E 40      [17]   61   call ent_update
+   4011 CD 49 42      [17]   60   call key_update
+   4014 CD 62 40      [17]   61   call ent_update
                              62 
-   401D CD 27 42      [17]   63   call key_draw
-   4020 CD 3C 40      [17]   64   call ent_draw
-   4023 CD C9 41      [17]   65   call door_draw
-   4026 CD 7B 41      [17]   66   call wall_draw
-   4029 CD 86 42      [17]   67   call hp_draw
+   4017 CD 1B 42      [17]   63   call key_draw
+   401A CD 30 40      [17]   64   call ent_draw
+   401D CD BD 41      [17]   65   call door_draw
+                             66 ;;  call wall_draw
+                             67 ;;  call hp_draw
                              68 
                              69 
                              70   
@@ -2804,6 +2804,6 @@ Hexadecimal [16-Bits]
                              91 
                              92 
                              93 
-   402C CD F2 42      [17]   94    call cpct_waitVSYNC_asm
+   4020 CD E6 42      [17]   94    call cpct_waitVSYNC_asm
                              95    ;; Loop forever
-   402F 18 D7         [12]   96    jr    loop
+   4023 18 E3         [12]   96    jr    loop

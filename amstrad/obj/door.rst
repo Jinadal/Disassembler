@@ -2560,7 +2560,67 @@ Hexadecimal [16-Bits]
 
 
 
-                              4 .include "wall.h.s"
+                              4 .include "keys.h.s"
+                              1 ;;====================================================
+                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
+                              3 ;;====================================================
+                              4 .globl key_draw
+                              5 .globl key_update
+                              6 .globl key_clear
+                              7 .globl pick_keys
+                              8 .globl drop_keys
+                              9 .globl keys
+                             10 
+                             11 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+Hexadecimal [16-Bits]
+
+
+
+                              5 .include "hp.h.s"
+                              1 
+                              2 .globl hp_clear
+                              3 .globl hp_draw
+                              4 
+                              5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                              6 ;;
+                              7 ;;MACROS
+                              8 ;;
+                              9 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             10 
+                             11    .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
+                             12 _name: 
+                             13    .db    _x, _y     ;; X, Y
+                             14    .db    _w, _h     ;; W, H
+                             15    .db   _col        ;; Color
+                             16    .db   _UP         ;; is up?
+                             17 
+                             18 .endm
+                     0000    19 hp_x = 0
+                     0001    20 hp_y = 1
+                     0002    21 hp_w = 2
+                     0003    22 hp_h = 3
+                     0004    23 hp_col = 4
+                     0005    24 hp_UP = 5
+                             25 
+                             26 
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             29 ;;
+                             30 ;;OBJETOS CREADOS CON LA MACROS
+                             31 ;;
+                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 
+                             34 .globl hp1
+                             35 .globl hp2
+                             36 .globl hp3
+                             37 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
+                              6 .include "wall.h.s"
                               1 
                               2 .globl wall_clear
                               3 .globl wall_draw
@@ -2600,12 +2660,12 @@ Hexadecimal [16-Bits]
                              37 .globl w2
                              38 ;.globl w3
                              39 ;.globl w4
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                              5 .include "door.h.s"
+                              7 .include "door.h.s"
                               1 
                               2 .globl door_draw
                               3 .globl door_clear
@@ -2643,121 +2703,104 @@ Hexadecimal [16-Bits]
                              35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              36 
                              37 .globl door0
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
-Hexadecimal [16-Bits]
-
-
-
-                              6 .include "keys.h.s"
-                              1 ;;====================================================
-                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
-                              3 ;;====================================================
-                              4 .globl key_draw
-                              5 .globl key_update
-                              6 .globl key_clear
-                              7 .globl pick_keys
-                              8 .globl drop_keys
-                              9 .globl keys
-                             10 
-                             11 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
-                              7 
-   41C3                       8 	DefineDoor door0, 100, 150, 3, 50, 0xC0, 0
-   0000                       1 door0: 
-   41C3 64 96                 2     .db     100, 150      ;; X, Y
-   41C5 03 32                 3     .db     3, 50      ;; W, H
-   41C7 C0                    4     .db     0xC0        ;; Color
-   41C8 00                    5     .db     0         ;;Open-close 
-                              9 	
-                             10 
-                             11 
-                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             13 ;; DIBUJAR UNA ENTIDAD
-                             14 ;; PARA CUADRADOS UNICAMENTE
-                             15 ;; ENTRADA: IX -> Puntero a entidad
-                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41C9                      17 door_draw:
-   41C9 DD 21 C3 41   [14]   18     ld ix,#door0
-                             19 
-                             20 ;;    ld a, d_op(ix)
-                             21 ;;    sub #1
-                             22 
-                             23 ;;    jp nz,prueba
-                             24 
-                             25 ;;    ld a, #0xFF
-                             26 ;;    ld (0xC001),a
-                             27 ;;    ld (0xC002),a
-                             28 ;;    ld (0xC003),a
-                             29 
-                             30 ;;    prueba:
-                             31     
-                             32 ;;    ld a, d_op(ix)
-                             33 ;;    sub #1
-                             34 
-                             35 ;;    jp z, not_draw_door
-                             36 
-   41CD 11 00 C0      [10]   37     ld    de, #0xC000       ;;Comienzo memoria de video
-   41D0 DD 4E 00      [19]   38     ld     c, w_x(ix)         ;; C = Entity Y
-   41D3 DD 46 01      [19]   39     ld     b, w_y(ix)         ;; B = Entity X
-   41D6 CD C4 43      [17]   40     call cpct_getScreenPtr_asm
-                             41 
-   41D9 EB            [ 4]   42     ex    de, hl   ;; DE = Puntero a memoria
-   41DA DD 7E 04      [19]   43     ld  a, w_col(ix)   ;; Color
-   41DD DD 46 03      [19]   44     ld  b, w_h(ix)   ;; alto
-   41E0 DD 4E 02      [19]   45     ld  c, w_w(ix)   ;; Ancho
-                             46 
-   41E3 CD 17 43      [17]   47     call cpct_drawSolidBox_asm
-                             48 
-                             49   ;;  not_draw_door:
-                             50 
-   41E6 C9            [10]   51 ret
-                             52 
-                             53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             54 ;; BORRA UNA ENTIDAD
-                             55 ;; PARA CUADRADOS UNICAMENTE
-                             56 ;; ENTRADA: IX -> Puntero a entidad
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
 
-                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41E7                      58 door_clear:
-   41E7 DD 21 C3 41   [14]   59     ld ix,#door0
-   41EB DD 7E 04      [19]   60     ld  a, w_col(ix)
-   41EE 08            [ 4]   61     ex af, af'
-                             62 
-   41EF DD 36 04 00   [19]   63     ld  w_col(ix), #0
-                             64 
-   41F3 CD 7B 41      [17]   65     call wall_draw
-   41F6 08            [ 4]   66     ex af, af'
-   41F7 DD 77 04      [19]   67     ld w_col(ix), a
-                             68 
-   41FA C9            [10]   69     ret
-                             70 
+                              8 
+   41B7                       9 	DefineDoor door0, 100, 150, 3, 50, 0xC0, 0
+   0000                       1 door0: 
+   41B7 64 96                 2     .db     100, 150      ;; X, Y
+   41B9 03 32                 3     .db     3, 50      ;; W, H
+   41BB C0                    4     .db     0xC0        ;; Color
+   41BC 00                    5     .db     0         ;;Open-close 
+                             10 	
+                             11 
+                             12 
+                             13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             14 ;; DIBUJAR UNA ENTIDAD
+                             15 ;; PARA CUADRADOS UNICAMENTE
+                             16 ;; ENTRADA: IX -> Puntero a entidad
+                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41BD                      18 door_draw:
+   41BD DD 21 B7 41   [14]   19     ld ix,#door0
+                             20 
+                             21 ;;    ld a, d_op(ix)
+                             22 ;;    sub #1
+                             23 
+                             24 ;;    jp nz,prueba
+                             25 
+                             26 ;;    ld a, #0xFF
+                             27 ;;    ld (0xC001),a
+                             28 ;;    ld (0xC002),a
+                             29 ;;    ld (0xC003),a
+                             30 
+                             31 ;;    prueba:
+                             32     
+                             33 ;;    ld a, d_op(ix)
+                             34 ;;    sub #1
+                             35 
+                             36 ;;    jp z, not_draw_door
+                             37 
+   41C1 11 00 C0      [10]   38     ld    de, #0xC000       ;;Comienzo memoria de video
+   41C4 DD 4E 00      [19]   39     ld     c, w_x(ix)         ;; C = Entity Y
+   41C7 DD 46 01      [19]   40     ld     b, w_y(ix)         ;; B = Entity X
+   41CA CD B8 43      [17]   41     call cpct_getScreenPtr_asm
+                             42 
+   41CD EB            [ 4]   43     ex    de, hl   ;; DE = Puntero a memoria
+   41CE DD 7E 04      [19]   44     ld  a, w_col(ix)   ;; Color
+   41D1 DD 46 03      [19]   45     ld  b, w_h(ix)   ;; alto
+   41D4 DD 4E 02      [19]   46     ld  c, w_w(ix)   ;; Ancho
+                             47 
+   41D7 CD 0B 43      [17]   48     call cpct_drawSolidBox_asm
+                             49 
+                             50   ;;  not_draw_door:
+                             51 
+   41DA C9            [10]   52 ret
+                             53 
+                             54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             55 ;; BORRA UNA ENTIDAD
+                             56 ;; PARA CUADRADOS UNICAMENTE
+                             57 ;; ENTRADA: IX -> Puntero a entidad
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
+Hexadecimal [16-Bits]
+
+
+
+                             58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   41DB                      59 door_clear:
+   41DB DD 21 B7 41   [14]   60     ld ix,#door0
+   41DF DD 7E 04      [19]   61     ld  a, w_col(ix)
+   41E2 08            [ 4]   62     ex af, af'
+                             63 
+   41E3 DD 36 04 00   [19]   64     ld  w_col(ix), #0
+                             65 
+   41E7 CD 6F 41      [17]   66     call wall_draw
+   41EA 08            [ 4]   67     ex af, af'
+   41EB DD 77 04      [19]   68     ld w_col(ix), a
+                             69 
+   41EE C9            [10]   70     ret
                              71 
-   41FB                      72 check_door:
-   41FB DD 21 31 40   [14]   73     ld ix,#personaje
-   41FF DD 7E 09      [19]   74     ld a, e_key(ix)
-   4202 D6 01         [ 7]   75     sub #1
-                             76 
-   4204 C2 0A 42      [10]   77     jp nz, no_key
-                             78 
-   4207 CD 0B 42      [17]   79     call open_door
-                             80 
-   420A                      81     no_key:
-                             82 
-   420A C9            [10]   83 ret
-                             84 
-   420B                      85 open_door:
-                             86     
-   420B DD 21 C3 41   [14]   87     ld ix, #door0
-   420F 3E 01         [ 7]   88     ld a,#1
-   4211 DD 77 05      [19]   89     ld d_op(ix), a
-                             90 
-                             91     
-   4214 C9            [10]   92 ret
+                             72 
+   41EF                      73 check_door:
+   41EF DD 21 25 40   [14]   74     ld ix,#personaje
+   41F3 DD 7E 09      [19]   75     ld a, e_key(ix)
+   41F6 D6 01         [ 7]   76     sub #1
+                             77 
+   41F8 C2 FE 41      [10]   78     jp nz, no_key
+                             79 
+   41FB CD FF 41      [17]   80     call open_door
+                             81 
+   41FE                      82     no_key:
+                             83 
+   41FE C9            [10]   84 ret
+                             85 
+   41FF                      86 open_door:
+                             87     
+   41FF DD 21 B7 41   [14]   88     ld ix, #door0
+   4203 3E 01         [ 7]   89     ld a,#1
+   4205 DD 77 05      [19]   90     ld d_op(ix), a
+                             91 
+                             92     
+   4208 C9            [10]   93 ret

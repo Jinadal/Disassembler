@@ -2762,17 +2762,17 @@ Hexadecimal [16-Bits]
    0008 CD 00 00      [17]   54   call key_clear
    000B CD 00 00      [17]   55   call ent_clear
    000E CD 00 00      [17]   56   call door_clear
-   0011 CD 00 00      [17]   57   call wall_clear
-   0014 CD 00 00      [17]   58   call hp_clear
+                             57 ;;  call wall_clear
+                             58 ;;  call hp_clear
                              59   
-   0017 CD 00 00      [17]   60   call key_update
-   001A CD 00 00      [17]   61   call ent_update
+   0011 CD 00 00      [17]   60   call key_update
+   0014 CD 00 00      [17]   61   call ent_update
                              62 
-   001D CD 00 00      [17]   63   call key_draw
-   0020 CD 00 00      [17]   64   call ent_draw
-   0023 CD 00 00      [17]   65   call door_draw
-   0026 CD 00 00      [17]   66   call wall_draw
-   0029 CD 00 00      [17]   67   call hp_draw
+   0017 CD 00 00      [17]   63   call key_draw
+   001A CD 00 00      [17]   64   call ent_draw
+   001D CD 00 00      [17]   65   call door_draw
+                             66 ;;  call wall_draw
+                             67 ;;  call hp_draw
                              68 
                              69 
                              70   
@@ -2804,6 +2804,6 @@ Hexadecimal [16-Bits]
                              91 
                              92 
                              93 
-   002C CD 00 00      [17]   94    call cpct_waitVSYNC_asm
+   0020 CD 00 00      [17]   94    call cpct_waitVSYNC_asm
                              95    ;; Loop forever
-   002F 18 D7         [12]   96    jr    loop
+   0023 18 E3         [12]   96    jr    loop
