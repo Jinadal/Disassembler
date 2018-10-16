@@ -17,22 +17,22 @@
 door_draw:
     ld ix,#door0
 
-    ld a, d_op(ix)
-    sub #1
+;;    ld a, d_op(ix)
+;;    sub #1
 
-    jp nz,prueba
+;;    jp nz,prueba
 
-    ld a, #0xFF
-    ld (0xC001),a
-    ld (0xC002),a
-    ld (0xC003),a
+;;    ld a, #0xFF
+;;    ld (0xC001),a
+;;    ld (0xC002),a
+;;    ld (0xC003),a
 
-    prueba:
+;;    prueba:
     
-    ld a, d_op(ix)
-    sub #1
+;;    ld a, d_op(ix)
+;;    sub #1
 
-    jp z, not_draw_door
+;;    jp z, not_draw_door
 
     ld    de, #0xC000       ;;Comienzo memoria de video
     ld     c, w_x(ix)         ;; C = Entity Y
@@ -46,7 +46,7 @@ door_draw:
 
     call cpct_drawSolidBox_asm
 
-    not_draw_door:
+  ;;  not_draw_door:
 
 ret
 

@@ -2726,74 +2726,12 @@ Hexadecimal [16-Bits]
                              34 ;;
                              35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              36 
-<<<<<<< HEAD
-                             37 ;;
-                             38 ;; MAIN function. This is the entry point of the application.
-                             39 ;;    _main:: global symbol is required for correctly compiling and linking
-                             40 ;;
-   4000                      41 _main::
-                             42    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD AC 42      [17]   43       call cpct_disableFirmware_asm
-                             44 
-   4003 0E 00         [ 7]   45    ld    c, #0
-   4005 CD 9F 42      [17]   46    call cpct_setVideoMode_asm
-                             47 
-                             48 
-   4008                      49 loop:
-                             50 
-                             51   
-   4008 CD 6D 42      [17]   52   call key_clear
-   400B CD 51 40      [17]   53   call ent_clear
-   400E CD 9B 41      [17]   54   call wall_clear
-                             55   ;call hp_clear
-                             56 
-                             57   
-   4011 CD 62 42      [17]   58   call key_update
-   4014 CD 65 40      [17]   59   call ent_update
-                             60 
-   4017 CD 34 42      [17]   61   call key_draw
-   401A CD 33 40      [17]   62   call ent_draw
-   401D CD 72 41      [17]   63   call wall_draw
-   4020 CD CC 41      [17]   64   call hp_draw
-                             65 
-                             66 
-                             67   
-                             68   ;;  ld    ix, #p_a
-                             69   ;; call ent_clear
-                             70   ;; call ent_update
-                             71   ;; call ent_draw
-                             72 
-                             73   ;;  ld    ix, #p_a1
-                             74   ;; call ent_clear
-                             75   ;; call ent_update
-                             76   ;; call ent_draw
-                             77 
-                             78 
-                             79   ;;  ld    ix, #p_a2
-                             80   ;; call ent_clear
-=======
                              37 .globl door0
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-                             81   ;; call ent_update
-                             82   ;; call ent_draw
-                             83 
-                             84     
-                             85 
-                             86 
-                             87 
-                             88 
-                             89 
-                             90 
-   4023 CD 97 42      [17]   91    call cpct_waitVSYNC_asm
-                             92    ;; Loop forever
-   4026 18 E0         [12]   93    jr    loop
-=======
                              27 
                              28 ;;
                              29 
@@ -2812,69 +2750,60 @@ Hexadecimal [16-Bits]
                              42 ;;
    4000                      43 _main::
                              44    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD FD 42      [17]   45       call cpct_disableFirmware_asm
+   4000 CD 01 43      [17]   45       call cpct_disableFirmware_asm
                              46 
    4003 0E 00         [ 7]   47    ld    c, #0
-   4005 CD F0 42      [17]   48    call cpct_setVideoMode_asm
+   4005 CD F4 42      [17]   48    call cpct_setVideoMode_asm
                              49 
                              50 
    4008                      51 loop:
                              52 
                              53   
-   4008 CD 82 42      [17]   54   call key_clear
-   400B CD 7F 40      [17]   55   call ent_clear
-   400E CD 09 42      [17]   56   call door_clear
-   4011 DD 21 96 41   [14]   57     ld ix, #w1
-   4015 CD BA 41      [17]   58   call wall_clear
-   4018 DD 21 9B 41   [14]   59   ld ix, #w2
-   401C CD BA 41      [17]   60   call wall_clear
-   401F CD 77 42      [17]   61   call key_update
-   4022 CD 93 40      [17]   62   call ent_update
-   4025 CD 49 42      [17]   63   call key_draw
-   4028 CD 61 40      [17]   64   call ent_draw
-   402B CD D0 41      [17]   65   call door_draw
-   402E DD 21 96 41   [14]   66     ld ix, #w1
-   4032 CD A0 41      [17]   67   call wall_draw
-   4035 DD 21 9B 41   [14]   68   ld ix, #w2
-   4039 CD A0 41      [17]   69   call wall_draw
-                             70 
-   403C DD 21 96 42   [14]   71        ld ix, #hp1
-   4040 CD A8 42      [17]   72   call HP_draw
-   4043 DD 21 9C 42   [14]   73   ld ix, #hp2
-   4047 CD A8 42      [17]   74   call HP_draw
-   404A DD 21 A2 42   [14]   75     ld ix, #hp3
-   404E CD A8 42      [17]   76   call HP_draw
-                             77 
-                             78   
-                             79   ;;  ld    ix, #p_a
-                             80   ;; call ent_clear
-                             81   ;; call ent_update
+   4008 CD C2 42      [17]   54   call key_clear
+   400B CD 54 40      [17]   55   call ent_clear
+                             56   ;call door_clear
+   400E CD 9E 41      [17]   57   call wall_clear
+   4011 CD 51 42      [17]   58   call hp_clear
+                             59   
+   4014 CD B7 42      [17]   60   call key_update
+   4017 CD 68 40      [17]   61   call ent_update
+                             62 
+   401A CD 89 42      [17]   63   call key_draw
+   401D CD 36 40      [17]   64   call ent_draw
+                             65  ; call door_draw
+   4020 CD 75 41      [17]   66   call wall_draw
+   4023 CD 21 42      [17]   67   call hp_draw
+                             68 
+                             69 
+                             70   
+                             71   ;;  ld    ix, #p_a
+                             72   ;; call ent_clear
+                             73   ;; call ent_update
+                             74   ;; call ent_draw
+                             75 
+                             76   ;;  ld    ix, #p_a1
+                             77   ;; call ent_clear
+                             78   ;; call ent_update
+                             79   ;; call ent_draw
+                             80 
+                             81 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
 Hexadecimal [16-Bits]
 
 
 
-                             82   ;; call ent_draw
-                             83 
-                             84   ;;  ld    ix, #p_a1
-                             85   ;; call ent_clear
-                             86   ;; call ent_update
-                             87   ;; call ent_draw
+                             82   ;;  ld    ix, #p_a2
+                             83   ;; call ent_clear
+                             84   ;; call ent_update
+                             85   ;; call ent_draw
+                             86 
+                             87     
                              88 
                              89 
-                             90   ;;  ld    ix, #p_a2
-                             91   ;; call ent_clear
-                             92   ;; call ent_update
-                             93   ;; call ent_draw
-                             94 
-                             95     
-                             96 
-                             97 
-                             98 
-                             99 
-                            100 
-                            101 
-   4051 CD E8 42      [17]  102    call cpct_waitVSYNC_asm
-                            103    ;; Loop forever
-   4054 18 B2         [12]  104    jr    loop
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
+                             90 
+                             91 
+                             92 
+                             93 
+   4026 CD EC 42      [17]   94    call cpct_waitVSYNC_asm
+                             95    ;; Loop forever
+   4029 18 DD         [12]   96    jr    loop

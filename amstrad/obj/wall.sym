@@ -73,21 +73,13 @@ Symbol Table
     opc_LD_D=  0016     |     personaj   **** GX  |   0 w1         0000 GR
   0 w2         0005 GR  |     w_col   =  0004     |     w_h     =  0003 
     w_w     =  0002     |     w_x     =  0000     |     w_y     =  0001 
-<<<<<<< HEAD
   0 wall_cle   0033 GR  |   0 wall_cle   0042 R   |   0 wall_dra   000A GR
   0 wall_dra   0019 R   |     wall_siz=  0005 
-=======
-  0 wall_cle   0024 GR  |   0 wall_dra   000A GR  |     wall_siz=  0005 
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-<<<<<<< HEAD
    0 _CODE      size   52   flags    0
-=======
-   0 _CODE      size   34   flags    0
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
 

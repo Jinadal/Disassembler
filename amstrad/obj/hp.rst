@@ -2605,49 +2605,26 @@ Hexadecimal [16-Bits]
 
                               5 
                               6 
-<<<<<<< HEAD
-   41BA                       7 	DefineHP hp1, 0, 0, 2,4,0xFF, 0x01
+   420F                       7 	DefineHP hp1, 0, 0, 2,4,0xFF, 0x01
    0000                       1 hp1: 
-   41BA 00 00                 2    .db    0, 0     ;; X, Y
-   41BC 02 04                 3    .db    2, 4     ;; W, H
-   41BE FF                    4    .db   0xFF        ;; Color
-   41BF 01                    5    .db   0x01         ;; is up?
+   420F 00 00                 2    .db    0, 0     ;; X, Y
+   4211 02 04                 3    .db    2, 4     ;; W, H
+   4213 FF                    4    .db   0xFF        ;; Color
+   4214 01                    5    .db   0x01         ;; is up?
                               6 
-   41C0                       8 	DefineHP hp2, 4, 0, 2,4,0xFF, 0x01
+   4215                       8 	DefineHP hp2, 4, 0, 2,4,0xFF, 0x01
    0006                       1 hp2: 
-   41C0 04 00                 2    .db    4, 0     ;; X, Y
-   41C2 02 04                 3    .db    2, 4     ;; W, H
-   41C4 FF                    4    .db   0xFF        ;; Color
-   41C5 01                    5    .db   0x01         ;; is up?
+   4215 04 00                 2    .db    4, 0     ;; X, Y
+   4217 02 04                 3    .db    2, 4     ;; W, H
+   4219 FF                    4    .db   0xFF        ;; Color
+   421A 01                    5    .db   0x01         ;; is up?
                               6 
-   41C6                       9 	DefineHP hp3, 8, 0, 2,4,0xFF, 0x01
+   421B                       9 	DefineHP hp3, 8, 0, 2,4,0xFF, 0x01
    000C                       1 hp3: 
-   41C6 08 00                 2    .db    8, 0     ;; X, Y
-   41C8 02 04                 3    .db    2, 4     ;; W, H
-   41CA FF                    4    .db   0xFF        ;; Color
-   41CB 01                    5    .db   0x01         ;; is up?
-=======
-   4296                       7 	DefineHP hp1, 0, 0, 2,4,0xFF, 0x01
-   0000                       1 hp1: 
-   4296 00 00                 2    .db    0, 0     ;; X, Y
-   4298 02 04                 3    .db    2, 4     ;; W, H
-   429A FF                    4    .db   0xFF        ;; Color
-   429B 01                    5    .db   0x01         ;; is up?
-                              6 
-   429C                       8 	DefineHP hp2, 4, 0, 2,4,0xFF, 0x01
-   0006                       1 hp2: 
-   429C 04 00                 2    .db    4, 0     ;; X, Y
-   429E 02 04                 3    .db    2, 4     ;; W, H
-   42A0 FF                    4    .db   0xFF        ;; Color
-   42A1 01                    5    .db   0x01         ;; is up?
-                              6 
-   42A2                       9 	DefineHP hp3, 8, 0, 2,4,0xFF, 0x01
-   000C                       1 hp3: 
-   42A2 08 00                 2    .db    8, 0     ;; X, Y
-   42A4 02 04                 3    .db    2, 4     ;; W, H
-   42A6 FF                    4    .db   0xFF        ;; Color
-   42A7 01                    5    .db   0x01         ;; is up?
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
+   421B 08 00                 2    .db    8, 0     ;; X, Y
+   421D 02 04                 3    .db    2, 4     ;; W, H
+   421F FF                    4    .db   0xFF        ;; Color
+   4220 01                    5    .db   0x01         ;; is up?
                               6 
                              10 
                              11 
@@ -2655,79 +2632,49 @@ Hexadecimal [16-Bits]
                              13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              14 ;; DIBUJAR LAS PAREDES
                              15 ;; PARA CUADRADOS UNICAMENTE
-<<<<<<< HEAD
                              16 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              17 
-   41CC                      18 hp_draw:
+   4221                      18 hp_draw:
                              19 
-   41CC DD 21 BA 41   [14]   20 	ld ix, #hp1
-   41D0 CD E2 41      [17]   21 	call hp_draw_single
+   4221 DD 21 0F 42   [14]   20 	ld ix, #hp1
+   4225 CD 37 42      [17]   21 	call hp_draw_single
                              22 
-   41D3 DD 21 C0 41   [14]   23 	ld ix, #hp2
-   41D7 CD E2 41      [17]   24 	call hp_draw_single
+   4228 DD 21 15 42   [14]   23 	ld ix, #hp2
+   422C CD 37 42      [17]   24 	call hp_draw_single
                              25 
-   41DA DD 21 C6 41   [14]   26 	ld ix, #hp3
-   41DE CD E2 41      [17]   27 	call hp_draw_single
+   422F DD 21 1B 42   [14]   26 	ld ix, #hp3
+   4233 CD 37 42      [17]   27 	call hp_draw_single
                              28 	
-   41E1 C9            [10]   29 	ret
+   4236 C9            [10]   29 	ret
                              30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              31 ;; DIBUJAR UNA ENTIDAD
                              32 ;; PARA CUADRADOS UNICAMENTE
                              33 ;; ENTRADA: IX -> Puntero a entidad
                              34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41E2                      35 hp_draw_single:
+   4237                      35 hp_draw_single:
                              36 
                              37 	
-   41E2 11 00 C0      [10]   38    ld    de, #0xC000       ;;Comienzo memoria de video
-   41E5 DD 4E 00      [19]   39    ld     c, hp_x(ix)         ;; C = X
-   41E8 DD 46 01      [19]   40    ld     b, hp_y(ix)         ;; B = Y
-   41EB CD 69 43      [17]   41    call cpct_getScreenPtr_asm
-=======
-                             16 ;; ENTRADA: IX -> Puntero a entidad
-                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   42A8                      18 HP_draw:
-                             19 
-                             20 	;;; MIRA AQUI UN REGISTRO PARA GUARDAR EL CONTADOR DE PAREDES
-                             21 ; ld e' , #num_walls
-                             22  ; ld ix, #w1
-                             23 
-                             24  ;bucl:
-                             25 	
-   42A8 11 00 C0      [10]   26    ld    de, #0xC000       ;;Comienzo memoria de video
-   42AB DD 4E 00      [19]   27    ld     c, hp_x(ix)         ;; C = Entity Y
-   42AE DD 46 01      [19]   28    ld     b, hp_y(ix)         ;; B = Entity X
-   42B1 CD BA 43      [17]   29    call cpct_getScreenPtr_asm
-                             30 
-   42B4 EB            [ 4]   31    ex    de, hl   ;; DE = Puntero a memoria
-   42B5 DD 7E 04      [19]   32    ld  a, hp_col(ix)   ;; Color
-   42B8 DD 46 03      [19]   33    ld  b, hp_h(ix)   ;; alto
-   42BB DD 4E 02      [19]   34    ld  c, hp_w(ix)   ;; Ancho
-                             35 
-   42BE CD 0D 43      [17]   36    call cpct_drawSolidBox_asm
-                             37 
-                             38 
-                             39   ;  inc ix
-                             40    ; inc ix
-                             41     ;inc ix
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
+   4237 11 00 C0      [10]   38    ld    de, #0xC000       ;;Comienzo memoria de video
+   423A DD 4E 00      [19]   39    ld     c, hp_x(ix)         ;; C = X
+   423D DD 46 01      [19]   40    ld     b, hp_y(ix)         ;; B = Y
+   4240 CD BE 43      [17]   41    call cpct_getScreenPtr_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
                              42 
-   41EE EB            [ 4]   43    ex    de, hl   ;; DE = Puntero a memoria
-   41EF DD 7E 04      [19]   44    ld  a, hp_col(ix)   ;; Color
-   41F2 DD 46 03      [19]   45    ld  b, hp_h(ix)   ;; alto
-   41F5 DD 4E 02      [19]   46    ld  c, hp_w(ix)   ;; Ancho
+   4243 EB            [ 4]   43    ex    de, hl   ;; DE = Puntero a memoria
+   4244 DD 7E 04      [19]   44    ld  a, hp_col(ix)   ;; Color
+   4247 DD 46 03      [19]   45    ld  b, hp_h(ix)   ;; alto
+   424A DD 4E 02      [19]   46    ld  c, hp_w(ix)   ;; Ancho
                              47 
-   41F8 CD BC 42      [17]   48    call cpct_drawSolidBox_asm
+   424D CD 11 43      [17]   48    call cpct_drawSolidBox_asm
                              49 
                              50 
-<<<<<<< HEAD
                              51   
                              52 
-   41FB C9            [10]   53    ret
+   4250 C9            [10]   53    ret
                              54 
                              55 
                              56 
@@ -2738,57 +2685,35 @@ Hexadecimal [16-Bits]
                              61 ;; PARA CUADRADOS UNICAMENTE
                              62 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              63 
-   41FC                      64 hp_clear:
+   4251                      64 hp_clear:
                              65 
-   41FC DD 21 BA 41   [14]   66 	ld ix, #hp1
-   4200 CD 12 42      [17]   67 	call hp_clear_single
+   4251 DD 21 0F 42   [14]   66 	ld ix, #hp1
+   4255 CD 67 42      [17]   67 	call hp_clear_single
                              68 
-   4203 DD 21 C0 41   [14]   69 	ld ix, #hp2
-   4207 CD 12 42      [17]   70 	call hp_clear_single
-=======
-   42C1 C9            [10]   51    ret
-                             52 
-                             53 
-                             54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             55 ;; BORRA UNA VIDA
-                             56 ;; PARA CUADRADOS UNICAMENTE
-                             57 ;; ENTRADA: IX -> Puntero a entidad
-                             58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   42C2                      59 HP_clear:
-                             60 	
-   42C2 DD 7E 04      [19]   61    ld  a, hp_col(ix)
-   42C5 08            [ 4]   62    ex af, af'
-                             63 
-   42C6 DD 36 04 00   [19]   64    ld  hp_col(ix), #0
-                             65 
-   42CA CD A8 42      [17]   66    call HP_draw
-   42CD 08            [ 4]   67    ex af, af'
-   42CE DD 77 04      [19]   68    ld hp_col(ix), a
-                             69 
-   42D1 C9            [10]   70    ret
->>>>>>> f47b550acaef241e937a063a67df189497f7ec6d
+   4258 DD 21 15 42   [14]   69 	ld ix, #hp2
+   425C CD 67 42      [17]   70 	call hp_clear_single
                              71 
-   420A DD 21 C6 41   [14]   72 	ld ix, #hp3
-   420E CD 12 42      [17]   73 	call hp_clear_single
+   425F DD 21 1B 42   [14]   72 	ld ix, #hp3
+   4263 CD 67 42      [17]   73 	call hp_clear_single
                              74 	
-   4211 C9            [10]   75 	ret
+   4266 C9            [10]   75 	ret
                              76 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              77 ;; BORRA UN MURO
                              78 ;; PARA CUADRADOS UNICAMENTE
                              79 ;; ENTRADA: IX -> Puntero a entidad
                              80 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4212                      81 hp_clear_single:
+   4267                      81 hp_clear_single:
                              82 	
-   4212 DD 7E 04      [19]   83    ld  a, hp_col(ix)
-   4215 08            [ 4]   84    ex af, af'
+   4267 DD 7E 04      [19]   83    ld  a, hp_col(ix)
+   426A 08            [ 4]   84    ex af, af'
                              85 
-   4216 DD 36 04 00   [19]   86    ld  hp_col(ix), #0
+   426B DD 36 04 00   [19]   86    ld  hp_col(ix), #0
                              87 
-   421A CD E2 41      [17]   88    call hp_draw_single
-   421D 08            [ 4]   89    ex af, af'
-   421E DD 77 04      [19]   90    ld hp_col(ix), a
+   426F CD 37 42      [17]   88    call hp_draw_single
+   4272 08            [ 4]   89    ex af, af'
+   4273 DD 77 04      [19]   90    ld hp_col(ix), a
                              91 
-   4221 C9            [10]   92    ret
+   4276 C9            [10]   92    ret
                              93 
                              94 
                              95 
