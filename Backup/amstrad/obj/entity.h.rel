@@ -1,14 +1,12 @@
 XL2
-H 1 areas B global symbols
-S ent_collide Ref0000
-S personaje Ref0000
-S ent_moveKeyboard Ref0000
+H 1 areas 9 global symbols
+S cube_reposition Ref0000
 S ent_draw Ref0000
-S ent_move Ref0000
+S enemy_data Ref0000
 S .__.ABS. Def0000
-S p_a1 Ref0000
-S p_a2 Ref0000
-S ent_update Ref0000
+S ent_copy Ref0000
+S hero_data Ref0000
 S ent_clear Ref0000
-S p_a Ref0000
+S ent_new Ref0000
+S ent_doForAll Ref0000
 A _CODE size 0 flags 0 addr 0

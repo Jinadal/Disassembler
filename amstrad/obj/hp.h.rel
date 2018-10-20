@@ -1,9 +1,0 @@
-XL2
-H 1 areas 6 global symbols
-S hp1 Ref0000
-S hp2 Ref0000
-S hp3 Ref0000
-S .__.ABS. Def0000
-S hp_draw Ref0000
-S hp_clear Ref0000
-A _CODE size 0 flags 0 addr 0

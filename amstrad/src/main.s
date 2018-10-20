@@ -1,30 +1,83 @@
 .include "cpctelera.h.s"
 .include "main.h.s"
+.include "cube.h.s"
 
-.area_DATA
 
-.area_CODE
+.area _DATA
+.area _CODE
 
 _main::
 
-    call cpct_disableFirware_asm
+    call cpct_disableFirmware_asm
 
     ld c, #0
     call cpct_setVideoMode_asm
 
+  
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+    
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+    
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+    
+    call cube_new
+    ex   de, hl
+    ld   hl, #cubedefault
+    call cube_copy
+    
 loop:
-;;call clear_player
-;;call clear_ball
-;;call clear_cube
+;;ld ix,#cubeline1
+;;call cube_clear
+;;call cube_draw
 
-;;call update_player
-;;call update_ball
+;;ld    ix, #cubeline1
+;;call cube_clear
+;;call cube_draw
 
-;;call draw_player
-;;call draw_ball
-;;call draw_cube
+ld      hl, #cube_clear
+call    cube_doForAll
+
+ld      hl, #cube_draw
+call    cube_doForAll
+
+
 
 
 call cpct_waitVSYNC_asm
 
-jr loop
+jp loop

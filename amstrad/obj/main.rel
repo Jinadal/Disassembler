@@ -1,55 +1,50 @@
 XL2
-H 2 areas 26 global symbols
+H 2 areas 11 global symbols
 M cpct_keyboard
-S door_draw Ref0000
-S pick_keys Ref0000
-S ent_collide Ref0000
+S cubedefault Ref0000
 S cpct_isKeyPressed_asm Ref0000
-S open_door Ref0000
-S personaje Ref0000
-S hp1 Ref0000
-S hp2 Ref0000
-S hp3 Ref0000
-S ent_moveKeyboard Ref0000
-S ent_move2 Ref0000
-S drop_keys Ref0000
-S check_door Ref0000
-S num_walls Ref0000
-S ent_draw Ref0000
-S wall_clear Ref0000
-S key_draw Ref0000
-S door_clear Ref0000
-S ent_move Ref0000
+S cube_clear Ref0000
+S cube_new Ref0000
+S cube_doForAll Ref0000
 S .__.ABS. Def0000
-S door0 Ref0000
-S hp_draw Ref0000
-S w1 Ref0000
-S w2 Ref0000
-S ent_update Ref0000
-S key_update Ref0000
-S ent_clear Ref0000
-S key_clear Ref0000
+S cubeline1_vector Ref0000
+S cube_draw Ref0000
 S cpct_setVideoMode_asm Ref0000
 S cpct_waitVSYNC_asm Ref0000
+S cubeline1 Ref0000
+S cube_copy Ref0000
 S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
-S keys Ref0000
-S wall_draw Ref0000
-S hp_clear Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 25 flags 0 addr 0
+A _CODE size 74 flags 0 addr 0
 S _main Def0000
 A _DATA size 0 flags 0 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 CD 00 00 0E 00 CD 00 00
-R 00 00 00 00 02 03 1E 00 02 08 1C 00
-T 08 00
+T 00 00 CD 00 00 0E 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 03 0C 00 02 08 08 00 02 0B 03 00
+T 0D 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 17 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 21 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 2B 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 35 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 3F 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 49 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 53 00 00 00 CD 00 00 CD 00 00 EB 21
+R 00 00 00 00 02 02 00 00 02 05 0B 00 02 08 03 00
+T 5D 00 00 00 CD 00 00
+R 00 00 00 00 02 02 00 00 02 05 0B 00
+T 62 00
 R 00 00 00 00
-T 08 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 1B 00 02 06 1A 00 02 09 11 00
-T 12 00 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 02 19 00 02 05 18 00 02 08 10 00
-T 1B 00 00 00 CD 00 00 CD 00 00 18 E3
-R 00 00 00 00 02 02 0E 00 02 05 00 00 02 08 1D 00
+T 62 00 21 00 00 CD 00 00 21 00 00 CD
+R 00 00 00 00 02 03 02 00 02 06 04 00 02 09 07 00
+T 6C 00 00 00 CD 00 00 C3 62 00
+R 00 00 00 00 02 02 04 00 02 05 09 00 00 08 00 00

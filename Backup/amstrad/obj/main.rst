@@ -3,31 +3,35 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 ;;-----------------------------LICENSE NOTICE------------------------------------
-                              2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
-                              3 ;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-                              4 ;;
-                              5 ;;  This program is free software: you can redistribute it and/or modify
-                              6 ;;  it under the terms of the GNU Lesser General Public License as published by
-                              7 ;;  the Free Software Foundation, either version 3 of the License, or
-                              8 ;;  (at your option) any later version.
-                              9 ;;
-                             10 ;;  This program is distributed in the hope that it will be useful,
-                             11 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                             12 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                             13 ;;  GNU Lesser General Public License for more details.
-                             14 ;;
-                             15 ;;  You should have received a copy of the GNU Lesser General Public License
-                             16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                             17 ;;-------------------------------------------------------------------------------
-                             18 
-                             19 ;; Include all CPCtelera constant definitions, macros and variables
+                              1 
+                              2 ;###########################################################################
+                              3 ;#### FICHERO: main.s
+                              4 ;###########################################################################
+                              5 ;;-----------------------------LICENSE NOTICE------------------------------------
+                              6 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
+                              7 ;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              8 ;;
+                              9 ;;  This program is free software: you can redistribute it and/or modify
+                             10 ;;  it under the terms of the GNU Lesser General Public License as published by
+                             11 ;;  the Free Software Foundation, either version 3 of the License, or
+                             12 ;;  (at your option) any later version.
+                             13 ;;
+                             14 ;;  This program is distributed in the hope that it will be useful,
+                             15 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             16 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             17 ;;  GNU Lesser General Public License for more details.
+                             18 ;;
+                             19 ;;  You should have received a copy of the GNU Lesser General Public License
+                             20 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             21 ;;-------------------------------------------------------------------------------
+                             22  
+                             23 ;; Include all CPCtelera constant definitions, macros and variables
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 
 
-                             20 .include "cpctelera.h.s"
+                             24 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -2519,151 +2523,150 @@ Hexadecimal [16-Bits]
 
 
 
-                             21 .include "entity.h.s"
-                              1 
-                              2 
-                              3 
-                              4 
-                              5 .globl ent_clear
-                              6 .globl ent_draw
-                              7 .globl ent_update
-                              8 .globl ent_move
-                              9 .globl ent_moveKeyboard
-                             10 .globl ent_collide
-                             11 
-                             12 
-                             13 
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             15 ;;
-                             16 ;;MACROS
-                             17 ;;
-                             18 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             19 
-                             20    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd
-                             21 _name: 
-                             22    .db    _x, _y     ;; X, Y
-                             23    .db   _vx, _vy     ;; VX, VY
-                             24    .db    _w, _h     ;; W, H
-                             25    .db   _col           ;; Color
-                             26    .dw   _upd        ;; Update 
-                             27 .endm
-                     0000    28 e_x = 0
-                     0001    29 e_y = 1
-                     0002    30 e_vx = 2
-                     0003    31 e_vy = 3
-                     0004    32 e_w = 4
-                     0005    33 e_h = 5
-                     0006    34 e_col = 6
-                     0007    35 e_up_l = 7
-                     0008    36 e_up_h = 8
-                             37 
-                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             39 ;;
-                             40 ;;OBJETOS CREADOS CON LA MACROS
-                             41 ;;
-                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             43 
-                             44 .globl personaje
-                             45 .globl p_a
-                             46 .globl p_a1
-                             47 
-                             48 .globl p_a2
-                             49 
+                             25 .include "entity.h.s"
+                              1 ;###########################################################################
+                              2 ;#### FICHERO: entity.h.s
+                              3 ;###########################################################################
+                              4 .macro DefineEntity _name, _x, _y, _w, _h, _col
+                              5 _name:
+                              6    .db    _x, _y     ;; X, Y
+                              7    .db    _w, _h     ;; W, H
+                              8    .db   _col           ;; Color
+                              9 .endm
+                             10 .macro DefineEntityDefault _name, _suf
+                             11    DefineEntity _name'_suf, 0xAA, 0, 0, 0, 0xFFFF
+                             12 .endm
+                             13 .macro DefineNEntities _name, _n
+                             14   _c = 0
+                             15   .rept _n
+                             16      DefineEntityDefault _name, \_c
+                             17      _c = _c + 1
+                             18   .endm
+                             19 .endm
+                     0000    20 e_x = 0
+                     0001    21 e_y = 1
+                     0002    22 e_w = 2
+                     0003    23 e_h = 3
+                     0004    24 e_col = 4
+                             25  
+                             26  
+                             27 .globl ent_draw
+                             28 .globl ent_clear
+                             29 .globl ent_copy
+                             30 .globl ent_new
+                             31 .globl ent_doForAll
+                             32 .globl cube_reposition
+                             33 
+                             34 .globl hero_data
+                             35 .globl enemy_data
+                             36  
+                             37  
+                             38  
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
-                             22 .include "main.h.s"
-                              1 .globl cpct_disableFirmware_asm
-                              2 .globl cpct_drawSolidBox_asm
-                              3 .globl cpct_getScreenPtr_asm
-                              4 .globl cpct_waitVSYNC_asm
-                              5 .globl cpct_setVideoMode_asm
-                              6 .globl cpct_scanKeyboard_asm
-                              7 .globl cpct_isKeyPressed_asm    
+                             26 .include "main.h.s"
+                              1 
+                              2 ;###########################################################################
+                              3 ;#### FICHERO: main.h.s
+                              4 ;###########################################################################
+                              5 ;;
+                              6 ;; Declare all function entry points as global symbols for the compiler.
+                              7 ;; (The linker will know what to do with them)
+                              8 ;; WARNING: Every global symbol declared will be linked, so DO NOT declare
+                              9 ;; symbols for functions you do not use.
+                             10 ;;
+                             11 .globl cpct_disableFirmware_asm
+                             12 .globl cpct_drawSolidBox_asm
+                             13 .globl cpct_getScreenPtr_asm
+                             14 .globl cpct_waitVSYNC_asm
+                             15 .globl cpct_setVideoMode_asm
+                             16 .globl cpct_scanKeyboard_asm
+                             17 .globl cpct_isKeyPressed_asm
+                             18  
+                             19  
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
-                             23 .include "keys.h.s"
-                              1 ;;====================================================
-                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
-                              3 ;;====================================================
-                              4 
-                              5 .globl pick_keys
-                              6 .globl drop_keys
-                              7 .globl keys
+                             27  
+                             28 ;;
+                             29 ;; Start of _DATA area
+                             30 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             31 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             32 ;;  right after _CODE area contents.
+                             33 ;;
+                             34 .area _DATA
+                             35 .area _CODE
+                             36  
+                             37 ;;
+                             38 ;; MAIN function. This is the entry point of the application.
+                             39 ;;    _main:: global symbol is required for correctly compiling and linking
+                             40 ;;
+   4000                      41 _main::
+                             42   ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD 3C 41      [17]   43   call cpct_disableFirmware_asm
+                             44  
+   4003 0E 00         [ 7]   45   ld    c, #0
+   4005 CD 2F 41      [17]   46   call cpct_setVideoMode_asm
+                             47  
+   4008 CD B1 40      [17]   48   call ent_new
+   400B EB            [ 4]   49   ex    de, hl
+   400C 21 96 40      [10]   50   ld    hl, #enemy_data
+   400F CD C6 40      [17]   51   call  ent_copy
+                             52 
+   4012 CD B1 40      [17]   53   call ent_new
+   4015 EB            [ 4]   54   ex    de, hl
+   4016 21 96 40      [10]   55   ld    hl, #enemy_data
+   4019 CD C6 40      [17]   56   call  ent_copy
+                             57 
+   401C CD B1 40      [17]   58   call ent_new
+   401F EB            [ 4]   59   ex    de, hl
+   4020 21 96 40      [10]   60   ld    hl, #enemy_data
+   4023 CD C6 40      [17]   61   call  ent_copy
+                             62 
+   4026 CD B1 40      [17]   63   call ent_new
+   4029 EB            [ 4]   64   ex    de, hl
+   402A 21 96 40      [10]   65   ld    hl, #enemy_data
+   402D CD C6 40      [17]   66   call  ent_copy
+                             67 
+   4030 CD B1 40      [17]   68   call ent_new
+   4033 EB            [ 4]   69   ex    de, hl
+   4034 21 96 40      [10]   70   ld    hl, #enemy_data
+   4037 CD C6 40      [17]   71   call  ent_copy
+                             72 
+   403A CD B1 40      [17]   73   call ent_new
+   403D EB            [ 4]   74   ex    de, hl
+   403E 21 96 40      [10]   75   ld    hl, #enemy_data
+   4041 CD C6 40      [17]   76   call  ent_copy
+                             77 
+                             78 
+                             79 
+   4044                      80 loop:
+   4044 DD 21 91 40   [14]   81   ld    ix, #hero_data
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             24 ;;
-                             25 ;; Start of _DATA area 
-                             26 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             27 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             28 ;;  right after _CODE area contents.
-                             29 ;;
-                             30 .area _DATA
-                             31 
-                             32 .area _CODE
-                             33 
-                             34 ;;
-                             35 ;; MAIN function. This is the entry point of the application.
-                             36 ;;    _main:: global symbol is required for correctly compiling and linking
-                             37 ;;
-   4000                      38 _main::
-                             39    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD FD 41      [17]   40       call cpct_disableFirmware_asm
-                             41 
-   4003 0E 00         [ 7]   42    ld    c, #0
-   4005 CD F0 41      [17]   43    call cpct_setVideoMode_asm
-                             44 
-                             45 
-   4008                      46 loop:
-                             47 
-   4008 DD 21 4E 40   [14]   48     ld    ix, #personaje
-   400C CD 8C 40      [17]   49    call ent_clear
-   400F CD 9C 40      [17]   50    call ent_update
-   4012 CD 72 40      [17]   51    call ent_draw
-                             52 
-                             53   
-   4015 DD 21 57 40   [14]   54     ld    ix, #p_a
-   4019 CD 8C 40      [17]   55    call ent_clear
-                             56      
-   401C CD 9C 40      [17]   57    call ent_update
-   401F CD 72 40      [17]   58    call ent_draw
-                             59 
-   4022 DD 21 60 40   [14]   60      ld    ix, #p_a1
-   4026 CD 8C 40      [17]   61    call ent_clear
-                             62      
-   4029 CD 9C 40      [17]   63    call ent_update
-   402C CD 72 40      [17]   64    call ent_draw
-                             65 
-                             66 
-   402F DD 21 69 40   [14]   67       ld    ix, #p_a2
-   4033 CD 8C 40      [17]   68    call ent_clear
-                             69 
-   4036 CD 9C 40      [17]   70    call ent_update
-   4039 CD 72 40      [17]   71    call ent_draw
-                             72 
-   403C DD 21 A7 41   [14]   73      ld    ix, #keys
-   4040 CD 8C 40      [17]   74    call ent_clear
-                             75 
-   4043 CD 9C 40      [17]   76    call ent_update
-   4046 CD 72 40      [17]   77    call ent_draw
-                             78 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
-                             79    
-                             80 
-                             81 
-                             82 
-   4049 CD E8 41      [17]   83    call cpct_waitVSYNC_asm
-                             84    ;; Loop forever
-   404C 18 BA         [12]   85    jr    loop
+   4048 CD 01 41      [17]   82   call ent_clear
+   404B CD E7 40      [17]   83   call ent_draw
+                             84     
+   404E 21 01 41      [10]   85     ld hl, #ent_clear
+   4051 CD CF 40      [17]   86     call ent_doForAll
+   4054 21 E7 40      [10]   87     ld hl, #ent_draw
+   4057 CD CF 40      [17]   88     call ent_doForAll
+                             89   ;; ld    ix, #enemy_data
+                             90   ;; call ent_clear
+                             91   ;; call ent_update
+                             92   ;; call ent_draw
+                             93 
+                             94 
+                             95 
+   405A CD 27 41      [17]   96    call cpct_waitVSYNC_asm
+                             97  
+                             98   ;; Loop forever
+   405D 18 E5         [12]   99   jr    loop

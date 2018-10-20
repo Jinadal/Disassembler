@@ -8,16 +8,12 @@
 -l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
 -l z80
 obj/main.rel
-obj/wall.h.rel
-obj/entity.rel
-obj/wall.rel
-obj/hp.h.rel
-obj/door.rel
+obj/player.rel
+obj/cube.rel
+obj/cube.h.rel
+obj/player.h.rel
 obj/main.h.rel
-obj/entity.h.rel
-obj/keys.rel
-obj/door.h.rel
-obj/hp.rel
-obj/keys.h.rel
+obj/ball.h.rel
+obj/ball.rel
 
 -e

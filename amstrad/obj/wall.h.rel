@@ -1,9 +1,0 @@
-XL2
-H 1 areas 6 global symbols
-S num_walls Ref0000
-S wall_clear Ref0000
-S .__.ABS. Def0000
-S w1 Ref0000
-S w2 Ref0000
-S wall_draw Ref0000
-A _CODE size 0 flags 0 addr 0
