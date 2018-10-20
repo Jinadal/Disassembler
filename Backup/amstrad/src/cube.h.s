@@ -31,26 +31,12 @@ c_col = 5
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;OBJECTS CREATED WITH MACROS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.globl cube_copy
+.globl cube_new
 .globl cube_clear
 .globl cube_draw
+.globl cube_doForAll
 
-.globl cubeline10
-.globl cubeline11
-.globl cubeline12
-.globl cubeline13
-.globl cubeline14
-.globl cubeline15
-.globl cubeline16
-.globl cubeline17
-.globl cubeline18
-.globl cubeline19
-.globl cubeline110
-.globl cubeline111
-.globl cubeline112
-.globl cubeline113
-.globl cubeline114
-.globl cubeline115
-.globl cubeline116
-.globl cubeline117
-.globl cubeline118
-.globl cubeline119
+.globl cubeline1
+.globl cubedefault
+.globl cubeline1_vector
