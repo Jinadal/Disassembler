@@ -4,16 +4,6 @@ Hexadecimal [16-Bits]
 Symbol Table
 
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
-<<<<<<< HEAD
-    .__.H$L.=  0000 L
-
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-Area Table
-
-   0 _CODE      size    0   flags    0
-=======
     .__.H$L.=  0000 L   |     CPCT_VME=  C000     |     CRTC_SEL=  00BC 
     CRTC_SET=  00BD     |     FW_BLACK=  0000     |     FW_BLUE =  0001 
     FW_BRIGH=  0002     |     FW_BRIGH=  0014     |     FW_BRIGH=  0012 
@@ -64,34 +54,27 @@ Area Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
-    b_col   =  0006     |     b_h     =  0003     |     b_up_h  =  0008 
-    b_up_l  =  0007     |     b_vx    =  0004     |     b_vy    =  0005 
-    b_w     =  0002     |     b_x     =  0000     |     b_y     =  0001 
-  0 ball       0000 GR  |   0 ball_cle   0027 GR  |   0 ball_col   00BC R
+  0 a_no_pul   0055 R   |     b_col   =  0006     |     b_h     =  0003 
+    b_up_h  =  0008     |     b_up_l  =  0007     |     b_vx    =  0004 
+    b_vy    =  0005     |     b_w     =  0002     |     b_x     =  0000 
+    b_y     =  0001     |   0 barra      0000 GR  |   0 barra_cl   0027 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-  0 ball_dra   0009 GR  |   0 ball_mov   0046 GR  |   0 ball_upd   003B GR
-    barra      **** GX  |     barra_cl   **** GX  |     barra_dr   **** GX
-    barra_mo   **** GX  |     barra_mo   **** GX  |     barra_up   **** GX
-    bl_col  =  0006     |     bl_h    =  0003     |     bl_up_h =  0008 
-    bl_up_l =  0007     |     bl_vx   =  0004     |     bl_vy   =  0005 
-    bl_w    =  0002     |     bl_x    =  0000     |     bl_y    =  0001 
-  0 colision   00A0 R   |   0 colision   0086 R   |   0 colision   0093 R
-    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
-    cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
-    cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
-    cpct_set   **** GX  |     cpct_wai   **** GX  |   0 goodYcol   00AD R
-  0 no_coll    00F5 R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
-    opc_JR  =  0018     |     opc_LD_D=  0016 
+  0 barra_dr   0009 GR  |   0 barra_mo   0065 GR  |   0 barra_mo   0046 GR
+  0 barra_up   003B GR  |   0 colision   0084 R   |     cpct_dis   **** GX
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
+    cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
+    cpct_wai   **** GX  |   0 d_no_pul   0061 R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   F6   flags    0
->>>>>>> cd68cbba96972402a671f79696554b9bd04a85d4
+   0 _CODE      size   88   flags    0
 

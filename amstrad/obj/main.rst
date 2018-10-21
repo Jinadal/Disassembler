@@ -2490,24 +2490,187 @@ Hexadecimal [16-Bits]
                              73 .macro cpctm_ld_sblo REG, X, Y
                              74    ld    REG, #X * (Y-1)
                              75 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
+<<<<<<< HEAD
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
 
 
+                             21 .include "barra.h.s"
+                              1 
+                              2 
+                              3 .globl barra_clear
+                              4 .globl barra_draw
+                              5 .globl barra_update
+                              6 .globl barra_move
+                              7 .globl barra_moveKeyboard
+                              8 
+                              9 
+                             10 
+                             11 
+                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             13 ;;
+                             14 ;;MACROS
+                             15 ;;
+                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             17 
+                             18    .macro DefineBarra _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+                             19 _name: 
+                             20    .db    _x, _y     ;; X, Y
+                             21    .db    _w, _h     ;; W, H
+                             22    .db   _vx, _vy    ;; VX, VY
+                             23    .db   _col        ;; Color
+                             24    .dw   _upd        ;; Update 
+                             25   
+                             26 .endm
+                     0000    27 b_x = 0
+                     0001    28 b_y = 1
+                     0002    29 b_w = 2
+                     0003    30 b_h = 3
+                     0004    31 b_vx = 4
+                     0005    32 b_vy = 5
+                     0006    33 b_col = 6
+                     0007    34 b_up_l = 7
+                     0008    35 b_up_h = 8
+                             36 	
+                             37 
+                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             39 ;;
+                             40 ;;OBJETOS CREADOS CON LA MACROS
+                             41 ;;
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             43 
+                             44 .globl barra
+                             45 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
+Hexadecimal [16-Bits]
+
+
+
+                             22 .include "ball.h.s"
+                              1 
+                              2 
+                              3 
+                              4 .globl ball_clear
+                              5 .globl ball_draw
+                              6 .globl ball_update
+                              7 .globl ball_move
+                              8 
+                              9 
+                             10 
+                             11 
+                             12 
+                             13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             14 ;;
+                             15 ;;MACROS
+                             16 ;;
+                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             18 
+                             19    .macro DefineBall _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+                             20 _name: 
+                             21    .db    _x, _y     ;; X, Y
+                             22    .db    _w, _h     ;; W, H
+                             23    .db   _vx, _vy    ;; VX, VY
+                             24    .db   _col        ;; Color
+                             25    .dw   _upd        ;; Update 
+                             26   
+                             27 .endm
+                     0000    28 bl_x = 0
+                     0001    29 bl_y = 1
+                     0002    30 bl_w = 2
+                     0003    31 bl_h = 3
+                     0004    32 bl_vx = 4
+                     0005    33 bl_vy = 5
+                     0006    34 bl_col = 6
+                     0007    35 bl_up_l = 7
+                     0008    36 bl_up_h = 8
+                             37 	
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             40 ;;
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl ball
+                             46 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
+=======
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
+Hexadecimal [16-Bits]
+
+
+
+<<<<<<< HEAD
+                             23 .include "main.h.s"
+=======
                               2 .include "main.h.s"
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
                               1 .globl cpct_disableFirmware_asm
                               2 .globl cpct_drawSolidBox_asm
                               3 .globl cpct_getScreenPtr_asm
                               4 .globl cpct_waitVSYNC_asm
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
+<<<<<<< HEAD
+                              7 .globl cpct_isKeyPressed_asm    
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+=======
                               7 .globl cpct_isKeyPressed_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
+                             24 
+                             25 
+                             26 ;;
+                             27 
+                             28 ;; Start of _DATA area 
+                             29 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             30 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             31 ;;  right after _CODE area contents.
+                             32 ;;
+                             33 .area _DATA
+                             34 
+                             35 .area _CODE
+                             36 
+                             37 ;;
+                             38 ;; MAIN function. This is the entry point of the application.
+                             39 ;;    _main:: global symbol is required for correctly compiling and linking
+                             40 ;;
+   4000                      41 _main::
+                             42    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD C8 41      [17]   43       call cpct_disableFirmware_asm
+                             44 
+   4003 0E 00         [ 7]   45    ld    c, #0
+   4005 CD BB 41      [17]   46    call cpct_setVideoMode_asm
+                             47 
+                             48 
+   4008                      49 loop:
+                             50 
+   4008 CD 46 40      [17]   51    call barra_clear
+   400B CD CE 40      [17]   52    call ball_clear
+                             53 
+                             54 
+   400E CD 5A 40      [17]   55    call barra_update
+   4011 CD E2 40      [17]   56    call ball_update
+                             57 
+                             58 
+   4014 CD 28 40      [17]   59    call barra_draw
+   4017 CD B0 40      [17]   60    call ball_draw
+                             61 
+                             62 
+                             63 
+                             64 
+                             65 
+   401A CD B3 41      [17]   66    call cpct_waitVSYNC_asm
+                             67    ;; Loop forever
+   401D 18 E9         [12]   68    jr    loop
+=======
                               3 .include "cube.h.s"
                               1 
                               2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2596,6 +2759,7 @@ Hexadecimal [16-Bits]
                              19 ;;call cube_clear
                              20 ;;call cube_draw
                              21 
+<<<<<<< HEAD
                              22 
                              23 
    4008 CD 1A 41      [17]   24 call cube_draw
@@ -2605,3 +2769,78 @@ Hexadecimal [16-Bits]
    400E CD E7 41      [17]   28 call cpct_waitVSYNC_asm
                              29 
    4011 C3 08 40      [10]   30 jp loop
+=======
+   4008 DD 21 D6 40   [14]   22 ld    ix, #cubeline10
+   400C CD 68 41      [17]   23 call cube_clear
+   400F CD 4E 41      [17]   24 call cube_draw
+                             25 
+   4012 DD 21 DC 40   [14]   26 ld    ix, #cubeline11
+   4016 CD 68 41      [17]   27 call cube_clear
+   4019 CD 4E 41      [17]   28 call cube_draw
+   401C DD 21 E2 40   [14]   29 ld    ix, #cubeline12
+   4020 CD 68 41      [17]   30 call cube_clear
+   4023 CD 4E 41      [17]   31 call cube_draw
+   4026 DD 21 E8 40   [14]   32 ld    ix, #cubeline13
+   402A CD 68 41      [17]   33 call cube_clear
+   402D CD 4E 41      [17]   34 call cube_draw
+   4030 DD 21 EE 40   [14]   35 ld    ix, #cubeline14
+   4034 CD 68 41      [17]   36 call cube_clear
+   4037 CD 4E 41      [17]   37 call cube_draw
+   403A DD 21 F4 40   [14]   38 ld    ix, #cubeline15
+   403E CD 68 41      [17]   39 call cube_clear
+   4041 CD 4E 41      [17]   40 call cube_draw
+   4044 DD 21 FA 40   [14]   41 ld    ix, #cubeline16
+   4048 CD 68 41      [17]   42 call cube_clear
+   404B CD 4E 41      [17]   43 call cube_draw
+   404E DD 21 00 41   [14]   44 ld    ix, #cubeline17
+   4052 CD 68 41      [17]   45 call cube_clear
+   4055 CD 4E 41      [17]   46 call cube_draw
+   4058 DD 21 06 41   [14]   47 ld    ix, #cubeline18
+   405C CD 68 41      [17]   48 call cube_clear
+   405F CD 4E 41      [17]   49 call cube_draw
+   4062 DD 21 0C 41   [14]   50 ld    ix, #cubeline19
+   4066 CD 68 41      [17]   51 call cube_clear
+   4069 CD 4E 41      [17]   52 call cube_draw
+   406C DD 21 12 41   [14]   53 ld    ix, #cubeline110
+   4070 CD 68 41      [17]   54 call cube_clear
+   4073 CD 4E 41      [17]   55 call cube_draw
+   4076 DD 21 18 41   [14]   56 ld    ix, #cubeline111
+   407A CD 68 41      [17]   57 call cube_clear
+   407D CD 4E 41      [17]   58 call cube_draw
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
+Hexadecimal [16-Bits]
+
+
+
+   4080 DD 21 1E 41   [14]   59 ld    ix, #cubeline112
+   4084 CD 68 41      [17]   60 call cube_clear
+   4087 CD 4E 41      [17]   61 call cube_draw
+   408A DD 21 24 41   [14]   62 ld    ix, #cubeline113
+   408E CD 68 41      [17]   63 call cube_clear
+   4091 CD 4E 41      [17]   64 call cube_draw
+   4094 DD 21 2A 41   [14]   65 ld    ix, #cubeline114
+   4098 CD 68 41      [17]   66 call cube_clear
+   409B CD 4E 41      [17]   67 call cube_draw
+   409E DD 21 30 41   [14]   68 ld    ix, #cubeline115
+   40A2 CD 68 41      [17]   69 call cube_clear
+   40A5 CD 4E 41      [17]   70 call cube_draw
+   40A8 DD 21 36 41   [14]   71 ld    ix, #cubeline116
+   40AC CD 68 41      [17]   72 call cube_clear
+   40AF CD 4E 41      [17]   73 call cube_draw
+   40B2 DD 21 3C 41   [14]   74 ld    ix, #cubeline117
+   40B6 CD 68 41      [17]   75 call cube_clear
+   40B9 CD 4E 41      [17]   76 call cube_draw
+   40BC DD 21 42 41   [14]   77 ld    ix, #cubeline118
+   40C0 CD 68 41      [17]   78 call cube_clear
+   40C3 CD 4E 41      [17]   79 call cube_draw
+   40C6 DD 21 48 41   [14]   80 ld    ix, #cubeline119
+   40CA CD 68 41      [17]   81 call cube_clear
+   40CD CD 4E 41      [17]   82 call cube_draw
+                             83 
+                             84 
+                             85 
+   40D0 CD 8E 41      [17]   86 call cpct_waitVSYNC_asm
+                             87 
+   40D3 C3 08 40      [10]   88 jp loop
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
+>>>>>>> cd68cbba96972402a671f79696554b9bd04a85d4

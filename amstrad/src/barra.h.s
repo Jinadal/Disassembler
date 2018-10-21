@@ -1,11 +1,10 @@
 
 
-
-.globl ball_clear
-.globl ball_draw
-.globl ball_update
-.globl ball_move
-
+.globl barra_clear
+.globl barra_draw
+.globl barra_update
+.globl barra_move
+.globl barra_moveKeyboard
 
 
 
@@ -16,7 +15,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-   .macro DefineBall _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+   .macro DefineBarra _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
 _name: 
    .db    _x, _y     ;; X, Y
    .db    _w, _h     ;; W, H
@@ -25,15 +24,15 @@ _name:
    .dw   _upd        ;; Update 
   
 .endm
-bl_x = 0
-bl_y = 1
-bl_w = 2
-bl_h = 3
-bl_vx = 4
-bl_vy = 5
-bl_col = 6
-bl_up_l = 7
-bl_up_h = 8
+b_x = 0
+b_y = 1
+b_w = 2
+b_h = 3
+b_vx = 4
+b_vy = 5
+b_col = 6
+b_up_l = 7
+b_up_h = 8
 	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -42,5 +41,5 @@ bl_up_h = 8
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-.globl ball
+.globl barra
 
