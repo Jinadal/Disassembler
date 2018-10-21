@@ -33,6 +33,9 @@ c_col = 5
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .globl cube_clear
 .globl cube_draw
+.globl cube_drawAll
+.globl cube_clearAll
+
 
 .globl cubeline10
 .globl cubeline11

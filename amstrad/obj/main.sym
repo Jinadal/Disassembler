@@ -65,21 +65,22 @@ Symbol Table
 
     cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
     cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
-    cube_cle   **** GX  |     cube_dra   **** GX  |     cubeline   **** GX
+    cube_cle   **** GX  |     cube_cle   **** GX  |     cube_dra   **** GX
+    cube_dra   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |   0 loop       0008 R   |     opc_DI  =  00F3 
-    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+  0 loop       0008 R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
+    opc_JR  =  0018     |     opc_LD_D=  0016 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   D6   flags    0
+   0 _CODE      size   14   flags    0
    1 _DATA      size    0   flags    0
 

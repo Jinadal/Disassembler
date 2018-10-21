@@ -2544,32 +2544,35 @@ Hexadecimal [16-Bits]
                              33 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              34 .globl cube_clear
                              35 .globl cube_draw
-                             36 
-                             37 .globl cubeline10
-                             38 .globl cubeline11
-                             39 .globl cubeline12
-                             40 .globl cubeline13
-                             41 .globl cubeline14
-                             42 .globl cubeline15
-                             43 .globl cubeline16
-                             44 .globl cubeline17
-                             45 .globl cubeline18
-                             46 .globl cubeline19
-                             47 .globl cubeline110
-                             48 .globl cubeline111
-                             49 .globl cubeline112
-                             50 .globl cubeline113
-                             51 .globl cubeline114
-                             52 .globl cubeline115
-                             53 .globl cubeline116
-                             54 .globl cubeline117
+                             36 .globl cube_drawAll
+                             37 .globl cube_clearAll
+                             38 
+                             39 
+                             40 .globl cubeline10
+                             41 .globl cubeline11
+                             42 .globl cubeline12
+                             43 .globl cubeline13
+                             44 .globl cubeline14
+                             45 .globl cubeline15
+                             46 .globl cubeline16
+                             47 .globl cubeline17
+                             48 .globl cubeline18
+                             49 .globl cubeline19
+                             50 .globl cubeline110
+                             51 .globl cubeline111
+                             52 .globl cubeline112
+                             53 .globl cubeline113
+                             54 .globl cubeline114
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline118
-                             56 .globl cubeline119
+                             55 .globl cubeline115
+                             56 .globl cubeline116
+                             57 .globl cubeline117
+                             58 .globl cubeline118
+                             59 .globl cubeline119
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
@@ -2593,75 +2596,12 @@ Hexadecimal [16-Bits]
                              19 ;;call cube_clear
                              20 ;;call cube_draw
                              21 
-   0008 DD 21 00 00   [14]   22 ld    ix, #cubeline10
-   000C CD 00 00      [17]   23 call cube_clear
-   000F CD 00 00      [17]   24 call cube_draw
-                             25 
-   0012 DD 21 00 00   [14]   26 ld    ix, #cubeline11
-   0016 CD 00 00      [17]   27 call cube_clear
-   0019 CD 00 00      [17]   28 call cube_draw
-   001C DD 21 00 00   [14]   29 ld    ix, #cubeline12
-   0020 CD 00 00      [17]   30 call cube_clear
-   0023 CD 00 00      [17]   31 call cube_draw
-   0026 DD 21 00 00   [14]   32 ld    ix, #cubeline13
-   002A CD 00 00      [17]   33 call cube_clear
-   002D CD 00 00      [17]   34 call cube_draw
-   0030 DD 21 00 00   [14]   35 ld    ix, #cubeline14
-   0034 CD 00 00      [17]   36 call cube_clear
-   0037 CD 00 00      [17]   37 call cube_draw
-   003A DD 21 00 00   [14]   38 ld    ix, #cubeline15
-   003E CD 00 00      [17]   39 call cube_clear
-   0041 CD 00 00      [17]   40 call cube_draw
-   0044 DD 21 00 00   [14]   41 ld    ix, #cubeline16
-   0048 CD 00 00      [17]   42 call cube_clear
-   004B CD 00 00      [17]   43 call cube_draw
-   004E DD 21 00 00   [14]   44 ld    ix, #cubeline17
-   0052 CD 00 00      [17]   45 call cube_clear
-   0055 CD 00 00      [17]   46 call cube_draw
-   0058 DD 21 00 00   [14]   47 ld    ix, #cubeline18
-   005C CD 00 00      [17]   48 call cube_clear
-   005F CD 00 00      [17]   49 call cube_draw
-   0062 DD 21 00 00   [14]   50 ld    ix, #cubeline19
-   0066 CD 00 00      [17]   51 call cube_clear
-   0069 CD 00 00      [17]   52 call cube_draw
-   006C DD 21 00 00   [14]   53 ld    ix, #cubeline110
-   0070 CD 00 00      [17]   54 call cube_clear
-   0073 CD 00 00      [17]   55 call cube_draw
-   0076 DD 21 00 00   [14]   56 ld    ix, #cubeline111
-   007A CD 00 00      [17]   57 call cube_clear
-   007D CD 00 00      [17]   58 call cube_draw
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
-Hexadecimal [16-Bits]
-
-
-
-   0080 DD 21 00 00   [14]   59 ld    ix, #cubeline112
-   0084 CD 00 00      [17]   60 call cube_clear
-   0087 CD 00 00      [17]   61 call cube_draw
-   008A DD 21 00 00   [14]   62 ld    ix, #cubeline113
-   008E CD 00 00      [17]   63 call cube_clear
-   0091 CD 00 00      [17]   64 call cube_draw
-   0094 DD 21 00 00   [14]   65 ld    ix, #cubeline114
-   0098 CD 00 00      [17]   66 call cube_clear
-   009B CD 00 00      [17]   67 call cube_draw
-   009E DD 21 00 00   [14]   68 ld    ix, #cubeline115
-   00A2 CD 00 00      [17]   69 call cube_clear
-   00A5 CD 00 00      [17]   70 call cube_draw
-   00A8 DD 21 00 00   [14]   71 ld    ix, #cubeline116
-   00AC CD 00 00      [17]   72 call cube_clear
-   00AF CD 00 00      [17]   73 call cube_draw
-   00B2 DD 21 00 00   [14]   74 ld    ix, #cubeline117
-   00B6 CD 00 00      [17]   75 call cube_clear
-   00B9 CD 00 00      [17]   76 call cube_draw
-   00BC DD 21 00 00   [14]   77 ld    ix, #cubeline118
-   00C0 CD 00 00      [17]   78 call cube_clear
-   00C3 CD 00 00      [17]   79 call cube_draw
-   00C6 DD 21 00 00   [14]   80 ld    ix, #cubeline119
-   00CA CD 00 00      [17]   81 call cube_clear
-   00CD CD 00 00      [17]   82 call cube_draw
-                             83 
-                             84 
-                             85 
-   00D0 CD 00 00      [17]   86 call cpct_waitVSYNC_asm
-                             87 
-   00D3 C3 08 00      [10]   88 jp loop
+                             22 
+                             23 
+   0008 CD 00 00      [17]   24 call cube_draw
+   000B CD 00 00      [17]   25 call cube_clear
+                             26 
+                             27 
+   000E CD 00 00      [17]   28 call cpct_waitVSYNC_asm
+                             29 
+   0011 C3 08 00      [10]   30 jp loop

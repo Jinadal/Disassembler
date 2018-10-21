@@ -2,6 +2,8 @@
 .include "main.h.s"
 .include "cube.h.s"
 
+k_max_cube_line = 20
+k_cube_size = 7
 
 DefineCubeLine1 cubeline10, 0x00, 0x100, 0x04, 0x08, 0x01, 0x0F
 DefineCubeLine1 cubeline11, 0x04, 0x100, 0x04, 0x08, 0x01, 0xFF
@@ -24,12 +26,101 @@ DefineCubeLine1 cubeline117, 0x44, 0x100, 0x04, 0x08, 0x01, 0xFF
 DefineCubeLine1 cubeline118, 0x48, 0x100, 0x04, 0x08, 0x01, 0x0F
 DefineCubeLine1 cubeline119, 0x4C, 0x100, 0x04, 0x08, 0x01, 0xFF
 
+m_num_cube: .db 20
+
+cube_clear:
+ld ix,#cubeline10
+call cube_clearAll
+ld ix,#cubeline11
+call cube_clearAll
+ld ix,#cubeline12
+call cube_clearAll
+ld ix,#cubeline13
+call cube_clearAll
+ld ix,#cubeline14
+call cube_clearAll
+ld ix,#cubeline15
+call cube_clearAll
+ld ix,#cubeline16
+call cube_clearAll
+ld ix,#cubeline17
+call cube_clearAll
+ld ix,#cubeline18
+call cube_clearAll
+ld ix,#cubeline19
+call cube_clearAll
+ld ix,#cubeline110
+call cube_clearAll
+ld ix,#cubeline111
+call cube_clearAll
+ld ix,#cubeline112
+call cube_clearAll
+ld ix,#cubeline113
+call cube_clearAll
+ld ix,#cubeline114
+call cube_clearAll
+ld ix,#cubeline115
+call cube_clearAll
+ld ix,#cubeline116
+call cube_clearAll
+ld ix,#cubeline117
+call cube_clearAll
+ld ix,#cubeline118
+call cube_clearAll
+ld ix,#cubeline119
+call cube_clearAll
+ret
+
+cube_draw:
+ld ix,#cubeline10
+call cube_drawAll
+ld ix,#cubeline11
+call cube_drawAll
+ld ix,#cubeline12
+call cube_drawAll
+ld ix,#cubeline13
+call cube_drawAll
+ld ix,#cubeline14
+call cube_drawAll
+ld ix,#cubeline15
+call cube_drawAll
+ld ix,#cubeline16
+call cube_drawAll
+ld ix,#cubeline17
+call cube_drawAll
+ld ix,#cubeline18
+call cube_drawAll
+ld ix,#cubeline19
+call cube_drawAll
+ld ix,#cubeline110
+call cube_drawAll
+ld ix,#cubeline111
+call cube_drawAll
+ld ix,#cubeline112
+call cube_drawAll
+ld ix,#cubeline113
+call cube_drawAll
+ld ix,#cubeline114
+call cube_drawAll
+ld ix,#cubeline115
+call cube_drawAll
+ld ix,#cubeline116
+call cube_drawAll
+ld ix,#cubeline117
+call cube_drawAll
+ld ix,#cubeline118
+call cube_drawAll
+ld ix,#cubeline119
+call cube_drawAll
+ret
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DRAW ENTITY
 ;; REGISTERS DETROYED: AF, BC, DE ,HL
 ;; INPUT: IX -> Points to entity
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-cube_draw:
+cube_drawAll:
     ld    de, #0xC000       ;;Comienzo memoria de video
     ld     c, c_x(ix)         ;; C = Entity Y
     ld     b, c_y(ix)         ;; B = Entity X
@@ -50,14 +141,14 @@ cube_draw:
 ;; REGISTERS DESTROYED: AF, AF', BC, DE, HL
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-cube_clear:
+cube_clearAll:
 
    ld  a, c_col(ix)
    ex af, af'
 
    ld  c_col(ix), #0
 
-   call cube_draw
+   call cube_drawAll
    ex af, af'
    ld c_col(ix), a
 
