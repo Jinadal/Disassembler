@@ -4,16 +4,6 @@ Hexadecimal [16-Bits]
 Symbol Table
 
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
-<<<<<<< HEAD
-    .__.H$L.=  0000 L
-
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-Area Table
-
-   0 _CODE      size    0   flags    0
-=======
     .__.H$L.=  0000 L   |     CPCT_VME=  C000     |     CRTC_SEL=  00BC 
     CRTC_SET=  00BD     |     FW_BLACK=  0000     |     FW_BLUE =  0001 
     FW_BRIGH=  0002     |     FW_BRIGH=  0014     |     FW_BRIGH=  0012 
@@ -93,5 +83,4 @@ Hexadecimal [16-Bits]
 Area Table
 
    0 _CODE      size   F6   flags    0
->>>>>>> cd68cbba96972402a671f79696554b9bd04a85d4
 

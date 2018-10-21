@@ -8,19 +8,12 @@
 -l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
 -l z80
 obj/main.rel
-<<<<<<< HEAD
-obj/barra.rel
-obj/barra.h.rel
-obj/ball.h.rel
-obj/main.h.rel
-=======
-obj/player.rel
 obj/cube.rel
-obj/cube.h.rel
-obj/player.h.rel
+obj/barra.h.rel
+obj/barra.rel
 obj/main.h.rel
 obj/ball.h.rel
->>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
 obj/ball.rel
+obj/cube.h.rel
 
 -e

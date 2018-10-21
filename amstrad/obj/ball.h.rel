@@ -1,8 +1,4 @@
 XL2
-<<<<<<< HEAD
-H 1 areas 1 global symbols
-S .__.ABS. Def0000
-=======
 H 1 areas 6 global symbols
 S ball_clear Ref0000
 S ball Ref0000
@@ -10,5 +6,4 @@ S .__.ABS. Def0000
 S ball_draw Ref0000
 S ball_move Ref0000
 S ball_update Ref0000
->>>>>>> cd68cbba96972402a671f79696554b9bd04a85d4
 A _CODE size 0 flags 0 addr 0

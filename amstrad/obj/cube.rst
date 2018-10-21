@@ -2582,229 +2582,229 @@ Hexadecimal [16-Bits]
                      0014     5 k_max_cube_line = 20
                      0007     6 k_cube_size = 7
                               7 
-   4014                       8 DefineCubeLine1 cubeline10, 0x00, 0x100, 0x04, 0x08, 0x01, 0x0F
+   4025                       8 DefineCubeLine1 cubeline10, 0x00, 0x100, 0x04, 0x08, 0x01, 0x0F
    0000                       1 cubeline10:
-   4014 00 00                 2     .db     0x00, 0x100  ;; X, Y
-   4016 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4018 01                    4     .db     0x01     ;; Hitpoints
-   4019 0F                    5     .db     0x0F    ;; Color
-   401A                       9 DefineCubeLine1 cubeline11, 0x04, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4025 00 00                 2     .db     0x00, 0x100  ;; X, Y
+   4027 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4029 01                    4     .db     0x01     ;; Hitpoints
+   402A 0F                    5     .db     0x0F    ;; Color
+   402B                       9 DefineCubeLine1 cubeline11, 0x04, 0x100, 0x04, 0x08, 0x01, 0xFF
    0006                       1 cubeline11:
-   401A 04 00                 2     .db     0x04, 0x100  ;; X, Y
-   401C 04 08                 3     .db     0x04, 0x08  ;; W, H
-   401E 01                    4     .db     0x01     ;; Hitpoints
-   401F FF                    5     .db     0xFF    ;; Color
-   4020                      10 DefineCubeLine1 cubeline12, 0x08, 0x100, 0x04, 0x08, 0x01, 0x0F
+   402B 04 00                 2     .db     0x04, 0x100  ;; X, Y
+   402D 04 08                 3     .db     0x04, 0x08  ;; W, H
+   402F 01                    4     .db     0x01     ;; Hitpoints
+   4030 FF                    5     .db     0xFF    ;; Color
+   4031                      10 DefineCubeLine1 cubeline12, 0x08, 0x100, 0x04, 0x08, 0x01, 0x0F
    000C                       1 cubeline12:
-   4020 08 00                 2     .db     0x08, 0x100  ;; X, Y
-   4022 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4024 01                    4     .db     0x01     ;; Hitpoints
-   4025 0F                    5     .db     0x0F    ;; Color
-   4026                      11 DefineCubeLine1 cubeline13, 0x0C, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4031 08 00                 2     .db     0x08, 0x100  ;; X, Y
+   4033 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4035 01                    4     .db     0x01     ;; Hitpoints
+   4036 0F                    5     .db     0x0F    ;; Color
+   4037                      11 DefineCubeLine1 cubeline13, 0x0C, 0x100, 0x04, 0x08, 0x01, 0xFF
    0012                       1 cubeline13:
-   4026 0C 00                 2     .db     0x0C, 0x100  ;; X, Y
-   4028 04 08                 3     .db     0x04, 0x08  ;; W, H
-   402A 01                    4     .db     0x01     ;; Hitpoints
-   402B FF                    5     .db     0xFF    ;; Color
-   402C                      12 DefineCubeLine1 cubeline14, 0x10, 0x100, 0x04, 0x08, 0x01, 0x0F
+   4037 0C 00                 2     .db     0x0C, 0x100  ;; X, Y
+   4039 04 08                 3     .db     0x04, 0x08  ;; W, H
+   403B 01                    4     .db     0x01     ;; Hitpoints
+   403C FF                    5     .db     0xFF    ;; Color
+   403D                      12 DefineCubeLine1 cubeline14, 0x10, 0x100, 0x04, 0x08, 0x01, 0x0F
    0018                       1 cubeline14:
-   402C 10 00                 2     .db     0x10, 0x100  ;; X, Y
-   402E 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4030 01                    4     .db     0x01     ;; Hitpoints
-   4031 0F                    5     .db     0x0F    ;; Color
-   4032                      13 DefineCubeLine1 cubeline15, 0x14, 0x100, 0x04, 0x08, 0x01, 0xFF
+   403D 10 00                 2     .db     0x10, 0x100  ;; X, Y
+   403F 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4041 01                    4     .db     0x01     ;; Hitpoints
+   4042 0F                    5     .db     0x0F    ;; Color
+   4043                      13 DefineCubeLine1 cubeline15, 0x14, 0x100, 0x04, 0x08, 0x01, 0xFF
    001E                       1 cubeline15:
-   4032 14 00                 2     .db     0x14, 0x100  ;; X, Y
-   4034 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4036 01                    4     .db     0x01     ;; Hitpoints
-   4037 FF                    5     .db     0xFF    ;; Color
-   4038                      14 DefineCubeLine1 cubeline16, 0x18, 0x100, 0x04, 0x08, 0x01, 0x0F
+   4043 14 00                 2     .db     0x14, 0x100  ;; X, Y
+   4045 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4047 01                    4     .db     0x01     ;; Hitpoints
+   4048 FF                    5     .db     0xFF    ;; Color
+   4049                      14 DefineCubeLine1 cubeline16, 0x18, 0x100, 0x04, 0x08, 0x01, 0x0F
    0024                       1 cubeline16:
-   4038 18 00                 2     .db     0x18, 0x100  ;; X, Y
-   403A 04 08                 3     .db     0x04, 0x08  ;; W, H
-   403C 01                    4     .db     0x01     ;; Hitpoints
-   403D 0F                    5     .db     0x0F    ;; Color
-   403E                      15 DefineCubeLine1 cubeline17, 0x1C, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4049 18 00                 2     .db     0x18, 0x100  ;; X, Y
+   404B 04 08                 3     .db     0x04, 0x08  ;; W, H
+   404D 01                    4     .db     0x01     ;; Hitpoints
+   404E 0F                    5     .db     0x0F    ;; Color
+   404F                      15 DefineCubeLine1 cubeline17, 0x1C, 0x100, 0x04, 0x08, 0x01, 0xFF
    002A                       1 cubeline17:
-   403E 1C 00                 2     .db     0x1C, 0x100  ;; X, Y
-   4040 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4042 01                    4     .db     0x01     ;; Hitpoints
-   4043 FF                    5     .db     0xFF    ;; Color
-   4044                      16 DefineCubeLine1 cubeline18, 0x20, 0x100, 0x04, 0x08, 0x01, 0x0F
+   404F 1C 00                 2     .db     0x1C, 0x100  ;; X, Y
+   4051 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4053 01                    4     .db     0x01     ;; Hitpoints
+   4054 FF                    5     .db     0xFF    ;; Color
+   4055                      16 DefineCubeLine1 cubeline18, 0x20, 0x100, 0x04, 0x08, 0x01, 0x0F
    0030                       1 cubeline18:
-   4044 20 00                 2     .db     0x20, 0x100  ;; X, Y
+   4055 20 00                 2     .db     0x20, 0x100  ;; X, Y
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-   4046 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4048 01                    4     .db     0x01     ;; Hitpoints
-   4049 0F                    5     .db     0x0F    ;; Color
-   404A                      17 DefineCubeLine1 cubeline19, 0x24, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4057 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4059 01                    4     .db     0x01     ;; Hitpoints
+   405A 0F                    5     .db     0x0F    ;; Color
+   405B                      17 DefineCubeLine1 cubeline19, 0x24, 0x100, 0x04, 0x08, 0x01, 0xFF
    0036                       1 cubeline19:
-   404A 24 00                 2     .db     0x24, 0x100  ;; X, Y
-   404C 04 08                 3     .db     0x04, 0x08  ;; W, H
-   404E 01                    4     .db     0x01     ;; Hitpoints
-   404F FF                    5     .db     0xFF    ;; Color
-   4050                      18 DefineCubeLine1 cubeline110, 0x28, 0x100, 0x04, 0x08, 0x01, 0x0F
+   405B 24 00                 2     .db     0x24, 0x100  ;; X, Y
+   405D 04 08                 3     .db     0x04, 0x08  ;; W, H
+   405F 01                    4     .db     0x01     ;; Hitpoints
+   4060 FF                    5     .db     0xFF    ;; Color
+   4061                      18 DefineCubeLine1 cubeline110, 0x28, 0x100, 0x04, 0x08, 0x01, 0x0F
    003C                       1 cubeline110:
-   4050 28 00                 2     .db     0x28, 0x100  ;; X, Y
-   4052 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4054 01                    4     .db     0x01     ;; Hitpoints
-   4055 0F                    5     .db     0x0F    ;; Color
-   4056                      19 DefineCubeLine1 cubeline111, 0x2C, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4061 28 00                 2     .db     0x28, 0x100  ;; X, Y
+   4063 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4065 01                    4     .db     0x01     ;; Hitpoints
+   4066 0F                    5     .db     0x0F    ;; Color
+   4067                      19 DefineCubeLine1 cubeline111, 0x2C, 0x100, 0x04, 0x08, 0x01, 0xFF
    0042                       1 cubeline111:
-   4056 2C 00                 2     .db     0x2C, 0x100  ;; X, Y
-   4058 04 08                 3     .db     0x04, 0x08  ;; W, H
-   405A 01                    4     .db     0x01     ;; Hitpoints
-   405B FF                    5     .db     0xFF    ;; Color
-   405C                      20 DefineCubeLine1 cubeline112, 0x30, 0x100, 0x04, 0x08, 0x01, 0x0F
+   4067 2C 00                 2     .db     0x2C, 0x100  ;; X, Y
+   4069 04 08                 3     .db     0x04, 0x08  ;; W, H
+   406B 01                    4     .db     0x01     ;; Hitpoints
+   406C FF                    5     .db     0xFF    ;; Color
+   406D                      20 DefineCubeLine1 cubeline112, 0x30, 0x100, 0x04, 0x08, 0x01, 0x0F
    0048                       1 cubeline112:
-   405C 30 00                 2     .db     0x30, 0x100  ;; X, Y
-   405E 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4060 01                    4     .db     0x01     ;; Hitpoints
-   4061 0F                    5     .db     0x0F    ;; Color
-   4062                      21 DefineCubeLine1 cubeline113, 0x34, 0x100, 0x04, 0x08, 0x01, 0xFF
+   406D 30 00                 2     .db     0x30, 0x100  ;; X, Y
+   406F 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4071 01                    4     .db     0x01     ;; Hitpoints
+   4072 0F                    5     .db     0x0F    ;; Color
+   4073                      21 DefineCubeLine1 cubeline113, 0x34, 0x100, 0x04, 0x08, 0x01, 0xFF
    004E                       1 cubeline113:
-   4062 34 00                 2     .db     0x34, 0x100  ;; X, Y
-   4064 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4066 01                    4     .db     0x01     ;; Hitpoints
-   4067 FF                    5     .db     0xFF    ;; Color
-   4068                      22 DefineCubeLine1 cubeline114, 0x38, 0x100, 0x04, 0x08, 0x01, 0x0F
+   4073 34 00                 2     .db     0x34, 0x100  ;; X, Y
+   4075 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4077 01                    4     .db     0x01     ;; Hitpoints
+   4078 FF                    5     .db     0xFF    ;; Color
+   4079                      22 DefineCubeLine1 cubeline114, 0x38, 0x100, 0x04, 0x08, 0x01, 0x0F
    0054                       1 cubeline114:
-   4068 38 00                 2     .db     0x38, 0x100  ;; X, Y
-   406A 04 08                 3     .db     0x04, 0x08  ;; W, H
-   406C 01                    4     .db     0x01     ;; Hitpoints
-   406D 0F                    5     .db     0x0F    ;; Color
-   406E                      23 DefineCubeLine1 cubeline115, 0x3C, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4079 38 00                 2     .db     0x38, 0x100  ;; X, Y
+   407B 04 08                 3     .db     0x04, 0x08  ;; W, H
+   407D 01                    4     .db     0x01     ;; Hitpoints
+   407E 0F                    5     .db     0x0F    ;; Color
+   407F                      23 DefineCubeLine1 cubeline115, 0x3C, 0x100, 0x04, 0x08, 0x01, 0xFF
    005A                       1 cubeline115:
-   406E 3C 00                 2     .db     0x3C, 0x100  ;; X, Y
-   4070 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4072 01                    4     .db     0x01     ;; Hitpoints
-   4073 FF                    5     .db     0xFF    ;; Color
-   4074                      24 DefineCubeLine1 cubeline116, 0x40, 0x100, 0x04, 0x08, 0x01, 0x0F
+   407F 3C 00                 2     .db     0x3C, 0x100  ;; X, Y
+   4081 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4083 01                    4     .db     0x01     ;; Hitpoints
+   4084 FF                    5     .db     0xFF    ;; Color
+   4085                      24 DefineCubeLine1 cubeline116, 0x40, 0x100, 0x04, 0x08, 0x01, 0x0F
    0060                       1 cubeline116:
-   4074 40 00                 2     .db     0x40, 0x100  ;; X, Y
-   4076 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4078 01                    4     .db     0x01     ;; Hitpoints
-   4079 0F                    5     .db     0x0F    ;; Color
-   407A                      25 DefineCubeLine1 cubeline117, 0x44, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4085 40 00                 2     .db     0x40, 0x100  ;; X, Y
+   4087 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4089 01                    4     .db     0x01     ;; Hitpoints
+   408A 0F                    5     .db     0x0F    ;; Color
+   408B                      25 DefineCubeLine1 cubeline117, 0x44, 0x100, 0x04, 0x08, 0x01, 0xFF
    0066                       1 cubeline117:
-   407A 44 00                 2     .db     0x44, 0x100  ;; X, Y
-   407C 04 08                 3     .db     0x04, 0x08  ;; W, H
+   408B 44 00                 2     .db     0x44, 0x100  ;; X, Y
+   408D 04 08                 3     .db     0x04, 0x08  ;; W, H
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-   407E 01                    4     .db     0x01     ;; Hitpoints
-   407F FF                    5     .db     0xFF    ;; Color
-   4080                      26 DefineCubeLine1 cubeline118, 0x48, 0x100, 0x04, 0x08, 0x01, 0x0F
+   408F 01                    4     .db     0x01     ;; Hitpoints
+   4090 FF                    5     .db     0xFF    ;; Color
+   4091                      26 DefineCubeLine1 cubeline118, 0x48, 0x100, 0x04, 0x08, 0x01, 0x0F
    006C                       1 cubeline118:
-   4080 48 00                 2     .db     0x48, 0x100  ;; X, Y
-   4082 04 08                 3     .db     0x04, 0x08  ;; W, H
-   4084 01                    4     .db     0x01     ;; Hitpoints
-   4085 0F                    5     .db     0x0F    ;; Color
-   4086                      27 DefineCubeLine1 cubeline119, 0x4C, 0x100, 0x04, 0x08, 0x01, 0xFF
+   4091 48 00                 2     .db     0x48, 0x100  ;; X, Y
+   4093 04 08                 3     .db     0x04, 0x08  ;; W, H
+   4095 01                    4     .db     0x01     ;; Hitpoints
+   4096 0F                    5     .db     0x0F    ;; Color
+   4097                      27 DefineCubeLine1 cubeline119, 0x4C, 0x100, 0x04, 0x08, 0x01, 0xFF
    0072                       1 cubeline119:
-   4086 4C 00                 2     .db     0x4C, 0x100  ;; X, Y
-   4088 04 08                 3     .db     0x04, 0x08  ;; W, H
-   408A 01                    4     .db     0x01     ;; Hitpoints
-   408B FF                    5     .db     0xFF    ;; Color
+   4097 4C 00                 2     .db     0x4C, 0x100  ;; X, Y
+   4099 04 08                 3     .db     0x04, 0x08  ;; W, H
+   409B 01                    4     .db     0x01     ;; Hitpoints
+   409C FF                    5     .db     0xFF    ;; Color
                              28 
-   408C 14                   29 m_num_cube: .db 20
+   409D 14                   29 m_num_cube: .db 20
                              30 
-   408D                      31 cube_clear:
-   408D DD 21 14 40   [14]   32 ld ix,#cubeline10
-   4091 CD C1 41      [17]   33 call cube_clearAll
-   4094 DD 21 1A 40   [14]   34 ld ix,#cubeline11
-   4098 CD C1 41      [17]   35 call cube_clearAll
-   409B DD 21 20 40   [14]   36 ld ix,#cubeline12
-   409F CD C1 41      [17]   37 call cube_clearAll
-   40A2 DD 21 26 40   [14]   38 ld ix,#cubeline13
-   40A6 CD C1 41      [17]   39 call cube_clearAll
-   40A9 DD 21 2C 40   [14]   40 ld ix,#cubeline14
-   40AD CD C1 41      [17]   41 call cube_clearAll
-   40B0 DD 21 32 40   [14]   42 ld ix,#cubeline15
-   40B4 CD C1 41      [17]   43 call cube_clearAll
-   40B7 DD 21 38 40   [14]   44 ld ix,#cubeline16
-   40BB CD C1 41      [17]   45 call cube_clearAll
-   40BE DD 21 3E 40   [14]   46 ld ix,#cubeline17
-   40C2 CD C1 41      [17]   47 call cube_clearAll
-   40C5 DD 21 44 40   [14]   48 ld ix,#cubeline18
-   40C9 CD C1 41      [17]   49 call cube_clearAll
-   40CC DD 21 4A 40   [14]   50 ld ix,#cubeline19
-   40D0 CD C1 41      [17]   51 call cube_clearAll
-   40D3 DD 21 50 40   [14]   52 ld ix,#cubeline110
-   40D7 CD C1 41      [17]   53 call cube_clearAll
-   40DA DD 21 56 40   [14]   54 ld ix,#cubeline111
-   40DE CD C1 41      [17]   55 call cube_clearAll
-   40E1 DD 21 5C 40   [14]   56 ld ix,#cubeline112
-   40E5 CD C1 41      [17]   57 call cube_clearAll
-   40E8 DD 21 62 40   [14]   58 ld ix,#cubeline113
-   40EC CD C1 41      [17]   59 call cube_clearAll
-   40EF DD 21 68 40   [14]   60 ld ix,#cubeline114
-   40F3 CD C1 41      [17]   61 call cube_clearAll
-   40F6 DD 21 6E 40   [14]   62 ld ix,#cubeline115
-   40FA CD C1 41      [17]   63 call cube_clearAll
-   40FD DD 21 74 40   [14]   64 ld ix,#cubeline116
-   4101 CD C1 41      [17]   65 call cube_clearAll
-   4104 DD 21 7A 40   [14]   66 ld ix,#cubeline117
-   4108 CD C1 41      [17]   67 call cube_clearAll
-   410B DD 21 80 40   [14]   68 ld ix,#cubeline118
+   409E                      31 cube_clear:
+   409E DD 21 25 40   [14]   32 ld ix,#cubeline10
+   40A2 CD D2 41      [17]   33 call cube_clearAll
+   40A5 DD 21 2B 40   [14]   34 ld ix,#cubeline11
+   40A9 CD D2 41      [17]   35 call cube_clearAll
+   40AC DD 21 31 40   [14]   36 ld ix,#cubeline12
+   40B0 CD D2 41      [17]   37 call cube_clearAll
+   40B3 DD 21 37 40   [14]   38 ld ix,#cubeline13
+   40B7 CD D2 41      [17]   39 call cube_clearAll
+   40BA DD 21 3D 40   [14]   40 ld ix,#cubeline14
+   40BE CD D2 41      [17]   41 call cube_clearAll
+   40C1 DD 21 43 40   [14]   42 ld ix,#cubeline15
+   40C5 CD D2 41      [17]   43 call cube_clearAll
+   40C8 DD 21 49 40   [14]   44 ld ix,#cubeline16
+   40CC CD D2 41      [17]   45 call cube_clearAll
+   40CF DD 21 4F 40   [14]   46 ld ix,#cubeline17
+   40D3 CD D2 41      [17]   47 call cube_clearAll
+   40D6 DD 21 55 40   [14]   48 ld ix,#cubeline18
+   40DA CD D2 41      [17]   49 call cube_clearAll
+   40DD DD 21 5B 40   [14]   50 ld ix,#cubeline19
+   40E1 CD D2 41      [17]   51 call cube_clearAll
+   40E4 DD 21 61 40   [14]   52 ld ix,#cubeline110
+   40E8 CD D2 41      [17]   53 call cube_clearAll
+   40EB DD 21 67 40   [14]   54 ld ix,#cubeline111
+   40EF CD D2 41      [17]   55 call cube_clearAll
+   40F2 DD 21 6D 40   [14]   56 ld ix,#cubeline112
+   40F6 CD D2 41      [17]   57 call cube_clearAll
+   40F9 DD 21 73 40   [14]   58 ld ix,#cubeline113
+   40FD CD D2 41      [17]   59 call cube_clearAll
+   4100 DD 21 79 40   [14]   60 ld ix,#cubeline114
+   4104 CD D2 41      [17]   61 call cube_clearAll
+   4107 DD 21 7F 40   [14]   62 ld ix,#cubeline115
+   410B CD D2 41      [17]   63 call cube_clearAll
+   410E DD 21 85 40   [14]   64 ld ix,#cubeline116
+   4112 CD D2 41      [17]   65 call cube_clearAll
+   4115 DD 21 8B 40   [14]   66 ld ix,#cubeline117
+   4119 CD D2 41      [17]   67 call cube_clearAll
+   411C DD 21 91 40   [14]   68 ld ix,#cubeline118
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
 
-   410F CD C1 41      [17]   69 call cube_clearAll
-   4112 DD 21 86 40   [14]   70 ld ix,#cubeline119
-   4116 CD C1 41      [17]   71 call cube_clearAll
-   4119 C9            [10]   72 ret
+   4120 CD D2 41      [17]   69 call cube_clearAll
+   4123 DD 21 97 40   [14]   70 ld ix,#cubeline119
+   4127 CD D2 41      [17]   71 call cube_clearAll
+   412A C9            [10]   72 ret
                              73 
-   411A                      74 cube_draw:
-   411A DD 21 14 40   [14]   75 ld ix,#cubeline10
-   411E CD A7 41      [17]   76 call cube_drawAll
-   4121 DD 21 1A 40   [14]   77 ld ix,#cubeline11
-   4125 CD A7 41      [17]   78 call cube_drawAll
-   4128 DD 21 20 40   [14]   79 ld ix,#cubeline12
-   412C CD A7 41      [17]   80 call cube_drawAll
-   412F DD 21 26 40   [14]   81 ld ix,#cubeline13
-   4133 CD A7 41      [17]   82 call cube_drawAll
-   4136 DD 21 2C 40   [14]   83 ld ix,#cubeline14
-   413A CD A7 41      [17]   84 call cube_drawAll
-   413D DD 21 32 40   [14]   85 ld ix,#cubeline15
-   4141 CD A7 41      [17]   86 call cube_drawAll
-   4144 DD 21 38 40   [14]   87 ld ix,#cubeline16
-   4148 CD A7 41      [17]   88 call cube_drawAll
-   414B DD 21 3E 40   [14]   89 ld ix,#cubeline17
-   414F CD A7 41      [17]   90 call cube_drawAll
-   4152 DD 21 44 40   [14]   91 ld ix,#cubeline18
-   4156 CD A7 41      [17]   92 call cube_drawAll
-   4159 DD 21 4A 40   [14]   93 ld ix,#cubeline19
-   415D CD A7 41      [17]   94 call cube_drawAll
-   4160 DD 21 50 40   [14]   95 ld ix,#cubeline110
-   4164 CD A7 41      [17]   96 call cube_drawAll
-   4167 DD 21 56 40   [14]   97 ld ix,#cubeline111
-   416B CD A7 41      [17]   98 call cube_drawAll
-   416E DD 21 5C 40   [14]   99 ld ix,#cubeline112
-   4172 CD A7 41      [17]  100 call cube_drawAll
-   4175 DD 21 62 40   [14]  101 ld ix,#cubeline113
-   4179 CD A7 41      [17]  102 call cube_drawAll
-   417C DD 21 68 40   [14]  103 ld ix,#cubeline114
-   4180 CD A7 41      [17]  104 call cube_drawAll
-   4183 DD 21 6E 40   [14]  105 ld ix,#cubeline115
-   4187 CD A7 41      [17]  106 call cube_drawAll
-   418A DD 21 74 40   [14]  107 ld ix,#cubeline116
-   418E CD A7 41      [17]  108 call cube_drawAll
-   4191 DD 21 7A 40   [14]  109 ld ix,#cubeline117
-   4195 CD A7 41      [17]  110 call cube_drawAll
-   4198 DD 21 80 40   [14]  111 ld ix,#cubeline118
-   419C CD A7 41      [17]  112 call cube_drawAll
-   419F DD 21 86 40   [14]  113 ld ix,#cubeline119
-   41A3 CD A7 41      [17]  114 call cube_drawAll
-   41A6 C9            [10]  115 ret
+   412B                      74 cube_draw:
+   412B DD 21 25 40   [14]   75 ld ix,#cubeline10
+   412F CD B8 41      [17]   76 call cube_drawAll
+   4132 DD 21 2B 40   [14]   77 ld ix,#cubeline11
+   4136 CD B8 41      [17]   78 call cube_drawAll
+   4139 DD 21 31 40   [14]   79 ld ix,#cubeline12
+   413D CD B8 41      [17]   80 call cube_drawAll
+   4140 DD 21 37 40   [14]   81 ld ix,#cubeline13
+   4144 CD B8 41      [17]   82 call cube_drawAll
+   4147 DD 21 3D 40   [14]   83 ld ix,#cubeline14
+   414B CD B8 41      [17]   84 call cube_drawAll
+   414E DD 21 43 40   [14]   85 ld ix,#cubeline15
+   4152 CD B8 41      [17]   86 call cube_drawAll
+   4155 DD 21 49 40   [14]   87 ld ix,#cubeline16
+   4159 CD B8 41      [17]   88 call cube_drawAll
+   415C DD 21 4F 40   [14]   89 ld ix,#cubeline17
+   4160 CD B8 41      [17]   90 call cube_drawAll
+   4163 DD 21 55 40   [14]   91 ld ix,#cubeline18
+   4167 CD B8 41      [17]   92 call cube_drawAll
+   416A DD 21 5B 40   [14]   93 ld ix,#cubeline19
+   416E CD B8 41      [17]   94 call cube_drawAll
+   4171 DD 21 61 40   [14]   95 ld ix,#cubeline110
+   4175 CD B8 41      [17]   96 call cube_drawAll
+   4178 DD 21 67 40   [14]   97 ld ix,#cubeline111
+   417C CD B8 41      [17]   98 call cube_drawAll
+   417F DD 21 6D 40   [14]   99 ld ix,#cubeline112
+   4183 CD B8 41      [17]  100 call cube_drawAll
+   4186 DD 21 73 40   [14]  101 ld ix,#cubeline113
+   418A CD B8 41      [17]  102 call cube_drawAll
+   418D DD 21 79 40   [14]  103 ld ix,#cubeline114
+   4191 CD B8 41      [17]  104 call cube_drawAll
+   4194 DD 21 7F 40   [14]  105 ld ix,#cubeline115
+   4198 CD B8 41      [17]  106 call cube_drawAll
+   419B DD 21 85 40   [14]  107 ld ix,#cubeline116
+   419F CD B8 41      [17]  108 call cube_drawAll
+   41A2 DD 21 8B 40   [14]  109 ld ix,#cubeline117
+   41A6 CD B8 41      [17]  110 call cube_drawAll
+   41A9 DD 21 91 40   [14]  111 ld ix,#cubeline118
+   41AD CD B8 41      [17]  112 call cube_drawAll
+   41B0 DD 21 97 40   [14]  113 ld ix,#cubeline119
+   41B4 CD B8 41      [17]  114 call cube_drawAll
+   41B7 C9            [10]  115 ret
                             116 
                             117 
                             118 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2812,25 +2812,25 @@ Hexadecimal [16-Bits]
                             120 ;; REGISTERS DETROYED: AF, BC, DE ,HL
                             121 ;; INPUT: IX -> Points to entity
                             122 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41A7                     123 cube_drawAll:
+   41B8                     123 cube_drawAll:
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-   41A7 11 00 C0      [10]  124     ld    de, #0xC000       ;;Comienzo memoria de video
-   41AA DD 4E 00      [19]  125     ld     c, c_x(ix)         ;; C = Entity Y
-   41AD DD 46 01      [19]  126     ld     b, c_y(ix)         ;; B = Entity X
-   41B0 CD B9 42      [17]  127     call cpct_getScreenPtr_asm
+   41B8 11 00 C0      [10]  124     ld    de, #0xC000       ;;Comienzo memoria de video
+   41BB DD 4E 00      [19]  125     ld     c, c_x(ix)         ;; C = Entity Y
+   41BE DD 46 01      [19]  126     ld     b, c_y(ix)         ;; B = Entity X
+   41C1 CD 48 44      [17]  127     call cpct_getScreenPtr_asm
                             128 
-   41B3 EB            [ 4]  129     ex    de, hl        ;; DE = Puntero a memoria
-   41B4 DD 7E 05      [19]  130     ld  a, c_col(ix)    ;; Color
-   41B7 DD 46 03      [19]  131     ld  b, c_h(ix)      ;; Alto
-   41BA DD 4E 02      [19]  132     ld  c, c_w(ix)      ;; Ancho
+   41C4 EB            [ 4]  129     ex    de, hl        ;; DE = Puntero a memoria
+   41C5 DD 7E 05      [19]  130     ld  a, c_col(ix)    ;; Color
+   41C8 DD 46 03      [19]  131     ld  b, c_h(ix)      ;; Alto
+   41CB DD 4E 02      [19]  132     ld  c, c_w(ix)      ;; Ancho
                             133 
-   41BD CD 0C 42      [17]  134     call cpct_drawSolidBox_asm
+   41CE CD 9B 43      [17]  134     call cpct_drawSolidBox_asm
                             135 
-   41C0 C9            [10]  136     ret
+   41D1 C9            [10]  136     ret
                             137 
                             138 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                             139 ;; BORRA UNA ENTIDAD
@@ -2838,15 +2838,15 @@ Hexadecimal [16-Bits]
                             141 ;; REGISTERS DESTROYED: AF, AF', BC, DE, HL
                             142 ;; ENTRADA: IX -> Puntero a entidad
                             143 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41C1                     144 cube_clearAll:
+   41D2                     144 cube_clearAll:
                             145 
-   41C1 DD 7E 05      [19]  146    ld  a, c_col(ix)
-   41C4 08            [ 4]  147    ex af, af'
+   41D2 DD 7E 05      [19]  146    ld  a, c_col(ix)
+   41D5 08            [ 4]  147    ex af, af'
                             148 
-   41C5 DD 36 05 00   [19]  149    ld  c_col(ix), #0
+   41D6 DD 36 05 00   [19]  149    ld  c_col(ix), #0
                             150 
-   41C9 CD A7 41      [17]  151    call cube_drawAll
-   41CC 08            [ 4]  152    ex af, af'
-   41CD DD 77 05      [19]  153    ld c_col(ix), a
+   41DA CD B8 41      [17]  151    call cube_drawAll
+   41DD 08            [ 4]  152    ex af, af'
+   41DE DD 77 05      [19]  153    ld c_col(ix), a
                             154 
-   41D0 C9            [10]  155    ret
+   41E1 C9            [10]  155    ret

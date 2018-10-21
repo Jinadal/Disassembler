@@ -1,9 +1,4 @@
 XL2
-<<<<<<< HEAD
-H 1 areas 1 global symbols
-S .__.ABS. Def0000
-A _CODE size 0 flags 0 addr 0
-=======
 H 1 areas 13 global symbols
 M cpct_keyboard
 S cpct_isKeyPressed_asm Ref0000
@@ -94,4 +89,3 @@ T F5 00
 R 00 00 00 00
 T F5 00 C9
 R 00 00 00 00
->>>>>>> cd68cbba96972402a671f79696554b9bd04a85d4
