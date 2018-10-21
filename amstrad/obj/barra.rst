@@ -2554,19 +2554,21 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
                               7 .globl cpct_isKeyPressed_asm
+                              8 .globl cpct_setVideoMemoryPage_asm
+                              9 .globl _cpct_memset_f64_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
                               4 
-   41E2                       5 	DefineBarra barra, 40, 190, 4, 4, 0, 0, 0x0C, barra_moveKeyboard 
+   41CF                       5 	DefineBarra barra, 40, 190, 4, 4, 0, 0, 0x0C, barra_moveKeyboard 
    0000                       1 barra: 
-   41E2 28 BE                 2    .db    40, 190     ;; X, Y
-   41E4 04 04                 3    .db    4, 4     ;; W, H
-   41E6 00 00                 4    .db   0, 0    ;; VX, VY
-   41E8 0C                    5    .db   0x0C        ;; Color
-   41E9 28 42                 6    .dw   barra_moveKeyboard        ;; Update 
+   41CF 28 BE                 2    .db    40, 190     ;; X, Y
+   41D1 04 04                 3    .db    4, 4     ;; W, H
+   41D3 00 00                 4    .db   0, 0    ;; VX, VY
+   41D5 0C                    5    .db   0x0C        ;; Color
+   41D6 15 42                 6    .dw   barra_moveKeyboard        ;; Update 
                               7   
                               6 
                               7 
@@ -2576,41 +2578,41 @@ Hexadecimal [16-Bits]
                              11 ;; PARA CUADRADOS UNICAMENTE
                              12 ;; ENTRADA: IX -> Puntero a entidad
                              13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41EB                      14 barra_draw:
-   41EB DD 21 E2 41   [14]   15       ld ix,#barra
+   41D8                      14 barra_draw:
+   41D8 DD 21 CF 41   [14]   15       ld ix,#barra
                              16 
-   41EF 11 00 C0      [10]   17    ld    de, #0xC000       ;;Comienzo memoria de video
-   41F2 DD 4E 00      [19]   18    ld     c, b_x(ix)         ;; C = Entity Y
-   41F5 DD 46 01      [19]   19    ld     b, b_y(ix)         ;; B = Entity X
-   41F8 CD 48 44      [17]   20    call cpct_getScreenPtr_asm
+   41DC 11 00 C0      [10]   17    ld    de, #0xC000       ;;Comienzo memoria de video
+   41DF DD 4E 00      [19]   18    ld     c, b_x(ix)         ;; C = Entity Y
+   41E2 DD 46 01      [19]   19    ld     b, b_y(ix)         ;; B = Entity X
+   41E5 CD CC 44      [17]   20    call cpct_getScreenPtr_asm
                              21 
-   41FB EB            [ 4]   22    ex    de, hl   ;; DE = Puntero a memoria
-   41FC DD 7E 06      [19]   23    ld  a, b_col(ix)   ;; Color
-   41FF DD 46 03      [19]   24    ld  b, b_h(ix)   ;; alto
-   4202 DD 4E 02      [19]   25    ld  c, b_w(ix)   ;; Ancho
+   41E8 EB            [ 4]   22    ex    de, hl   ;; DE = Puntero a memoria
+   41E9 DD 7E 06      [19]   23    ld  a, b_col(ix)   ;; Color
+   41EC DD 46 03      [19]   24    ld  b, b_h(ix)   ;; alto
+   41EF DD 4E 02      [19]   25    ld  c, b_w(ix)   ;; Ancho
                              26 
-   4205 CD 9B 43      [17]   27    call cpct_drawSolidBox_asm
+   41F2 CD 1F 44      [17]   27    call cpct_drawSolidBox_asm
                              28 
-   4208 C9            [10]   29    ret
+   41F5 C9            [10]   29    ret
                              30 
                              31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              32 ;; BORRA UNA ENTIDAD
                              33 ;; PARA CUADRADOS UNICAMENTE
                              34 ;; ENTRADA: IX -> Puntero a entidad
                              35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4209                      36 barra_clear:
-   4209 DD 21 E2 41   [14]   37   ld ix,#barra
+   41F6                      36 barra_clear:
+   41F6 DD 21 CF 41   [14]   37   ld ix,#barra
                              38 
-   420D DD 7E 06      [19]   39    ld  a, b_col(ix)
-   4210 08            [ 4]   40    ex af, af'
+   41FA DD 7E 06      [19]   39    ld  a, b_col(ix)
+   41FD 08            [ 4]   40    ex af, af'
                              41 
-   4211 DD 36 06 00   [19]   42    ld  b_col(ix), #0
+   41FE DD 36 06 00   [19]   42    ld  b_col(ix), #0
                              43 
-   4215 CD EB 41      [17]   44    call barra_draw
-   4218 08            [ 4]   45    ex af, af'
-   4219 DD 77 06      [19]   46    ld b_col(ix), a
+   4202 CD D8 41      [17]   44    call barra_draw
+   4205 08            [ 4]   45    ex af, af'
+   4206 DD 77 06      [19]   46    ld b_col(ix), a
                              47 
-   421C C9            [10]   48    ret
+   4209 C9            [10]   48    ret
                              49 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              50 ;; ACTUALIZAR UNA ENTIDAD
                              51 ;; LLAMA A SU FUNCION DIFERENCIATIVA
@@ -2621,12 +2623,12 @@ Hexadecimal [16-Bits]
 
                              52 ;; ENTRADA: IX -> Puntero a entidad
                              53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   421D                      54 barra_update:
-   421D DD 21 E2 41   [14]   55   ld ix,#barra
+   420A                      54 barra_update:
+   420A DD 21 CF 41   [14]   55   ld ix,#barra
                              56 
-   4221 DD 66 08      [19]   57     ld     h, b_up_h(ix)
-   4224 DD 6E 07      [19]   58     ld     l, b_up_l(ix)
-   4227 E9            [ 4]   59     jp    (hl)  
+   420E DD 66 08      [19]   57     ld     h, b_up_h(ix)
+   4211 DD 6E 07      [19]   58     ld     l, b_up_l(ix)
+   4214 E9            [ 4]   59     jp    (hl)  
                              60 
                              61 
                              62 
@@ -2635,74 +2637,74 @@ Hexadecimal [16-Bits]
                              65 ;;          W(ARRIBA)
                              66 ;; A (IZDA) S(ABAJO) D(DERECHA)
                              67 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4228                      68 barra_moveKeyboard:
-   4228 CD 64 44      [17]   69     call cpct_scanKeyboard_asm
+   4215                      68 barra_moveKeyboard:
+   4215 CD E8 44      [17]   69     call cpct_scanKeyboard_asm
                              70       
-   422B 21 08 20      [10]   71    ld hl, #Key_A ;;O
-   422E CD 60 43      [17]   72     call cpct_isKeyPressed_asm
-   4231 28 04         [12]   73     jr z, a_no_pulsada
+   4218 21 08 20      [10]   71    ld hl, #Key_A ;;O
+   421B CD DB 43      [17]   72     call cpct_isKeyPressed_asm
+   421E 28 04         [12]   73     jr z, a_no_pulsada
                              74     
-   4233 DD 36 04 FE   [19]   75     ld b_vx(ix), #-2
+   4220 DD 36 04 FE   [19]   75     ld b_vx(ix), #-2
                              76     
-   4237                      77  a_no_pulsada:   
+   4224                      77  a_no_pulsada:   
                              78     
                              79     
-   4237 21 07 20      [10]   80       ld hl, #Key_D ;;P
-   423A CD 60 43      [17]   81     call cpct_isKeyPressed_asm
-   423D 28 04         [12]   82     jr z, d_no_pulsada
+   4224 21 07 20      [10]   80       ld hl, #Key_D ;;P
+   4227 CD DB 43      [17]   81     call cpct_isKeyPressed_asm
+   422A 28 04         [12]   82     jr z, d_no_pulsada
                              83     
-   423F DD 36 04 02   [19]   84     ld b_vx(ix), #2
+   422C DD 36 04 02   [19]   84     ld b_vx(ix), #2
                              85     
-   4243                      86  d_no_pulsada:
+   4230                      86  d_no_pulsada:
                              87     
                              88     
                              89 
-   4243 CD 47 42      [17]   90     call barra_move
+   4230 CD 34 42      [17]   90     call barra_move
                              91     
-   4246 C9            [10]   92     ret
+   4233 C9            [10]   92     ret
                              93  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              94 ;; MOVER UNA ENTIDAD
                              95 ;; 
                              96 ;; ENTRADA: IX -> Puntero a entidad
                              97 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              98 
-   4247                      99 barra_move:
-   4247 DD 46 00      [19]  100 	ld b, b_x(ix) ;; save current x position in b
+   4234                      99 barra_move:
+   4234 DD 46 00      [19]  100 	ld b, b_x(ix) ;; save current x position in b
                             101 
                             102 
                             103 
                             104 
-   424A DD 7E 00      [19]  105   	ld    a, b_x(ix) ;;
-   424D DD 86 04      [19]  106   	add   b_vx(ix)   ;;
+   4237 DD 7E 00      [19]  105   	ld    a, b_x(ix) ;;
+   423A DD 86 04      [19]  106   	add   b_vx(ix)   ;;
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-   4250 DD 77 00      [19]  107    	ld    b_x(ix), a ;; next "x" postion = current "x" + velocity
+   423D DD 77 00      [19]  107    	ld    b_x(ix), a ;; next "x" postion = current "x" + velocity
                             108 
-   4253 DD 36 04 00   [19]  109     	ld b_vx(ix), #0;;
+   4240 DD 36 04 00   [19]  109     	ld b_vx(ix), #0;;
                             110    
                             111 
                             112 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             113 
-   4257 DD 7E 00      [19]  114  	ld    a, b_x(ix)     ;; Since screen max x is79
-   425A D6 4C         [ 7]  115   	sub  #76            ;; check if is going to move further or outta screen
+   4244 DD 7E 00      [19]  114  	ld    a, b_x(ix)     ;; Since screen max x is79
+   4247 D6 4C         [ 7]  115   	sub  #76            ;; check if is going to move further or outta screen
                             116                       ;; if true we will go to the reassingnament part
-   425C 28 08         [12]  117  	jr z, colisionX       ;;
+   4249 28 08         [12]  117  	jr z, colisionX       ;;
                             118 
                             119 
                             120 
-   425E DD 7E 00      [19]  121   	ld    a, b_x(ix)  ;; Same as before but now with the leftest position
-   4261 D6 00         [ 7]  122   	sub #0            ;;
+   424B DD 7E 00      [19]  121   	ld    a, b_x(ix)  ;; Same as before but now with the leftest position
+   424E D6 00         [ 7]  122   	sub #0            ;;
                             123                     ;;
-   4263 28 01         [12]  124     	jr z, colisionX  ;;
+   4250 28 01         [12]  124     	jr z, colisionX  ;;
                             125 
                             126 ;;  END MAX MIN X CHECK
-   4265 C9            [10]  127 	ret
-   4266                     128  colisionX:
+   4252 C9            [10]  127 	ret
+   4253                     128  colisionX:
                             129    
                             130      
-   4266 DD 70 00      [19]  131     ld b_x(ix), b
+   4253 DD 70 00      [19]  131     ld b_x(ix), b
                             132    
-   4269 C9            [10]  133    ret
+   4256 C9            [10]  133    ret

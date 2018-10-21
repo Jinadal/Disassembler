@@ -10,15 +10,18 @@
 .area _CODE
 
 _main::
-   ;; Disable firmware to prevent it from interfering with string drawing
-      call cpct_disableFirmware_asm
+    ld  sp, #0x8000
 
-   ld    c, #0
-   call cpct_setVideoMode_asm
+    ;; Disable firmware to prevent it from interfering with string drawing
+    call cpct_disableFirmware_asm
+
+    ld    c, #0
+    call cpct_setVideoMode_asm
 
 
 loop:
     call cube_clear
+
     call barra_clear
     call ball_clear
 
@@ -27,13 +30,13 @@ loop:
     call ball_update
 
     call cube_draw
+
     call barra_draw
     call ball_draw
 
-
-
-
-
-   call cpct_waitVSYNC_asm
+    ;;call cpct_waitVSYNC_asm
+    ;;call ren_switchBuffers
+    call ren_newScene
+    
    ;; Loop forever
-   jr    loop
+   jp    loop

@@ -9,11 +9,13 @@
 -l z80
 obj/main.rel
 obj/cube.rel
-obj/barra.h.rel
+obj/cube.h.rel
 obj/barra.rel
 obj/main.h.rel
 obj/ball.h.rel
+obj/barra.h.rel
 obj/ball.rel
-obj/cube.h.rel
+obj/render.h.rel
+obj/render.rel
 
 -e

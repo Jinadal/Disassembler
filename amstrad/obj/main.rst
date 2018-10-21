@@ -2606,77 +2606,98 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
                               7 .globl cpct_isKeyPressed_asm
+                              8 .globl cpct_setVideoMemoryPage_asm
+                              9 .globl _cpct_memset_f64_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
                               5 .include "cube.h.s"
-                              1 
-                              2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                              3 ;;MACROS
-                              4 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                              5 .macro DefineCubeLine1 _name, _x, _y, _w, _h, _hp, _col
-                              6 _name:
-                              7     .db     _x, _y  ;; X, Y
-                              8     .db     _w, _h  ;; W, H
-                              9     .db     _hp     ;; Hitpoints
-                             10     .db     _col    ;; Color
-                             11 .endm
-                             12 .macro DefineCubeLine1Default _name, _suf
-                             13     DefineCubeLine1 _name'_suf, 0, 0, 0, 0, 0, 0xFF
-                             14 .endm
-                             15 .macro DefineNCubeLine1 _name, _n
-                             16 
-                             17     _s = 0
-                             18     .rept _n
-                             19         DefineCubeLine1Default _name, \_s
-                             20 
-                             21         _s = _s + 1
-                             22     .endm
-                             23 .endm
-                     0000    24 c_x = 0
-                     0001    25 c_y = 1
-                     0002    26 c_w = 2
-                     0003    27 c_h = 3
-                     0004    28 c_hp = 4
-                     0005    29 c_col = 5
-                             30 
-                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             32 ;;OBJECTS CREATED WITH MACROS
-                             33 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             34 .globl cube_clear
-                             35 .globl cube_draw
-                             36 .globl cube_drawAll
-                             37 .globl cube_clearAll
-                             38 
-                             39 
-                             40 .globl cubeline10
-                             41 .globl cubeline11
-                             42 .globl cubeline12
-                             43 .globl cubeline13
-                             44 .globl cubeline14
-                             45 .globl cubeline15
-                             46 .globl cubeline16
-                             47 .globl cubeline17
-                             48 .globl cubeline18
-                             49 .globl cubeline19
-                             50 .globl cubeline110
-                             51 .globl cubeline111
-                             52 .globl cubeline112
-                             53 .globl cubeline113
-                             54 .globl cubeline114
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline115
-                             56 .globl cubeline116
-                             57 .globl cubeline117
-                             58 .globl cubeline118
-                             59 .globl cubeline119
+                              1 .include "render.h.s"
+                              1 
+                              2 
+                              3 ;;Drawable Entity
+                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _col
+                              5 _name:
+                              6     .db _x, _y
+                              7     .db _w, _h
+                              8     .db _col
+                              9 .endm
+                     0001    10 dc_x    = 0     dc_y    = 1
+                     0003    11 dc_w    = 2     dc_h    = 3
+                     0004    12 dc_col  = 4
+                             13 
+                             14 .globl ren_clearBackBuffers
+                             15 ;;.globl ren_switchBuffers
+                             16 .globl render_drawCube
+                             17 .globl ren_newScene
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
+Hexadecimal [16-Bits]
+
+
+
+                              2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                              3 ;;MACROS
+                              4 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                              5 .macro DefineCubeLine1 _name, _x, _y, _w, _h, _col, _hp
+                              6 _name:
+                              7     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                              8     .db     _hp     ;; Hitpoints
+                              9 .endm
+                     0000    10 c_de        = 0
+                     0006    11 c_de_size   = 6
+                     0006    12 c_hp        = 0 + c_de_size
+                             13 ;;.macro DefineCubeLine1Default _name, _suf
+                             14 ;;    DefineCubeLine1 _name'_suf, 0, 0, 0, 0, 0xFF, 0
+                             15 ;;.endm
+                             16 ;;.macro DefineNCubeLine1 _name, _n
+                             17 
+                             18 ;;    _s = 0
+                             19 ;;    .rept _n
+                             20 ;;        DefineCubeLine1Default _name, \_s
+                             21 
+                             22 ;;        _s = _s + 1
+                             23 ;;    .endm
+                             24 ;;.endm
+                             25 
+                             26 
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             29 ;;OBJECTS CREATED WITH MACROS
+                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             31 .globl cube_clear
+                             32 .globl cube_draw
+                             33 .globl cube_drawAll
+                             34 .globl cube_clearAll
+                             35 
+                             36 
+                             37 .globl cubeline10
+                             38 .globl cubeline11
+                             39 .globl cubeline12
+                             40 .globl cubeline13
+                             41 .globl cubeline14
+                             42 .globl cubeline15
+                             43 .globl cubeline16
+                             44 .globl cubeline17
+                             45 .globl cubeline18
+                             46 .globl cubeline19
+                             47 .globl cubeline110
+                             48 .globl cubeline111
+                             49 .globl cubeline112
+                             50 .globl cubeline113
+                             51 .globl cubeline114
+                             52 .globl cubeline115
+                             53 .globl cubeline116
+                             54 .globl cubeline117
+                             55 .globl cubeline118
+                             56 .globl cubeline119
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
@@ -2688,30 +2709,33 @@ Hexadecimal [16-Bits]
                              10 .area _CODE
                              11 
    4000                      12 _main::
-                             13    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 8B 43      [17]   14       call cpct_disableFirmware_asm
-                             15 
-   4003 0E 00         [ 7]   16    ld    c, #0
-   4005 CD 7E 43      [17]   17    call cpct_setVideoMode_asm
-                             18 
-                             19 
-   4008                      20 loop:
-   4008 CD 9E 40      [17]   21     call cube_clear
-   400B CD 09 42      [17]   22     call barra_clear
-   400E CD 91 42      [17]   23     call ball_clear
+   4000 31 00 80      [10]   13     ld  sp, #0x8000
+                             14 
+                             15     ;; Disable firmware to prevent it from interfering with string drawing
+   4003 CD 0F 44      [17]   16     call cpct_disableFirmware_asm
+                             17 
+   4006 0E 00         [ 7]   18     ld    c, #0
+   4008 CD 02 44      [17]   19     call cpct_setVideoMode_asm
+                             20 
+                             21 
+   400B                      22 loop:
+   400B CD A2 40      [17]   23     call cube_clear
                              24 
-                             25     
-   4011 CD 1D 42      [17]   26     call barra_update
-   4014 CD A5 42      [17]   27     call ball_update
-                             28 
-   4017 CD 2B 41      [17]   29     call cube_draw
-   401A CD EB 41      [17]   30     call barra_draw
-   401D CD 73 42      [17]   31     call ball_draw
-                             32 
+   400E CD F6 41      [17]   25     call barra_clear
+   4011 CD 7E 42      [17]   26     call ball_clear
+                             27 
+                             28     
+   4014 CD 0A 42      [17]   29     call barra_update
+   4017 CD 92 42      [17]   30     call ball_update
+                             31 
+   401A CD 2F 41      [17]   32     call cube_draw
                              33 
-                             34 
-                             35 
+   401D CD D8 41      [17]   34     call barra_draw
+   4020 CD 60 42      [17]   35     call ball_draw
                              36 
-   4020 CD 76 43      [17]   37    call cpct_waitVSYNC_asm
-                             38    ;; Loop forever
-   4023 18 E3         [12]   39    jr    loop
+                             37     ;;call cpct_waitVSYNC_asm
+                             38     ;;call ren_switchBuffers
+   4023 CD 4F 43      [17]   39     call ren_newScene
+                             40     
+                             41    ;; Loop forever
+   4026 C3 0B 40      [10]   42    jp    loop

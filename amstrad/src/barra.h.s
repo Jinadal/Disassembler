@@ -1,5 +1,3 @@
-
-
 .globl barra_clear
 .globl barra_draw
 .globl barra_update

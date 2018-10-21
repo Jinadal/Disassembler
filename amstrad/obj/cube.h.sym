@@ -4,9 +4,8 @@ Hexadecimal [16-Bits]
 Symbol Table
 
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
-    .__.H$L.=  0000 L   |     c_col   =  0005     |     c_h     =  0003 
-    c_hp    =  0004     |     c_w     =  0002     |     c_x     =  0000 
-    c_y     =  0001     |     cube_cle   **** GX  |     cube_cle   **** GX
+    .__.H$L.=  0000 L   |     c_de    =  0000     |     c_de_siz=  0006 
+    c_hp    =  0006     |     cube_cle   **** GX  |     cube_cle   **** GX
     cube_dra   **** GX  |     cube_dra   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
@@ -14,7 +13,9 @@ Symbol Table
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX
+    cubeline   **** GX  |     dc_col  =  0004     |     dc_h    =  0003 
+    dc_w    =  0002     |     dc_x    =  0000     |     dc_y    =  0001 
+    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

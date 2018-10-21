@@ -1,11 +1,13 @@
 XL2
-H 1 areas 19 global symbols
+H 1 areas 1C global symbols
 S cube_drawAll Ref0000
 S cube_clear Ref0000
+S render_drawCube Ref0000
 S cubeline110 Ref0000
 S cubeline111 Ref0000
 S cubeline112 Ref0000
 S cubeline113 Ref0000
+S ren_newScene Ref0000
 S cubeline114 Ref0000
 S cubeline115 Ref0000
 S cube_clearAll Ref0000
@@ -16,6 +18,7 @@ S cubeline118 Ref0000
 S cubeline119 Ref0000
 S cubeline10 Ref0000
 S cubeline11 Ref0000
+S ren_clearBackBuffers Ref0000
 S cubeline12 Ref0000
 S cubeline13 Ref0000
 S cubeline14 Ref0000
