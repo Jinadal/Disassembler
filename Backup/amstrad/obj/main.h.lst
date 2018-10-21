@@ -9,4 +9,4 @@ Hexadecimal [16-Bits]
                               4 .globl cpct_waitVSYNC_asm
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
-                              7 .globl cpct_isKeyPressed_asm    
+                              7 .globl cpct_isKeyPressed_asm

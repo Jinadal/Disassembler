@@ -1,44 +1,20 @@
-;;-----------------------------LICENSE NOTICE------------------------------------
-;;  This file is part of CPCtelera: An Amstrad CPC Game Engine 
-;;  Copyright (C) 2018 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-;;
-;;  This program is free software: you can redistribute it and/or modify
-;;  it under the terms of the GNU Lesser General Public License as published by
-;;  the Free Software Foundation, either version 3 of the License, or
-;;  (at your option) any later version.
-;;
-;;  This program is distributed in the hope that it will be useful,
-;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;;  GNU Lesser General Public License for more details.
-;;
-;;  You should have received a copy of the GNU Lesser General Public License
-;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;;-------------------------------------------------------------------------------
-
-;; Include all CPCtelera constant definitions, macros and variables
 .include "cpctelera.h.s"
+<<<<<<< HEAD
 .include "barra.h.s"
 .include "ball.h.s"
 .include "main.h.s"
 
+=======
+.include "main.h.s"
+.include "cube.h.s"
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
 
-;;
 
-;; Start of _DATA area 
-;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-;;  right after _CODE area contents.
-;;
 .area _DATA
-
 .area _CODE
 
-;;
-;; MAIN function. This is the entry point of the application.
-;;    _main:: global symbol is required for correctly compiling and linking
-;;
 _main::
+<<<<<<< HEAD
    ;; Disable firmware to prevent it from interfering with string drawing
       call cpct_disableFirmware_asm
 
@@ -66,3 +42,84 @@ loop:
    call cpct_waitVSYNC_asm
    ;; Loop forever
    jr    loop
+=======
+
+    call cpct_disableFirmware_asm
+
+    ld c, #0
+    call cpct_setVideoMode_asm
+
+    
+loop:
+;;ld ix,#cubeline1
+;;call cube_clear
+;;call cube_draw
+
+ld    ix, #cubeline10
+call cube_clear
+call cube_draw
+
+ld    ix, #cubeline11
+call cube_clear
+call cube_draw
+ld    ix, #cubeline12
+call cube_clear
+call cube_draw
+ld    ix, #cubeline13
+call cube_clear
+call cube_draw
+ld    ix, #cubeline14
+call cube_clear
+call cube_draw
+ld    ix, #cubeline15
+call cube_clear
+call cube_draw
+ld    ix, #cubeline16
+call cube_clear
+call cube_draw
+ld    ix, #cubeline17
+call cube_clear
+call cube_draw
+ld    ix, #cubeline18
+call cube_clear
+call cube_draw
+ld    ix, #cubeline19
+call cube_clear
+call cube_draw
+ld    ix, #cubeline110
+call cube_clear
+call cube_draw
+ld    ix, #cubeline111
+call cube_clear
+call cube_draw
+ld    ix, #cubeline112
+call cube_clear
+call cube_draw
+ld    ix, #cubeline113
+call cube_clear
+call cube_draw
+ld    ix, #cubeline114
+call cube_clear
+call cube_draw
+ld    ix, #cubeline115
+call cube_clear
+call cube_draw
+ld    ix, #cubeline116
+call cube_clear
+call cube_draw
+ld    ix, #cubeline117
+call cube_clear
+call cube_draw
+ld    ix, #cubeline118
+call cube_clear
+call cube_draw
+ld    ix, #cubeline119
+call cube_clear
+call cube_draw
+
+
+
+call cpct_waitVSYNC_asm
+
+jp loop
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1

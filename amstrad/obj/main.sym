@@ -54,15 +54,23 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
+<<<<<<< HEAD
   0 _main      0000 GR  |     b_col   =  0006     |     b_h     =  0003 
     b_up_h  =  0008     |     b_up_l  =  0007     |     b_vx    =  0004 
     b_vy    =  0005     |     b_w     =  0002     |     b_x     =  0000 
     b_y     =  0001     |     ball       **** GX  |     ball_cle   **** GX
+=======
+  0 _main      0000 GR  |     c_col   =  0005     |     c_h     =  0003 
+    c_hp    =  0004     |     c_w     =  0002     |     c_x     =  0000 
+    c_y     =  0001     |     cpct_dis   **** GX  |     cpct_dra   **** GX
+    cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_pag=  0000 
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
+<<<<<<< HEAD
     ball_dra   **** GX  |     ball_mov   **** GX  |     ball_upd   **** GX
     barra      **** GX  |     barra_cl   **** GX  |     barra_dr   **** GX
     barra_mo   **** GX  |     barra_mo   **** GX  |     barra_up   **** GX
@@ -75,12 +83,29 @@ Symbol Table
     cpct_set   **** GX  |     cpct_wai   **** GX  |   0 loop       0008 R
     opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
     opc_LD_D=  0016 
+=======
+    cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
+    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
+    cube_cle   **** GX  |     cube_dra   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |   0 loop       0008 R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
+<<<<<<< HEAD
    0 _CODE      size   1F   flags    0
+=======
+   0 _CODE      size   D6   flags    0
+>>>>>>> 9ad3b97408364c46a86906c5e19301660045d6b1
    1 _DATA      size    0   flags    0
 
