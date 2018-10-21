@@ -8,16 +8,10 @@
 -l /home/diego/cpctelera/cpctelera/cpctelera.lib
 -l z80
 obj/main.rel
-obj/entity.rel
-obj/door.h.rel
-obj/entity.h.rel
-obj/wall.rel
-obj/keys.h.rel
-obj/hp.h.rel
+obj/barra.rel
+obj/barra.h.rel
+obj/ball.h.rel
 obj/main.h.rel
-obj/wall.h.rel
-obj/door.rel
-obj/hp.rel
-obj/keys.rel
+obj/ball.rel
 
 -e

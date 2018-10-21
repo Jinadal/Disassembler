@@ -2519,44 +2519,95 @@ Hexadecimal [16-Bits]
 
 
 
-                             21 .include "entity.h.s"
+                             21 .include "barra.h.s"
                               1 
-                              2 .globl ent_clear
-                              3 .globl ent_draw
-                              4 .globl ent_update
-                              5 .globl ent_move
-                              6 .globl ent_move2
-                              7 .globl ent_moveKeyboard
-                              8 .globl ent_collide
+                              2 
+                              3 .globl barra_clear
+                              4 .globl barra_draw
+                              5 .globl barra_update
+                              6 .globl barra_move
+                              7 .globl barra_moveKeyboard
+                              8 
                               9 
                              10 
-                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             12 ;;
-                             13 ;;MACROS
-                             14 ;;
-                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             16 
-                             17    .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _col, _upd, _key,_hp
-                             18 _name: 
-                             19    .db    _x, _y     ;; X, Y
-                             20    .db   _vx, _vy    ;; VX, VY
+                             11 
+                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             13 ;;
+                             14 ;;MACROS
+                             15 ;;
+                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             17 
+                             18    .macro DefineBarra _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+                             19 _name: 
+                             20    .db    _x, _y     ;; X, Y
                              21    .db    _w, _h     ;; W, H
-                             22    .db   _col        ;; Color
-                             23    .dw   _upd        ;; Update 
-                             24    .db   _key        ;; Key   
-                             25    .db 	 _hp         ;; HP
+                             22    .db   _vx, _vy    ;; VX, VY
+                             23    .db   _col        ;; Color
+                             24    .dw   _upd        ;; Update 
+                             25   
                              26 .endm
-                     0000    27 e_x = 0
-                     0001    28 e_y = 1
-                     0002    29 e_vx = 2
-                     0003    30 e_vy = 3
-                     0004    31 e_w = 4
-                     0005    32 e_h = 5
-                     0006    33 e_col = 6
-                     0007    34 e_up_l = 7
-                     0008    35 e_up_h = 8
-                     0009    36 e_key = 9
-                     000A    37 e_hp = 10	
+                     0000    27 b_x = 0
+                     0001    28 b_y = 1
+                     0002    29 b_w = 2
+                     0003    30 b_h = 3
+                     0004    31 b_vx = 4
+                     0005    32 b_vy = 5
+                     0006    33 b_col = 6
+                     0007    34 b_up_l = 7
+                     0008    35 b_up_h = 8
+                             36 	
+                             37 
+                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             39 ;;
+                             40 ;;OBJETOS CREADOS CON LA MACROS
+                             41 ;;
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             43 
+                             44 .globl barra
+                             45 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
+Hexadecimal [16-Bits]
+
+
+
+                             22 .include "ball.h.s"
+                              1 
+                              2 
+                              3 
+                              4 .globl ball_clear
+                              5 .globl ball_draw
+                              6 .globl ball_update
+                              7 .globl ball_move
+                              8 
+                              9 
+                             10 
+                             11 
+                             12 
+                             13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             14 ;;
+                             15 ;;MACROS
+                             16 ;;
+                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             18 
+                             19    .macro DefineBall _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+                             20 _name: 
+                             21    .db    _x, _y     ;; X, Y
+                             22    .db    _w, _h     ;; W, H
+                             23    .db   _vx, _vy    ;; VX, VY
+                             24    .db   _col        ;; Color
+                             25    .dw   _upd        ;; Update 
+                             26   
+                             27 .endm
+                     0000    28 bl_x = 0
+                     0001    29 bl_y = 1
+                     0002    30 bl_w = 2
+                     0003    31 bl_h = 3
+                     0004    32 bl_vx = 4
+                     0005    33 bl_vy = 5
+                     0006    34 bl_col = 6
+                     0007    35 bl_up_l = 7
+                     0008    36 bl_up_h = 8
+                             37 	
                              38 
                              39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              40 ;;
@@ -2564,14 +2615,14 @@ Hexadecimal [16-Bits]
                              42 ;;
                              43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              44 
-                             45 .globl personaje
+                             45 .globl ball
                              46 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
-                             22 .include "main.h.s"
+                             23 .include "main.h.s"
                               1 .globl cpct_disableFirmware_asm
                               2 .globl cpct_drawSolidBox_asm
                               3 .globl cpct_getScreenPtr_asm
@@ -2579,231 +2630,53 @@ Hexadecimal [16-Bits]
                               5 .globl cpct_setVideoMode_asm
                               6 .globl cpct_scanKeyboard_asm
                               7 .globl cpct_isKeyPressed_asm    
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
-Hexadecimal [16-Bits]
-
-
-
-                             23 .include "keys.h.s"
-                              1 ;;====================================================
-                              2 ;; FUNCTIONS RELATED WITH SOLDIER MOVEMENT AND ACTIONS
-                              3 ;;====================================================
-                              4 .globl key_draw
-                              5 .globl key_update
-                              6 .globl key_clear
-                              7 .globl pick_keys
-                              8 .globl drop_keys
-                              9 .globl keys
-                             10 
-                             11 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             24 .include "hp.h.s"
-                              1 
-                              2 .globl hp_clear
-                              3 .globl hp_draw
-                              4 
-                              5 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                              6 ;;
-                              7 ;;MACROS
-                              8 ;;
-                              9 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             10 
-                             11    .macro DefineHP _name, _x, _y, _w, _h, _col, _UP
-                             12 _name: 
-                             13    .db    _x, _y     ;; X, Y
-                             14    .db    _w, _h     ;; W, H
-                             15    .db   _col        ;; Color
-                             16    .db   _UP         ;; is up?
-                             17 
-                             18 .endm
-                     0000    19 hp_x = 0
-                     0001    20 hp_y = 1
-                     0002    21 hp_w = 2
-                     0003    22 hp_h = 3
-                     0004    23 hp_col = 4
-                     0005    24 hp_UP = 5
+                             24 
                              25 
-                             26 
+                             26 ;;
                              27 
-                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             29 ;;
-                             30 ;;OBJETOS CREADOS CON LA MACROS
-                             31 ;;
-                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             33 
-                             34 .globl hp1
-                             35 .globl hp2
-                             36 .globl hp3
-                             37 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
-                             25 .include "wall.h.s"
-                              1 
-                              2 .globl wall_clear
-                              3 .globl wall_draw
-                              4 .globl num_walls
-                              5 
-                              6 
-                              7 
-                              8 
-                              9 
-                             10 
-                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             12 ;;
-                             13 ;;MACROS
-                             14 ;;
-                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             16 
-                             17    .macro DefineWall _name, _x, _y, _w, _h, _col
-                             18 _name: 
-                             19    .db    _x, _y     ;; X, Y
-                             20    .db    _w, _h     ;; W, H
-                             21    .db   _col        ;; Color
-                             22 .endm
-                     0000    23 w_x = 0
-                     0001    24 w_y = 1
-                     0002    25 w_w = 2
-                     0003    26 w_h = 3
-                     0004    27 w_col = 4
-                             28 
-                             29 
-                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             31 ;;
-                             32 ;;OBJETOS CREADOS CON LA MACROS
-                             33 ;;
-                             34 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             35 
-                             36 .globl w1
-                             37 .globl w2
-                             38 ;.globl w3
-                             39 ;.globl w4
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
-Hexadecimal [16-Bits]
-
-
-
-                             26 .include "door.h.s"
-                              1 
-                              2 .globl door_draw
-                              3 .globl door_clear
-                              4 .globl check_door
-                              5 .globl open_door
-                              6 
-                              7 
-                              8 
-                              9 
-                             10 
-                             11 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             12 ;;
-                             13 ;;MACROS
-                             14 ;;
-                             15 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             16 
-                             17    .macro DefineDoor _name, _x, _y, _w, _h, _col, _op
-                             18 _name: 
-                             19     .db     _x, _y      ;; X, Y
-                             20     .db     _w, _h      ;; W, H
-                             21     .db     _col        ;; Color
-                             22     .db     _op         ;;Open-close 
-                             23 .endm
-                     0000    24 d_x = 0
-                     0001    25 d_y = 1
-                     0002    26 d_w = 2
-                     0003    27 d_h = 3
-                     0004    28 d_col = 4
-                     0005    29 d_op = 5
-                             30 
-                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             28 ;; Start of _DATA area 
+                             29 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             30 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             31 ;;  right after _CODE area contents.
                              32 ;;
-                             33 ;;OBJETOS CREADOS CON LA MACROS
-                             34 ;;
-                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 .area _DATA
+                             34 
+                             35 .area _CODE
                              36 
-                             37 .globl door0
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
-Hexadecimal [16-Bits]
-
-
-
-                             27 
-                             28 ;;
-                             29 
-                             30 ;; Start of _DATA area 
-                             31 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             32 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             33 ;;  right after _CODE area contents.
-                             34 ;;
-                             35 .area _DATA
-                             36 
-                             37 .area _CODE
-                             38 
-                             39 ;;
-                             40 ;; MAIN function. This is the entry point of the application.
-                             41 ;;    _main:: global symbol is required for correctly compiling and linking
-                             42 ;;
-   4000                      43 _main::
-                             44    ;; Disable firmware to prevent it from interfering with string drawing
-   4000 CD 01 43      [17]   45       call cpct_disableFirmware_asm
-                             46 
-   4003 0E 00         [ 7]   47    ld    c, #0
-   4005 CD F4 42      [17]   48    call cpct_setVideoMode_asm
-                             49 
+                             37 ;;
+                             38 ;; MAIN function. This is the entry point of the application.
+                             39 ;;    _main:: global symbol is required for correctly compiling and linking
+                             40 ;;
+   4000                      41 _main::
+                             42    ;; Disable firmware to prevent it from interfering with string drawing
+   4000 CD C8 41      [17]   43       call cpct_disableFirmware_asm
+                             44 
+   4003 0E 00         [ 7]   45    ld    c, #0
+   4005 CD BB 41      [17]   46    call cpct_setVideoMode_asm
+                             47 
+                             48 
+   4008                      49 loop:
                              50 
-   4008                      51 loop:
-                             52 
-                             53   
-   4008 CD C2 42      [17]   54   call key_clear
-   400B CD 54 40      [17]   55   call ent_clear
-                             56   ;call door_clear
-   400E CD 9E 41      [17]   57   call wall_clear
-   4011 CD 51 42      [17]   58   call hp_clear
-                             59   
-   4014 CD B7 42      [17]   60   call key_update
-   4017 CD 68 40      [17]   61   call ent_update
+   4008 CD 46 40      [17]   51    call barra_clear
+   400B CD CE 40      [17]   52    call ball_clear
+                             53 
+                             54 
+   400E CD 5A 40      [17]   55    call barra_update
+   4011 CD E2 40      [17]   56    call ball_update
+                             57 
+                             58 
+   4014 CD 28 40      [17]   59    call barra_draw
+   4017 CD B0 40      [17]   60    call ball_draw
+                             61 
                              62 
-   401A CD 89 42      [17]   63   call key_draw
-   401D CD 36 40      [17]   64   call ent_draw
-                             65  ; call door_draw
-   4020 CD 75 41      [17]   66   call wall_draw
-   4023 CD 21 42      [17]   67   call hp_draw
-                             68 
-                             69 
-                             70   
-                             71   ;;  ld    ix, #p_a
-                             72   ;; call ent_clear
-                             73   ;; call ent_update
-                             74   ;; call ent_draw
-                             75 
-                             76   ;;  ld    ix, #p_a1
-                             77   ;; call ent_clear
-                             78   ;; call ent_update
-                             79   ;; call ent_draw
-                             80 
-                             81 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
-Hexadecimal [16-Bits]
-
-
-
-                             82   ;;  ld    ix, #p_a2
-                             83   ;; call ent_clear
-                             84   ;; call ent_update
-                             85   ;; call ent_draw
-                             86 
-                             87     
-                             88 
-                             89 
-                             90 
-                             91 
-                             92 
-                             93 
-   4026 CD EC 42      [17]   94    call cpct_waitVSYNC_asm
-                             95    ;; Loop forever
-   4029 18 DD         [12]   96    jr    loop
+                             63 
+                             64 
+                             65 
+   401A CD B3 41      [17]   66    call cpct_waitVSYNC_asm
+                             67    ;; Loop forever
+   401D 18 E9         [12]   68    jr    loop

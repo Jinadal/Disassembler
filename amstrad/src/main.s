@@ -18,12 +18,10 @@
 
 ;; Include all CPCtelera constant definitions, macros and variables
 .include "cpctelera.h.s"
-.include "entity.h.s"
+.include "barra.h.s"
+.include "ball.h.s"
 .include "main.h.s"
-.include "keys.h.s"
-.include "hp.h.s"
-.include "wall.h.s"
-.include "door.h.s"
+
 
 ;;
 
@@ -50,42 +48,16 @@ _main::
 
 loop:
 
-  
-  call key_clear
-  call ent_clear
-  call door_clear
-  call wall_clear
-  call hp_clear
-  
-  call key_update
-  call ent_update
-
-  call key_draw
-  call ent_draw
-  call door_draw
-  call wall_draw
-  call hp_draw
+   call barra_clear
+   call ball_clear
 
 
-  
-  ;;  ld    ix, #p_a
-  ;; call ent_clear
-  ;; call ent_update
-  ;; call ent_draw
-
-  ;;  ld    ix, #p_a1
-  ;; call ent_clear
-  ;; call ent_update
-  ;; call ent_draw
+   call barra_update
+   call ball_update
 
 
-  ;;  ld    ix, #p_a2
-  ;; call ent_clear
-  ;; call ent_update
-  ;; call ent_draw
-
-    
-
+   call barra_draw
+   call ball_draw
 
 
 
