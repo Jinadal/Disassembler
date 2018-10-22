@@ -3,7 +3,7 @@
 .include "barra.h.s"
 .include "main.h.s"
 
-	DefineBarra barra, 40, 190, 4, 4,0x0C, 0, 0,  barra_moveKeyboard 
+	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
 
 
 

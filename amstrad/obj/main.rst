@@ -2712,30 +2712,30 @@ Hexadecimal [16-Bits]
    4000 31 00 80      [10]   13     ld  sp, #0x8000
                              14 
                              15     ;; Disable firmware to prevent it from interfering with string drawing
-   4003 CD DB 43      [17]   16     call cpct_disableFirmware_asm
+   4003 CD DE 43      [17]   16     call cpct_disableFirmware_asm
                              17 
    4006 0E 00         [ 7]   18     ld    c, #0
-   4008 CD CE 43      [17]   19     call cpct_setVideoMode_asm
+   4008 CD D1 43      [17]   19     call cpct_setVideoMode_asm
                              20 
                              21 
    400B                      22 loop:
-   400B CD 37 42      [17]   23     call cube_clear
+   400B CD 3A 42      [17]   23     call cube_clear
                              24 
-   400E CD 85 40      [17]   25     call barra_clear
-   4011 CD F3 40      [17]   26     call ball_clear
+   400E CD 88 40      [17]   25     call barra_clear
+   4011 CD F6 40      [17]   26     call ball_clear
                              27 
                              28     
-   4014 CD 99 40      [17]   29     call barra_update
-   4017 CD 07 41      [17]   30     call ball_update
+   4014 CD 9C 40      [17]   29     call barra_update
+   4017 CD 0A 41      [17]   30     call ball_update
                              31 
-   401A CD C4 42      [17]   32     call cube_draw
+   401A CD C7 42      [17]   32     call cube_draw
                              33 
-   401D CD 7D 40      [17]   34     call barra_draw
-   4020 CD EB 40      [17]   35     call ball_draw
+   401D CD 80 40      [17]   34     call barra_draw
+   4020 CD EE 40      [17]   35     call ball_draw
                              36 
-                             37     ;;call cpct_waitVSYNC_asm
+   4023 CD C9 43      [17]   37     call cpct_waitVSYNC_asm
                              38     ;;call ren_switchBuffers
-   4023 CD 2B 40      [17]   39     call ren_newScene
+   4026 CD 2E 40      [17]   39     call ren_newScene
                              40     
                              41    ;; Loop forever
-   4026 C3 0B 40      [10]   42    jp    loop
+   4029 C3 0B 40      [10]   42    jp    loop

@@ -2584,12 +2584,12 @@ Hexadecimal [16-Bits]
 
 
                               5 
-   0000                       6 	DefineBarra barra, 40, 190, 4, 4,0x0C, 0, 0,  barra_moveKeyboard 
+   0000                       6 	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
    0000                       1 barra: 
-   0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 4, 4, 0x0C
+   0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 8, 4, 0x0C
    0000                       1 barra_dw:
    0000 28 BE                 2     .db 40, 190
-   0002 04 04                 3     .db 4, 4
+   0002 08 04                 3     .db 8, 4
    0004 0C                    4     .db 0x0C
                               3  ;  .db    _x, _y     ;; X, Y
                               4   ; .db    _w, _h     ;; W, H

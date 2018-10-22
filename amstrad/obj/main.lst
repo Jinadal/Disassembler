@@ -2733,9 +2733,9 @@ Hexadecimal [16-Bits]
    001D CD 00 00      [17]   34     call barra_draw
    0020 CD 00 00      [17]   35     call ball_draw
                              36 
-                             37     ;;call cpct_waitVSYNC_asm
+   0023 CD 00 00      [17]   37     call cpct_waitVSYNC_asm
                              38     ;;call ren_switchBuffers
-   0023 CD 00 00      [17]   39     call ren_newScene
+   0026 CD 00 00      [17]   39     call ren_newScene
                              40     
                              41    ;; Loop forever
-   0026 C3 0B 00      [10]   42    jp    loop
+   0029 C3 0B 00      [10]   42    jp    loop

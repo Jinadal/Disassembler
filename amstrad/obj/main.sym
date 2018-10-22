@@ -90,6 +90,6 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   29   flags    0
+   0 _CODE      size   2C   flags    0
    1 _DATA      size    0   flags    0
 

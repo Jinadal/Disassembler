@@ -34,7 +34,7 @@ loop:
     call barra_draw
     call ball_draw
 
-    ;;call cpct_waitVSYNC_asm
+    call cpct_waitVSYNC_asm
     ;;call ren_switchBuffers
     call ren_newScene
     
