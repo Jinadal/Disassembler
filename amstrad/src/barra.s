@@ -1,8 +1,9 @@
 .include "cpctelera.h.s"
+.include "render.h.s"
 .include "barra.h.s"
 .include "main.h.s"
 
-	DefineBarra barra, 40, 190, 4, 4, 0, 0, 0x0C, barra_moveKeyboard 
+	DefineBarra barra, 40, 190, 4, 4,0x0C, 0, 0,  barra_moveKeyboard 
 
 
 
@@ -13,18 +14,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 barra_draw:
       ld ix,#barra
-
-   ld    de, #0xC000       ;;Comienzo memoria de video
-   ld     c, b_x(ix)         ;; C = Entity Y
-   ld     b, b_y(ix)         ;; B = Entity X
-   call cpct_getScreenPtr_asm
-
-   ex    de, hl   ;; DE = Puntero a memoria
-   ld  a, b_col(ix)   ;; Color
-   ld  b, b_h(ix)   ;; alto
-   ld  c, b_w(ix)   ;; Ancho
-
-   call cpct_drawSolidBox_asm
+	jp render_drawCube
+  
 
    ret
 
@@ -36,14 +27,14 @@ barra_draw:
 barra_clear:
   ld ix,#barra
 
-   ld  a, b_col(ix)
+   ld  a, dc_col(ix)
    ex af, af'
 
-   ld  b_col(ix), #0
+   ld  dc_col(ix), #0
 
    call barra_draw
    ex af, af'
-   ld b_col(ix), a
+   ld dc_col(ix), a
 
    ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -53,10 +44,10 @@ barra_clear:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 barra_update:
   ld ix,#barra
-
-    ld     h, b_up_h(ix)
-    ld     l, b_up_l(ix)
-    jp    (hl)  
+ jp barra_moveKeyboard 
+   ;; ld     h, b_up_h(ix)
+    ;ld     l, b_up_l(ix)
+    ;jp    (hl)  
 
 
 
@@ -97,28 +88,28 @@ barra_moveKeyboard:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 barra_move:
-	ld b, b_x(ix) ;; save current x position in b
+	ld b, dc_x(ix) ;; save current x position in b
 
 
 
 
-  	ld    a, b_x(ix) ;;
+  	ld    a, dc_x(ix) ;;
   	add   b_vx(ix)   ;;
-   	ld    b_x(ix), a ;; next "x" postion = current "x" + velocity
+   	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
 
     	ld b_vx(ix), #0;;
    
 
 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
 
- 	ld    a, b_x(ix)     ;; Since screen max x is79
+ 	ld    a, dc_x(ix)     ;; Since screen max x is79
   	sub  #76            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
  	jr z, colisionX       ;;
 
 
 
-  	ld    a, b_x(ix)  ;; Same as before but now with the leftest position
+  	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
   	sub #0            ;;
                     ;;
     	jr z, colisionX  ;;
@@ -128,6 +119,6 @@ barra_move:
  colisionX:
    
      
-    ld b_x(ix), b
+    ld dc_x(ix), b
    
    ret

@@ -2496,51 +2496,50 @@ Hexadecimal [16-Bits]
 
 
                               2 .include "barra.h.s"
-                              1 
-                              2 
-                              3 .globl barra_clear
-                              4 .globl barra_draw
-                              5 .globl barra_update
-                              6 .globl barra_move
-                              7 .globl barra_moveKeyboard
+                              1 .globl barra_clear
+                              2 .globl barra_draw
+                              3 .globl barra_update
+                              4 .globl barra_move
+                              5 .globl barra_moveKeyboard
+                              6 
+                              7 
                               8 
                               9 
-                             10 
-                             11 
-                             12 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             10 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             11 ;;
+                             12 ;;MACROS
                              13 ;;
-                             14 ;;MACROS
-                             15 ;;
-                             16 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             17 
-                             18    .macro DefineBarra _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
-                             19 _name: 
-                             20    .db    _x, _y     ;; X, Y
-                             21    .db    _w, _h     ;; W, H
+                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             15 
+                             16    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
+                             17 _name: 
+                             18 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             19  ;  .db    _x, _y     ;; X, Y
+                             20   ; .db    _w, _h     ;; W, H
+                             21   ; .db   _col        ;; Color
                              22    .db   _vx, _vy    ;; VX, VY
-                             23    .db   _col        ;; Color
-                             24    .dw   _upd        ;; Update 
-                             25   
-                             26 .endm
-                     0000    27 b_x = 0
-                     0001    28 b_y = 1
-                     0002    29 b_w = 2
-                     0003    30 b_h = 3
-                     0004    31 b_vx = 4
-                     0005    32 b_vy = 5
-                     0006    33 b_col = 6
-                     0007    34 b_up_l = 7
-                     0008    35 b_up_h = 8
-                             36 	
-                             37 
-                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             39 ;;
-                             40 ;;OBJETOS CREADOS CON LA MACROS
-                             41 ;;
-                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             43 
-                             44 .globl barra
-                             45 
+                             23    .dw   _upd        ;; Update 
+                             24   
+                             25 .endm
+                             26 ;b_x = 0
+                             27 ;b_y = 1
+                             28 ;b_w = 2
+                             29 ;b_h = 3
+                             30 ;b_col = 4
+                     0005    31 b_vx = 5
+                     0006    32 b_vy = 6
+                     0007    33 b_up_l = 7
+                     0008    34 b_up_h = 8
+                             35 	
+                             36 
+                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             38 ;;
+                             39 ;;OBJETOS CREADOS CON LA MACROS
+                             40 ;;
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             42 
+                             43 .globl barra
+                             44 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
@@ -2565,34 +2564,35 @@ Hexadecimal [16-Bits]
                              16 ;;
                              17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              18 
-                             19    .macro DefineBall _name, _x, _y, _w, _h,  _vx, _vy,_col, _upd
+                             19    .macro DefineBall _name, _x, _y, _w, _h, _col,  _vx, _vy,_upd
                              20 _name: 
-                             21    .db    _x, _y     ;; X, Y
-                             22    .db    _w, _h     ;; W, H
-                             23    .db   _vx, _vy    ;; VX, VY
-                             24    .db   _col        ;; Color
-                             25    .dw   _upd        ;; Update 
-                             26   
-                             27 .endm
-                     0000    28 bl_x = 0
-                     0001    29 bl_y = 1
-                     0002    30 bl_w = 2
-                     0003    31 bl_h = 3
-                     0004    32 bl_vx = 4
-                     0005    33 bl_vy = 5
-                     0006    34 bl_col = 6
-                     0007    35 bl_up_l = 7
-                     0008    36 bl_up_h = 8
-                             37 	
-                             38 
-                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             40 ;;
-                             41 ;;OBJETOS CREADOS CON LA MACROS
-                             42 ;;
-                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             44 
-                             45 .globl ball
-                             46 
+                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             22   ; .db    _x, _y     ;; X, Y
+                             23    ;.db    _w, _h     ;; W, H
+                             24     ;.db   _col        ;; Color
+                             25    .db   _vx, _vy    ;; VX, VY
+                             26      .dw   _upd        ;; Update 
+                             27   
+                             28 .endm
+                             29 ;bl_x = 0
+                             30 ;bl_y = 1
+                             31 ;bl_w = 2
+                             32 ;bl_h = 3
+                             33 ;bl_col = 4
+                     0005    34 bl_vx = 5
+                     0006    35 bl_vy = 6
+                     0007    36 bl_up_l = 7
+                     0008    37 bl_up_h = 8
+                             38 	
+                             39 
+                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             41 ;;
+                             42 ;;OBJETOS CREADOS CON LA MACROS
+                             43 ;;
+                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             45 
+                             46 .globl ball
+                             47 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2712,30 +2712,30 @@ Hexadecimal [16-Bits]
    4000 31 00 80      [10]   13     ld  sp, #0x8000
                              14 
                              15     ;; Disable firmware to prevent it from interfering with string drawing
-   4003 CD 0F 44      [17]   16     call cpct_disableFirmware_asm
+   4003 CD DB 43      [17]   16     call cpct_disableFirmware_asm
                              17 
    4006 0E 00         [ 7]   18     ld    c, #0
-   4008 CD 02 44      [17]   19     call cpct_setVideoMode_asm
+   4008 CD CE 43      [17]   19     call cpct_setVideoMode_asm
                              20 
                              21 
    400B                      22 loop:
-   400B CD A2 40      [17]   23     call cube_clear
+   400B CD 37 42      [17]   23     call cube_clear
                              24 
-   400E CD F6 41      [17]   25     call barra_clear
-   4011 CD 7E 42      [17]   26     call ball_clear
+   400E CD 85 40      [17]   25     call barra_clear
+   4011 CD F3 40      [17]   26     call ball_clear
                              27 
                              28     
-   4014 CD 0A 42      [17]   29     call barra_update
-   4017 CD 92 42      [17]   30     call ball_update
+   4014 CD 99 40      [17]   29     call barra_update
+   4017 CD 07 41      [17]   30     call ball_update
                              31 
-   401A CD 2F 41      [17]   32     call cube_draw
+   401A CD C4 42      [17]   32     call cube_draw
                              33 
-   401D CD D8 41      [17]   34     call barra_draw
-   4020 CD 60 42      [17]   35     call ball_draw
+   401D CD 7D 40      [17]   34     call barra_draw
+   4020 CD EB 40      [17]   35     call ball_draw
                              36 
                              37     ;;call cpct_waitVSYNC_asm
                              38     ;;call ren_switchBuffers
-   4023 CD 4F 43      [17]   39     call ren_newScene
+   4023 CD 2B 40      [17]   39     call ren_newScene
                              40     
                              41    ;; Loop forever
    4026 C3 0B 40      [10]   42    jp    loop
