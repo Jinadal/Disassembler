@@ -3,6 +3,7 @@
 .include "ball.h.s"
 .include "main.h.s"
 .include "cube.h.s"
+.include "render.h.s"
 
 
 

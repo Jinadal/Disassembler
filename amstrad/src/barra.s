@@ -102,8 +102,9 @@ barra_move:
 
 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
 
- 	ld    a, dc_x(ix)     ;; Since screen max x is79
-  	sub  #76            ;; check if is going to move further or outta screen
+ 	ld    a, dc_x(ix)
+ 	add dc_w(ix)     ;; Since screen max x is79
+  	sub  #78           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
  	jr z, colisionX       ;;
 

@@ -13,9 +13,7 @@ Symbol Table
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     dc_col  =  0004     |     dc_h    =  0003 
-    dc_w    =  0002     |     dc_x    =  0000     |     dc_y    =  0001 
-    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
+    cubeline   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

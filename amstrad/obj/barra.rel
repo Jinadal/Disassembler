@@ -14,7 +14,7 @@ S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 6E flags 0 addr 0
+A _CODE size 71 flags 0 addr 0
 S barra Def0000
 S barra_moveKeyboard Def002C
 S barra_draw Def0009
@@ -59,11 +59,11 @@ T 4B 00
 R 00 00 00 00
 T 4B 00 DD 46 00 DD 7E 00 DD 86 05 DD 77 00 DD 36
 R 00 00 00 00
-T 59 00 05 00 DD 7E 00 D6 4C 28 08 DD 7E 00 D6 00
+T 59 00 05 00 DD 7E 00 DD 86 02 D6 4E 28 08 DD 7E
 R 00 00 00 00
-T 67 00 28 01 C9
+T 67 00 00 D6 00 28 01 C9
 R 00 00 00 00
-T 6A 00
+T 6D 00
 R 00 00 00 00
-T 6A 00 DD 70 00 C9
+T 6D 00 DD 70 00 C9
 R 00 00 00 00

@@ -14,8 +14,8 @@ S cubeline110 Ref0000
 S cubeline111 Ref0000
 S cubeline112 Ref0000
 S ball Ref0000
-S cubeline113 Ref0000
 S ren_newScene Ref0000
+S cubeline113 Ref0000
 S cubeline114 Ref0000
 S cubeline115 Ref0000
 S cube_clearAll Ref0000
@@ -28,8 +28,8 @@ S cubeline119 Ref0000
 S cpct_setVideoMemoryPage_asm Ref0000
 S cubeline10 Ref0000
 S ball_draw Ref0000
-S cubeline11 Ref0000
 S ren_clearBackBuffers Ref0000
+S cubeline11 Ref0000
 S cubeline12 Ref0000
 S barra_update Ref0000
 S cubeline13 Ref0000
@@ -65,4 +65,4 @@ R 00 00 00 00 02 02 1E 00 02 05 2D 00 02 08 21 00
 T 1E 00 00 00 CD 00 00 CD 00 00 CD
 R 00 00 00 00 02 02 08 00 02 05 1A 00 02 08 29 00
 T 27 00 00 00 C3 0B 00
-R 00 00 00 00 02 02 0E 00 00 05 00 00
+R 00 00 00 00 02 02 0D 00 00 05 00 00

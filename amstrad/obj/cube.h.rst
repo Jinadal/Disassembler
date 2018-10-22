@@ -3,29 +3,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 .include "render.h.s"
                               1 
-                              2 
-                              3 ;;Drawable Entity
-                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _col
-                              5 _name:
-                              6     .db _x, _y
-                              7     .db _w, _h
-                              8     .db _col
-                              9 .endm
-                     0001    10 dc_x    = 0     dc_y    = 1
-                     0003    11 dc_w    = 2     dc_h    = 3
-                     0004    12 dc_col  = 4
-                             13 
-                             14 .globl ren_clearBackBuffers
-                             15 ;;.globl ren_switchBuffers
-                             16 .globl render_drawCube
-                             17 .globl ren_newScene
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-
-
                               2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                               3 ;;MACROS
                               4 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,4 +58,9 @@ Hexadecimal [16-Bits]
                              53 .globl cubeline116
                              54 .globl cubeline117
                              55 .globl cubeline118
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
                              56 .globl cubeline119
