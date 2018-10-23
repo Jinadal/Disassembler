@@ -8,8 +8,8 @@
 
 
 
-	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move
-	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move
+	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move, 3
+	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move,3
 
 
 
@@ -371,7 +371,24 @@ ball_reset:
 	ld a, (hl)
 	ld bl_vy(ix), a
 
-	
+	inc hl
 
+	ld a, bl_hp(ix)
+	sub #1
+
+	ld bl_hp(ix), a
+
+	jp z, restart
+
+	ret
+	restart:
+	ld a, bl_hp(ix)
+	add #3
+
+	ld bl_hp(ix), a
+
+	ld a, #50
+	ld dc_col(ix), a
+	call cube_reset
 
 	ret

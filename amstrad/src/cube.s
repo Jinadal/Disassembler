@@ -5,6 +5,10 @@
 k_max_cube_line = 20
 k_cube_size = 7
 
+DefineCubeLine1 cubedefault, 0x00, 0x00, 0x04, 0x08, 0x0F, 0x01
+
+
+
 DefineCubeLine1 cubeline10, 0x00, 0x00, 0x04, 0x08, 0x0F, 0x01
 DefineCubeLine1 cubeline11, 0x04, 0x00, 0x04, 0x08, 0xFF, 0x01
 DefineCubeLine1 cubeline12, 0x08, 0x00, 0x04, 0x08, 0x0F, 0x01
@@ -142,3 +146,82 @@ cube_clearAll:
    ld dc_col(ix), a
 
    ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;RESET CUBES TO FIRST STATE
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+cube_reset:
+
+	ld hl, #cubeline10
+	ld e, #0
+	ld d, #0
+	ld c, #0
+	ld ix, #cubedefault
+	bucl:
+
+	ld a,d 
+
+	ld (hl),a
+
+	add #4
+
+	ld d,a
+	inc hl
+
+
+	ld a, dc_y(ix)
+	ld (hl),a
+	
+    	inc hl
+
+
+    	ld a, dc_w(ix)
+	ld (hl),a
+    	inc hl
+
+
+    	ld a, dc_h(ix)
+	ld (hl),a
+    	inc hl
+    	
+    	ld a,c
+    	sub #1
+
+    	jp z, rojo
+
+    	add #2
+    	ld c,a
+	ld a, #15
+
+    	ld (hl),a
+
+    	jp colorok
+    	rojo:
+    	ld c,a
+    	
+    	ld a, #255
+
+    	ld (hl),a
+
+    	jp colorok
+  	
+	colorok:
+
+    	inc hl
+
+    	;;hp
+    	inc hl
+
+  	ld a,e
+  	add #1
+
+  	ld e,a
+
+  	sub #k_max_cube_line
+
+    	jr nz, bucl
+
+
+
+ ret

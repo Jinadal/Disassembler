@@ -37,7 +37,7 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
-                             35 
+                             35 .globl cube_reset
                              36 
                              37 .globl k_max_cube_line	
                              38 
