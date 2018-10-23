@@ -2654,31 +2654,34 @@ Hexadecimal [16-Bits]
                              37 .globl k_max_cube_line	
                              38 
                              39 
-                             40 .globl cubeline10
-                             41 .globl cubeline11
-                             42 .globl cubeline12
-                             43 .globl cubeline13
-                             44 .globl cubeline14
-                             45 .globl cubeline15
-                             46 .globl cubeline16
-                             47 .globl cubeline17
-                             48 .globl cubeline18
-                             49 .globl cubeline19
-                             50 .globl cubeline110
-                             51 .globl cubeline111
-                             52 .globl cubeline112
-                             53 .globl cubeline113
-                             54 .globl cubeline114
+                             40 .globl k_max_cube_line	
+                             41 
+                             42 
+                             43 .globl cubeline10
+                             44 .globl cubeline11
+                             45 .globl cubeline12
+                             46 .globl cubeline13
+                             47 .globl cubeline14
+                             48 .globl cubeline15
+                             49 .globl cubeline16
+                             50 .globl cubeline17
+                             51 .globl cubeline18
+                             52 .globl cubeline19
+                             53 .globl cubeline110
+                             54 .globl cubeline111
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline115
-                             56 .globl cubeline116
-                             57 .globl cubeline117
-                             58 .globl cubeline118
-                             59 .globl cubeline119
+                             55 .globl cubeline112
+                             56 .globl cubeline113
+                             57 .globl cubeline114
+                             58 .globl cubeline115
+                             59 .globl cubeline116
+                             60 .globl cubeline117
+                             61 .globl cubeline118
+                             62 .globl cubeline119
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
