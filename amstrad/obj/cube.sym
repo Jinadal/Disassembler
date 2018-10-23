@@ -4,9 +4,13 @@ Hexadecimal [16-Bits]
 Symbol Table
 
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
-    .__.H$L.=  0000 L   |     _cpct_me   **** GX  |   0 bucl       01B9 R
+    .__.H$L.=  0000 L   |     _cpct_me   **** GX  |     ball       **** GX
+    ball_cle   **** GX  |     ball_dra   **** GX  |     ball_mov   **** GX
+    ball_res   **** GX  |     ball_upd   **** GX  |     balldefa   **** GX
+    bl_hp   =  0009     |     bl_up_h =  0008     |     bl_up_l =  0007 
+    bl_vx   =  0005     |     bl_vy   =  0006     |   0 bucl       01BC R
     c_de    =  0000     |     c_de_siz=  0006     |     c_hp    =  0006 
-  0 colorok    01E4 R   |     cpct_dis   **** GX  |     cpct_dra   **** GX
+  0 colorok    01E7 R   |     cpct_dis   **** GX  |     cpct_dra   **** GX
     cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_sca   **** GX
     cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
   0 cube_cle   007F GR  |   0 cube_cle   019C GR  |   0 cube_dra   010C GR
@@ -24,27 +28,16 @@ Symbol Table
   0 cubeline   001E R   |   0 cubeline   0024 GR  |   0 cubeline   0024 R
   0 cubeline   002A GR  |   0 cubeline   002A R   |   0 cubeline   0030 GR
   0 cubeline   0030 R   |   0 cubeline   0036 GR  |   0 cubeline   0036 R
-<<<<<<< HEAD
   0 cubeline   003C GR  |   0 cubeline   003C R   |     dc_col  =  0004 
     dc_h    =  0003     |     dc_w    =  0002     |     dc_x    =  0000 
-    dc_y    =  0001     |     k_cube_s=  0007     |     k_max_cu=  0014 G
-  0 m_num_cu   007E R   |     ren_clea   **** GX  |     ren_newS   **** GX
-    render_d   **** GX  |   0 rojo       01DD R
-=======
-    dc_col  =  0004     |     dc_h    =  0003     |     dc_w    =  0002 
-    dc_x    =  0000     |     dc_y    =  0001     |   0 destroy_   01A6 GR
-    k_cube_s=  0007     |     k_max_cu=  0014 G   |   0 m_num_cu   0078 R
-    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
+    dc_y    =  0001     |   0 destroy_   01F2 GR  |     k_cube_s=  0007 
+    k_max_cu=  0014 G   |   0 m_num_cu   007E R   |     ren_clea   **** GX
+    ren_newS   **** GX  |     render_d   **** GX  |   0 rojo       01E0 R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-<<<<<<< HEAD
-   0 _CODE      size  1EF   flags    0
-=======
-   0 _CODE      size  1B3   flags    0
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
+   0 _CODE      size  20A   flags    0
 

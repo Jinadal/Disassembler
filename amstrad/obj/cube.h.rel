@@ -1,5 +1,5 @@
 XL2
-H 1 areas 1B global symbols
+H 1 areas 1C global symbols
 S cube_drawAll Ref0000
 S cube_clear Ref0000
 S destroy_cube Ref0000

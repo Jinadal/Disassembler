@@ -1,12 +1,14 @@
 .include "main.h.s"
 .include "cube.h.s"
 .include "render.h.s"
+.include "ball.h.s"
+
 
 k_max_cube_line = 20
 k_cube_size = 7
 
 
-DefineCubeLine1 cubedefault, 0x00, 0x00, 0x04, 0x08, 0x0F, 0x01
+DefineCubeLine1 cubedefault, 0x00, 0x10, 0x04, 0x08, 0x0F, 0x01
 
 
 
@@ -156,6 +158,8 @@ cube_clearAll:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 cube_reset:
 
+	call ball_reset
+
 	ld hl, #cubeline10
 	ld e, #0
 	ld d, #0
@@ -225,25 +229,29 @@ cube_reset:
 
     	jr nz, bucl
 
-
+    	
 
  ret
 
 destroy_cube:
-ld (hl),#0xFF
-inc hl
-inc hl
-inc hl
-inc hl
+	ld (hl),#0xFF
+	inc hl
+	inc hl
+	inc hl
+	inc hl
 
-ld (hl),#0x00
+	ld (hl),#0x00
 
-dec hl
-dec hl
-dec hl
-dec hl
+	dec hl
+	dec hl
+	dec hl
+	dec hl
 
+	ld a, (m_num_cube)
+	sub #1
+	ld (m_num_cube),a
 
+	jp z, cube_reset
 
 ret
 

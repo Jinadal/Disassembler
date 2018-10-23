@@ -2584,18 +2584,18 @@ Hexadecimal [16-Bits]
 
 
                               5 
-   41DF                       6 	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
-   41DF                       1 barra: 
+   4077                       6 	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
+   4077                       1 barra: 
    0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 8, 4, 0x0C
    0000                       1 barra_dw:
-   41DF 28 BE                 2     .db 40, 190
-   41E1 08 04                 3     .db 8, 4
-   41E3 0C                    4     .db 0x0C
+   4077 28 BE                 2     .db 40, 190
+   4079 08 04                 3     .db 8, 4
+   407B 0C                    4     .db 0x0C
                               3  ;  .db    _x, _y     ;; X, Y
                               4   ; .db    _w, _h     ;; W, H
                               5   ; .db   _col        ;; Color
-   41E4 00 00                 6    .db   0, 0    ;; VX, VY
-   41E6 0B 42                 7    .dw   barra_moveKeyboard        ;; Update 
+   407C 00 00                 6    .db   0, 0    ;; VX, VY
+   407E A3 40                 7    .dw   barra_moveKeyboard        ;; Update 
                               8   
                               7 
                               8 
@@ -2605,39 +2605,39 @@ Hexadecimal [16-Bits]
                              12 ;; PARA CUADRADOS UNICAMENTE
                              13 ;; ENTRADA: IX -> Puntero a entidad
                              14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41E8                      15 barra_draw:
-   41E8 DD 21 DF 41   [14]   16       ld ix,#barra
-   41EC C3 AB 43      [10]   17 	jp render_drawCube
+   4080                      15 barra_draw:
+   4080 DD 21 77 40   [14]   16       ld ix,#barra
+   4084 C3 5A 40      [10]   17 	jp render_drawCube
                              18   
                              19 
-   41EF C9            [10]   20    ret
+   4087 C9            [10]   20    ret
                              21 
                              22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              23 ;; BORRA UNA ENTIDAD
                              24 ;; PARA CUADRADOS UNICAMENTE
                              25 ;; ENTRADA: IX -> Puntero a entidad
                              26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   41F0                      27 barra_clear:
-   41F0 DD 21 DF 41   [14]   28   ld ix,#barra
+   4088                      27 barra_clear:
+   4088 DD 21 77 40   [14]   28   ld ix,#barra
                              29 
-   41F4 DD 7E 04      [19]   30    ld  a, dc_col(ix)
-   41F7 08            [ 4]   31    ex af, af'
+   408C DD 7E 04      [19]   30    ld  a, dc_col(ix)
+   408F 08            [ 4]   31    ex af, af'
                              32 
-   41F8 DD 36 04 00   [19]   33    ld  dc_col(ix), #0
+   4090 DD 36 04 00   [19]   33    ld  dc_col(ix), #0
                              34 
-   41FC CD E8 41      [17]   35    call barra_draw
-   41FF 08            [ 4]   36    ex af, af'
-   4200 DD 77 04      [19]   37    ld dc_col(ix), a
+   4094 CD 80 40      [17]   35    call barra_draw
+   4097 08            [ 4]   36    ex af, af'
+   4098 DD 77 04      [19]   37    ld dc_col(ix), a
                              38 
-   4203 C9            [10]   39    ret
+   409B C9            [10]   39    ret
                              40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              41 ;; ACTUALIZAR UNA ENTIDAD
                              42 ;; LLAMA A SU FUNCION DIFERENCIATIVA
                              43 ;; ENTRADA: IX -> Puntero a entidad
                              44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4204                      45 barra_update:
-   4204 DD 21 DF 41   [14]   46   ld ix,#barra
-   4208 C3 0B 42      [10]   47  jp barra_moveKeyboard 
+   409C                      45 barra_update:
+   409C DD 21 77 40   [14]   46   ld ix,#barra
+   40A0 C3 A3 40      [10]   47  jp barra_moveKeyboard 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
@@ -2654,63 +2654,48 @@ Hexadecimal [16-Bits]
                              56 ;;          W(ARRIBA)
                              57 ;; A (IZDA) S(ABAJO) D(DERECHA)
                              58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<<<<<<< HEAD
    40A3                      59 barra_moveKeyboard:
-   40A3 CD 6C 45      [17]   60     call cpct_scanKeyboard_asm
+   40A3 CD 90 45      [17]   60     call cpct_scanKeyboard_asm
                              61       
    40A6 21 08 20      [10]   62    ld hl, #Key_A ;;O
-   40A9 CD 5F 44      [17]   63     call cpct_isKeyPressed_asm
+   40A9 CD 83 44      [17]   63     call cpct_isKeyPressed_asm
    40AC 28 04         [12]   64     jr z, a_no_pulsada
-=======
-   420B                      59 barra_moveKeyboard:
-   420B CD 18 45      [17]   60     call cpct_scanKeyboard_asm
-                             61       
-   420E 21 08 20      [10]   62    ld hl, #Key_A ;;O
-   4211 CD 0B 44      [17]   63     call cpct_isKeyPressed_asm
-   4214 28 04         [12]   64     jr z, a_no_pulsada
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
                              65     
-   4216 DD 36 05 FE   [19]   66     ld b_vx(ix), #-2
+   40AE DD 36 05 FE   [19]   66     ld b_vx(ix), #-2
                              67     
-   421A                      68  a_no_pulsada:   
+   40B2                      68  a_no_pulsada:   
                              69     
                              70     
-<<<<<<< HEAD
    40B2 21 07 20      [10]   71       ld hl, #Key_D ;;P
-   40B5 CD 5F 44      [17]   72     call cpct_isKeyPressed_asm
+   40B5 CD 83 44      [17]   72     call cpct_isKeyPressed_asm
    40B8 28 04         [12]   73     jr z, d_no_pulsada
-=======
-   421A 21 07 20      [10]   71       ld hl, #Key_D ;;P
-   421D CD 0B 44      [17]   72     call cpct_isKeyPressed_asm
-   4220 28 04         [12]   73     jr z, d_no_pulsada
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
                              74     
-   4222 DD 36 05 02   [19]   75     ld b_vx(ix), #2
+   40BA DD 36 05 02   [19]   75     ld b_vx(ix), #2
                              76     
-   4226                      77  d_no_pulsada:
+   40BE                      77  d_no_pulsada:
                              78     
                              79     
                              80 
-   4226 CD 2A 42      [17]   81     call barra_move
+   40BE CD C2 40      [17]   81     call barra_move
                              82     
-   4229 C9            [10]   83     ret
+   40C1 C9            [10]   83     ret
                              84  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              85 ;; MOVER UNA ENTIDAD
                              86 ;; 
                              87 ;; ENTRADA: IX -> Puntero a entidad
                              88 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              89 
-   422A                      90 barra_move:
-   422A DD 46 00      [19]   91 	ld b, dc_x(ix) ;; save current x position in b
+   40C2                      90 barra_move:
+   40C2 DD 46 00      [19]   91 	ld b, dc_x(ix) ;; save current x position in b
                              92 
                              93 
                              94 
                              95 
-   422D DD 7E 00      [19]   96   	ld    a, dc_x(ix) ;;
-   4230 DD 86 05      [19]   97   	add   b_vx(ix)   ;;
-   4233 DD 77 00      [19]   98    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
+   40C5 DD 7E 00      [19]   96   	ld    a, dc_x(ix) ;;
+   40C8 DD 86 05      [19]   97   	add   b_vx(ix)   ;;
+   40CB DD 77 00      [19]   98    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
                              99 
-   4236 DD 36 05 00   [19]  100     	ld b_vx(ix), #0;;
+   40CE DD 36 05 00   [19]  100     	ld b_vx(ix), #0;;
                             101    
                             102 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
@@ -2720,24 +2705,24 @@ Hexadecimal [16-Bits]
 
                             103 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             104 
-   423A DD 7E 00      [19]  105  	ld    a, dc_x(ix)
-   423D DD 86 02      [19]  106  	add dc_w(ix)     ;; Since screen max x is79
-   4240 D6 4E         [ 7]  107   	sub  #78           ;; check if is going to move further or outta screen
+   40D2 DD 7E 00      [19]  105  	ld    a, dc_x(ix)
+   40D5 DD 86 02      [19]  106  	add dc_w(ix)     ;; Since screen max x is79
+   40D8 D6 4E         [ 7]  107   	sub  #78           ;; check if is going to move further or outta screen
                             108                       ;; if true we will go to the reassingnament part
-   4242 28 08         [12]  109  	jr z, colisionX       ;;
+   40DA 28 08         [12]  109  	jr z, colisionX       ;;
                             110 
                             111 
                             112 
-   4244 DD 7E 00      [19]  113   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
-   4247 D6 00         [ 7]  114   	sub #0            ;;
+   40DC DD 7E 00      [19]  113   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
+   40DF D6 00         [ 7]  114   	sub #0            ;;
                             115                     ;;
-   4249 28 01         [12]  116     	jr z, colisionX  ;;
+   40E1 28 01         [12]  116     	jr z, colisionX  ;;
                             117 
                             118 ;;  END MAX MIN X CHECK
-   424B C9            [10]  119 	ret
-   424C                     120  colisionX:
+   40E3 C9            [10]  119 	ret
+   40E4                     120  colisionX:
                             121    
                             122      
-   424C DD 70 00      [19]  123     ld dc_x(ix), b
+   40E4 DD 70 00      [19]  123     ld dc_x(ix), b
                             124    
-   424F C9            [10]  125    ret
+   40E7 C9            [10]  125    ret
