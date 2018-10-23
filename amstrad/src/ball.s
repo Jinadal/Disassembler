@@ -147,15 +147,14 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 	call ball_collide
 	ld a,d          ;;d is changed in collide if a collision happened 
-    	sub #1              ;;holding a 0 otherwise it will be a 1
+    sub #1              ;;holding a 0 otherwise it will be a 1
     	
 
 
     
-    
-    	jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
+	
+    jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
   	
-
 
     	inc hl
     	inc hl
@@ -188,7 +187,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	; si la x(bola) > x(caja) -> entro por la derecha
 
 
-
+	ld ix,#ball
 	 ld a,#0  
 	 sub bl_vy(ix) 
 	 
@@ -198,6 +197,8 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	 call colisionX
 
 	 ld dc_col(ix),#255
+
+    call destroy_cube
 
 	 ret
 

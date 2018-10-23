@@ -7,6 +7,7 @@ S _cpct_memset_f64_asm Ref0000
 S cpct_isKeyPressed_asm Ref0000
 S cube_drawAll Ref0000
 S cube_clear Ref0000
+S destroy_cube Ref0000
 S barra Ref0000
 S render_drawCube Ref0000
 S barra_moveKeyboard Ref0000
@@ -67,6 +68,10 @@ R 00 00 00 00 02 03 05 00 02 06 28 00 02 09 01 00
 T 15 00 00 00 CD 00 00 CD 00 00 CD
 R 00 00 00 00 02 02 22 00 02 05 31 00 02 08 25 00
 T 1E 00 00 00 CD 00 00 CD 00 00 CD
+<<<<<<< HEAD
 R 00 00 00 00 02 02 0A 00 02 05 1E 00 02 08 2D 00
+=======
+R 00 00 00 00 02 02 0B 00 02 05 1E 00 02 08 2D 00
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
 T 27 00 00 00 C3 0B 00
-R 00 00 00 00 02 02 0F 00 00 05 00 00
+R 00 00 00 00 02 02 10 00 00 05 00 00

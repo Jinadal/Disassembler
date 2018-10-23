@@ -2650,36 +2650,43 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
+<<<<<<< HEAD
                              35 .globl cube_reset
+=======
+                             35 .globl destroy_cube
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
                              36 
                              37 .globl k_max_cube_line	
                              38 
                              39 
-                             40 .globl cubeline10
-                             41 .globl cubeline11
-                             42 .globl cubeline12
-                             43 .globl cubeline13
-                             44 .globl cubeline14
-                             45 .globl cubeline15
-                             46 .globl cubeline16
-                             47 .globl cubeline17
-                             48 .globl cubeline18
-                             49 .globl cubeline19
-                             50 .globl cubeline110
-                             51 .globl cubeline111
-                             52 .globl cubeline112
-                             53 .globl cubeline113
-                             54 .globl cubeline114
+                             40 .globl k_max_cube_line	
+                             41 
+                             42 
+                             43 .globl cubeline10
+                             44 .globl cubeline11
+                             45 .globl cubeline12
+                             46 .globl cubeline13
+                             47 .globl cubeline14
+                             48 .globl cubeline15
+                             49 .globl cubeline16
+                             50 .globl cubeline17
+                             51 .globl cubeline18
+                             52 .globl cubeline19
+                             53 .globl cubeline110
+                             54 .globl cubeline111
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline115
-                             56 .globl cubeline116
-                             57 .globl cubeline117
-                             58 .globl cubeline118
-                             59 .globl cubeline119
+                             55 .globl cubeline112
+                             56 .globl cubeline113
+                             57 .globl cubeline114
+                             58 .globl cubeline115
+                             59 .globl cubeline116
+                             60 .globl cubeline117
+                             61 .globl cubeline118
+                             62 .globl cubeline119
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
@@ -2718,6 +2725,7 @@ Hexadecimal [16-Bits]
    4000 31 00 80      [10]   14     ld  sp, #0x8000
                              15 
                              16     ;; Disable firmware to prevent it from interfering with string drawing
+<<<<<<< HEAD
    4003 CD 93 44      [17]   17     call cpct_disableFirmware_asm
                              18 
    4006 0E 00         [ 7]   19     ld    c, #0
@@ -2740,8 +2748,32 @@ Hexadecimal [16-Bits]
    4020 CD FC 40      [17]   36     call ball_draw
                              37 
    4023 CD 7E 44      [17]   38     call cpct_waitVSYNC_asm
+=======
+   4003 CD 3F 44      [17]   17     call cpct_disableFirmware_asm
+                             18 
+   4006 0E 00         [ 7]   19     ld    c, #0
+   4008 CD 32 44      [17]   20     call cpct_setVideoMode_asm
+                             21 
+                             22 
+   400B                      23 loop:
+   400B CD A5 40      [17]   24     call cube_clear
+                             25 
+   400E CD F0 41      [17]   26     call barra_clear
+   4011 CD 6A 42      [17]   27     call ball_clear
+                             28 
+                             29     
+   4014 CD 04 42      [17]   30     call barra_update
+   4017 CD 7E 42      [17]   31     call ball_update
+                             32 
+   401A CD 32 41      [17]   33     call cube_draw
+                             34 
+   401D CD E8 41      [17]   35     call barra_draw
+   4020 CD 62 42      [17]   36     call ball_draw
+                             37 
+   4023 CD 2A 44      [17]   38     call cpct_waitVSYNC_asm
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
                              39     ;;call ren_switchBuffers
-   4026 CD 2E 40      [17]   40     call ren_newScene
+   4026 CD 7F 43      [17]   40     call ren_newScene
                              41     
                              42    ;; Loop forever
    4029 C3 0B 40      [10]   43    jp    loop

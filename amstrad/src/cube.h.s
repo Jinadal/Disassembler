@@ -32,7 +32,14 @@ c_hp        = 0 + c_de_size
 .globl cube_draw
 .globl cube_drawAll
 .globl cube_clearAll
+
 .globl cube_reset
+
+.globl destroy_cube
+
+.globl k_max_cube_line	
+
+
 
 .globl k_max_cube_line	
 

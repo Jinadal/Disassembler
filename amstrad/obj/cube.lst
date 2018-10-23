@@ -53,36 +53,43 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
+<<<<<<< HEAD
                              35 .globl cube_reset
+=======
+                             35 .globl destroy_cube
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
                              36 
                              37 .globl k_max_cube_line	
                              38 
                              39 
-                             40 .globl cubeline10
-                             41 .globl cubeline11
-                             42 .globl cubeline12
-                             43 .globl cubeline13
-                             44 .globl cubeline14
-                             45 .globl cubeline15
-                             46 .globl cubeline16
-                             47 .globl cubeline17
-                             48 .globl cubeline18
-                             49 .globl cubeline19
-                             50 .globl cubeline110
-                             51 .globl cubeline111
-                             52 .globl cubeline112
-                             53 .globl cubeline113
-                             54 .globl cubeline114
+                             40 .globl k_max_cube_line	
+                             41 
+                             42 
+                             43 .globl cubeline10
+                             44 .globl cubeline11
+                             45 .globl cubeline12
+                             46 .globl cubeline13
+                             47 .globl cubeline14
+                             48 .globl cubeline15
+                             49 .globl cubeline16
+                             50 .globl cubeline17
+                             51 .globl cubeline18
+                             52 .globl cubeline19
+                             53 .globl cubeline110
+                             54 .globl cubeline111
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline115
-                             56 .globl cubeline116
-                             57 .globl cubeline117
-                             58 .globl cubeline118
-                             59 .globl cubeline119
+                             55 .globl cubeline112
+                             56 .globl cubeline113
+                             57 .globl cubeline114
+                             58 .globl cubeline115
+                             59 .globl cubeline116
+                             60 .globl cubeline117
+                             61 .globl cubeline118
+                             62 .globl cubeline119
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
 Hexadecimal [16-Bits]
 
@@ -115,6 +122,7 @@ Hexadecimal [16-Bits]
                      0014     5 k_max_cube_line = 20
                      0007     6 k_cube_size = 7
                               7 
+<<<<<<< HEAD
    0000                       8 DefineCubeLine1 cubedefault, 0x00, 0x00, 0x04, 0x08, 0x0F, 0x01
    0000                       1 cubedefault:
    0000                       2     DefineDrawableEntity cubedefault_dw, 0x00, 0x00, 0x04, 0x08, 0x0F
@@ -131,94 +139,193 @@ Hexadecimal [16-Bits]
    0006                       2     DefineDrawableEntity cubeline10_dw, 0x00, 0x00, 0x04, 0x08, 0x0F
    0006                       1 cubeline10_dw:
    0006 00 00                 2     .db 0x00, 0x00
+=======
+   0000                       8 DefineCubeLine1 cubeline10, 0x00, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0000                       1 cubeline10:
+   0000                       2     DefineDrawableEntity cubeline10_dw, 0x00, 0x10, 0x04, 0x08, 0x0F
+   0000                       1 cubeline10_dw:
+   0000 00 10                 2     .db 0x00, 0x10
+   0002 04 08                 3     .db 0x04, 0x08
+   0004 0F                    4     .db 0x0F
+   0005 01                    3     .db     0x01     ;; Hitpoints
+   0006                       9 DefineCubeLine1 cubeline11, 0x04, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0006                       1 cubeline11:
+   0006                       2     DefineDrawableEntity cubeline11_dw, 0x04, 0x10, 0x04, 0x08, 0xFF
+   0006                       1 cubeline11_dw:
+   0006 04 10                 2     .db 0x04, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0008 04 08                 3     .db 0x04, 0x08
    000A 0F                    4     .db 0x0F
    000B 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    000C                      13 DefineCubeLine1 cubeline11, 0x04, 0x00, 0x04, 0x08, 0xFF, 0x01
    000C                       1 cubeline11:
    000C                       2     DefineDrawableEntity cubeline11_dw, 0x04, 0x00, 0x04, 0x08, 0xFF
    000C                       1 cubeline11_dw:
    000C 04 00                 2     .db 0x04, 0x00
+=======
+   000C                      10 DefineCubeLine1 cubeline12, 0x08, 0x10, 0x04, 0x08, 0x0F, 0x01
+   000C                       1 cubeline12:
+   000C                       2     DefineDrawableEntity cubeline12_dw, 0x08, 0x10, 0x04, 0x08, 0x0F
+   000C                       1 cubeline12_dw:
+   000C 08 10                 2     .db 0x08, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    000E 04 08                 3     .db 0x04, 0x08
    0010 FF                    4     .db 0xFF
    0011 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0012                      14 DefineCubeLine1 cubeline12, 0x08, 0x00, 0x04, 0x08, 0x0F, 0x01
    0012                       1 cubeline12:
    0012                       2     DefineDrawableEntity cubeline12_dw, 0x08, 0x00, 0x04, 0x08, 0x0F
    0012                       1 cubeline12_dw:
    0012 08 00                 2     .db 0x08, 0x00
+=======
+   0012                      11 DefineCubeLine1 cubeline13, 0x0C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0012                       1 cubeline13:
+   0012                       2     DefineDrawableEntity cubeline13_dw, 0x0C, 0x10, 0x04, 0x08, 0xFF
+   0012                       1 cubeline13_dw:
+   0012 0C 10                 2     .db 0x0C, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0014 04 08                 3     .db 0x04, 0x08
    0016 0F                    4     .db 0x0F
    0017 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0018                      15 DefineCubeLine1 cubeline13, 0x0C, 0x00, 0x04, 0x08, 0xFF, 0x01
    0018                       1 cubeline13:
    0018                       2     DefineDrawableEntity cubeline13_dw, 0x0C, 0x00, 0x04, 0x08, 0xFF
    0018                       1 cubeline13_dw:
    0018 0C 00                 2     .db 0x0C, 0x00
+=======
+   0018                      12 DefineCubeLine1 cubeline14, 0x10, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0018                       1 cubeline14:
+   0018                       2     DefineDrawableEntity cubeline14_dw, 0x10, 0x10, 0x04, 0x08, 0x0F
+   0018                       1 cubeline14_dw:
+   0018 10 10                 2     .db 0x10, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    001A 04 08                 3     .db 0x04, 0x08
    001C FF                    4     .db 0xFF
    001D 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    001E                      16 DefineCubeLine1 cubeline14, 0x10, 0x00, 0x04, 0x08, 0x0F, 0x01
    001E                       1 cubeline14:
    001E                       2     DefineDrawableEntity cubeline14_dw, 0x10, 0x00, 0x04, 0x08, 0x0F
    001E                       1 cubeline14_dw:
    001E 10 00                 2     .db 0x10, 0x00
+=======
+   001E                      13 DefineCubeLine1 cubeline15, 0x14, 0x10, 0x04, 0x08, 0xFF, 0x01
+   001E                       1 cubeline15:
+   001E                       2     DefineDrawableEntity cubeline15_dw, 0x14, 0x10, 0x04, 0x08, 0xFF
+   001E                       1 cubeline15_dw:
+   001E 14 10                 2     .db 0x14, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0020 04 08                 3     .db 0x04, 0x08
    0022 0F                    4     .db 0x0F
    0023 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
+=======
+   0024                      14 DefineCubeLine1 cubeline16, 0x18, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0024                       1 cubeline16:
+   0024                       2     DefineDrawableEntity cubeline16_dw, 0x18, 0x10, 0x04, 0x08, 0x0F
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
    0024                      17 DefineCubeLine1 cubeline15, 0x14, 0x00, 0x04, 0x08, 0xFF, 0x01
    0024                       1 cubeline15:
    0024                       2     DefineDrawableEntity cubeline15_dw, 0x14, 0x00, 0x04, 0x08, 0xFF
    0024                       1 cubeline15_dw:
    0024 14 00                 2     .db 0x14, 0x00
+=======
+   0024                       1 cubeline16_dw:
+   0024 18 10                 2     .db 0x18, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0026 04 08                 3     .db 0x04, 0x08
    0028 FF                    4     .db 0xFF
    0029 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    002A                      18 DefineCubeLine1 cubeline16, 0x18, 0x00, 0x04, 0x08, 0x0F, 0x01
    002A                       1 cubeline16:
    002A                       2     DefineDrawableEntity cubeline16_dw, 0x18, 0x00, 0x04, 0x08, 0x0F
    002A                       1 cubeline16_dw:
    002A 18 00                 2     .db 0x18, 0x00
+=======
+   002A                      15 DefineCubeLine1 cubeline17, 0x1C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   002A                       1 cubeline17:
+   002A                       2     DefineDrawableEntity cubeline17_dw, 0x1C, 0x10, 0x04, 0x08, 0xFF
+   002A                       1 cubeline17_dw:
+   002A 1C 10                 2     .db 0x1C, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    002C 04 08                 3     .db 0x04, 0x08
    002E 0F                    4     .db 0x0F
    002F 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0030                      19 DefineCubeLine1 cubeline17, 0x1C, 0x00, 0x04, 0x08, 0xFF, 0x01
    0030                       1 cubeline17:
    0030                       2     DefineDrawableEntity cubeline17_dw, 0x1C, 0x00, 0x04, 0x08, 0xFF
    0030                       1 cubeline17_dw:
    0030 1C 00                 2     .db 0x1C, 0x00
+=======
+   0030                      16 DefineCubeLine1 cubeline18, 0x20, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0030                       1 cubeline18:
+   0030                       2     DefineDrawableEntity cubeline18_dw, 0x20, 0x10, 0x04, 0x08, 0x0F
+   0030                       1 cubeline18_dw:
+   0030 20 10                 2     .db 0x20, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0032 04 08                 3     .db 0x04, 0x08
    0034 FF                    4     .db 0xFF
    0035 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0036                      20 DefineCubeLine1 cubeline18, 0x20, 0x00, 0x04, 0x08, 0x0F, 0x01
    0036                       1 cubeline18:
    0036                       2     DefineDrawableEntity cubeline18_dw, 0x20, 0x00, 0x04, 0x08, 0x0F
    0036                       1 cubeline18_dw:
    0036 20 00                 2     .db 0x20, 0x00
+=======
+   0036                      17 DefineCubeLine1 cubeline19, 0x24, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0036                       1 cubeline19:
+   0036                       2     DefineDrawableEntity cubeline19_dw, 0x24, 0x10, 0x04, 0x08, 0xFF
+   0036                       1 cubeline19_dw:
+   0036 24 10                 2     .db 0x24, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0038 04 08                 3     .db 0x04, 0x08
    003A 0F                    4     .db 0x0F
    003B 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    003C                      21 DefineCubeLine1 cubeline19, 0x24, 0x00, 0x04, 0x08, 0xFF, 0x01
    003C                       1 cubeline19:
    003C                       2     DefineDrawableEntity cubeline19_dw, 0x24, 0x00, 0x04, 0x08, 0xFF
    003C                       1 cubeline19_dw:
    003C 24 00                 2     .db 0x24, 0x00
+=======
+   003C                      18 DefineCubeLine1 cubeline110, 0x28, 0x10, 0x04, 0x08, 0x0F, 0x01
+   003C                       1 cubeline110:
+   003C                       2     DefineDrawableEntity cubeline110_dw, 0x28, 0x10, 0x04, 0x08, 0x0F
+   003C                       1 cubeline110_dw:
+   003C 28 10                 2     .db 0x28, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    003E 04 08                 3     .db 0x04, 0x08
    0040 FF                    4     .db 0xFF
    0041 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0042                      22 DefineCubeLine1 cubeline110, 0x28, 0x00, 0x04, 0x08, 0x0F, 0x01
    0042                       1 cubeline110:
    0042                       2     DefineDrawableEntity cubeline110_dw, 0x28, 0x00, 0x04, 0x08, 0x0F
    0042                       1 cubeline110_dw:
    0042 28 00                 2     .db 0x28, 0x00
+=======
+   0042                      19 DefineCubeLine1 cubeline111, 0x2C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0042                       1 cubeline111:
+   0042                       2     DefineDrawableEntity cubeline111_dw, 0x2C, 0x10, 0x04, 0x08, 0xFF
+   0042                       1 cubeline111_dw:
+   0042 2C 10                 2     .db 0x2C, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0044 04 08                 3     .db 0x04, 0x08
    0046 0F                    4     .db 0x0F
    0047 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0048                      23 DefineCubeLine1 cubeline111, 0x2C, 0x00, 0x04, 0x08, 0xFF, 0x01
    0048                       1 cubeline111:
    0048                       2     DefineDrawableEntity cubeline111_dw, 0x2C, 0x00, 0x04, 0x08, 0xFF
@@ -226,65 +333,131 @@ Hexadecimal [16-Bits]
    0048 2C 00                 2     .db 0x2C, 0x00
    004A 04 08                 3     .db 0x04, 0x08
    004C FF                    4     .db 0xFF
+=======
+   0048                      20 DefineCubeLine1 cubeline112, 0x30, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0048                       1 cubeline112:
+   0048                       2     DefineDrawableEntity cubeline112_dw, 0x30, 0x10, 0x04, 0x08, 0x0F
+   0048                       1 cubeline112_dw:
+   0048 30 10                 2     .db 0x30, 0x10
+   004A 04 08                 3     .db 0x04, 0x08
+   004C 0F                    4     .db 0x0F
+   004D 01                    3     .db     0x01     ;; Hitpoints
+   004E                      21 DefineCubeLine1 cubeline113, 0x34, 0x10, 0x04, 0x08, 0xFF, 0x01
+   004E                       1 cubeline113:
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
    004D 01                    3     .db     0x01     ;; Hitpoints
    004E                      24 DefineCubeLine1 cubeline112, 0x30, 0x00, 0x04, 0x08, 0x0F, 0x01
    004E                       1 cubeline112:
    004E                       2     DefineDrawableEntity cubeline112_dw, 0x30, 0x00, 0x04, 0x08, 0x0F
    004E                       1 cubeline112_dw:
    004E 30 00                 2     .db 0x30, 0x00
+=======
+   004E                       2     DefineDrawableEntity cubeline113_dw, 0x34, 0x10, 0x04, 0x08, 0xFF
+   004E                       1 cubeline113_dw:
+   004E 34 10                 2     .db 0x34, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0050 04 08                 3     .db 0x04, 0x08
    0052 0F                    4     .db 0x0F
    0053 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0054                      25 DefineCubeLine1 cubeline113, 0x34, 0x00, 0x04, 0x08, 0xFF, 0x01
    0054                       1 cubeline113:
    0054                       2     DefineDrawableEntity cubeline113_dw, 0x34, 0x00, 0x04, 0x08, 0xFF
    0054                       1 cubeline113_dw:
    0054 34 00                 2     .db 0x34, 0x00
+=======
+   0054                      22 DefineCubeLine1 cubeline114, 0x38, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0054                       1 cubeline114:
+   0054                       2     DefineDrawableEntity cubeline114_dw, 0x38, 0x10, 0x04, 0x08, 0x0F
+   0054                       1 cubeline114_dw:
+   0054 38 10                 2     .db 0x38, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0056 04 08                 3     .db 0x04, 0x08
    0058 FF                    4     .db 0xFF
    0059 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    005A                      26 DefineCubeLine1 cubeline114, 0x38, 0x00, 0x04, 0x08, 0x0F, 0x01
    005A                       1 cubeline114:
    005A                       2     DefineDrawableEntity cubeline114_dw, 0x38, 0x00, 0x04, 0x08, 0x0F
    005A                       1 cubeline114_dw:
    005A 38 00                 2     .db 0x38, 0x00
+=======
+   005A                      23 DefineCubeLine1 cubeline115, 0x3C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   005A                       1 cubeline115:
+   005A                       2     DefineDrawableEntity cubeline115_dw, 0x3C, 0x10, 0x04, 0x08, 0xFF
+   005A                       1 cubeline115_dw:
+   005A 3C 10                 2     .db 0x3C, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    005C 04 08                 3     .db 0x04, 0x08
    005E 0F                    4     .db 0x0F
    005F 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0060                      27 DefineCubeLine1 cubeline115, 0x3C, 0x00, 0x04, 0x08, 0xFF, 0x01
    0060                       1 cubeline115:
    0060                       2     DefineDrawableEntity cubeline115_dw, 0x3C, 0x00, 0x04, 0x08, 0xFF
    0060                       1 cubeline115_dw:
    0060 3C 00                 2     .db 0x3C, 0x00
+=======
+   0060                      24 DefineCubeLine1 cubeline116, 0x40, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0060                       1 cubeline116:
+   0060                       2     DefineDrawableEntity cubeline116_dw, 0x40, 0x10, 0x04, 0x08, 0x0F
+   0060                       1 cubeline116_dw:
+   0060 40 10                 2     .db 0x40, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0062 04 08                 3     .db 0x04, 0x08
    0064 FF                    4     .db 0xFF
    0065 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0066                      28 DefineCubeLine1 cubeline116, 0x40, 0x00, 0x04, 0x08, 0x0F, 0x01
    0066                       1 cubeline116:
    0066                       2     DefineDrawableEntity cubeline116_dw, 0x40, 0x00, 0x04, 0x08, 0x0F
    0066                       1 cubeline116_dw:
    0066 40 00                 2     .db 0x40, 0x00
+=======
+   0066                      25 DefineCubeLine1 cubeline117, 0x44, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0066                       1 cubeline117:
+   0066                       2     DefineDrawableEntity cubeline117_dw, 0x44, 0x10, 0x04, 0x08, 0xFF
+   0066                       1 cubeline117_dw:
+   0066 44 10                 2     .db 0x44, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0068 04 08                 3     .db 0x04, 0x08
    006A 0F                    4     .db 0x0F
    006B 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    006C                      29 DefineCubeLine1 cubeline117, 0x44, 0x00, 0x04, 0x08, 0xFF, 0x01
    006C                       1 cubeline117:
    006C                       2     DefineDrawableEntity cubeline117_dw, 0x44, 0x00, 0x04, 0x08, 0xFF
    006C                       1 cubeline117_dw:
    006C 44 00                 2     .db 0x44, 0x00
+=======
+   006C                      26 DefineCubeLine1 cubeline118, 0x48, 0x10, 0x04, 0x08, 0x0F, 0x01
+   006C                       1 cubeline118:
+   006C                       2     DefineDrawableEntity cubeline118_dw, 0x48, 0x10, 0x04, 0x08, 0x0F
+   006C                       1 cubeline118_dw:
+   006C 48 10                 2     .db 0x48, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    006E 04 08                 3     .db 0x04, 0x08
    0070 FF                    4     .db 0xFF
    0071 01                    3     .db     0x01     ;; Hitpoints
+<<<<<<< HEAD
    0072                      30 DefineCubeLine1 cubeline118, 0x48, 0x00, 0x04, 0x08, 0x0F, 0x01
    0072                       1 cubeline118:
    0072                       2     DefineDrawableEntity cubeline118_dw, 0x48, 0x00, 0x04, 0x08, 0x0F
    0072                       1 cubeline118_dw:
    0072 48 00                 2     .db 0x48, 0x00
+=======
+   0072                      27 DefineCubeLine1 cubeline119, 0x4C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0072                       1 cubeline119:
+   0072                       2     DefineDrawableEntity cubeline119_dw, 0x4C, 0x10, 0x04, 0x08, 0xFF
+   0072                       1 cubeline119_dw:
+   0072 4C 10                 2     .db 0x4C, 0x10
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
    0074 04 08                 3     .db 0x04, 0x08
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
 Hexadecimal [16-Bits]
@@ -423,6 +596,7 @@ Hexadecimal [16-Bits]
                             141 
    01A0 DD 36 04 00   [19]  142    ld  dc_col(ix), #0
                             143 
+<<<<<<< HEAD
    01A4 CD 00 00      [17]  144    call render_drawCube
    01A7 08            [ 4]  145    ex af, af'
    01A8 DD 77 04      [19]  146    ld dc_col(ix), a
@@ -512,3 +686,24 @@ Hexadecimal [16-Bits]
                             225 
                             226 
    01EE C9            [10]  227  ret
+=======
+   01A5 C9            [10]  144    ret
+                            145 
+   01A6                     146 destroy_cube:
+   01A6 36 FF         [10]  147 ld (hl),#0xFF
+   01A8 23            [ 6]  148 inc hl
+   01A9 23            [ 6]  149 inc hl
+   01AA 23            [ 6]  150 inc hl
+   01AB 23            [ 6]  151 inc hl
+                            152 
+   01AC 36 00         [10]  153 ld (hl),#0x00
+                            154 
+   01AE 2B            [ 6]  155 dec hl
+   01AF 2B            [ 6]  156 dec hl
+   01B0 2B            [ 6]  157 dec hl
+   01B1 2B            [ 6]  158 dec hl
+                            159 
+                            160 
+                            161 
+   01B2 C9            [10]  162 ret
+>>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
