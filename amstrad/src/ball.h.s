@@ -5,7 +5,7 @@
 .globl ball_draw
 .globl ball_update
 .globl ball_move
-
+.globl ball_reset
 
 
 
@@ -44,4 +44,5 @@ bl_up_h = 8
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .globl ball
+.globl balldefault
 

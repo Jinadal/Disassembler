@@ -3,11 +3,13 @@
 .include "barra.h.s"
 .include "main.h.s"
 .include "ball.h.s"
+.include "cube.h.s"
 
 
 
 
-	DefineBall ball, 40,40,1,4,0xC0,1,1, ball_move
+	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move
+	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move
 
 
 
@@ -103,14 +105,14 @@ ball_move:
 ;; CHECK MAX AND MIN SCREEN Y AND PREVENT PLAYER TO GO FURTHER
 
 ld    a, dc_y(ix)     ;; Since screen max x is79
-  sub  #77            ;; check if is going to move further or outta screen
+  sub  # 190           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- ;jr z, colisionY1       
+ jr z, resetTheBall       
 
  
 
  ld    a, dc_y(ix)  ;; Same as before but now with the leftest position
-  sub #1            ;;
+  sub #2            ;;
                     ;;
     jr z, colisionY2  ;;
 
@@ -129,20 +131,80 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
     	jr nz, colisionY2  ;; if there is a 0 in D we will go to the reassingnament part
   
 
+
+
+
+	ld hl, #cubeline10
+	
+
+	ld e, #k_max_cube_line
+
+
+	bucl:
+
+
+	ld d, #1
+
+	call ball_collide
+	ld a,d          ;;d is changed in collide if a collision happened 
+    sub #1              ;;holding a 0 otherwise it will be a 1
+    	
+
+
+    
+	
+    jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
+  	
+
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+
+  	ld a,e
+  	sub #1
+
+  	ld e,a
+
+    	jr nz, bucl
+
+
+
+
+
 	ret
 
 	colisionY1:
+
+;; COMPROBAR POR DONDE ME ENTRA LA COLISION
+
+;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
+	
+
+	
+	; si la x(bola) > x(caja) -> entro por la derecha
+
+
+	ld ix,#ball
 	 ld a,#0  
 	 sub bl_vy(ix) 
 	 
 
 	 
 	 ld bl_vy(ix),a
-	 
+	 call colisionX
 
 	 ld dc_col(ix),#255
 
+    call destroy_cube
+
 	 ret
+
+
+
+
 	 colisionY2:
 	 ld a,#0  
 	 sub bl_vy(ix) 
@@ -184,7 +246,9 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	ret
 
 
+	resetTheBall:
 
+	call ball_reset
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; COMPROBACION COLISIONES BOUNDING BOXES
@@ -202,7 +266,7 @@ ball_collide:
    add dc_w(ix)    ;; A + hero_W
    sub (hl)       ;; A - obs_X 
    
-   jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
+   ;jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
 
                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
@@ -219,7 +283,7 @@ ball_collide:
     dec hl        ;; return to the first item in the object
 
 
-    jr z, no_coll ;; obs_X + obs_W - hero_X = 0
+    ;jr z, no_coll ;; obs_X + obs_W - hero_X = 0
     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
   
 
@@ -236,7 +300,7 @@ ball_collide:
    
    
 
-   jr nz, no_coll  ;; ball__Y + ball__H - barra_Y = 0
+  ; jr z, no_coll  ;; ball__Y + ball__H - barra_Y = 0
    jp m, no_coll  ;; ball__Y + ball__H - barra_Y < 0
 
 
@@ -252,7 +316,7 @@ ball_collide:
     dec hl        ;;
     dec hl        ;;  return to the first item in the object
 
-    jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
+    ;jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
 
    
@@ -266,3 +330,49 @@ no_coll:
 
 ret
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;RESET BALL TO FIRST STATE
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+ball_reset:
+
+	ld hl, #balldefault
+ 
+ 	ld a, (hl)
+	ld dc_x(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_y(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_w(ix), a
+
+	inc hl
+	ld a, (hl)
+	ld dc_h(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_col(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld bl_vx(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld bl_vy(ix), a
+
+	
+
+
+	ret

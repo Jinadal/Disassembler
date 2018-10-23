@@ -10,7 +10,7 @@ Hexadecimal [16-Bits]
                               5 .globl ball_draw
                               6 .globl ball_update
                               7 .globl ball_move
-                              8 
+                              8 .globl ball_reset
                               9 
                              10 
                              11 
@@ -49,4 +49,5 @@ Hexadecimal [16-Bits]
                              44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              45 
                              46 .globl ball
-                             47 
+                             47 .globl balldefault
+                             48 

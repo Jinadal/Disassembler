@@ -63,7 +63,7 @@ Hexadecimal [16-Bits]
 
 Symbol Table
 
-  0 barra_up   0025 GR  |   0 colision   006A R   |     cpct_dis   **** GX
+  0 barra_up   0025 GR  |   0 colision   006D R   |     cpct_dis   **** GX
     cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
     cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
     cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
@@ -78,5 +78,5 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   6E   flags    0
+   0 _CODE      size   71   flags    0
 

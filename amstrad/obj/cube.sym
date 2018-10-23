@@ -24,14 +24,14 @@ Symbol Table
   0 cubeline   002A GR  |   0 cubeline   002A R   |   0 cubeline   0030 GR
   0 cubeline   0030 R   |   0 cubeline   0036 GR  |   0 cubeline   0036 R
     dc_col  =  0004     |     dc_h    =  0003     |     dc_w    =  0002 
-    dc_x    =  0000     |     dc_y    =  0001     |     k_cube_s=  0007 
-    k_max_cu=  0014     |   0 m_num_cu   0078 R   |     ren_clea   **** GX
-    ren_newS   **** GX  |     render_d   **** GX
+    dc_x    =  0000     |     dc_y    =  0001     |   0 destroy_   01A6 GR
+    k_cube_s=  0007     |     k_max_cu=  0014 G   |   0 m_num_cu   0078 R
+    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  1A6   flags    0
+   0 _CODE      size  1B3   flags    0
 

@@ -3,29 +3,7 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 .include "render.h.s"
                               1 
-                              2 
-                              3 ;;Drawable Entity
-                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _col
-                              5 _name:
-                              6     .db _x, _y
-                              7     .db _w, _h
-                              8     .db _col
-                              9 .endm
-                     0001    10 dc_x    = 0     dc_y    = 1
-                     0003    11 dc_w    = 2     dc_h    = 3
-                     0004    12 dc_col  = 4
-                             13 
-                             14 .globl ren_clearBackBuffers
-                             15 ;;.globl ren_switchBuffers
-                             16 .globl render_drawCube
-                             17 .globl ren_newScene
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-
-
                               2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                               3 ;;MACROS
                               4 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -59,25 +37,33 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
-                             35 
+                             35 .globl destroy_cube
                              36 
-                             37 .globl cubeline10
-                             38 .globl cubeline11
-                             39 .globl cubeline12
-                             40 .globl cubeline13
-                             41 .globl cubeline14
-                             42 .globl cubeline15
-                             43 .globl cubeline16
-                             44 .globl cubeline17
-                             45 .globl cubeline18
-                             46 .globl cubeline19
-                             47 .globl cubeline110
-                             48 .globl cubeline111
-                             49 .globl cubeline112
-                             50 .globl cubeline113
-                             51 .globl cubeline114
-                             52 .globl cubeline115
-                             53 .globl cubeline116
-                             54 .globl cubeline117
-                             55 .globl cubeline118
-                             56 .globl cubeline119
+                             37 .globl k_max_cube_line	
+                             38 
+                             39 
+                             40 .globl cubeline10
+                             41 .globl cubeline11
+                             42 .globl cubeline12
+                             43 .globl cubeline13
+                             44 .globl cubeline14
+                             45 .globl cubeline15
+                             46 .globl cubeline16
+                             47 .globl cubeline17
+                             48 .globl cubeline18
+                             49 .globl cubeline19
+                             50 .globl cubeline110
+                             51 .globl cubeline111
+                             52 .globl cubeline112
+                             53 .globl cubeline113
+                             54 .globl cubeline114
+                             55 .globl cubeline115
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
+                             56 .globl cubeline116
+                             57 .globl cubeline117
+                             58 .globl cubeline118
+                             59 .globl cubeline119

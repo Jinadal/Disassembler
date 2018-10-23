@@ -1,7 +1,9 @@
 XL2
-H 1 areas 6 global symbols
+H 1 areas 8 global symbols
+S balldefault Ref0000
 S ball_clear Ref0000
 S ball Ref0000
+S ball_reset Ref0000
 S .__.ABS. Def0000
 S ball_draw Ref0000
 S ball_move Ref0000

@@ -2705,23 +2705,24 @@ Hexadecimal [16-Bits]
 
                             103 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             104 
-   005B DD 7E 00      [19]  105  	ld    a, dc_x(ix)     ;; Since screen max x is79
-   005E D6 4C         [ 7]  106   	sub  #76            ;; check if is going to move further or outta screen
-                            107                       ;; if true we will go to the reassingnament part
-   0060 28 08         [12]  108  	jr z, colisionX       ;;
-                            109 
+   005B DD 7E 00      [19]  105  	ld    a, dc_x(ix)
+   005E DD 86 02      [19]  106  	add dc_w(ix)     ;; Since screen max x is79
+   0061 D6 4E         [ 7]  107   	sub  #78           ;; check if is going to move further or outta screen
+                            108                       ;; if true we will go to the reassingnament part
+   0063 28 08         [12]  109  	jr z, colisionX       ;;
                             110 
                             111 
-   0062 DD 7E 00      [19]  112   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
-   0065 D6 00         [ 7]  113   	sub #0            ;;
-                            114                     ;;
-   0067 28 01         [12]  115     	jr z, colisionX  ;;
-                            116 
-                            117 ;;  END MAX MIN X CHECK
-   0069 C9            [10]  118 	ret
-   006A                     119  colisionX:
-                            120    
-                            121      
-   006A DD 70 00      [19]  122     ld dc_x(ix), b
-                            123    
-   006D C9            [10]  124    ret
+                            112 
+   0065 DD 7E 00      [19]  113   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
+   0068 D6 00         [ 7]  114   	sub #0            ;;
+                            115                     ;;
+   006A 28 01         [12]  116     	jr z, colisionX  ;;
+                            117 
+                            118 ;;  END MAX MIN X CHECK
+   006C C9            [10]  119 	ret
+   006D                     120  colisionX:
+                            121    
+                            122      
+   006D DD 70 00      [19]  123     ld dc_x(ix), b
+                            124    
+   0070 C9            [10]  125    ret
