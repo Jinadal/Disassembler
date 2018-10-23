@@ -2674,31 +2674,34 @@ Hexadecimal [16-Bits]
                              34 .globl cube_clearAll
                              35 
                              36 
-                             37 .globl cubeline10
-                             38 .globl cubeline11
-                             39 .globl cubeline12
-                             40 .globl cubeline13
-                             41 .globl cubeline14
-                             42 .globl cubeline15
-                             43 .globl cubeline16
-                             44 .globl cubeline17
-                             45 .globl cubeline18
-                             46 .globl cubeline19
-                             47 .globl cubeline110
-                             48 .globl cubeline111
-                             49 .globl cubeline112
-                             50 .globl cubeline113
-                             51 .globl cubeline114
-                             52 .globl cubeline115
-                             53 .globl cubeline116
-                             54 .globl cubeline117
+                             37 .globl k_max_cube_line	
+                             38 
+                             39 
+                             40 .globl cubeline10
+                             41 .globl cubeline11
+                             42 .globl cubeline12
+                             43 .globl cubeline13
+                             44 .globl cubeline14
+                             45 .globl cubeline15
+                             46 .globl cubeline16
+                             47 .globl cubeline17
+                             48 .globl cubeline18
+                             49 .globl cubeline19
+                             50 .globl cubeline110
+                             51 .globl cubeline111
+                             52 .globl cubeline112
+                             53 .globl cubeline113
+                             54 .globl cubeline114
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline118
-                             56 .globl cubeline119
+                             55 .globl cubeline115
+                             56 .globl cubeline116
+                             57 .globl cubeline117
+                             58 .globl cubeline118
+                             59 .globl cubeline119
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
@@ -2708,11 +2711,11 @@ Hexadecimal [16-Bits]
                               8 
                               9 
                              10 
-   40E8                      11 	DefineBall ball, 40,40,1,4,0xC0,1,2, ball_move
+   40E8                      11 	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move
    40E8                       1 ball: 
-   0000                       2 	DefineDrawableEntity ball_dw, 40, 40, 1, 4, 0xC0
+   0000                       2 	DefineDrawableEntity ball_dw, 40, 78, 1, 4, 0xC0
    0000                       1 ball_dw:
-   40E8 28 28                 2     .db 40, 40
+   40E8 28 4E                 2     .db 40, 78
    40EA 01 04                 3     .db 1, 4
    40EC C0                    4     .db 0xC0
                               3   ; .db    _x, _y     ;; X, Y
@@ -2721,11 +2724,11 @@ Hexadecimal [16-Bits]
    40ED 01 02                 6    .db   1, 2    ;; VX, VY
    40EF 1D 41                 7      .dw   ball_move        ;; Update 
                               8   
-   40F1                      12 	DefineBall balldefault, 40,40,1,4,0xC0,1,2, ball_move
+   40F1                      12 	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move
    40F1                       1 balldefault: 
-   0009                       2 	DefineDrawableEntity balldefault_dw, 40, 40, 1, 4, 0xC0
+   0009                       2 	DefineDrawableEntity balldefault_dw, 40, 78, 1, 4, 0xC0
    0009                       1 balldefault_dw:
-   40F1 28 28                 2     .db 40, 40
+   40F1 28 4E                 2     .db 40, 78
    40F3 01 04                 3     .db 1, 4
    40F5 C0                    4     .db 0xC0
                               3   ; .db    _x, _y     ;; X, Y
@@ -2812,7 +2815,7 @@ Hexadecimal [16-Bits]
    4135 DD 7E 00      [19]   83  ld    a, dc_x(ix)     ;; Since screen max x is79
    4138 D6 4D         [ 7]   84   sub  #77            ;; check if is going to move further or outta screen
                              85                       ;; if true we will go to the reassingnament part
-   413A 28 4D         [12]   86  jr z, colisionX       ;;
+   413A 28 5B         [12]   86  jr z, colisionX       ;;
                              87 
                              88 
                              89 
@@ -2824,7 +2827,7 @@ Hexadecimal [16-Bits]
 
 
 
-   4141 28 46         [12]   93     jr z, colisionX  ;;
+   4141 28 54         [12]   93     jr z, colisionX  ;;
                              94 
                              95 ;;  END MAX MIN X CHECK
                              96 
@@ -2841,14 +2844,14 @@ Hexadecimal [16-Bits]
    4143 DD 7E 01      [19]  107 ld    a, dc_y(ix)     ;; Since screen max x is79
    4146 D6 BE         [ 7]  108   sub  # 190           ;; check if is going to move further or outta screen
                             109                       ;; if true we will go to the reassingnament part
-   4148 28 5B         [12]  110  jr z, resetTheBall       
+   4148 28 69         [12]  110  jr z, resetTheBall       
                             111 
                             112  
                             113 
    414A DD 7E 01      [19]  114  ld    a, dc_y(ix)  ;; Same as before but now with the leftest position
    414D D6 02         [ 7]  115   sub #2            ;;
                             116                     ;;
-   414F 28 2B         [12]  117     jr z, colisionY2  ;;
+   414F 28 39         [12]  117     jr z, colisionY2  ;;
                             118 
                             119 ;;  END MAX MIN Y CHECK
                             120 
@@ -2856,252 +2859,281 @@ Hexadecimal [16-Bits]
    4151 21 77 40      [10]  122 	ld hl, #barra
    4154 16 01         [ 7]  123 	ld d, #1
                             124 
-   4156 CD A8 41      [17]  125 	call ball_collide
+   4156 CD B6 41      [17]  125 	call ball_collide
    4159 7A            [ 4]  126 	ld a,d          ;;d is changed in collide if a collision happened 
    415A D6 01         [ 7]  127     	sub #1              ;;holding a 0 otherwise it will be a 1
                             128     
                             129     
                             130     
-   415C 20 1E         [12]  131     	jr nz, colisionY2  ;; if there is a 0 in D we will go to the reassingnament part
+   415C 20 2C         [12]  131     	jr nz, colisionY2  ;; if there is a 0 in D we will go to the reassingnament part
                             132   
                             133 
                             134 
                             135 
                             136 
-   415E 21 00 42      [10]  137 	ld hl, #cubeline10
-   4161 16 01         [ 7]  138 	ld d, #1
+   415E 21 0E 42      [10]  137 	ld hl, #cubeline10
+                            138 	
                             139 
-   4163 CD A8 41      [17]  140 	call ball_collide
-   4166 7A            [ 4]  141 	ld a,d          ;;d is changed in collide if a collision happened 
-   4167 D6 01         [ 7]  142     	sub #1              ;;holding a 0 otherwise it will be a 1
-                            143     
-                            144     
-                            145     
-   4169 20 01         [12]  146     	jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
-                            147   	
+   4161 1E 14         [ 7]  140 	ld e, #k_max_cube_line
+                            141 
+                            142 
+   4163                     143 	bucl:
+                            144 
+                            145 
+   4163 16 01         [ 7]  146 	ld d, #1
+                            147 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 58.
 Hexadecimal [16-Bits]
 
 
 
-                            148 
-                            149 
-                            150 
-                            151 
+   4165 CD B6 41      [17]  148 	call ball_collide
+   4168 7A            [ 4]  149 	ld a,d          ;;d is changed in collide if a collision happened 
+   4169 D6 01         [ 7]  150     	sub #1              ;;holding a 0 otherwise it will be a 1
+                            151     	
                             152 
                             153 
-   416B C9            [10]  154 	ret
-                            155 
-   416C                     156 	colisionY1:
-                            157 
-                            158 ;; COMPROBAR POR DONDE ME ENTRA LA COLISION
+                            154     
+                            155     
+   416B 20 0D         [12]  156     	jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
+                            157   	
+                            158 
                             159 
-                            160 ;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
-                            161 	
-                            162 
-                            163 	
-                            164 	; si la x(bola) > x(caja) -> entro por la derecha
-                            165 
+   416D 23            [ 6]  160     	inc hl
+   416E 23            [ 6]  161     	inc hl
+   416F 23            [ 6]  162     	inc hl
+   4170 23            [ 6]  163     	inc hl
+   4171 23            [ 6]  164     	inc hl
+   4172 23            [ 6]  165     	inc hl
                             166 
-                            167 
-   416C 3E 00         [ 7]  168 	 ld a,#0  
-   416E DD 96 06      [19]  169 	 sub bl_vy(ix) 
-                            170 	 
+   4173 7B            [ 4]  167   	ld a,e
+   4174 D6 01         [ 7]  168   	sub #1
+                            169 
+   4176 5F            [ 4]  170   	ld e,a
                             171 
-                            172 	 
-   4171 DD 77 06      [19]  173 	 ld bl_vy(ix),a
-   4174 CD 89 41      [17]  174 	 call colisionX
+   4177 20 EA         [12]  172     	jr nz, bucl
+                            173 
+                            174 
                             175 
-   4177 DD 36 04 FF   [19]  176 	 ld dc_col(ix),#255
+                            176 
                             177 
-   417B C9            [10]  178 	 ret
+   4179 C9            [10]  178 	ret
                             179 
-                            180 
+   417A                     180 	colisionY1:
                             181 
-                            182 
-   417C                     183 	 colisionY2:
-   417C 3E 00         [ 7]  184 	 ld a,#0  
-   417E DD 96 06      [19]  185 	 sub bl_vy(ix) 
-                            186 	 
-                            187 
-                            188 	 
-   4181 DD 77 06      [19]  189 	 ld bl_vy(ix),a
-                            190 	 
+                            182 ;; COMPROBAR POR DONDE ME ENTRA LA COLISION
+                            183 
+                            184 ;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
+                            185 	
+                            186 
+                            187 	
+                            188 	; si la x(bola) > x(caja) -> entro por la derecha
+                            189 
+                            190 
                             191 
-   4184 DD 36 04 C8   [19]  192 	 ld dc_col(ix),#200
-                            193 
-   4188 C9            [10]  194 	 ret
+   417A 3E 00         [ 7]  192 	 ld a,#0  
+   417C DD 96 06      [19]  193 	 sub bl_vy(ix) 
+                            194 	 
                             195 
-   4189                     196 	 colisionX:
-                            197 		
-   4189 3E 00         [ 7]  198 	 ld a,#0  
-   418B DD 96 05      [19]  199 	 sub bl_vx(ix) 
-                            200 	 
+                            196 	 
+   417F DD 77 06      [19]  197 	 ld bl_vy(ix),a
+   4182 CD 97 41      [17]  198 	 call colisionX
+                            199 
+   4185 DD 36 04 FF   [19]  200 	 ld dc_col(ix),#255
                             201 
-                            202 	 
+   4189 C9            [10]  202 	 ret
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
 Hexadecimal [16-Bits]
 
 
 
-   418E DD 77 05      [19]  203 	 ld bl_vx(ix),a
-                            204 	 
+                            203 
+                            204 
                             205 
-   4191 DD 36 04 0F   [19]  206 	 ld dc_col(ix),#15
-                            207 
-                            208 
-   4195 C9            [10]  209 	ret
-   4196                     210 	goodYcolision:
-   4196 3E 00         [ 7]  211  	ld a,#0  
-   4198 DD 96 06      [19]  212 	 sub bl_vy(ix) 
-                            213 	 
-                            214 
-                            215 	 
-   419B DD 77 06      [19]  216 	 ld bl_vy(ix),a
+                            206 
+   418A                     207 	 colisionY2:
+   418A 3E 00         [ 7]  208 	 ld a,#0  
+   418C DD 96 06      [19]  209 	 sub bl_vy(ix) 
+                            210 	 
+                            211 
+                            212 	 
+   418F DD 77 06      [19]  213 	 ld bl_vy(ix),a
+                            214 	 
+                            215 
+   4192 DD 36 04 C8   [19]  216 	 ld dc_col(ix),#200
                             217 
-   419E DD 70 00      [19]  218 	ld dc_x(ix), b
-   41A1 DD 71 01      [19]  219     	ld dc_y(ix), c
-                            220 
-   41A4 C9            [10]  221 	ret
-                            222 
-                            223 
-   41A5                     224 	resetTheBall:
+   4196 C9            [10]  218 	 ret
+                            219 
+   4197                     220 	 colisionX:
+                            221 		
+   4197 3E 00         [ 7]  222 	 ld a,#0  
+   4199 DD 96 05      [19]  223 	 sub bl_vx(ix) 
+                            224 	 
                             225 
-   41A5 CD DA 41      [17]  226 	call ball_reset
-                            227 
-                            228 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                            229 ;; COMPROBACION COLISIONES BOUNDING BOXES
-                            230 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
-                            231 ;; LA BOLA Y LA BARRA
-                            232 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            233 
-   41A8                     234 ball_collide:
-                            235 
-                            236 
-                            237   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
-                            238    
-                            239                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
-   41A8 DD 7E 00      [19]  240    ld a, dc_x(ix)  ;; A = hero_X
-   41AB DD 86 02      [19]  241    add dc_w(ix)    ;; A + hero_W
-   41AE 96            [ 7]  242    sub (hl)       ;; A - obs_X 
-                            243    
-                            244    ;jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
-   41AF FA D9 41      [10]  245    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
+                            226 	 
+   419C DD 77 05      [19]  227 	 ld bl_vx(ix),a
+                            228 	 
+                            229 
+   419F DD 36 04 0F   [19]  230 	 ld dc_col(ix),#15
+                            231 
+                            232 
+   41A3 C9            [10]  233 	ret
+   41A4                     234 	goodYcolision:
+   41A4 3E 00         [ 7]  235  	ld a,#0  
+   41A6 DD 96 06      [19]  236 	 sub bl_vy(ix) 
+                            237 	 
+                            238 
+                            239 	 
+   41A9 DD 77 06      [19]  240 	 ld bl_vy(ix),a
+                            241 
+   41AC DD 70 00      [19]  242 	ld dc_x(ix), b
+   41AF DD 71 01      [19]  243     	ld dc_y(ix), c
+                            244 
+   41B2 C9            [10]  245 	ret
                             246 
-                            247                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
-   41B2 7E            [ 7]  248     ld a ,(hl)    ;; A = hl -> obs_X
-   41B3 23            [ 6]  249     inc hl        ;;
-                            250    
-   41B4 23            [ 6]  251     inc hl        ;; hl + 2 -> obs_W
-                            252 
-   41B5 86            [ 7]  253     add (hl)      ;; A + obs_W
-                            254                   ;;
-   41B6 DD 96 00      [19]  255     sub dc_x(ix)   ;; A - hero_X
-                            256 
-   41B9 2B            [ 6]  257     dec hl        ;;
+                            247 
+   41B3                     248 	resetTheBall:
+                            249 
+   41B3 CD E8 41      [17]  250 	call ball_reset
+                            251 
+                            252 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+                            253 ;; COMPROBACION COLISIONES BOUNDING BOXES
+                            254 ;; COMPRUEBA PROYECCION 1D EN X EN Y DE         
+                            255 ;; LA BOLA Y LA BARRA
+                            256 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            257 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
-   41BA 2B            [ 6]  258     dec hl        ;; return to the first item in the object
+   41B6                     258 ball_collide:
                             259 
                             260 
-                            261     ;jr z, no_coll ;; obs_X + obs_W - hero_X = 0
-   41BB FA D9 41      [10]  262     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
-                            263   
-                            264 
-                            265 
-                            266 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
-                            267                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
-   41BE 23            [ 6]  268     inc hl        ;; Puntero hl -> barra_Y
-                            269 
-                            270   
-                            271 
-   41BF DD 7E 01      [19]  272    ld a, dc_y(ix)  ;; A = ball__Y
-   41C2 DD 86 03      [19]  273    add dc_h(ix)    ;; A + ball__H
-   41C5 96            [ 7]  274    sub (hl)       ;; A - barra_Y
-                            275    
-                            276    
-                            277 
-                            278   ; jr z, no_coll  ;; ball__Y + ball__H - barra_Y = 0
-   41C6 FA D9 41      [10]  279    jp m, no_coll  ;; ball__Y + ball__H - barra_Y < 0
+                            261   ;; COMPRUEBA EN X SI LE OBJETO ESTA A LA DERECHA O A LA IZDA
+                            262    
+                            263                   ;;Comprobacion de colision por la DERECHA if(hero_X + obs_W - heroX <= 0)
+   41B6 DD 7E 00      [19]  264    ld a, dc_x(ix)  ;; A = hero_X
+   41B9 DD 86 02      [19]  265    add dc_w(ix)    ;; A + hero_W
+   41BC 96            [ 7]  266    sub (hl)       ;; A - obs_X 
+                            267    
+                            268    ;jr z, no_coll  ;; hero_X + hero_W - obs_X = 0
+   41BD FA E7 41      [10]  269    jp m, no_coll  ;; hero_X + hero_W - obs_X < 0
+                            270 
+                            271                   ;;Comprobacion de colision por la IZQUIERDA if(obs_X + obs_W - hero_X <= 0)
+   41C0 7E            [ 7]  272     ld a ,(hl)    ;; A = hl -> obs_X
+   41C1 23            [ 6]  273     inc hl        ;;
+                            274    
+   41C2 23            [ 6]  275     inc hl        ;; hl + 2 -> obs_W
+                            276 
+   41C3 86            [ 7]  277     add (hl)      ;; A + obs_W
+                            278                   ;;
+   41C4 DD 96 00      [19]  279     sub dc_x(ix)   ;; A - hero_X
                             280 
-                            281 
-   41C9 7E            [ 7]  282    ld a ,(hl)     ;; A = obs_Y
-   41CA 23            [ 6]  283    inc hl         ;;
+   41C7 2B            [ 6]  281     dec hl        ;;
+   41C8 2B            [ 6]  282     dec hl        ;; return to the first item in the object
+                            283 
                             284 
-   41CB 23            [ 6]  285    inc hl         ;; hl + 2 -> obs_H
-                            286 
-   41CC 86            [ 7]  287    add (hl)       ;; A + obs_H
-   41CD DD 96 01      [19]  288    sub dc_y(ix)    ;; A - hero_Y
+                            285     ;jr z, no_coll ;; obs_X + obs_W - hero_X = 0
+   41C9 FA E7 41      [10]  286     jp m, no_coll ;; obs_X + obs_W - hero_X < 0
+                            287   
+                            288 
                             289 
-   41D0 2B            [ 6]  290     dec hl        ;;
-   41D1 2B            [ 6]  291     dec hl        ;;
-   41D2 2B            [ 6]  292     dec hl        ;;  return to the first item in the object
+                            290 ;; COMPRUEBA EN Y SI EL OBJETO ESTA ARRIBA  O ABAJO
+                            291                   ;;Comprobacion de colision ABAJO if(hero__Y + hero__H - obs_Y <= 0)
+   41CC 23            [ 6]  292     inc hl        ;; Puntero hl -> barra_Y
                             293 
-                            294     ;jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
-   41D3 FA D9 41      [10]  295     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
-                            296 
-                            297    
-                            298 
-                            299 
-   41D6 16 00         [ 7]  300     ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
-                            301  
-   41D8 C9            [10]  302     ret
-                            303 
-   41D9                     304 no_coll:
+                            294   
+                            295 
+   41CD DD 7E 01      [19]  296    ld a, dc_y(ix)  ;; A = ball__Y
+   41D0 DD 86 03      [19]  297    add dc_h(ix)    ;; A + ball__H
+   41D3 96            [ 7]  298    sub (hl)       ;; A - barra_Y
+                            299    
+                            300    
+                            301 
+                            302   ; jr z, no_coll  ;; ball__Y + ball__H - barra_Y = 0
+   41D4 FA E7 41      [10]  303    jp m, no_coll  ;; ball__Y + ball__H - barra_Y < 0
+                            304 
                             305 
-   41D9 C9            [10]  306 ret
-                            307 
+   41D7 7E            [ 7]  306    ld a ,(hl)     ;; A = obs_Y
+   41D8 23            [ 6]  307    inc hl         ;;
                             308 
-                            309 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                            310 ;;
-                            311 ;;RESET BALL TO FIRST STATE
-                            312 ;;
+   41D9 23            [ 6]  309    inc hl         ;; hl + 2 -> obs_H
+                            310 
+   41DA 86            [ 7]  311    add (hl)       ;; A + obs_H
+   41DB DD 96 01      [19]  312    sub dc_y(ix)    ;; A - hero_Y
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 61.
 Hexadecimal [16-Bits]
 
 
 
-                            313 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-   41DA                     314 ball_reset:
-                            315 
-   41DA 21 F1 40      [10]  316 	ld hl, #balldefault
-                            317  
-   41DD 7E            [ 7]  318  	ld a, (hl)
-   41DE DD 77 00      [19]  319 	ld dc_x(ix), a
+                            313 
+   41DE 2B            [ 6]  314     dec hl        ;;
+   41DF 2B            [ 6]  315     dec hl        ;;
+   41E0 2B            [ 6]  316     dec hl        ;;  return to the first item in the object
+                            317 
+                            318     ;jr z, no_coll ;; obs_Y + obs_H - hero__Y = 0
+   41E1 FA E7 41      [10]  319     jp m, no_coll ;; obs_Y + obs_H - hero__Y < 0
                             320 
-   41E1 23            [ 6]  321 	inc hl
+                            321    
                             322 
-   41E2 7E            [ 7]  323 	ld a, (hl)
-   41E3 DD 77 01      [19]  324 	ld dc_y(ix), a
-                            325 
-   41E6 23            [ 6]  326 	inc hl
+                            323 
+   41E4 16 00         [ 7]  324     ld d, #0     ;; if we make it here, it means a collision happened so we charge a 0 in D
+                            325  
+   41E6 C9            [10]  326     ret
                             327 
-   41E7 7E            [ 7]  328 	ld a, (hl)
-   41E8 DD 77 02      [19]  329 	ld dc_w(ix), a
-                            330 
-   41EB 23            [ 6]  331 	inc hl
-   41EC 7E            [ 7]  332 	ld a, (hl)
-   41ED DD 77 03      [19]  333 	ld dc_h(ix), a
-                            334 
-   41F0 23            [ 6]  335 	inc hl
-                            336 
-   41F1 7E            [ 7]  337 	ld a, (hl)
-   41F2 DD 77 04      [19]  338 	ld dc_col(ix), a
+   41E7                     328 no_coll:
+                            329 
+   41E7 C9            [10]  330 ret
+                            331 
+                            332 
+                            333 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            334 ;;
+                            335 ;;RESET BALL TO FIRST STATE
+                            336 ;;
+                            337 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+   41E8                     338 ball_reset:
                             339 
-   41F5 23            [ 6]  340 	inc hl
-                            341 
-   41F6 7E            [ 7]  342 	ld a, (hl)
-   41F7 DD 77 05      [19]  343 	ld bl_vx(ix), a
+   41E8 21 F1 40      [10]  340 	ld hl, #balldefault
+                            341  
+   41EB 7E            [ 7]  342  	ld a, (hl)
+   41EC DD 77 00      [19]  343 	ld dc_x(ix), a
                             344 
-   41FA 23            [ 6]  345 	inc hl
+   41EF 23            [ 6]  345 	inc hl
                             346 
-   41FB 7E            [ 7]  347 	ld a, (hl)
-   41FC DD 77 06      [19]  348 	ld bl_vy(ix), a
+   41F0 7E            [ 7]  347 	ld a, (hl)
+   41F1 DD 77 01      [19]  348 	ld dc_y(ix), a
                             349 
-                            350 	
+   41F4 23            [ 6]  350 	inc hl
                             351 
-                            352 
-   41FF C9            [10]  353 	ret
+   41F5 7E            [ 7]  352 	ld a, (hl)
+   41F6 DD 77 02      [19]  353 	ld dc_w(ix), a
+                            354 
+   41F9 23            [ 6]  355 	inc hl
+   41FA 7E            [ 7]  356 	ld a, (hl)
+   41FB DD 77 03      [19]  357 	ld dc_h(ix), a
+                            358 
+   41FE 23            [ 6]  359 	inc hl
+                            360 
+   41FF 7E            [ 7]  361 	ld a, (hl)
+   4200 DD 77 04      [19]  362 	ld dc_col(ix), a
+                            363 
+   4203 23            [ 6]  364 	inc hl
+                            365 
+   4204 7E            [ 7]  366 	ld a, (hl)
+   4205 DD 77 05      [19]  367 	ld bl_vx(ix), a
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 62.
+Hexadecimal [16-Bits]
+
+
+
+                            368 
+   4208 23            [ 6]  369 	inc hl
+                            370 
+   4209 7E            [ 7]  371 	ld a, (hl)
+   420A DD 77 06      [19]  372 	ld bl_vy(ix), a
+                            373 
+                            374 	
+                            375 
+                            376 
+   420D C9            [10]  377 	ret

@@ -8,8 +8,8 @@
 
 
 
-	DefineBall ball, 40,40,1,4,0xC0,1,2, ball_move
-	DefineBall balldefault, 40,40,1,4,0xC0,1,2, ball_move
+	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move
+	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move
 
 
 
@@ -135,17 +135,41 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 
 	ld hl, #cubeline10
+	
+
+	ld e, #k_max_cube_line
+
+
+	bucl:
+
+
 	ld d, #1
 
 	call ball_collide
 	ld a,d          ;;d is changed in collide if a collision happened 
     	sub #1              ;;holding a 0 otherwise it will be a 1
-    
+    	
+
+
     
     
     	jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
   	
 
+
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+    	inc hl
+
+  	ld a,e
+  	sub #1
+
+  	ld e,a
+
+    	jr nz, bucl
 
 
 

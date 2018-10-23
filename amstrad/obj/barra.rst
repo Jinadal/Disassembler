@@ -2655,10 +2655,10 @@ Hexadecimal [16-Bits]
                              57 ;; A (IZDA) S(ABAJO) D(DERECHA)
                              58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    40A3                      59 barra_moveKeyboard:
-   40A3 CD F6 44      [17]   60     call cpct_scanKeyboard_asm
+   40A3 CD 04 45      [17]   60     call cpct_scanKeyboard_asm
                              61       
    40A6 21 08 20      [10]   62    ld hl, #Key_A ;;O
-   40A9 CD E9 43      [17]   63     call cpct_isKeyPressed_asm
+   40A9 CD F7 43      [17]   63     call cpct_isKeyPressed_asm
    40AC 28 04         [12]   64     jr z, a_no_pulsada
                              65     
    40AE DD 36 05 FE   [19]   66     ld b_vx(ix), #-2
@@ -2667,7 +2667,7 @@ Hexadecimal [16-Bits]
                              69     
                              70     
    40B2 21 07 20      [10]   71       ld hl, #Key_D ;;P
-   40B5 CD E9 43      [17]   72     call cpct_isKeyPressed_asm
+   40B5 CD F7 43      [17]   72     call cpct_isKeyPressed_asm
    40B8 28 04         [12]   73     jr z, d_no_pulsada
                              74     
    40BA DD 36 05 02   [19]   75     ld b_vx(ix), #2

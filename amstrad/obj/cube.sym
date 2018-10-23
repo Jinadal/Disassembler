@@ -25,7 +25,7 @@ Symbol Table
   0 cubeline   0030 R   |   0 cubeline   0036 GR  |   0 cubeline   0036 R
     dc_col  =  0004     |     dc_h    =  0003     |     dc_w    =  0002 
     dc_x    =  0000     |     dc_y    =  0001     |     k_cube_s=  0007 
-    k_max_cu=  0014     |   0 m_num_cu   0078 R   |     ren_clea   **** GX
+    k_max_cu=  0014 G   |   0 m_num_cu   0078 R   |     ren_clea   **** GX
     ren_newS   **** GX  |     render_d   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
