@@ -9,6 +9,7 @@
 
 
 	DefineBall ball, 40,40,1,4,0xC0,1,2, ball_move
+	DefineBall balldefault, 40,40,1,4,0xC0,1,2, ball_move
 
 
 
@@ -104,9 +105,9 @@ ball_move:
 ;; CHECK MAX AND MIN SCREEN Y AND PREVENT PLAYER TO GO FURTHER
 
 ld    a, dc_y(ix)     ;; Since screen max x is79
-  sub  #77            ;; check if is going to move further or outta screen
+  sub  # 190           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- ;jr z, colisionY1       
+ jr z, resetTheBall       
 
  
 
@@ -157,17 +158,28 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 ;; COMPROBAR POR DONDE ME ENTRA LA COLISION
 
 ;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
+	
+
+	
+	; si la x(bola) > x(caja) -> entro por la derecha
+
+
+
 	 ld a,#0  
 	 sub bl_vy(ix) 
 	 
 
 	 
 	 ld bl_vy(ix),a
-	 
+	 call colisionX
 
 	 ld dc_col(ix),#255
 
 	 ret
+
+
+
+
 	 colisionY2:
 	 ld a,#0  
 	 sub bl_vy(ix) 
@@ -209,7 +221,9 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	ret
 
 
+	resetTheBall:
 
+	call ball_reset
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; COMPROBACION COLISIONES BOUNDING BOXES
@@ -291,3 +305,49 @@ no_coll:
 
 ret
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;RESET BALL TO FIRST STATE
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+ball_reset:
+
+	ld hl, #balldefault
+ 
+ 	ld a, (hl)
+	ld dc_x(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_y(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_w(ix), a
+
+	inc hl
+	ld a, (hl)
+	ld dc_h(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_col(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld bl_vx(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld bl_vy(ix), a
+
+	
+
+
+	ret

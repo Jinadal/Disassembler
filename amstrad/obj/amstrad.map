@@ -9,16 +9,16 @@ Area                                    Addr        Size        Decimal Bytes (A
       -----  --------------------------------   ------------------------
      00000000  .__.ABS.                           cpct_keyboard
      00000000  l__DATA                         
-     000004F0  l__CODE                         
+     00000527  l__CODE                         
      00004000  s__CODE                         
-     000044F0  s__DATA                         
+     00004527  s__DATA                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000004F0 =        1264. bytes (REL,CON)
+_CODE                               00004000    00000527 =        1319. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -33,61 +33,64 @@ _CODE                               00004000    000004F0 =        1264. bytes (R
      000040A3  barra_moveKeyboard                 cpct_keyboard
      000040C2  barra_move                         cpct_keyboard
      000040E8  ball                               cpct_keyboard
-     000040F1  ball_draw                          cpct_keyboard
-     000040F9  ball_clear                         cpct_keyboard
-     0000410D  ball_update                        cpct_keyboard
-     00004114  ball_move                          cpct_keyboard
-     000041C9  cubeline10                         
-     000041CF  cubeline11                         
-     000041D5  cubeline12                         
-     000041DB  cubeline13                         
-     000041E1  cubeline14                         
-     000041E7  cubeline15                         
-     000041ED  cubeline16                         
-     000041F3  cubeline17                         
-     000041F9  cubeline18                         
-     000041FF  cubeline19                         
-     00004205  cubeline110                        
-     0000420B  cubeline111                        
-     00004211  cubeline112                        
-     00004217  cubeline113                        
-     0000421D  cubeline114                        
-     00004223  cubeline115                        
-     00004229  cubeline116                        
-     0000422F  cubeline117                        
-     00004235  cubeline118                        
-     0000423B  cubeline119                        
-     00004242  cube_clear                         
-     000042CF  cube_draw                          
-     0000435C  cube_drawAll                       
-     0000435F  cube_clearAll                      
-     0000436F  _cpct_memset_f64_asm               cpct_memutils
-     000043B2  _cpct_isKeyPressed                 cpct_keyboard
-     000043B2  cpct_isKeyPressed_asm              cpct_keyboard
-     000043BE  _cpct_keyboardStatusBuffer         cpct_keyboard
-     000043C8  _cpct_setVideoMemoryPage           cpct_video
-     000043C8  cpct_setVideoMemoryPage_asm        cpct_video
-     000043D1  _cpct_waitVSYNC                    cpct_video
-     000043D1  cpct_waitVSYNC_asm                 cpct_video
-     000043D9  cpct_setVideoMode_asm              cpct_video
-     000043E6  _cpct_disableFirmware              cpct_firmware
-     000043E6  _cpct_removeInterruptHandler       cpct_firmware
+     000040F1  balldefault                        cpct_keyboard
+     000040FA  ball_draw                          cpct_keyboard
+     00004102  ball_clear                         cpct_keyboard
+     00004116  ball_update                        cpct_keyboard
+     0000411D  ball_move                          cpct_keyboard
+     000041DA  ball_reset                         cpct_keyboard
+     00004200  cubeline10                         
+     00004206  cubeline11                         
+     0000420C  cubeline12                         
+     00004212  cubeline13                         
+     00004218  cubeline14                         
+     0000421E  cubeline15                         
+     00004224  cubeline16                         
+     0000422A  cubeline17                         
+     00004230  cubeline18                         
+     00004236  cubeline19                         
+     0000423C  cubeline110                        
+     00004242  cubeline111                        
+     00004248  cubeline112                        
+     0000424E  cubeline113                        
+     00004254  cubeline114                        
+     0000425A  cubeline115                        
+     00004260  cubeline116                        
+     00004266  cubeline117                        
+     0000426C  cubeline118                        
+     00004272  cubeline119                        
+     00004279  cube_clear                         
+     00004306  cube_draw                          
+     00004393  cube_drawAll                       
+     00004396  cube_clearAll                      
+     000043A6  _cpct_memset_f64_asm               cpct_memutils
+     000043E9  _cpct_isKeyPressed                 cpct_keyboard
+     000043E9  cpct_isKeyPressed_asm              cpct_keyboard
+     000043F5  _cpct_keyboardStatusBuffer         cpct_keyboard
+     000043FF  _cpct_setVideoMemoryPage           cpct_video
+     000043FF  cpct_setVideoMemoryPage_asm        cpct_video
+     00004408  _cpct_waitVSYNC                    cpct_video
+     00004408  cpct_waitVSYNC_asm                 cpct_video
+     00004410  cpct_setVideoMode_asm              cpct_video
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    000004F0 =        1264. bytes (REL,CON)
+_CODE                               00004000    00000527 =        1319. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000043E6  cpct_disableFirmware_asm           cpct_firmware
-     000043E6  cpct_removeInterruptHandler_asm    cpct_firmware
-     000043F6  cpct_drawSolidBox_asm              cpct_sprites
-     000044A2  _cpct_mode_rom_status              cpct_firmware
-     000044A3  cpct_getScreenPtr_asm              cpct_video
-     000044BF  _cpct_scanKeyboard                 cpct_keyboard
-     000044BF  cpct_scanKeyboard_asm              cpct_keyboard
+     0000441D  _cpct_disableFirmware              cpct_firmware
+     0000441D  _cpct_removeInterruptHandler       cpct_firmware
+     0000441D  cpct_disableFirmware_asm           cpct_firmware
+     0000441D  cpct_removeInterruptHandler_asm    cpct_firmware
+     0000442D  cpct_drawSolidBox_asm              cpct_sprites
+     000044D9  _cpct_mode_rom_status              cpct_firmware
+     000044DA  cpct_getScreenPtr_asm              cpct_video
+     000044F6  _cpct_scanKeyboard                 cpct_keyboard
+     000044F6  cpct_scanKeyboard_asm              cpct_keyboard
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 
 Files Linked                              [ module(s) ]
