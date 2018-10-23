@@ -11,7 +11,7 @@
 	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move, 3
 	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move,3
 
-
+	screenPointer : .dw  0xC000
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DRAW THE BARRA
@@ -20,11 +20,43 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ball_draw:
       ld ix,#ball
-jp render_drawCube
+;jp render_drawCube
+    ld      a, (m_back_buffer)  ;; DE = Back buffer
+    ld      d, a
+    ld      e, #0
+    ld      c, dc_x(ix)         ;; C = Entity Y
+    ld      b, dc_y(ix)         ;; B = Entity X
+    call cpct_getScreenPtr_asm
+ 
 
+    push hl
+
+
+    ex      de, hl        ;; DE = Puntero a memoria
+    		
+
+
+    ld      a, dc_col(ix)    ;; Color
+    ld      b, dc_h(ix)      ;; Alto
+    ld      c, dc_w(ix)      ;; Ancho
+
+    call cpct_drawSolidBox_asm
+
+    pop hl
+ 	;ld a, 
+   	   
+   	  ; ld a, #255
+ 	ld (screenPointer),hl
 
    ret
 
+
+ball_draw2:
+	 ld ix,#ball
+
+
+    jp render_drawCube
+    ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; BORRA UNA ENTIDAD
 ;; PARA CUADRADOS UNICAMENTE
@@ -38,7 +70,7 @@ ball_clear:
 
    ld  dc_col(ix), #0
 
-   call ball_draw
+   call ball_draw2
    ex af, af'
    ld dc_col(ix), a
 
@@ -83,7 +115,7 @@ ball_move:
  ld    a, dc_x(ix)     ;; Since screen max x is79
   sub  #77            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, colisionX       ;;
+ jp z, colisionX       ;;
 
 
 
@@ -107,7 +139,7 @@ ball_move:
 ld    a, dc_y(ix)     ;; Since screen max x is79
   sub  # 190           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, resetTheBall       
+ jp z, resetTheBall       
 
  
 
@@ -181,24 +213,50 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 ;; COMPROBAR POR DONDE ME ENTRA LA COLISION
 
 ;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
-	
+	ld ix,#ball
+	push hl
 
+  	ld      a, (m_front_buffer)  ;; DE = Back buffer
+   	ld      d, a
+   	ld      e, #0
+
+ 	ld a,dc_x(ix)
+   	sub #1
+  
+
+	    ld      c, a        ;; C = Entity Y
+
+     	 ld a,dc_y(ix)
+   	add #4
+   	 ld      b, a        	;; B = Entity X
+ 	call cpct_getScreenPtr_asm
+
+
+	 
+
+	 ld a, (hl)
+
+	 jp nz, colisionX
+
+	 inc hl
+	 inc hl
+
+	 jp nz, colisionX
 	
 	; si la x(bola) > x(caja) -> entro por la derecha
 
 
-	ld ix,#ball
 	 ld a,#0  
 	 sub bl_vy(ix) 
 	 
 
 	 
 	 ld bl_vy(ix),a
-	 call colisionX
+	; call colisionX
 
 	 ld dc_col(ix),#255
-
-    call destroy_cube
+	pop hl
+   	call destroy_cube
 
 	 ret
 
@@ -206,6 +264,10 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 
 	 colisionY2:
+	
+
+
+
 	 ld a,#0  
 	 sub bl_vy(ix) 
 	 
@@ -213,8 +275,8 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	 
 	 ld bl_vy(ix),a
 	 
-
-	 ld dc_col(ix),#200
+	 ld a, #192
+	 ld dc_col(ix),a
 
 	 ret
 
@@ -249,6 +311,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	resetTheBall:
 
 	call ball_fall
+	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; COMPROBACION COLISIONES BOUNDING BOXES

@@ -46,4 +46,5 @@ bl_hp = 9
 
 .globl ball
 .globl balldefault
+.globl screenPointer
 

@@ -113,6 +113,8 @@ Hexadecimal [16-Bits]
                              15 ;;.globl ren_switchBuffers
                              16 .globl render_drawCube
                              17 .globl ren_newScene
+                             18 .globl m_back_buffer
+                             19 .globl m_front_buffer
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
 Hexadecimal [16-Bits]
 
@@ -167,7 +169,8 @@ Hexadecimal [16-Bits]
                              46 
                              47 .globl ball
                              48 .globl balldefault
-                             49 
+                             49 .globl screenPointer
+                             50 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
 
@@ -367,7 +370,7 @@ Hexadecimal [16-Bits]
    007D 01                    3     .db     0x01     ;; Hitpoints
                              35 
                              36 
-   007E 03                   37 m_num_cube: .db 3
+   007E 14                   37 m_num_cube: .db 20
                              38 
    007F                      39 cube_clear:
    007F DD 21 06 00   [14]   40 ld ix,#cubeline10

@@ -51,4 +51,5 @@ Hexadecimal [16-Bits]
                              46 
                              47 .globl ball
                              48 .globl balldefault
-                             49 
+                             49 .globl screenPointer
+                             50 

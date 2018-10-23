@@ -8,7 +8,7 @@ Symbol Table
     ball_dra   **** GX  |     ball_mov   **** GX  |     ball_res   **** GX
     ball_upd   **** GX  |     balldefa   **** GX  |     bl_hp   =  0009 
     bl_up_h =  0008     |     bl_up_l =  0007     |     bl_vx   =  0005 
-    bl_vy   =  0006 
+    bl_vy   =  0006     |     screenPo   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

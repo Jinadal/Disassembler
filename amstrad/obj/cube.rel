@@ -1,21 +1,24 @@
 XL2
-H 1 areas 2F global symbols
+H 1 areas 32 global symbols
 S balldefault Ref0000
 S ball_clear Ref0000
 S _cpct_memset_f64_asm Ref0000
 S cpct_isKeyPressed_asm Ref0000
 S render_drawCube Ref0000
+S m_front_buffer Ref0000
 S k_max_cube_line Def0014
 S ball Ref0000
 S ren_newScene Ref0000
 S ball_reset Ref0000
 S .__.ABS. Def0000
+S screenPointer Ref0000
 S cpct_setVideoMemoryPage_asm Ref0000
 S ball_draw Ref0000
 S ren_clearBackBuffers Ref0000
 S ball_move Ref0000
 S cpct_setVideoMode_asm Ref0000
 S cpct_waitVSYNC_asm Ref0000
+S m_back_buffer Ref0000
 S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S ball_update Ref0000
@@ -172,7 +175,7 @@ T 78 00
 R 00 00 00 00
 T 78 00
 R 00 00 00 00
-T 78 00 4C 10 04 08 FF 01 03
+T 78 00 4C 10 04 08 FF 01 14
 R 00 00 00 00
 T 7F 00
 R 00 00 00 00
@@ -247,7 +250,7 @@ R 00 00 00 00
 T AC 01
 R 00 00 00 00
 T AC 01 CD 00 00 21 06 00 1E 00 16 00 0E 00 DD 21
-R 00 00 00 00 02 03 08 00 00 06 00 00
+R 00 00 00 00 02 03 09 00 00 06 00 00
 T BA 01 00 00
 R 00 00 00 00 00 02 00 00
 T BC 01

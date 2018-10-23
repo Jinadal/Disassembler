@@ -2594,7 +2594,8 @@ Hexadecimal [16-Bits]
                              46 
                              47 .globl ball
                              48 .globl balldefault
-                             49 
+                             49 .globl screenPointer
+                             50 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
@@ -2710,6 +2711,8 @@ Hexadecimal [16-Bits]
                              15 ;;.globl ren_switchBuffers
                              16 .globl render_drawCube
                              17 .globl ren_newScene
+                             18 .globl m_back_buffer
+                             19 .globl m_front_buffer
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
@@ -2725,28 +2728,28 @@ Hexadecimal [16-Bits]
    4000 31 00 80      [10]   14     ld  sp, #0x8000
                              15 
                              16     ;; Disable firmware to prevent it from interfering with string drawing
-   4003 CD B7 44      [17]   17     call cpct_disableFirmware_asm
+   4003 CD 00 45      [17]   17     call cpct_disableFirmware_asm
                              18 
    4006 0E 00         [ 7]   19     ld    c, #0
-   4008 CD AA 44      [17]   20     call cpct_setVideoMode_asm
+   4008 CD F3 44      [17]   20     call cpct_setVideoMode_asm
                              21 
                              22 
    400B                      23 loop:
-   400B CD B5 42      [17]   24     call cube_clear
+   400B CD FE 42      [17]   24     call cube_clear
                              25 
    400E CD 88 40      [17]   26     call barra_clear
-   4011 CD 04 41      [17]   27     call ball_clear
+   4011 CD 2C 41      [17]   27     call ball_clear
                              28 
                              29     
    4014 CD 9C 40      [17]   30     call barra_update
-   4017 CD 18 41      [17]   31     call ball_update
+   4017 CD 40 41      [17]   31     call ball_update
                              32 
-   401A CD 42 43      [17]   33     call cube_draw
+   401A CD 8B 43      [17]   33     call cube_draw
                              34 
    401D CD 80 40      [17]   35     call barra_draw
-   4020 CD FC 40      [17]   36     call ball_draw
+   4020 CD FE 40      [17]   36     call ball_draw
                              37 
-   4023 CD A2 44      [17]   38     call cpct_waitVSYNC_asm
+   4023 CD EB 44      [17]   38     call cpct_waitVSYNC_asm
                              39     ;;call ren_switchBuffers
    4026 CD 2E 40      [17]   40     call ren_newScene
                              41     

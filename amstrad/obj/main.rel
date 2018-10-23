@@ -1,5 +1,5 @@
 XL2
-H 2 areas 36 global symbols
+H 2 areas 39 global symbols
 M cpct_keyboard
 S balldefault Ref0000
 S ball_clear Ref0000
@@ -10,6 +10,7 @@ S cube_clear Ref0000
 S destroy_cube Ref0000
 S barra Ref0000
 S render_drawCube Ref0000
+S m_front_buffer Ref0000
 S barra_moveKeyboard Ref0000
 S k_max_cube_line Ref0000
 S barra_draw Ref0000
@@ -29,6 +30,7 @@ S cubeline116 Ref0000
 S cubeline117 Ref0000
 S cubeline118 Ref0000
 S cube_reset Ref0000
+S screenPointer Ref0000
 S cubeline119 Ref0000
 S cpct_setVideoMemoryPage_asm Ref0000
 S cubeline10 Ref0000
@@ -49,6 +51,7 @@ S cubeline19 Ref0000
 S cpct_setVideoMode_asm Ref0000
 S cpct_waitVSYNC_asm Ref0000
 S ball_move Ref0000
+S m_back_buffer Ref0000
 S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
 S ball_update Ref0000
@@ -60,14 +63,14 @@ A _DATA size 0 flags 0 addr 0
 T 00 00
 R 00 00 00 00
 T 00 00 31 00 80 CD 00 00 0E 00 CD 00 00
-R 00 00 00 00 02 06 30 00 02 0B 2D 00
+R 00 00 00 00 02 06 33 00 02 0B 2F 00
 T 0B 00
 R 00 00 00 00
 T 0B 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 05 00 02 06 29 00 02 09 01 00
+R 00 00 00 00 02 03 05 00 02 06 2B 00 02 09 01 00
 T 15 00 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 02 23 00 02 05 32 00 02 08 26 00
+R 00 00 00 00 02 02 25 00 02 05 35 00 02 08 28 00
 T 1E 00 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 02 0B 00 02 05 1F 00 02 08 2E 00
+R 00 00 00 00 02 02 0C 00 02 05 21 00 02 08 30 00
 T 27 00 00 00 C3 0B 00
-R 00 00 00 00 02 02 10 00 00 05 00 00
+R 00 00 00 00 02 02 11 00 00 05 00 00
