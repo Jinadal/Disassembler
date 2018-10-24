@@ -1,38 +1,31 @@
 .include "main.h.s"
 .include "cube.h.s"
 .include "render.h.s"
+.include "ball.h.s"
 
-k_max_cube_line = 20
+.globl _cubeline_sp
+
+
+k_max_cube_line = 10
 k_cube_size = 7
 
 
-DefineCubeLine1 cubedefault, 0x00, 0x00, 0x04, 0x08, 0x0F, 0x01
+DefineCubeLine1 cubedefault, 0x00, 0x10, 0x04, 0x08, _cubeline_sp, 0x01
 
 
-
-DefineCubeLine1 cubeline10, 0x00, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline11, 0x04, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline12, 0x08, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline13, 0x0C, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline14, 0x10, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline15, 0x14, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline16, 0x18, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline17, 0x1C, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline18, 0x20, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline19, 0x24, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline110, 0x28, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline111, 0x2C, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline112, 0x30, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline113, 0x34, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline114, 0x38, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline115, 0x3C, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline116, 0x40, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline117, 0x44, 0x10, 0x04, 0x08, 0xFF, 0x01
-DefineCubeLine1 cubeline118, 0x48, 0x10, 0x04, 0x08, 0x0F, 0x01
-DefineCubeLine1 cubeline119, 0x4C, 0x10, 0x04, 0x08, 0xFF, 0x01
+DefineCubeLine1 cubeline10, 0x00, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline11, 0x08, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline12, 0x10, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline13, 0x18, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline14, 0x20, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline15, 0x28, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline16, 0x30, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline17, 0x38, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline18, 0x40, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline19, 0x48, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
 
 
-m_num_cube: .db 20
+m_num_cube: .db 10
 
 cube_clear:
 ld ix,#cubeline10
@@ -54,26 +47,6 @@ call cube_clearAll
 ld ix,#cubeline18
 call cube_clearAll
 ld ix,#cubeline19
-call cube_clearAll
-ld ix,#cubeline110
-call cube_clearAll
-ld ix,#cubeline111
-call cube_clearAll
-ld ix,#cubeline112
-call cube_clearAll
-ld ix,#cubeline113
-call cube_clearAll
-ld ix,#cubeline114
-call cube_clearAll
-ld ix,#cubeline115
-call cube_clearAll
-ld ix,#cubeline116
-call cube_clearAll
-ld ix,#cubeline117
-call cube_clearAll
-ld ix,#cubeline118
-call cube_clearAll
-ld ix,#cubeline119
 call cube_clearAll
 ret
 
@@ -98,26 +71,6 @@ ld ix,#cubeline18
 call cube_drawAll
 ld ix,#cubeline19
 call cube_drawAll
-ld ix,#cubeline110
-call cube_drawAll
-ld ix,#cubeline111
-call cube_drawAll
-ld ix,#cubeline112
-call cube_drawAll
-ld ix,#cubeline113
-call cube_drawAll
-ld ix,#cubeline114
-call cube_drawAll
-ld ix,#cubeline115
-call cube_drawAll
-ld ix,#cubeline116
-call cube_drawAll
-ld ix,#cubeline117
-call cube_drawAll
-ld ix,#cubeline118
-call cube_drawAll
-ld ix,#cubeline119
-call cube_drawAll
 ret
 
 
@@ -138,14 +91,14 @@ cube_drawAll:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cube_clearAll:
 
-   ld  a, dc_col(ix)
-   ex af, af'
-
-   ld  dc_col(ix), #0
-
-   call render_drawCube
-   ex af, af'
-   ld dc_col(ix), a
+;;   ld  a, dc_col(ix)
+;;   ex af, af'
+;;
+;;   ld  dc_col(ix), #0
+;;
+;;   call render_drawCube
+;;   ex af, af'
+;;   ld dc_col(ix), a
 
    ret
 
@@ -155,6 +108,8 @@ cube_clearAll:
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 cube_reset:
+
+	call ball_reset
 
 	ld hl, #cubeline10
 	ld e, #0
@@ -225,25 +180,33 @@ cube_reset:
 
     	jr nz, bucl
 
-
+    	
 
  ret
 
 destroy_cube:
-ld (hl),#0xFF
-inc hl
-inc hl
-inc hl
-inc hl
+	ld (hl),#0xFF
+	inc hl			;;	Y		
+	inc hl			;;	W
+	inc hl			;;	H
+	inc hl			;;	SP_L
+	inc hl			;;	SP_H
+	inc hl			;;  HP
 
-ld (hl),#0x00
+	ld (hl),#0
 
-dec hl
-dec hl
-dec hl
-dec hl
+	dec hl			;; SP_H
+	dec hl			;; SP_L
+	dec hl			;; H 
+	dec hl			;; W
+	dec hl			;; Y
+	dec hl			;; X
 
+	ld a, (m_num_cube)
+	sub #1
+	ld (m_num_cube),a
 
+	jp z, cube_reset
 
 ret
 

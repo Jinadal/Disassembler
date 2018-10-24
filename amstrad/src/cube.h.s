@@ -39,11 +39,6 @@ c_hp        = 0 + c_de_size
 
 .globl k_max_cube_line	
 
-
-
-.globl k_max_cube_line	
-
-
 .globl cubeline10
 .globl cubeline11
 .globl cubeline12
@@ -54,13 +49,3 @@ c_hp        = 0 + c_de_size
 .globl cubeline17
 .globl cubeline18
 .globl cubeline19
-.globl cubeline110
-.globl cubeline111
-.globl cubeline112
-.globl cubeline113
-.globl cubeline114
-.globl cubeline115
-.globl cubeline116
-.globl cubeline117
-.globl cubeline118
-.globl cubeline119

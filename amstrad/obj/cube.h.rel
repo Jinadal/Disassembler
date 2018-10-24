@@ -1,22 +1,12 @@
 XL2
-H 1 areas 1B global symbols
+H 1 areas 12 global symbols
 S cube_drawAll Ref0000
 S cube_clear Ref0000
 S destroy_cube Ref0000
 S k_max_cube_line Ref0000
-S cubeline110 Ref0000
-S cubeline111 Ref0000
-S cubeline112 Ref0000
-S cubeline113 Ref0000
-S cubeline114 Ref0000
-S cubeline115 Ref0000
 S cube_clearAll Ref0000
 S .__.ABS. Def0000
-S cubeline116 Ref0000
-S cubeline117 Ref0000
-S cubeline118 Ref0000
 S cube_reset Ref0000
-S cubeline119 Ref0000
 S cubeline10 Ref0000
 S cubeline11 Ref0000
 S cubeline12 Ref0000

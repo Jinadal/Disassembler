@@ -2526,20 +2526,18 @@ Hexadecimal [16-Bits]
                              28 ;b_w = 2
                              29 ;b_h = 3
                              30 ;b_col = 4
-                     0005    31 b_vx = 5
-                     0006    32 b_vy = 6
-                     0007    33 b_up_l = 7
-                     0008    34 b_up_h = 8
-                             35 	
-                             36 
-                             37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                     0006    31 b_vx = 6
+                     0007    32 b_vy = 7
+                             33 	
+                             34 
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             36 ;;
+                             37 ;;OBJETOS CREADOS CON LA MACROS
                              38 ;;
-                             39 ;;OBJETOS CREADOS CON LA MACROS
-                             40 ;;
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             40 
+                             41 .globl barra
                              42 
-                             43 .globl barra
-                             44 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
@@ -2564,9 +2562,9 @@ Hexadecimal [16-Bits]
                              16 ;;
                              17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              18 
-                             19    .macro DefineBall _name, _x, _y, _w, _h, _col,  _vx, _vy,_upd,_hp
+                             19    .macro DefineBall _name, _x, _y, _w, _h, _sprite,  _vx, _vy,_upd,_hp
                              20 _name: 
-                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _sprite
                              22   ; .db    _x, _y     ;; X, Y
                              23    ;.db    _w, _h     ;; W, H
                              24     ;.db   _col        ;; Color
@@ -2579,11 +2577,11 @@ Hexadecimal [16-Bits]
                              31 ;bl_w = 2
                              32 ;bl_h = 3
                              33 ;bl_col = 4
-                     0005    34 bl_vx = 5
-                     0006    35 bl_vy = 6
-                     0007    36 bl_up_l = 7
-                     0008    37 bl_up_h = 8
-                     0009    38 bl_hp = 9
+                     0006    34 bl_vx = 6
+                     0007    35 bl_vy = 7
+                     0008    36 bl_up_l = 8
+                     0009    37 bl_up_h = 9
+                     000A    38 bl_hp = 10
                              39 	
                              40 
                              41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2610,6 +2608,8 @@ Hexadecimal [16-Bits]
                               7 .globl cpct_isKeyPressed_asm
                               8 .globl cpct_setVideoMemoryPage_asm
                               9 .globl _cpct_memset_f64_asm
+                             10 .globl cpct_drawSprite_asm
+                             11 .globl cpct_setPalette_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
@@ -2650,44 +2650,24 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
-<<<<<<< HEAD
-                             35 .globl cube_reset
-=======
-                             35 .globl destroy_cube
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
-                             36 
-                             37 .globl k_max_cube_line	
-                             38 
+                             35 
+                             36 .globl cube_reset
+                             37 
+                             38 .globl destroy_cube
                              39 
                              40 .globl k_max_cube_line	
                              41 
-                             42 
-                             43 .globl cubeline10
-                             44 .globl cubeline11
-                             45 .globl cubeline12
-                             46 .globl cubeline13
-                             47 .globl cubeline14
-                             48 .globl cubeline15
-                             49 .globl cubeline16
-                             50 .globl cubeline17
-                             51 .globl cubeline18
-                             52 .globl cubeline19
-                             53 .globl cubeline110
-                             54 .globl cubeline111
+                             42 .globl cubeline10
+                             43 .globl cubeline11
+                             44 .globl cubeline12
+                             45 .globl cubeline13
+                             46 .globl cubeline14
+                             47 .globl cubeline15
+                             48 .globl cubeline16
+                             49 .globl cubeline17
+                             50 .globl cubeline18
+                             51 .globl cubeline19
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
-Hexadecimal [16-Bits]
-
-
-
-                             55 .globl cubeline112
-                             56 .globl cubeline113
-                             57 .globl cubeline114
-                             58 .globl cubeline115
-                             59 .globl cubeline116
-                             60 .globl cubeline117
-                             61 .globl cubeline118
-                             62 .globl cubeline119
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
@@ -2696,86 +2676,65 @@ Hexadecimal [16-Bits]
                               1 
                               2 
                               3 ;;Drawable Entity
-                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _col
+                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _sprite
                               5 _name:
                               6     .db _x, _y
                               7     .db _w, _h
-                              8     .db _col
-                              9 .endm
-                     0001    10 dc_x    = 0     dc_y    = 1
-                     0003    11 dc_w    = 2     dc_h    = 3
-                     0004    12 dc_col  = 4
-                             13 
-                             14 .globl ren_clearBackBuffers
-                             15 ;;.globl ren_switchBuffers
-                             16 .globl render_drawCube
-                             17 .globl ren_newScene
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
+                              8     .dw _sprite
+                              9 
+                             10 _name'_size = . - _name
+                             11 .endm
+                     0001    12 dc_x    = 0     dc_y    = 1
+                     0003    13 dc_w    = 2     dc_h    = 3
+                     0005    14 dc_sp_l  = 4    dc_sp_h  = 5
+                             15 
+                             16 .globl ren_clearBackBuffers
+                             17 ;;.globl ren_switchBuffers
+                             18 .globl render_drawCube
+                             19 .globl ren_newScene
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
                               7 
-                              8 
+                              8 .globl _bar_pal
                               9 
                              10 .area _DATA
                              11 .area _CODE
                              12 
-   4000                      13 _main::
-   4000 31 00 80      [10]   14     ld  sp, #0x8000
+   4098                      13 _main::
+   4098 31 00 80      [10]   14     ld  sp, #0x8000
                              15 
                              16     ;; Disable firmware to prevent it from interfering with string drawing
-<<<<<<< HEAD
-   4003 CD 93 44      [17]   17     call cpct_disableFirmware_asm
+   409B CD 20 45      [17]   17     call cpct_disableFirmware_asm
                              18 
-   4006 0E 00         [ 7]   19     ld    c, #0
-   4008 CD 86 44      [17]   20     call cpct_setVideoMode_asm
+   409E 0E 00         [ 7]   19     ld    c, #0
+   40A0 CD 13 45      [17]   20     call cpct_setVideoMode_asm
                              21 
-                             22 
-   400B                      23 loop:
-   400B CD AC 42      [17]   24     call cube_clear
-                             25 
-   400E CD 88 40      [17]   26     call barra_clear
-   4011 CD 04 41      [17]   27     call ball_clear
-                             28 
-                             29     
-   4014 CD 9C 40      [17]   30     call barra_update
-   4017 CD 18 41      [17]   31     call ball_update
-                             32 
-   401A CD 39 43      [17]   33     call cube_draw
+   40A3 21 68 40      [10]   22     ld   hl, #_bar_pal
+   40A6 11 10 00      [10]   23     ld   de, #16
+   40A9 CD 45 44      [17]   24     call cpct_setPalette_asm
+   40AC                      25 loop:
+   40AC CD 1B 41      [17]   26     call cube_clear
+                             27 
+   40AF CD 21 42      [17]   28     call barra_clear
+   40B2 CD 8F 42      [17]   29     call ball_clear
+                             30 
+                             31     
+   40B5 CD 25 42      [17]   32     call barra_update
+   40B8 CD 90 42      [17]   33     call ball_update
                              34 
-   401D CD 80 40      [17]   35     call barra_draw
-   4020 CD FC 40      [17]   36     call ball_draw
-                             37 
-   4023 CD 7E 44      [17]   38     call cpct_waitVSYNC_asm
-=======
-   4003 CD 3F 44      [17]   17     call cpct_disableFirmware_asm
-                             18 
-   4006 0E 00         [ 7]   19     ld    c, #0
-   4008 CD 32 44      [17]   20     call cpct_setVideoMode_asm
-                             21 
-                             22 
-   400B                      23 loop:
-   400B CD A5 40      [17]   24     call cube_clear
-                             25 
-   400E CD F0 41      [17]   26     call barra_clear
-   4011 CD 6A 42      [17]   27     call ball_clear
-                             28 
-                             29     
-   4014 CD 04 42      [17]   30     call barra_update
-   4017 CD 7E 42      [17]   31     call ball_update
-                             32 
-   401A CD 32 41      [17]   33     call cube_draw
-                             34 
-   401D CD E8 41      [17]   35     call barra_draw
-   4020 CD 62 42      [17]   36     call ball_draw
-                             37 
-   4023 CD 2A 44      [17]   38     call cpct_waitVSYNC_asm
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
-                             39     ;;call ren_switchBuffers
-   4026 CD 7F 43      [17]   40     call ren_newScene
-                             41     
-                             42    ;; Loop forever
-   4029 C3 0B 40      [10]   43    jp    loop
-                             44 
-                             45    
+   40BB CD 62 41      [17]   35     call cube_draw
+                             36 
+   40BE CD 19 42      [17]   37     call barra_draw
+   40C1 CD 87 42      [17]   38     call ball_draw
+                             39 
+   40C4 CD 0B 45      [17]   40     call cpct_waitVSYNC_asm
+                             41     ;;call ren_switchBuffers
+   40C7 CD AA 43      [17]   42     call ren_newScene
+                             43     
+                             44    ;; Loop forever
+   40CA C3 AC 40      [10]   45    jp    loop
+                             46 
+                             47    

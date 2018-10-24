@@ -1,6 +1,7 @@
 .include "render.h.s"
 .include "main.h.s"
 
+
 m_front_buffer: .db 0xC0
 m_back_buffer:  .db 0x80
 
@@ -64,10 +65,11 @@ render_drawCube:
     call cpct_getScreenPtr_asm
 
     ex      de, hl        ;; DE = Puntero a memoria
-    ld      a, dc_col(ix)    ;; Color
+    ld      l, dc_sp_l(ix)
+    ld      h, dc_sp_h(ix)
     ld      b, dc_h(ix)      ;; Alto
     ld      c, dc_w(ix)      ;; Ancho
 
-    call cpct_drawSolidBox_asm
+    call cpct_drawSprite_asm
 
     ret

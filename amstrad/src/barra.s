@@ -3,7 +3,10 @@
 .include "barra.h.s"
 .include "main.h.s"
 
-	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
+.globl _bar_sp
+
+
+	DefineBarra barra, 40, 190, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
 
 
 
@@ -26,17 +29,17 @@ barra_draw:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 barra_clear:
   ld ix,#barra
-
-   ld  a, dc_col(ix)
-   ex af, af'
-
-   ld  dc_col(ix), #0
-
-   call barra_draw
-   ex af, af'
-   ld dc_col(ix), a
-
-   ret
+  ;;
+  ;;ld  a, dc_col(ix)
+  ;;ex af, af'
+  ;;
+  ;;ld  dc_col(ix), #0
+  ;;
+  ;;call barra_draw
+  ;;ex af, af'
+  ;;ld dc_col(ix), a
+  ;;
+  ;;ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ACTUALIZAR UNA ENTIDAD
 ;; LLAMA A SU FUNCION DIFERENCIATIVA

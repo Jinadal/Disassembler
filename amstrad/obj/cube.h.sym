@@ -10,14 +10,7 @@ Symbol Table
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-<<<<<<< HEAD
-    cubeline   **** GX  |     cubeline   **** GX  |     k_max_cu   **** GX
-=======
     cubeline   **** GX  |     destroy_   **** GX  |     k_max_cu   **** GX
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

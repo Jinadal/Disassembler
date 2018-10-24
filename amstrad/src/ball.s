@@ -5,11 +5,11 @@
 .include "ball.h.s"
 .include "cube.h.s"
 
+.globl _ball_sp
 
 
-
-	DefineBall ball, 40,78,1,4,0xC0,1,2, ball_move, 3
-	DefineBall balldefault, 40,78,1,4,0xC0,1,2, ball_move,3
+	DefineBall ball, 40,78,1,4,_ball_sp,1,2, ball_move, 3
+	DefineBall balldefault, 40,78,1,4,_ball_sp,1,2, ball_move,3
 
 
 
@@ -31,16 +31,16 @@ jp render_drawCube
 ;; ENTRADA: IX -> Puntero a entidad
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ball_clear:
-  ld ix,#ball
-
-   ld  a, dc_col(ix)
-   ex af, af'
-
-   ld  dc_col(ix), #0
-
-   call ball_draw
-   ex af, af'
-   ld dc_col(ix), a
+ ;; ld ix,#ball
+;;
+ ;;  ld  a, dc_col(ix)
+ ;;  ex af, af'
+;;
+ ;;  ld  dc_col(ix), #0
+;;
+ ;;  call ball_draw
+ ;;  ex af, af'
+ ;;  ld dc_col(ix), a
 
    ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -156,12 +156,14 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
     jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
   	
 
-    	inc hl
-    	inc hl
-    	inc hl
-    	inc hl
-    	inc hl
-    	inc hl
+    	inc hl		;;  Y
+    	inc hl		;;	W
+    	inc hl		;; 	H
+    	inc hl		;;	SP_L
+    	inc hl		;;	SP_H
+    	inc hl		;;	HP
+		inc hl		;;	X
+
 
   	ld a,e
   	sub #1
@@ -196,7 +198,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	 ld bl_vy(ix),a
 	 call colisionX
 
-	 ld dc_col(ix),#255
+	;; ld dc_col(ix),#255
 
     call destroy_cube
 
@@ -214,7 +216,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	 ld bl_vy(ix),a
 	 
 
-	 ld dc_col(ix),#200
+	;; ld dc_col(ix),#200
 
 	 ret
 
@@ -228,7 +230,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	 ld bl_vx(ix),a
 	 
 
-	 ld dc_col(ix),#15
+	;; ld dc_col(ix),#15
 
 
 	ret
@@ -248,7 +250,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 	resetTheBall:
 
-	call ball_reset
+	call ball_fall
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
 ;; COMPROBACION COLISIONES BOUNDING BOXES
@@ -360,7 +362,12 @@ ball_reset:
 	inc hl
 
 	ld a, (hl)
-	ld dc_col(ix), a
+	ld dc_sp_l(ix), a
+;;	ld dc_col(ix), a
+	inc hl
+
+	ld a, (hl)
+	ld dc_sp_h(ix), a
 
 	inc hl
 
@@ -374,13 +381,25 @@ ball_reset:
 
 	inc hl
 
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;MINUS 1 LIFE FOR BALL
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+
+	ball_fall:
+
+	;ld hl, #balldefault
+	call ball_reset
 	ld a, bl_hp(ix)
 	sub #1
 
 	ld bl_hp(ix), a
 
 	jp z, restart
-
+	call ball_reset
 	ret
 	restart:
 	ld a, bl_hp(ix)
@@ -388,8 +407,10 @@ ball_reset:
 
 	ld bl_hp(ix), a
 
-	ld a, #50
-	ld dc_col(ix), a
+	;ld a, #50
+	;ld dc_col(ix), a
 	call cube_reset
+
+	
 
 	ret

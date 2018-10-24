@@ -54,52 +54,41 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
-    _cpct_me   **** GX  |   0 _main      0000 GR  |     b_up_h  =  0008 
-    b_up_l  =  0007     |     b_vx    =  0005     |     b_vy    =  0006 
-    ball       **** GX  |     ball_cle   **** GX  |     ball_dra   **** GX
-    ball_mov   **** GX  |     ball_res   **** GX  |     ball_upd   **** GX
+    _bar_pal   **** GX  |     _cpct_me   **** GX  |   0 _main      0000 GR
+    b_vx    =  0006     |     b_vy    =  0007     |     ball       **** GX
+    ball_cle   **** GX  |     ball_dra   **** GX  |     ball_mov   **** GX
+    ball_res   **** GX  |     ball_upd   **** GX  |     balldefa   **** GX
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    balldefa   **** GX  |     barra      **** GX  |     barra_cl   **** GX
-    barra_dr   **** GX  |     barra_mo   **** GX  |     barra_mo   **** GX
-    barra_up   **** GX  |     bl_hp   =  0009     |     bl_up_h =  0008 
-    bl_up_l =  0007     |     bl_vx   =  0005     |     bl_vy   =  0006 
-    c_de    =  0000     |     c_de_siz=  0006     |     c_hp    =  0006 
-    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
+    barra      **** GX  |     barra_cl   **** GX  |     barra_dr   **** GX
+    barra_mo   **** GX  |     barra_mo   **** GX  |     barra_up   **** GX
+    bl_hp   =  000A     |     bl_up_h =  0009     |     bl_up_l =  0008 
+    bl_vx   =  0006     |     bl_vy   =  0007     |     c_de    =  0000 
+    c_de_siz=  0006     |     c_hp    =  0006     |     cpct_dis   **** GX
+    cpct_dra   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
     cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
     cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
-    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
-    cube_cle   **** GX  |     cube_cle   **** GX  |     cube_dra   **** GX
-    cube_dra   **** GX  |     cube_res   **** GX  |     cubeline   **** GX
+    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
+    cpct_wai   **** GX  |     cube_cle   **** GX  |     cube_cle   **** GX
+    cube_dra   **** GX  |     cube_dra   **** GX  |     cube_res   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-<<<<<<< HEAD
-    cubeline   **** GX  |     dc_col  =  0004     |     dc_h    =  0003 
-    dc_w    =  0002     |     dc_x    =  0000     |     dc_y    =  0001 
-    k_max_cu   **** GX  |   0 loop       000B R   |     opc_DI  =  00F3 
-    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
-    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
-=======
-    cubeline   **** GX  |     cubeline   **** GX  |     dc_col  =  0004 
-    dc_h    =  0003     |     dc_w    =  0002     |     dc_x    =  0000 
+    cubeline   **** GX  |     dc_h    =  0003     |     dc_sp_h =  0005 
+    dc_sp_l =  0004     |     dc_w    =  0002     |     dc_x    =  0000 
     dc_y    =  0001     |     destroy_   **** GX  |     k_max_cu   **** GX
-  0 loop       000B R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
+  0 loop       0014 R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
     opc_JR  =  0018     |     opc_LD_D=  0016     |     ren_clea   **** GX
     ren_newS   **** GX  |     render_d   **** GX
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   2C   flags    0
+   0 _CODE      size   35   flags    0
    1 _DATA      size    0   flags    0
 

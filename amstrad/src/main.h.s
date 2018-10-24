@@ -7,3 +7,5 @@
 .globl cpct_isKeyPressed_asm
 .globl cpct_setVideoMemoryPage_asm
 .globl _cpct_memset_f64_asm
+.globl cpct_drawSprite_asm
+.globl cpct_setPalette_asm

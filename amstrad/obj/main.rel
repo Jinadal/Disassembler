@@ -1,35 +1,27 @@
 XL2
-H 2 areas 35 global symbols
+H 2 areas 2F global symbols
 M cpct_keyboard
 S balldefault Ref0000
 S ball_clear Ref0000
 S _cpct_memset_f64_asm Ref0000
+S cpct_setPalette_asm Ref0000
 S cpct_isKeyPressed_asm Ref0000
 S cube_drawAll Ref0000
 S cube_clear Ref0000
 S destroy_cube Ref0000
 S barra Ref0000
 S render_drawCube Ref0000
+S cpct_drawSprite_asm Ref0000
 S barra_moveKeyboard Ref0000
 S k_max_cube_line Ref0000
 S barra_draw Ref0000
-S cubeline110 Ref0000
-S cubeline111 Ref0000
-S cubeline112 Ref0000
 S ball Ref0000
 S ren_newScene Ref0000
-S cubeline113 Ref0000
-S cubeline114 Ref0000
 S ball_reset Ref0000
-S cubeline115 Ref0000
 S cube_clearAll Ref0000
 S barra_move Ref0000
 S .__.ABS. Def0000
-S cubeline116 Ref0000
-S cubeline117 Ref0000
-S cubeline118 Ref0000
 S cube_reset Ref0000
-S cubeline119 Ref0000
 S cpct_setVideoMemoryPage_asm Ref0000
 S cubeline10 Ref0000
 S ball_draw Ref0000
@@ -44,6 +36,7 @@ S cubeline15 Ref0000
 S cubeline16 Ref0000
 S barra_clear Ref0000
 S cubeline17 Ref0000
+S _bar_pal Ref0000
 S cubeline18 Ref0000
 S cubeline19 Ref0000
 S cpct_setVideoMode_asm Ref0000
@@ -54,24 +47,22 @@ S cpct_drawSolidBox_asm Ref0000
 S ball_update Ref0000
 S cpct_scanKeyboard_asm Ref0000
 S cpct_getScreenPtr_asm Ref0000
-A _CODE size 2C flags 0 addr 0
+A _CODE size 35 flags 0 addr 0
 S _main Def0000
 A _DATA size 0 flags 0 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 31 00 80 CD 00 00 0E 00 CD 00 00
-R 00 00 00 00 02 06 2F 00 02 0B 2C 00
-T 0B 00
+T 00 00 31 00 80 CD 00 00 0E 00 CD 00 00 21 00 00
+R 00 00 00 00 02 06 29 00 02 0B 26 00 02 0E 23 00
+T 0E 00 11 10 00 CD 00 00
+R 00 00 00 00 02 06 03 00
+T 14 00
 R 00 00 00 00
-T 0B 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 05 00 02 06 28 00 02 09 01 00
-T 15 00 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 02 22 00 02 05 31 00 02 08 25 00
+T 14 00 CD 00 00 CD 00 00 CD 00 00 CD
+R 00 00 00 00 02 03 06 00 02 06 21 00 02 09 01 00
 T 1E 00 00 00 CD 00 00 CD 00 00 CD
-<<<<<<< HEAD
-R 00 00 00 00 02 02 0A 00 02 05 1E 00 02 08 2D 00
-=======
-R 00 00 00 00 02 02 0B 00 02 05 1E 00 02 08 2D 00
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
-T 27 00 00 00 C3 0B 00
-R 00 00 00 00 02 02 10 00 00 05 00 00
+R 00 00 00 00 02 02 1B 00 02 05 2B 00 02 08 1E 00
+T 27 00 00 00 CD 00 00 CD 00 00 CD
+R 00 00 00 00 02 02 0D 00 02 05 17 00 02 08 27 00
+T 30 00 00 00 C3 14 00
+R 00 00 00 00 02 02 0F 00 00 05 00 00

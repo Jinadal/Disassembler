@@ -7,6 +7,9 @@
 -k /home/nacho/Escritorio/cpctelera-development/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
 -l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
 -l z80
+obj/sprites/ball.rel
+obj/sprites/cubeline.rel
+obj/sprites/bar.rel
 obj/main.rel
 obj/cube.rel
 obj/cube.h.rel

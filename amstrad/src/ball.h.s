@@ -16,9 +16,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-   .macro DefineBall _name, _x, _y, _w, _h, _col,  _vx, _vy,_upd,_hp
+   .macro DefineBall _name, _x, _y, _w, _h, _sprite,  _vx, _vy,_upd,_hp
 _name: 
-	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _sprite
   ; .db    _x, _y     ;; X, Y
    ;.db    _w, _h     ;; W, H
     ;.db   _col        ;; Color
@@ -31,11 +31,11 @@ _name:
 ;bl_w = 2
 ;bl_h = 3
 ;bl_col = 4
-bl_vx = 5
-bl_vy = 6
-bl_up_l = 7
-bl_up_h = 8
-bl_hp = 9
+bl_vx = 6
+bl_vy = 7
+bl_up_l = 8
+bl_up_h = 9
+bl_hp = 10
 	
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -37,40 +37,20 @@ Hexadecimal [16-Bits]
                              32 .globl cube_draw
                              33 .globl cube_drawAll
                              34 .globl cube_clearAll
-<<<<<<< HEAD
-                             35 .globl cube_reset
-=======
-                             35 .globl destroy_cube
->>>>>>> b2df6abdeacb155e0d7cd4ebd90172ae9204ddc4
-                             36 
-                             37 .globl k_max_cube_line	
-                             38 
+                             35 
+                             36 .globl cube_reset
+                             37 
+                             38 .globl destroy_cube
                              39 
                              40 .globl k_max_cube_line	
                              41 
-                             42 
-                             43 .globl cubeline10
-                             44 .globl cubeline11
-                             45 .globl cubeline12
-                             46 .globl cubeline13
-                             47 .globl cubeline14
-                             48 .globl cubeline15
-                             49 .globl cubeline16
-                             50 .globl cubeline17
-                             51 .globl cubeline18
-                             52 .globl cubeline19
-                             53 .globl cubeline110
-                             54 .globl cubeline111
-                             55 .globl cubeline112
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
-Hexadecimal [16-Bits]
-
-
-
-                             56 .globl cubeline113
-                             57 .globl cubeline114
-                             58 .globl cubeline115
-                             59 .globl cubeline116
-                             60 .globl cubeline117
-                             61 .globl cubeline118
-                             62 .globl cubeline119
+                             42 .globl cubeline10
+                             43 .globl cubeline11
+                             44 .globl cubeline12
+                             45 .globl cubeline13
+                             46 .globl cubeline14
+                             47 .globl cubeline15
+                             48 .globl cubeline16
+                             49 .globl cubeline17
+                             50 .globl cubeline18
+                             51 .globl cubeline19

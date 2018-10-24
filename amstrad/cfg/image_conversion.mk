@@ -40,6 +40,12 @@
 #$(eval $(call IMG2SP, SET_PALETTE_FW  , $(PALETTE)         ))
 #$(eval $(call IMG2SP, CONVERT_PALETTE , $(PALETTE), g_palette ))
 #$(eval $(call IMG2SP, CONVERT         , img.png , w, h, array, palette, tileset))
+PALETTE=0 1 2 3 6 9 11 12 13 15 16 18 20 24 25 26
+$(eval $(call IMG2SP, SET_FOLDER      , src/sprites/               ))
+$(eval $(call IMG2SP, SET_PALETTE_FW  , $(PALETTE)         ))
+$(eval $(call IMG2SP, CONVERT, img/bar.png , 16, 4, bar_sp, bar_pal))
+$(eval $(call IMG2SP, CONVERT, img/cubeline.png , 16, 8, cubeline_sp, cubeline_pal))
+$(eval $(call IMG2SP, CONVERT, img/ball.png , 4, 4, ball_sp, ball_pal))
 
 ##
 ## OLD MACROS (For compatibility)

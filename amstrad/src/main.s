@@ -5,7 +5,7 @@
 .include "cube.h.s"
 .include "render.h.s"
 
-
+.globl _bar_pal
 
 .area _DATA
 .area _CODE
@@ -19,7 +19,9 @@ _main::
     ld    c, #0
     call cpct_setVideoMode_asm
 
-
+    ld   hl, #_bar_pal
+    ld   de, #16
+    call cpct_setPalette_asm
 loop:
     call cube_clear
 

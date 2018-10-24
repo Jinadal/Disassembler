@@ -12,3 +12,5 @@ Hexadecimal [16-Bits]
                               7 .globl cpct_isKeyPressed_asm
                               8 .globl cpct_setVideoMemoryPage_asm
                               9 .globl _cpct_memset_f64_asm
+                             10 .globl cpct_drawSprite_asm
+                             11 .globl cpct_setPalette_asm

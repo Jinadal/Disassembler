@@ -54,21 +54,22 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
-    _cpct_me   **** GX  |   0 a_no_pul   003B R   |     b_up_h  =  0008 
-    b_up_l  =  0007     |     b_vx    =  0005     |     b_vy    =  0006 
-  0 barra      0000 GR  |   0 barra_cl   0011 GR  |   0 barra_dr   0009 GR
-  0 barra_dw   0000 R   |   0 barra_mo   004B GR  |   0 barra_mo   002C GR
+    _bar_sp    **** GX  |     _cpct_me   **** GX  |   0 a_no_pul   002C R
+    b_vx    =  0006     |     b_vy    =  0007     |   0 barra      0000 GR
+  0 barra_cl   0012 GR  |   0 barra_dr   000A GR  |   0 barra_dw   0000 R
+    barra_dw=  0006     |   0 barra_mo   003C GR  |   0 barra_mo   001D GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-  0 barra_up   0025 GR  |   0 colision   006D R   |     cpct_dis   **** GX
-    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
-    cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
-    cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
-    cpct_set   **** GX  |     cpct_wai   **** GX  |   0 d_no_pul   0047 R
-    dc_col  =  0004     |     dc_h    =  0003     |     dc_w    =  0002 
+  0 barra_up   0016 GR  |   0 colision   005E R   |     cpct_dis   **** GX
+    cpct_dra   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
+    cpct_isK   **** GX  |     cpct_pag=  0000     |     cpct_pag=  0010 
+    cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
+    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
+    cpct_wai   **** GX  |   0 d_no_pul   0038 R   |     dc_h    =  0003 
+    dc_sp_h =  0005     |     dc_sp_l =  0004     |     dc_w    =  0002 
     dc_x    =  0000     |     dc_y    =  0001     |     opc_DI  =  00F3 
     opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
     ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
@@ -78,5 +79,5 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   71   flags    0
+   0 _CODE      size   62   flags    0
 

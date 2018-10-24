@@ -21,9 +21,9 @@ Hexadecimal [16-Bits]
                              16 ;;
                              17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              18 
-                             19    .macro DefineBall _name, _x, _y, _w, _h, _col,  _vx, _vy,_upd,_hp
+                             19    .macro DefineBall _name, _x, _y, _w, _h, _sprite,  _vx, _vy,_upd,_hp
                              20 _name: 
-                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _sprite
                              22   ; .db    _x, _y     ;; X, Y
                              23    ;.db    _w, _h     ;; W, H
                              24     ;.db   _col        ;; Color
@@ -36,11 +36,11 @@ Hexadecimal [16-Bits]
                              31 ;bl_w = 2
                              32 ;bl_h = 3
                              33 ;bl_col = 4
-                     0005    34 bl_vx = 5
-                     0006    35 bl_vy = 6
-                     0007    36 bl_up_l = 7
-                     0008    37 bl_up_h = 8
-                     0009    38 bl_hp = 9
+                     0006    34 bl_vx = 6
+                     0007    35 bl_vy = 7
+                     0008    36 bl_up_l = 8
+                     0009    37 bl_up_h = 9
+                     000A    38 bl_hp = 10
                              39 	
                              40 
                              41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
