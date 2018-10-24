@@ -62,6 +62,7 @@ Hexadecimal [16-Bits]
                              39 
                              40 .globl k_max_cube_line	
                              41 
+<<<<<<< HEAD
                              42 .globl cubeline10
                              43 .globl cubeline11
                              44 .globl cubeline12
@@ -72,11 +73,46 @@ Hexadecimal [16-Bits]
                              49 .globl cubeline17
                              50 .globl cubeline18
                              51 .globl cubeline19
+=======
+                             42 
+                             43 
+                             44 .globl k_max_cube_line	
+                             45 
+                             46 
+                             47 .globl cubeline10
+                             48 .globl cubeline11
+                             49 .globl cubeline12
+                             50 .globl cubeline13
+                             51 .globl cubeline14
+                             52 .globl cubeline15
+                             53 .globl cubeline16
+                             54 .globl cubeline17
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
+=======
+                             55 .globl cubeline18
+                             56 .globl cubeline19
+                             57 .globl cubeline110
+                             58 .globl cubeline111
+                             59 .globl cubeline112
+                             60 .globl cubeline113
+                             61 .globl cubeline114
+                             62 .globl cubeline115
+                             63 .globl cubeline116
+                             64 .globl cubeline117
+                             65 .globl cubeline118
+                             66 .globl cubeline119
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+
+
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
                               3 .include "render.h.s"
                               1 
                               2 
@@ -85,6 +121,7 @@ Hexadecimal [16-Bits]
                               5 _name:
                               6     .db _x, _y
                               7     .db _w, _h
+<<<<<<< HEAD
                               8     .dw _sprite
                               9 
                              10 _name'_size = . - _name
@@ -152,11 +189,26 @@ Hexadecimal [16-Bits]
                              47 .globl ball
                              48 .globl balldefault
                              49 
+=======
+                              8     .db _col
+                              9 .endm
+                     0001    10 dc_x    = 0     dc_y    = 1
+                     0003    11 dc_w    = 2     dc_h    = 3
+                     0004    12 dc_col  = 4
+                             13 
+                             14 .globl ren_clearBackBuffers
+                             15 ;;.globl ren_switchBuffers
+                             16 .globl render_drawCube
+                             17 .globl ren_newScene
+                             18 .globl m_back_buffer
+                             19 .globl m_front_buffer
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
                               5 
                               6 .globl _cubeline_sp
                               7 
@@ -213,10 +265,125 @@ Hexadecimal [16-Bits]
    001C                       1 cubeline13_dw:
    001C 18 10                 2     .db 0x18, 0x10
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+=======
+                              4 .include "ball.h.s"
+                              1 
+                              2 
+                              3 
+                              4 .globl ball_clear
+                              5 .globl ball_draw
+                              6 .globl ball_update
+                              7 .globl ball_move
+                              8 .globl ball_reset
+                              9 
+                             10 
+                             11 
+                             12 
+                             13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             14 ;;
+                             15 ;;MACROS
+                             16 ;;
+                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             18 
+                             19    .macro DefineBall _name, _x, _y, _w, _h, _col,  _vx, _vy,_upd,_hp
+                             20 _name: 
+                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             22   ; .db    _x, _y     ;; X, Y
+                             23    ;.db    _w, _h     ;; W, H
+                             24     ;.db   _col        ;; Color
+                             25    .db   _vx, _vy    ;; VX, VY
+                             26    .dw   _upd        ;; Update 
+                             27    .db _hp
+                             28 .endm
+                             29 ;bl_x = 0
+                             30 ;bl_y = 1
+                             31 ;bl_w = 2
+                             32 ;bl_h = 3
+                             33 ;bl_col = 4
+                     0005    34 bl_vx = 5
+                     0006    35 bl_vy = 6
+                     0007    36 bl_up_l = 7
+                     0008    37 bl_up_h = 8
+                     0009    38 bl_hp = 9
+                             39 	
+                             40 
+                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             42 ;;
+                             43 ;;OBJETOS CREADOS CON LA MACROS
+                             44 ;;
+                             45 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             46 
+                             47 .globl ball
+                             48 .globl balldefault
+                             49 .globl screenPointer
+                             50 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
 
 
 
+                              5 
+                              6 
+                     0014     7 k_max_cube_line = 20
+                     0007     8 k_cube_size = 7
+                              9 
+                             10 
+   0000                      11 DefineCubeLine1 cubedefault, 0x00, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0000                       1 cubedefault:
+   0000                       2     DefineDrawableEntity cubedefault_dw, 0x00, 0x10, 0x04, 0x08, 0x0F
+   0000                       1 cubedefault_dw:
+   0000 00 10                 2     .db 0x00, 0x10
+   0002 04 08                 3     .db 0x04, 0x08
+   0004 0F                    4     .db 0x0F
+   0005 01                    3     .db     0x01     ;; Hitpoints
+                             12 
+                             13 
+                             14 
+   0006                      15 DefineCubeLine1 cubeline10, 0x00, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0006                       1 cubeline10:
+   0006                       2     DefineDrawableEntity cubeline10_dw, 0x00, 0x10, 0x04, 0x08, 0x0F
+   0006                       1 cubeline10_dw:
+   0006 00 10                 2     .db 0x00, 0x10
+   0008 04 08                 3     .db 0x04, 0x08
+   000A 0F                    4     .db 0x0F
+   000B 01                    3     .db     0x01     ;; Hitpoints
+   000C                      16 DefineCubeLine1 cubeline11, 0x04, 0x10, 0x04, 0x08, 0xFF, 0x01
+   000C                       1 cubeline11:
+   000C                       2     DefineDrawableEntity cubeline11_dw, 0x04, 0x10, 0x04, 0x08, 0xFF
+   000C                       1 cubeline11_dw:
+   000C 04 10                 2     .db 0x04, 0x10
+   000E 04 08                 3     .db 0x04, 0x08
+   0010 FF                    4     .db 0xFF
+   0011 01                    3     .db     0x01     ;; Hitpoints
+   0012                      17 DefineCubeLine1 cubeline12, 0x08, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0012                       1 cubeline12:
+   0012                       2     DefineDrawableEntity cubeline12_dw, 0x08, 0x10, 0x04, 0x08, 0x0F
+   0012                       1 cubeline12_dw:
+   0012 08 10                 2     .db 0x08, 0x10
+   0014 04 08                 3     .db 0x04, 0x08
+   0016 0F                    4     .db 0x0F
+   0017 01                    3     .db     0x01     ;; Hitpoints
+   0018                      18 DefineCubeLine1 cubeline13, 0x0C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0018                       1 cubeline13:
+   0018                       2     DefineDrawableEntity cubeline13_dw, 0x0C, 0x10, 0x04, 0x08, 0xFF
+   0018                       1 cubeline13_dw:
+   0018 0C 10                 2     .db 0x0C, 0x10
+   001A 04 08                 3     .db 0x04, 0x08
+   001C FF                    4     .db 0xFF
+   001D 01                    3     .db     0x01     ;; Hitpoints
+   001E                      19 DefineCubeLine1 cubeline14, 0x10, 0x10, 0x04, 0x08, 0x0F, 0x01
+   001E                       1 cubeline14:
+   001E                       2     DefineDrawableEntity cubeline14_dw, 0x10, 0x10, 0x04, 0x08, 0x0F
+   001E                       1 cubeline14_dw:
+   001E 10 10                 2     .db 0x10, 0x10
+   0020 04 08                 3     .db 0x04, 0x08
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+Hexadecimal [16-Bits]
+
+
+
+<<<<<<< HEAD
    001E 08 08                 3     .db 0x08, 0x08
    0020 00 00                 4     .dw _cubeline_sp
                               5 
@@ -273,10 +440,69 @@ Hexadecimal [16-Bits]
                      0006     6 cubeline18_dw_size = . - cubeline18_dw
    0045 01                    3     .db     0x01     ;; Hitpoints
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+=======
+   0022 0F                    4     .db 0x0F
+   0023 01                    3     .db     0x01     ;; Hitpoints
+   0024                      20 DefineCubeLine1 cubeline15, 0x14, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0024                       1 cubeline15:
+   0024                       2     DefineDrawableEntity cubeline15_dw, 0x14, 0x10, 0x04, 0x08, 0xFF
+   0024                       1 cubeline15_dw:
+   0024 14 10                 2     .db 0x14, 0x10
+   0026 04 08                 3     .db 0x04, 0x08
+   0028 FF                    4     .db 0xFF
+   0029 01                    3     .db     0x01     ;; Hitpoints
+   002A                      21 DefineCubeLine1 cubeline16, 0x18, 0x10, 0x04, 0x08, 0x0F, 0x01
+   002A                       1 cubeline16:
+   002A                       2     DefineDrawableEntity cubeline16_dw, 0x18, 0x10, 0x04, 0x08, 0x0F
+   002A                       1 cubeline16_dw:
+   002A 18 10                 2     .db 0x18, 0x10
+   002C 04 08                 3     .db 0x04, 0x08
+   002E 0F                    4     .db 0x0F
+   002F 01                    3     .db     0x01     ;; Hitpoints
+   0030                      22 DefineCubeLine1 cubeline17, 0x1C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0030                       1 cubeline17:
+   0030                       2     DefineDrawableEntity cubeline17_dw, 0x1C, 0x10, 0x04, 0x08, 0xFF
+   0030                       1 cubeline17_dw:
+   0030 1C 10                 2     .db 0x1C, 0x10
+   0032 04 08                 3     .db 0x04, 0x08
+   0034 FF                    4     .db 0xFF
+   0035 01                    3     .db     0x01     ;; Hitpoints
+   0036                      23 DefineCubeLine1 cubeline18, 0x20, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0036                       1 cubeline18:
+   0036                       2     DefineDrawableEntity cubeline18_dw, 0x20, 0x10, 0x04, 0x08, 0x0F
+   0036                       1 cubeline18_dw:
+   0036 20 10                 2     .db 0x20, 0x10
+   0038 04 08                 3     .db 0x04, 0x08
+   003A 0F                    4     .db 0x0F
+   003B 01                    3     .db     0x01     ;; Hitpoints
+   003C                      24 DefineCubeLine1 cubeline19, 0x24, 0x10, 0x04, 0x08, 0xFF, 0x01
+   003C                       1 cubeline19:
+   003C                       2     DefineDrawableEntity cubeline19_dw, 0x24, 0x10, 0x04, 0x08, 0xFF
+   003C                       1 cubeline19_dw:
+   003C 24 10                 2     .db 0x24, 0x10
+   003E 04 08                 3     .db 0x04, 0x08
+   0040 FF                    4     .db 0xFF
+   0041 01                    3     .db     0x01     ;; Hitpoints
+   0042                      25 DefineCubeLine1 cubeline110, 0x28, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0042                       1 cubeline110:
+   0042                       2     DefineDrawableEntity cubeline110_dw, 0x28, 0x10, 0x04, 0x08, 0x0F
+   0042                       1 cubeline110_dw:
+   0042 28 10                 2     .db 0x28, 0x10
+   0044 04 08                 3     .db 0x04, 0x08
+   0046 0F                    4     .db 0x0F
+   0047 01                    3     .db     0x01     ;; Hitpoints
+   0048                      26 DefineCubeLine1 cubeline111, 0x2C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0048                       1 cubeline111:
+   0048                       2     DefineDrawableEntity cubeline111_dw, 0x2C, 0x10, 0x04, 0x08, 0xFF
+   0048                       1 cubeline111_dw:
+   0048 2C 10                 2     .db 0x2C, 0x10
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
    0046                      25 DefineCubeLine1 cubeline19, 0x48, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
    0046                       1 cubeline19:
    0046                       2     DefineDrawableEntity cubeline19_dw, 0x48, 0x10, 0x08, 0x08, _cubeline_sp
@@ -333,10 +559,69 @@ Hexadecimal [16-Bits]
    00CA CD DC 00      [17]   69 call cube_drawAll
    00CD DD 21 3F 00   [14]   70 ld ix,#cubeline18
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+=======
+   004A 04 08                 3     .db 0x04, 0x08
+   004C FF                    4     .db 0xFF
+   004D 01                    3     .db     0x01     ;; Hitpoints
+   004E                      27 DefineCubeLine1 cubeline112, 0x30, 0x10, 0x04, 0x08, 0x0F, 0x01
+   004E                       1 cubeline112:
+   004E                       2     DefineDrawableEntity cubeline112_dw, 0x30, 0x10, 0x04, 0x08, 0x0F
+   004E                       1 cubeline112_dw:
+   004E 30 10                 2     .db 0x30, 0x10
+   0050 04 08                 3     .db 0x04, 0x08
+   0052 0F                    4     .db 0x0F
+   0053 01                    3     .db     0x01     ;; Hitpoints
+   0054                      28 DefineCubeLine1 cubeline113, 0x34, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0054                       1 cubeline113:
+   0054                       2     DefineDrawableEntity cubeline113_dw, 0x34, 0x10, 0x04, 0x08, 0xFF
+   0054                       1 cubeline113_dw:
+   0054 34 10                 2     .db 0x34, 0x10
+   0056 04 08                 3     .db 0x04, 0x08
+   0058 FF                    4     .db 0xFF
+   0059 01                    3     .db     0x01     ;; Hitpoints
+   005A                      29 DefineCubeLine1 cubeline114, 0x38, 0x10, 0x04, 0x08, 0x0F, 0x01
+   005A                       1 cubeline114:
+   005A                       2     DefineDrawableEntity cubeline114_dw, 0x38, 0x10, 0x04, 0x08, 0x0F
+   005A                       1 cubeline114_dw:
+   005A 38 10                 2     .db 0x38, 0x10
+   005C 04 08                 3     .db 0x04, 0x08
+   005E 0F                    4     .db 0x0F
+   005F 01                    3     .db     0x01     ;; Hitpoints
+   0060                      30 DefineCubeLine1 cubeline115, 0x3C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0060                       1 cubeline115:
+   0060                       2     DefineDrawableEntity cubeline115_dw, 0x3C, 0x10, 0x04, 0x08, 0xFF
+   0060                       1 cubeline115_dw:
+   0060 3C 10                 2     .db 0x3C, 0x10
+   0062 04 08                 3     .db 0x04, 0x08
+   0064 FF                    4     .db 0xFF
+   0065 01                    3     .db     0x01     ;; Hitpoints
+   0066                      31 DefineCubeLine1 cubeline116, 0x40, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0066                       1 cubeline116:
+   0066                       2     DefineDrawableEntity cubeline116_dw, 0x40, 0x10, 0x04, 0x08, 0x0F
+   0066                       1 cubeline116_dw:
+   0066 40 10                 2     .db 0x40, 0x10
+   0068 04 08                 3     .db 0x04, 0x08
+   006A 0F                    4     .db 0x0F
+   006B 01                    3     .db     0x01     ;; Hitpoints
+   006C                      32 DefineCubeLine1 cubeline117, 0x44, 0x10, 0x04, 0x08, 0xFF, 0x01
+   006C                       1 cubeline117:
+   006C                       2     DefineDrawableEntity cubeline117_dw, 0x44, 0x10, 0x04, 0x08, 0xFF
+   006C                       1 cubeline117_dw:
+   006C 44 10                 2     .db 0x44, 0x10
+   006E 04 08                 3     .db 0x04, 0x08
+   0070 FF                    4     .db 0xFF
+   0071 01                    3     .db     0x01     ;; Hitpoints
+   0072                      33 DefineCubeLine1 cubeline118, 0x48, 0x10, 0x04, 0x08, 0x0F, 0x01
+   0072                       1 cubeline118:
+   0072                       2     DefineDrawableEntity cubeline118_dw, 0x48, 0x10, 0x04, 0x08, 0x0F
+   0072                       1 cubeline118_dw:
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
    00D1 CD DC 00      [17]   71 call cube_drawAll
    00D4 DD 21 46 00   [14]   72 ld ix,#cubeline19
    00D8 CD DC 00      [17]   73 call cube_drawAll
@@ -393,10 +678,129 @@ Hexadecimal [16-Bits]
                             124 
    00F2 C6 04         [ 7]  125 	add #4
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+=======
+   0072 48 10                 2     .db 0x48, 0x10
+   0074 04 08                 3     .db 0x04, 0x08
+   0076 0F                    4     .db 0x0F
+   0077 01                    3     .db     0x01     ;; Hitpoints
+   0078                      34 DefineCubeLine1 cubeline119, 0x4C, 0x10, 0x04, 0x08, 0xFF, 0x01
+   0078                       1 cubeline119:
+   0078                       2     DefineDrawableEntity cubeline119_dw, 0x4C, 0x10, 0x04, 0x08, 0xFF
+   0078                       1 cubeline119_dw:
+   0078 4C 10                 2     .db 0x4C, 0x10
+   007A 04 08                 3     .db 0x04, 0x08
+   007C FF                    4     .db 0xFF
+   007D 01                    3     .db     0x01     ;; Hitpoints
+                             35 
+                             36 
+   007E 14                   37 m_num_cube: .db 20
+                             38 
+   007F                      39 cube_clear:
+   007F DD 21 06 00   [14]   40 ld ix,#cubeline10
+   0083 CD 9C 01      [17]   41 call cube_clearAll
+   0086 DD 21 0C 00   [14]   42 ld ix,#cubeline11
+   008A CD 9C 01      [17]   43 call cube_clearAll
+   008D DD 21 12 00   [14]   44 ld ix,#cubeline12
+   0091 CD 9C 01      [17]   45 call cube_clearAll
+   0094 DD 21 18 00   [14]   46 ld ix,#cubeline13
+   0098 CD 9C 01      [17]   47 call cube_clearAll
+   009B DD 21 1E 00   [14]   48 ld ix,#cubeline14
+   009F CD 9C 01      [17]   49 call cube_clearAll
+   00A2 DD 21 24 00   [14]   50 ld ix,#cubeline15
+   00A6 CD 9C 01      [17]   51 call cube_clearAll
+   00A9 DD 21 2A 00   [14]   52 ld ix,#cubeline16
+   00AD CD 9C 01      [17]   53 call cube_clearAll
+   00B0 DD 21 30 00   [14]   54 ld ix,#cubeline17
+   00B4 CD 9C 01      [17]   55 call cube_clearAll
+   00B7 DD 21 36 00   [14]   56 ld ix,#cubeline18
+   00BB CD 9C 01      [17]   57 call cube_clearAll
+   00BE DD 21 3C 00   [14]   58 ld ix,#cubeline19
+   00C2 CD 9C 01      [17]   59 call cube_clearAll
+   00C5 DD 21 42 00   [14]   60 ld ix,#cubeline110
+   00C9 CD 9C 01      [17]   61 call cube_clearAll
+   00CC DD 21 48 00   [14]   62 ld ix,#cubeline111
+   00D0 CD 9C 01      [17]   63 call cube_clearAll
+   00D3 DD 21 4E 00   [14]   64 ld ix,#cubeline112
+   00D7 CD 9C 01      [17]   65 call cube_clearAll
+   00DA DD 21 54 00   [14]   66 ld ix,#cubeline113
+   00DE CD 9C 01      [17]   67 call cube_clearAll
+   00E1 DD 21 5A 00   [14]   68 ld ix,#cubeline114
+   00E5 CD 9C 01      [17]   69 call cube_clearAll
+   00E8 DD 21 60 00   [14]   70 ld ix,#cubeline115
+   00EC CD 9C 01      [17]   71 call cube_clearAll
+   00EF DD 21 66 00   [14]   72 ld ix,#cubeline116
+   00F3 CD 9C 01      [17]   73 call cube_clearAll
+   00F6 DD 21 6C 00   [14]   74 ld ix,#cubeline117
+   00FA CD 9C 01      [17]   75 call cube_clearAll
+   00FD DD 21 72 00   [14]   76 ld ix,#cubeline118
+   0101 CD 9C 01      [17]   77 call cube_clearAll
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
 Hexadecimal [16-Bits]
 
 
 
+   0104 DD 21 78 00   [14]   78 ld ix,#cubeline119
+   0108 CD 9C 01      [17]   79 call cube_clearAll
+   010B C9            [10]   80 ret
+                             81 
+   010C                      82 cube_draw:
+   010C DD 21 06 00   [14]   83 ld ix,#cubeline10
+   0110 CD 99 01      [17]   84 call cube_drawAll
+   0113 DD 21 0C 00   [14]   85 ld ix,#cubeline11
+   0117 CD 99 01      [17]   86 call cube_drawAll
+   011A DD 21 12 00   [14]   87 ld ix,#cubeline12
+   011E CD 99 01      [17]   88 call cube_drawAll
+   0121 DD 21 18 00   [14]   89 ld ix,#cubeline13
+   0125 CD 99 01      [17]   90 call cube_drawAll
+   0128 DD 21 1E 00   [14]   91 ld ix,#cubeline14
+   012C CD 99 01      [17]   92 call cube_drawAll
+   012F DD 21 24 00   [14]   93 ld ix,#cubeline15
+   0133 CD 99 01      [17]   94 call cube_drawAll
+   0136 DD 21 2A 00   [14]   95 ld ix,#cubeline16
+   013A CD 99 01      [17]   96 call cube_drawAll
+   013D DD 21 30 00   [14]   97 ld ix,#cubeline17
+   0141 CD 99 01      [17]   98 call cube_drawAll
+   0144 DD 21 36 00   [14]   99 ld ix,#cubeline18
+   0148 CD 99 01      [17]  100 call cube_drawAll
+   014B DD 21 3C 00   [14]  101 ld ix,#cubeline19
+   014F CD 99 01      [17]  102 call cube_drawAll
+   0152 DD 21 42 00   [14]  103 ld ix,#cubeline110
+   0156 CD 99 01      [17]  104 call cube_drawAll
+   0159 DD 21 48 00   [14]  105 ld ix,#cubeline111
+   015D CD 99 01      [17]  106 call cube_drawAll
+   0160 DD 21 4E 00   [14]  107 ld ix,#cubeline112
+   0164 CD 99 01      [17]  108 call cube_drawAll
+   0167 DD 21 54 00   [14]  109 ld ix,#cubeline113
+   016B CD 99 01      [17]  110 call cube_drawAll
+   016E DD 21 5A 00   [14]  111 ld ix,#cubeline114
+   0172 CD 99 01      [17]  112 call cube_drawAll
+   0175 DD 21 60 00   [14]  113 ld ix,#cubeline115
+   0179 CD 99 01      [17]  114 call cube_drawAll
+   017C DD 21 66 00   [14]  115 ld ix,#cubeline116
+   0180 CD 99 01      [17]  116 call cube_drawAll
+   0183 DD 21 6C 00   [14]  117 ld ix,#cubeline117
+   0187 CD 99 01      [17]  118 call cube_drawAll
+   018A DD 21 72 00   [14]  119 ld ix,#cubeline118
+   018E CD 99 01      [17]  120 call cube_drawAll
+   0191 DD 21 78 00   [14]  121 ld ix,#cubeline119
+   0195 CD 99 01      [17]  122 call cube_drawAll
+   0198 C9            [10]  123 ret
+                            124 
+                            125 
+                            126 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            127 ;; DRAW ENTITY
+                            128 ;; REGISTERS DETROYED: AF, BC, DE ,HL
+                            129 ;; INPUT: IX -> Points to entity
+                            130 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0199                     131 cube_drawAll:
+   0199 C3 00 00      [10]  132     jp render_drawCube
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+Hexadecimal [16-Bits]
+
+
+
+<<<<<<< HEAD
                             126 
    00F4 57            [ 4]  127 	ld d,a
    00F5 23            [ 6]  128 	inc hl
@@ -453,10 +857,69 @@ Hexadecimal [16-Bits]
    0121 D6 0A         [ 7]  179   	sub #k_max_cube_line
                             180 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+=======
+                            133    
+                            134    
+                            135 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            136 ;; BORRA UNA ENTIDAD
+                            137 ;; PARA CUADRADOS UNICAMENTE
+                            138 ;; REGISTERS DESTROYED: AF, AF', BC, DE, HL
+                            139 ;; ENTRADA: IX -> Puntero a entidad
+                            140 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   019C                     141 cube_clearAll:
+                            142 
+   019C DD 7E 04      [19]  143    ld  a, dc_col(ix)
+   019F 08            [ 4]  144    ex af, af'
+                            145 
+   01A0 DD 36 04 00   [19]  146    ld  dc_col(ix), #0
+                            147 
+   01A4 CD 00 00      [17]  148    call render_drawCube
+   01A7 08            [ 4]  149    ex af, af'
+   01A8 DD 77 04      [19]  150    ld dc_col(ix), a
+                            151 
+   01AB C9            [10]  152    ret
+                            153 
+                            154 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            155 ;;
+                            156 ;;RESET CUBES TO FIRST STATE
+                            157 ;;
+                            158 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+   01AC                     159 cube_reset:
+                            160 
+   01AC CD 00 00      [17]  161 	call ball_reset
+                            162 
+   01AF 21 06 00      [10]  163 	ld hl, #cubeline10
+   01B2 1E 00         [ 7]  164 	ld e, #0
+   01B4 16 00         [ 7]  165 	ld d, #0
+   01B6 0E 00         [ 7]  166 	ld c, #0
+   01B8 DD 21 00 00   [14]  167 	ld ix, #cubedefault
+   01BC                     168 	bucl:
+                            169 
+   01BC 7A            [ 4]  170 	ld a,d 
+                            171 
+   01BD 77            [ 7]  172 	ld (hl),a
+                            173 
+   01BE C6 04         [ 7]  174 	add #4
+                            175 
+   01C0 57            [ 4]  176 	ld d,a
+   01C1 23            [ 6]  177 	inc hl
+                            178 
+                            179 
+   01C2 DD 7E 01      [19]  180 	ld a, dc_y(ix)
+   01C5 77            [ 7]  181 	ld (hl),a
+                            182 	
+   01C6 23            [ 6]  183     	inc hl
+                            184 
+                            185 
+   01C7 DD 7E 02      [19]  186     	ld a, dc_w(ix)
+   01CA 77            [ 7]  187 	ld (hl),a
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 Hexadecimal [16-Bits]
 
 
 
+<<<<<<< HEAD
    0123 20 CB         [12]  181     	jr nz, bucl
                             182 
                             183     	
@@ -489,3 +952,80 @@ Hexadecimal [16-Bits]
                             210 
    0141 C9            [10]  211 ret
                             212 
+=======
+   01CB 23            [ 6]  188     	inc hl
+                            189 
+                            190 
+   01CC DD 7E 03      [19]  191     	ld a, dc_h(ix)
+   01CF 77            [ 7]  192 	ld (hl),a
+   01D0 23            [ 6]  193     	inc hl
+                            194     	
+   01D1 79            [ 4]  195     	ld a,c
+   01D2 D6 01         [ 7]  196     	sub #1
+                            197 
+   01D4 CA E0 01      [10]  198     	jp z, rojo
+                            199 
+   01D7 C6 02         [ 7]  200     	add #2
+   01D9 4F            [ 4]  201     	ld c,a
+   01DA 3E 0F         [ 7]  202 	ld a, #15
+                            203 
+   01DC 77            [ 7]  204     	ld (hl),a
+                            205 
+   01DD C3 E7 01      [10]  206     	jp colorok
+   01E0                     207     	rojo:
+   01E0 4F            [ 4]  208     	ld c,a
+                            209     	
+   01E1 3E FF         [ 7]  210     	ld a, #255
+                            211 
+   01E3 77            [ 7]  212     	ld (hl),a
+                            213 
+   01E4 C3 E7 01      [10]  214     	jp colorok
+                            215   	
+   01E7                     216 	colorok:
+                            217 
+   01E7 23            [ 6]  218     	inc hl
+                            219 
+                            220     	;;hp
+   01E8 23            [ 6]  221     	inc hl
+                            222 
+   01E9 7B            [ 4]  223   	ld a,e
+   01EA C6 01         [ 7]  224   	add #1
+                            225 
+   01EC 5F            [ 4]  226   	ld e,a
+                            227 
+   01ED D6 14         [ 7]  228   	sub #k_max_cube_line
+                            229 
+   01EF 20 CB         [12]  230     	jr nz, bucl
+                            231 
+                            232     	
+                            233 
+   01F1 C9            [10]  234  ret
+                            235 
+   01F2                     236 destroy_cube:
+   01F2 36 FF         [10]  237 	ld (hl),#0xFF
+   01F4 23            [ 6]  238 	inc hl
+   01F5 23            [ 6]  239 	inc hl
+   01F6 23            [ 6]  240 	inc hl
+   01F7 23            [ 6]  241 	inc hl
+                            242 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+Hexadecimal [16-Bits]
+
+
+
+   01F8 36 00         [10]  243 	ld (hl),#0x00
+                            244 
+   01FA 2B            [ 6]  245 	dec hl
+   01FB 2B            [ 6]  246 	dec hl
+   01FC 2B            [ 6]  247 	dec hl
+   01FD 2B            [ 6]  248 	dec hl
+                            249 
+   01FE 3A 7E 00      [13]  250 	ld a, (m_num_cube)
+   0201 D6 01         [ 7]  251 	sub #1
+   0203 32 7E 00      [13]  252 	ld (m_num_cube),a
+                            253 
+   0206 CA AC 01      [10]  254 	jp z, cube_reset
+                            255 
+   0209 C9            [10]  256 ret
+                            257 
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e

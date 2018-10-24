@@ -54,15 +54,23 @@ Symbol Table
     Key_U   =  0405     |     Key_V   =  8006     |     Key_W   =  0807 
     Key_X   =  8007     |     Key_Y   =  0805     |     Key_Z   =  8008 
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
+<<<<<<< HEAD
     _ball_sp   **** GX  |     _cpct_me   **** GX  |     b_vx    =  0006 
     b_vy    =  0007     |   0 ball       0000 GR  |   0 ball_cle   001E GR
   0 ball_col   00BB R   |   0 ball_dra   0016 GR  |   0 ball_dw    0000 R
     ball_dw_=  0006     |   0 ball_fal   0119 R   |   0 ball_mov   0026 GR
+=======
+    _cpct_me   **** GX  |     b_up_h  =  0008     |     b_up_l  =  0007 
+    b_vx    =  0005     |     b_vy    =  0006     |   0 ball       0000 GR
+  0 ball_cle   0044 GR  |   0 ball_col   0120 R   |   0 ball_dra   0016 GR
+  0 ball_dra   003C R   |   0 ball_dw    0000 R   |   0 ball_fal   0179 R
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
+<<<<<<< HEAD
   0 ball_res   00ED GR  |   0 ball_upd   001F GR  |   0 balldefa   000B GR
   0 balldefa   000B R   |     balldefa=  0006     |     barra      **** GX
     barra_cl   **** GX  |     barra_dr   **** GX  |     barra_mo   **** GX
@@ -87,11 +95,44 @@ Symbol Table
     opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
     ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
   0 resetThe   00B8 R   |   0 restart    012B R
+=======
+  0 ball_mov   005F GR  |   0 ball_res   0152 GR  |   0 ball_upd   0058 GR
+  0 balldefa   000A GR  |   0 balldefa   000A R   |     barra      **** GX
+    barra_cl   **** GX  |     barra_dr   **** GX  |     barra_mo   **** GX
+    barra_mo   **** GX  |     barra_up   **** GX  |     bl_hp   =  0009 
+    bl_up_h =  0008     |     bl_up_l =  0007     |     bl_vx   =  0005 
+    bl_vy   =  0006     |   0 bucl       00A7 R   |     c_de    =  0000 
+    c_de_siz=  0006     |     c_hp    =  0006     |   0 colision   0100 R
+  0 colision   00BE R   |   0 colision   00F2 R   |     cpct_dis   **** GX
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
+    cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
+    cpct_set   **** GX  |     cpct_wai   **** GX  |     cube_cle   **** GX
+    cube_cle   **** GX  |     cube_dra   **** GX  |     cube_dra   **** GX
+    cube_res   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    dc_col  =  0004     |     dc_h    =  0003     |     dc_w    =  0002 
+    dc_x    =  0000     |     dc_y    =  0001     |     destroy_   **** GX
+  0 goodYcol   010D R   |     k_max_cu   **** GX  |     m_back_b   **** GX
+    m_front_   **** GX  |   0 no_coll    0151 R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
+  0 resetThe   011C R   |   0 restart    018B R   |   0 screenPo   0014 GR
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
+<<<<<<< HEAD
    0 _CODE      size  137   flags    0
+=======
+   0 _CODE      size  197   flags    0
+>>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 

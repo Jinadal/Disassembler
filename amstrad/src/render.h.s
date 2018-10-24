@@ -17,3 +17,5 @@ dc_sp_l  = 4    dc_sp_h  = 5
 ;;.globl ren_switchBuffers
 .globl render_drawCube
 .globl ren_newScene
+.globl m_back_buffer
+.globl m_front_buffer
