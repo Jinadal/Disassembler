@@ -65,13 +65,8 @@ render_drawCube:
     call cpct_getScreenPtr_asm
 
     ex      de, hl        ;; DE = Puntero a memoria
-<<<<<<< HEAD
     ld      l, dc_sp_l(ix)
     ld      h, dc_sp_h(ix)
-=======
-   
-    ld      a, dc_col(ix)    ;; Color
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
     ld      b, dc_h(ix)      ;; Alto
     ld      c, dc_w(ix)      ;; Ancho
 

@@ -25,7 +25,8 @@ DefineCubeLine1 cubeline18, 0x40, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
 DefineCubeLine1 cubeline19, 0x48, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
 
 
-m_num_cube: .db 10
+m_num_cube: .db 2
+
 
 cube_clear:
 ld ix,#cubeline10
@@ -52,25 +53,20 @@ ret
 
 cube_draw:
 ld ix,#cubeline10
+ld a,#k_max_cube_line
+
+rep:
+push af
 call cube_drawAll
-ld ix,#cubeline11
-call cube_drawAll
-ld ix,#cubeline12
-call cube_drawAll
-ld ix,#cubeline13
-call cube_drawAll
-ld ix,#cubeline14
-call cube_drawAll
-ld ix,#cubeline15
-call cube_drawAll
-ld ix,#cubeline16
-call cube_drawAll
-ld ix,#cubeline17
-call cube_drawAll
-ld ix,#cubeline18
-call cube_drawAll
-ld ix,#cubeline19
-call cube_drawAll
+
+ld de,#k_cube_size
+add ix, de
+pop af
+dec a
+
+jp nz,rep
+
+
 ret
 
 
@@ -80,9 +76,16 @@ ret
 ;; INPUT: IX -> Points to entity
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cube_drawAll:
-    jp render_drawCube
-   
-   
+
+	ld a,c_hp(ix)
+	sub #1
+
+	jp nz, ommit
+
+	call render_drawCube
+	
+	ommit:
+   	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; BORRA UNA ENTIDAD
 ;; PARA CUADRADOS UNICAMENTE

@@ -2592,7 +2592,7 @@ Hexadecimal [16-Bits]
                              46 
                              47 .globl ball
                              48 .globl balldefault
-                             49 .globl screenPointer
+                             49 ;.globl screenPointer
                              50 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
@@ -2658,7 +2658,6 @@ Hexadecimal [16-Bits]
                              39 
                              40 .globl k_max_cube_line	
                              41 
-<<<<<<< HEAD
                              42 .globl cubeline10
                              43 .globl cubeline11
                              44 .globl cubeline12
@@ -2669,46 +2668,11 @@ Hexadecimal [16-Bits]
                              49 .globl cubeline17
                              50 .globl cubeline18
                              51 .globl cubeline19
-=======
-                             42 
-                             43 
-                             44 .globl k_max_cube_line	
-                             45 
-                             46 
-                             47 .globl cubeline10
-                             48 .globl cubeline11
-                             49 .globl cubeline12
-                             50 .globl cubeline13
-                             51 .globl cubeline14
-                             52 .globl cubeline15
-                             53 .globl cubeline16
-                             54 .globl cubeline17
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-=======
-                             55 .globl cubeline18
-                             56 .globl cubeline19
-                             57 .globl cubeline110
-                             58 .globl cubeline111
-                             59 .globl cubeline112
-                             60 .globl cubeline113
-                             61 .globl cubeline114
-                             62 .globl cubeline115
-                             63 .globl cubeline116
-                             64 .globl cubeline117
-                             65 .globl cubeline118
-                             66 .globl cubeline119
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
                               6 .include "render.h.s"
                               1 
                               2 
@@ -2717,7 +2681,6 @@ Hexadecimal [16-Bits]
                               5 _name:
                               6     .db _x, _y
                               7     .db _w, _h
-<<<<<<< HEAD
                               8     .dw _sprite
                               9 
                              10 _name'_size = . - _name
@@ -2730,22 +2693,9 @@ Hexadecimal [16-Bits]
                              17 ;;.globl ren_switchBuffers
                              18 .globl render_drawCube
                              19 .globl ren_newScene
+                             20 .globl m_back_buffer
+                             21 .globl m_front_buffer
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-=======
-                              8     .db _col
-                              9 .endm
-                     0001    10 dc_x    = 0     dc_y    = 1
-                     0003    11 dc_w    = 2     dc_h    = 3
-                     0004    12 dc_col  = 4
-                             13 
-                             14 .globl ren_clearBackBuffers
-                             15 ;;.globl ren_switchBuffers
-                             16 .globl render_drawCube
-                             17 .globl ren_newScene
-                             18 .globl m_back_buffer
-                             19 .globl m_front_buffer
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 Hexadecimal [16-Bits]
 
 
@@ -2760,66 +2710,34 @@ Hexadecimal [16-Bits]
    4098 31 00 80      [10]   14     ld  sp, #0x8000
                              15 
                              16     ;; Disable firmware to prevent it from interfering with string drawing
-<<<<<<< HEAD
-   409B CD 20 45      [17]   17     call cpct_disableFirmware_asm
+   409B CD EF 44      [17]   17     call cpct_disableFirmware_asm
                              18 
    409E 0E 00         [ 7]   19     ld    c, #0
-   40A0 CD 13 45      [17]   20     call cpct_setVideoMode_asm
+   40A0 CD E2 44      [17]   20     call cpct_setVideoMode_asm
                              21 
    40A3 21 68 40      [10]   22     ld   hl, #_bar_pal
    40A6 11 10 00      [10]   23     ld   de, #16
-   40A9 CD 45 44      [17]   24     call cpct_setPalette_asm
+   40A9 CD 14 44      [17]   24     call cpct_setPalette_asm
    40AC                      25 loop:
    40AC CD 1B 41      [17]   26     call cube_clear
                              27 
-   40AF CD 21 42      [17]   28     call barra_clear
-   40B2 CD 8F 42      [17]   29     call ball_clear
+   40AF CD F8 41      [17]   28     call barra_clear
+   40B2 CD 66 42      [17]   29     call ball_clear
                              30 
                              31     
-   40B5 CD 25 42      [17]   32     call barra_update
-   40B8 CD 90 42      [17]   33     call ball_update
+   40B5 CD FC 41      [17]   32     call barra_update
+   40B8 CD 67 42      [17]   33     call ball_update
                              34 
    40BB CD 62 41      [17]   35     call cube_draw
                              36 
-   40BE CD 19 42      [17]   37     call barra_draw
-   40C1 CD 87 42      [17]   38     call ball_draw
+   40BE CD F0 41      [17]   37     call barra_draw
+   40C1 CD 5E 42      [17]   38     call ball_draw
                              39 
-   40C4 CD 0B 45      [17]   40     call cpct_waitVSYNC_asm
+   40C4 CD DA 44      [17]   40     call cpct_waitVSYNC_asm
                              41     ;;call ren_switchBuffers
-   40C7 CD AA 43      [17]   42     call ren_newScene
+   40C7 CD 79 43      [17]   42     call ren_newScene
                              43     
                              44    ;; Loop forever
    40CA C3 AC 40      [10]   45    jp    loop
                              46 
                              47    
-=======
-   4003 CD 00 45      [17]   17     call cpct_disableFirmware_asm
-                             18 
-   4006 0E 00         [ 7]   19     ld    c, #0
-   4008 CD F3 44      [17]   20     call cpct_setVideoMode_asm
-                             21 
-                             22 
-   400B                      23 loop:
-   400B CD FE 42      [17]   24     call cube_clear
-                             25 
-   400E CD 88 40      [17]   26     call barra_clear
-   4011 CD 2C 41      [17]   27     call ball_clear
-                             28 
-                             29     
-   4014 CD 9C 40      [17]   30     call barra_update
-   4017 CD 40 41      [17]   31     call ball_update
-                             32 
-   401A CD 8B 43      [17]   33     call cube_draw
-                             34 
-   401D CD 80 40      [17]   35     call barra_draw
-   4020 CD FE 40      [17]   36     call ball_draw
-                             37 
-   4023 CD EB 44      [17]   38     call cpct_waitVSYNC_asm
-                             39     ;;call ren_switchBuffers
-   4026 CD 2E 40      [17]   40     call ren_newScene
-                             41     
-                             42    ;; Loop forever
-   4029 C3 0B 40      [10]   43    jp    loop
-                             44 
-                             45    
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e

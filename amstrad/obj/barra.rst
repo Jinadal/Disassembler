@@ -2503,7 +2503,6 @@ Hexadecimal [16-Bits]
                               5 _name:
                               6     .db _x, _y
                               7     .db _w, _h
-<<<<<<< HEAD
                               8     .dw _sprite
                               9 
                              10 _name'_size = . - _name
@@ -2516,20 +2515,8 @@ Hexadecimal [16-Bits]
                              17 ;;.globl ren_switchBuffers
                              18 .globl render_drawCube
                              19 .globl ren_newScene
-=======
-                              8     .db _col
-                              9 .endm
-                     0001    10 dc_x    = 0     dc_y    = 1
-                     0003    11 dc_w    = 2     dc_h    = 3
-                     0004    12 dc_col  = 4
-                             13 
-                             14 .globl ren_clearBackBuffers
-                             15 ;;.globl ren_switchBuffers
-                             16 .globl render_drawCube
-                             17 .globl ren_newScene
-                             18 .globl m_back_buffer
-                             19 .globl m_front_buffer
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+                             20 .globl m_back_buffer
+                             21 .globl m_front_buffer
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
@@ -2601,24 +2588,23 @@ Hexadecimal [16-Bits]
 
 
                               5 
-<<<<<<< HEAD
                               6 .globl _bar_sp
                               7 
                               8 
-   420F                       9 	DefineBarra barra, 40, 190, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
-   420F                       1 barra: 
+   41E6                       9 	DefineBarra barra, 40, 190, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
+   41E6                       1 barra: 
    0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 8, 4, _bar_sp
    0000                       1 barra_dw:
-   420F 28 BE                 2     .db 40, 190
-   4211 08 04                 3     .db 8, 4
-   4213 78 40                 4     .dw _bar_sp
+   41E6 28 BE                 2     .db 40, 190
+   41E8 08 04                 3     .db 8, 4
+   41EA 78 40                 4     .dw _bar_sp
                               5 
                      0006     6 barra_dw_size = . - barra_dw
                               3  ;  .db    _x, _y     ;; X, Y
                               4   ; .db    _w, _h     ;; W, H
                               5   ; .db   _col        ;; Color
-   4215 00 00                 6    .db   0, 0    ;; VX, VY
-   4217 2C 42                 7    .dw   barra_moveKeyboard        ;; Update 
+   41EC 00 00                 6    .db   0, 0    ;; VX, VY
+   41EE 03 42                 7    .dw   barra_moveKeyboard        ;; Update 
                               8   
                              10 
                              11 
@@ -2628,20 +2614,20 @@ Hexadecimal [16-Bits]
                              15 ;; PARA CUADRADOS UNICAMENTE
                              16 ;; ENTRADA: IX -> Puntero a entidad
                              17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4219                      18 barra_draw:
-   4219 DD 21 0F 42   [14]   19       ld ix,#barra
-   421D C3 D6 43      [10]   20 	jp render_drawCube
+   41F0                      18 barra_draw:
+   41F0 DD 21 E6 41   [14]   19       ld ix,#barra
+   41F4 C3 A5 43      [10]   20 	jp render_drawCube
                              21   
                              22 
-   4220 C9            [10]   23    ret
+   41F7 C9            [10]   23    ret
                              24 
                              25 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              26 ;; BORRA UNA ENTIDAD
                              27 ;; PARA CUADRADOS UNICAMENTE
                              28 ;; ENTRADA: IX -> Puntero a entidad
                              29 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4221                      30 barra_clear:
-   4221 DD 21 0F 42   [14]   31   ld ix,#barra
+   41F8                      30 barra_clear:
+   41F8 DD 21 E6 41   [14]   31   ld ix,#barra
                              32   ;;
                              33   ;;ld  a, dc_col(ix)
                              34   ;;ex af, af'
@@ -2656,73 +2642,16 @@ Hexadecimal [16-Bits]
                              43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              44 ;; ACTUALIZAR UNA ENTIDAD
                              45 ;; LLAMA A SU FUNCION DIFERENCIATIVA
-=======
-   4077                       6 	DefineBarra barra, 40, 190, 8, 4,0x0C, 0, 0,  barra_moveKeyboard 
-   4077                       1 barra: 
-   0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 8, 4, 0x0C
-   0000                       1 barra_dw:
-   4077 28 BE                 2     .db 40, 190
-   4079 08 04                 3     .db 8, 4
-   407B 0C                    4     .db 0x0C
-                              3  ;  .db    _x, _y     ;; X, Y
-                              4   ; .db    _w, _h     ;; W, H
-                              5   ; .db   _col        ;; Color
-   407C 00 00                 6    .db   0, 0    ;; VX, VY
-   407E A3 40                 7    .dw   barra_moveKeyboard        ;; Update 
-                              8   
-                              7 
-                              8 
-                              9 
-                             10 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             11 ;; DRAW THE BARRA
-                             12 ;; PARA CUADRADOS UNICAMENTE
-                             13 ;; ENTRADA: IX -> Puntero a entidad
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4080                      15 barra_draw:
-   4080 DD 21 77 40   [14]   16       ld ix,#barra
-   4084 C3 5A 40      [10]   17 	jp render_drawCube
-                             18   
-                             19 
-   4087 C9            [10]   20    ret
-                             21 
-                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             23 ;; BORRA UNA ENTIDAD
-                             24 ;; PARA CUADRADOS UNICAMENTE
-                             25 ;; ENTRADA: IX -> Puntero a entidad
-                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4088                      27 barra_clear:
-   4088 DD 21 77 40   [14]   28   ld ix,#barra
-                             29 
-   408C DD 7E 04      [19]   30    ld  a, dc_col(ix)
-   408F 08            [ 4]   31    ex af, af'
-                             32 
-   4090 DD 36 04 00   [19]   33    ld  dc_col(ix), #0
-                             34 
-   4094 CD 80 40      [17]   35    call barra_draw
-   4097 08            [ 4]   36    ex af, af'
-   4098 DD 77 04      [19]   37    ld dc_col(ix), a
-                             38 
-   409B C9            [10]   39    ret
-                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             41 ;; ACTUALIZAR UNA ENTIDAD
-                             42 ;; LLAMA A SU FUNCION DIFERENCIATIVA
-                             43 ;; ENTRADA: IX -> Puntero a entidad
-                             44 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   409C                      45 barra_update:
-   409C DD 21 77 40   [14]   46   ld ix,#barra
-   40A0 C3 A3 40      [10]   47  jp barra_moveKeyboard 
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
                              46 ;; ENTRADA: IX -> Puntero a entidad
                              47 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   4225                      48 barra_update:
-   4225 DD 21 0F 42   [14]   49   ld ix,#barra
-   4229 C3 2C 42      [10]   50  jp barra_moveKeyboard 
+   41FC                      48 barra_update:
+   41FC DD 21 E6 41   [14]   49   ld ix,#barra
+   4200 C3 03 42      [10]   50  jp barra_moveKeyboard 
                              51    ;; ld     h, b_up_h(ix)
                              52     ;ld     l, b_up_l(ix)
                              53     ;jp    (hl)  
@@ -2734,157 +2663,75 @@ Hexadecimal [16-Bits]
                              59 ;;          W(ARRIBA)
                              60 ;; A (IZDA) S(ABAJO) D(DERECHA)
                              61 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   422C                      62 barra_moveKeyboard:
-   422C CD F9 45      [17]   63     call cpct_scanKeyboard_asm
+   4203                      62 barra_moveKeyboard:
+   4203 CD C8 45      [17]   63     call cpct_scanKeyboard_asm
                              64       
-   422F 21 08 20      [10]   65    ld hl, #Key_A ;;O
-   4232 CD 39 44      [17]   66     call cpct_isKeyPressed_asm
-   4235 28 04         [12]   67     jr z, a_no_pulsada
+   4206 21 08 20      [10]   65    ld hl, #Key_A ;;O
+   4209 CD 08 44      [17]   66     call cpct_isKeyPressed_asm
+   420C 28 04         [12]   67     jr z, a_no_pulsada
                              68     
-   4237 DD 36 06 FE   [19]   69     ld b_vx(ix), #-2
+   420E DD 36 06 FE   [19]   69     ld b_vx(ix), #-2
                              70     
-   423B                      71  a_no_pulsada:   
+   4212                      71  a_no_pulsada:   
                              72     
                              73     
-   423B 21 07 20      [10]   74       ld hl, #Key_D ;;P
-   423E CD 39 44      [17]   75     call cpct_isKeyPressed_asm
-   4241 28 04         [12]   76     jr z, d_no_pulsada
+   4212 21 07 20      [10]   74       ld hl, #Key_D ;;P
+   4215 CD 08 44      [17]   75     call cpct_isKeyPressed_asm
+   4218 28 04         [12]   76     jr z, d_no_pulsada
                              77     
-   4243 DD 36 06 02   [19]   78     ld b_vx(ix), #2
+   421A DD 36 06 02   [19]   78     ld b_vx(ix), #2
                              79     
-   4247                      80  d_no_pulsada:
+   421E                      80  d_no_pulsada:
                              81     
                              82     
                              83 
-   4247 CD 4B 42      [17]   84     call barra_move
+   421E CD 22 42      [17]   84     call barra_move
                              85     
-   424A C9            [10]   86     ret
+   4221 C9            [10]   86     ret
                              87  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              88 ;; MOVER UNA ENTIDAD
                              89 ;; 
                              90 ;; ENTRADA: IX -> Puntero a entidad
                              91 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-=======
-                             48    ;; ld     h, b_up_h(ix)
-                             49     ;ld     l, b_up_l(ix)
-                             50     ;jp    (hl)  
-                             51 
-                             52 
-                             53 
-                             54 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-                             55 ;; MOVIENTO MEDIANTE TECLADO
-                             56 ;;          W(ARRIBA)
-                             57 ;; A (IZDA) S(ABAJO) D(DERECHA)
-                             58 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   40A3                      59 barra_moveKeyboard:
-   40A3 CD D9 45      [17]   60     call cpct_scanKeyboard_asm
-                             61       
-   40A6 21 08 20      [10]   62    ld hl, #Key_A ;;O
-   40A9 CD CC 44      [17]   63     call cpct_isKeyPressed_asm
-   40AC 28 04         [12]   64     jr z, a_no_pulsada
-                             65     
-   40AE DD 36 05 FE   [19]   66     ld b_vx(ix), #-2
-                             67     
-   40B2                      68  a_no_pulsada:   
-                             69     
-                             70     
-   40B2 21 07 20      [10]   71       ld hl, #Key_D ;;P
-   40B5 CD CC 44      [17]   72     call cpct_isKeyPressed_asm
-   40B8 28 04         [12]   73     jr z, d_no_pulsada
-                             74     
-   40BA DD 36 05 02   [19]   75     ld b_vx(ix), #2
-                             76     
-   40BE                      77  d_no_pulsada:
-                             78     
-                             79     
-                             80 
-   40BE CD C2 40      [17]   81     call barra_move
-                             82     
-   40C1 C9            [10]   83     ret
-                             84  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             85 ;; MOVER UNA ENTIDAD
-                             86 ;; 
-                             87 ;; ENTRADA: IX -> Puntero a entidad
-                             88 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             89 
-   40C2                      90 barra_move:
-   40C2 DD 46 00      [19]   91 	ld b, dc_x(ix) ;; save current x position in b
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
                              92 
-   424B                      93 barra_move:
-   424B DD 46 00      [19]   94 	ld b, dc_x(ix) ;; save current x position in b
+   4222                      93 barra_move:
+   4222 DD 46 00      [19]   94 	ld b, dc_x(ix) ;; save current x position in b
                              95 
-<<<<<<< HEAD
                              96 
                              97 
                              98 
-   424E DD 7E 00      [19]   99   	ld    a, dc_x(ix) ;;
-   4251 DD 86 06      [19]  100   	add   b_vx(ix)   ;;
-=======
-   40C5 DD 7E 00      [19]   96   	ld    a, dc_x(ix) ;;
-   40C8 DD 86 05      [19]   97   	add   b_vx(ix)   ;;
-   40CB DD 77 00      [19]   98    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
-                             99 
-   40CE DD 36 05 00   [19]  100     	ld b_vx(ix), #0;;
-                            101    
-                            102 
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+   4225 DD 7E 00      [19]   99   	ld    a, dc_x(ix) ;;
+   4228 DD 86 06      [19]  100   	add   b_vx(ix)   ;;
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-<<<<<<< HEAD
-   4254 DD 77 00      [19]  101    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
+   422B DD 77 00      [19]  101    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
                             102 
-   4257 DD 36 06 00   [19]  103     	ld b_vx(ix), #0;;
+   422E DD 36 06 00   [19]  103     	ld b_vx(ix), #0;;
                             104    
                             105 
                             106 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             107 
-   425B DD 7E 00      [19]  108  	ld    a, dc_x(ix)
-   425E DD 86 02      [19]  109  	add dc_w(ix)     ;; Since screen max x is79
-   4261 D6 4E         [ 7]  110   	sub  #78           ;; check if is going to move further or outta screen
+   4232 DD 7E 00      [19]  108  	ld    a, dc_x(ix)
+   4235 DD 86 02      [19]  109  	add dc_w(ix)     ;; Since screen max x is79
+   4238 D6 4E         [ 7]  110   	sub  #78           ;; check if is going to move further or outta screen
                             111                       ;; if true we will go to the reassingnament part
-   4263 28 08         [12]  112  	jr z, colisionX       ;;
+   423A 28 08         [12]  112  	jr z, colisionX       ;;
                             113 
                             114 
                             115 
-   4265 DD 7E 00      [19]  116   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
-   4268 D6 00         [ 7]  117   	sub #0            ;;
+   423C DD 7E 00      [19]  116   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
+   423F D6 00         [ 7]  117   	sub #0            ;;
                             118                     ;;
-   426A 28 01         [12]  119     	jr z, colisionX  ;;
+   4241 28 01         [12]  119     	jr z, colisionX  ;;
                             120 
                             121 ;;  END MAX MIN X CHECK
-   426C C9            [10]  122 	ret
-   426D                     123  colisionX:
+   4243 C9            [10]  122 	ret
+   4244                     123  colisionX:
                             124    
                             125      
-   426D DD 70 00      [19]  126     ld dc_x(ix), b
+   4244 DD 70 00      [19]  126     ld dc_x(ix), b
                             127    
-   4270 C9            [10]  128    ret
-=======
-                            103 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
-                            104 
-   40D2 DD 7E 00      [19]  105  	ld    a, dc_x(ix)
-   40D5 DD 86 02      [19]  106  	add dc_w(ix)     ;; Since screen max x is79
-   40D8 D6 4E         [ 7]  107   	sub  #78           ;; check if is going to move further or outta screen
-                            108                       ;; if true we will go to the reassingnament part
-   40DA 28 08         [12]  109  	jr z, colisionX       ;;
-                            110 
-                            111 
-                            112 
-   40DC DD 7E 00      [19]  113   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
-   40DF D6 00         [ 7]  114   	sub #0            ;;
-                            115                     ;;
-   40E1 28 01         [12]  116     	jr z, colisionX  ;;
-                            117 
-                            118 ;;  END MAX MIN X CHECK
-   40E3 C9            [10]  119 	ret
-   40E4                     120  colisionX:
-                            121    
-                            122      
-   40E4 DD 70 00      [19]  123     ld dc_x(ix), b
-                            124    
-   40E7 C9            [10]  125    ret
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+   4247 C9            [10]  128    ret

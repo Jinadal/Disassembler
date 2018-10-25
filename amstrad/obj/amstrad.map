@@ -11,7 +11,6 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  l__CABS                         
      00000000  l__DABS                         
      00000000  l__DATA                         
-<<<<<<< HEAD
      00000000  l__GSFINAL                      
      00000000  l__GSINIT                       
      00000000  l__HOME                         
@@ -20,28 +19,21 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  s__CABS                         
      00000000  s__DABS                         
      0000000A  k_max_cube_line                    
-     0000062A  l__CODE                         
+     000005F9  l__CODE                         
      00004000  s__CODE                         
-     0000462A  s__DATA                         
-     0000462A  s__GSFINAL                      
-     0000462A  s__GSINIT                       
-     0000462A  s__HOME                         
-     0000462A  s__INITIALIZED                  
-     0000462A  s__INITIALIZER                  
+     000045F9  s__DATA                         
+     000045F9  s__GSFINAL                      
+     000045F9  s__GSINIT                       
+     000045F9  s__HOME                         
+     000045F9  s__INITIALIZED                  
+     000045F9  s__INITIALIZER                  
 
-=======
-     00000014  k_max_cube_line                    
-     0000060A  l__CODE                         
-     00004000  s__CODE                         
-     0000460A  s__DATA                         
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-<<<<<<< HEAD
-_CODE                               00004000    0000062A =        1578. bytes (REL,CON)
+_CODE                               00004000    000005F9 =        1529. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -64,132 +56,57 @@ _CODE                               00004000    0000062A =        1578. bytes (R
      00004113  cubeline19                         
      0000411B  cube_clear                         
      00004162  cube_draw                          
-     000041A9  cube_drawAll                       
-     000041AC  cube_clearAll                      
-     000041AD  cube_reset                         
-     000041F3  destroy_cube                       
-     0000420F  barra                              cpct_keyboard
-     00004219  barra_draw                         cpct_keyboard
-     00004221  barra_clear                        cpct_keyboard
-     00004225  barra_update                       cpct_keyboard
-     0000422C  barra_moveKeyboard                 cpct_keyboard
-     0000424B  barra_move                         cpct_keyboard
-     00004271  ball                               cpct_keyboard
-     0000427C  balldefault                        cpct_keyboard
-     00004287  ball_draw                          cpct_keyboard
-     0000428F  ball_clear                         cpct_keyboard
-     00004290  ball_update                        cpct_keyboard
-     00004297  ball_move                          cpct_keyboard
-     0000435E  ball_reset                         cpct_keyboard
-     000043AA  ren_newScene                       
-     000043B1  ren_clearBackBuffers               
-     000043D6  render_drawCube                    
-     000043F6  _cpct_memset_f64_asm               cpct_memutils
-     00004439  _cpct_isKeyPressed                 cpct_keyboard
-     00004439  cpct_isKeyPressed_asm              cpct_keyboard
-     00004445  cpct_setPalette_asm                cpct_video
-     00004458  cpct_drawSprite_asm                cpct_sprites
-     000044F8  _cpct_keyboardStatusBuffer         cpct_keyboard
-     00004502  _cpct_setVideoMemoryPage           cpct_video
-     00004502  cpct_setVideoMemoryPage_asm        cpct_video
-     0000450B  _cpct_waitVSYNC                    cpct_video
-     0000450B  cpct_waitVSYNC_asm                 cpct_video
-     00004513  cpct_setVideoMode_asm              cpct_video
-=======
-_CODE                               00004000    0000060A =        1546. bytes (REL,CON)
-
-      Value  Global                              Global Defined In Module
-      -----  --------------------------------   ------------------------
-     00004000  _main                              cpct_keyboard
-     0000402C  m_front_buffer                     
-     0000402D  m_back_buffer                      
-     0000402E  ren_newScene                       
-     00004035  ren_clearBackBuffers               
-     0000405A  render_drawCube                    
-     00004077  barra                              cpct_keyboard
-     00004080  barra_draw                         cpct_keyboard
-     00004088  barra_clear                        cpct_keyboard
-     0000409C  barra_update                       cpct_keyboard
-     000040A3  barra_moveKeyboard                 cpct_keyboard
-     000040C2  barra_move                         cpct_keyboard
-     000040E8  ball                               cpct_keyboard
-     000040F2  balldefault                        cpct_keyboard
-     000040FC  screenPointer                      cpct_keyboard
-     000040FE  ball_draw                          cpct_keyboard
-     0000412C  ball_clear                         cpct_keyboard
-     00004140  ball_update                        cpct_keyboard
-     00004147  ball_move                          cpct_keyboard
-     0000423A  ball_reset                         cpct_keyboard
-     00004285  cubeline10                         
-     0000428B  cubeline11                         
-     00004291  cubeline12                         
-     00004297  cubeline13                         
-     0000429D  cubeline14                         
-     000042A3  cubeline15                         
-     000042A9  cubeline16                         
-     000042AF  cubeline17                         
-     000042B5  cubeline18                         
-     000042BB  cubeline19                         
-     000042C1  cubeline110                        
-     000042C7  cubeline111                        
-     000042CD  cubeline112                        
-     000042D3  cubeline113                        
-     000042D9  cubeline114                        
-     000042DF  cubeline115                        
-     000042E5  cubeline116                        
-     000042EB  cubeline117                        
-     000042F1  cubeline118                        
-     000042F7  cubeline119                        
-     000042FE  cube_clear                         
-     0000438B  cube_draw                          
-     00004418  cube_drawAll                       
-     0000441B  cube_clearAll                      
-     0000442B  cube_reset                         
-     00004471  destroy_cube                       
-     00004489  _cpct_memset_f64_asm               cpct_memutils
-     000044CC  _cpct_isKeyPressed                 cpct_keyboard
-     000044CC  cpct_isKeyPressed_asm              cpct_keyboard
-     000044D8  _cpct_keyboardStatusBuffer         cpct_keyboard
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+     00004177  cube_drawAll                       
+     00004183  cube_clearAll                      
+     00004184  cube_reset                         
+     000041CA  destroy_cube                       
+     000041E6  barra                              cpct_keyboard
+     000041F0  barra_draw                         cpct_keyboard
+     000041F8  barra_clear                        cpct_keyboard
+     000041FC  barra_update                       cpct_keyboard
+     00004203  barra_moveKeyboard                 cpct_keyboard
+     00004222  barra_move                         cpct_keyboard
+     00004248  ball                               cpct_keyboard
+     00004253  balldefault                        cpct_keyboard
+     0000425E  ball_draw                          cpct_keyboard
+     00004266  ball_clear                         cpct_keyboard
+     00004267  ball_update                        cpct_keyboard
+     0000426E  ball_move                          cpct_keyboard
+     00004335  ball_reset                         cpct_keyboard
+     00004377  m_front_buffer                     
+     00004378  m_back_buffer                      
+     00004379  ren_newScene                       
+     00004380  ren_clearBackBuffers               
+     000043A5  render_drawCube                    
+     000043C5  _cpct_memset_f64_asm               cpct_memutils
+     00004408  _cpct_isKeyPressed                 cpct_keyboard
+     00004408  cpct_isKeyPressed_asm              cpct_keyboard
+     00004414  cpct_setPalette_asm                cpct_video
+     00004427  cpct_drawSprite_asm                cpct_sprites
+     000044C7  _cpct_keyboardStatusBuffer         cpct_keyboard
+     000044D1  _cpct_setVideoMemoryPage           cpct_video
+     000044D1  cpct_setVideoMemoryPage_asm        cpct_video
+     000044DA  _cpct_waitVSYNC                    cpct_video
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-<<<<<<< HEAD
-_CODE                               00004000    0000062A =        1578. bytes (REL,CON)
+_CODE                               00004000    000005F9 =        1529. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00004520  _cpct_disableFirmware              cpct_firmware
-     00004520  _cpct_removeInterruptHandler       cpct_firmware
-     00004520  cpct_disableFirmware_asm           cpct_firmware
-     00004520  cpct_removeInterruptHandler_asm    cpct_firmware
-     00004530  cpct_drawSolidBox_asm              cpct_sprites
-     000045DC  _cpct_mode_rom_status              cpct_firmware
-     000045DD  cpct_getScreenPtr_asm              cpct_video
-     000045F9  _cpct_scanKeyboard                 cpct_keyboard
-     000045F9  cpct_scanKeyboard_asm              cpct_keyboard
-=======
-_CODE                               00004000    0000060A =        1546. bytes (REL,CON)
-
-      Value  Global                              Global Defined In Module
-      -----  --------------------------------   ------------------------
-     000044E2  _cpct_setVideoMemoryPage           cpct_video
-     000044E2  cpct_setVideoMemoryPage_asm        cpct_video
-     000044EB  _cpct_waitVSYNC                    cpct_video
-     000044EB  cpct_waitVSYNC_asm                 cpct_video
-     000044F3  cpct_setVideoMode_asm              cpct_video
-     00004500  _cpct_disableFirmware              cpct_firmware
-     00004500  _cpct_removeInterruptHandler       cpct_firmware
-     00004500  cpct_disableFirmware_asm           cpct_firmware
-     00004500  cpct_removeInterruptHandler_asm    cpct_firmware
-     00004510  cpct_drawSolidBox_asm              cpct_sprites
-     000045BC  _cpct_mode_rom_status              cpct_firmware
-     000045BD  cpct_getScreenPtr_asm              cpct_video
-     000045D9  _cpct_scanKeyboard                 cpct_keyboard
-     000045D9  cpct_scanKeyboard_asm              cpct_keyboard
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
+     000044DA  cpct_waitVSYNC_asm                 cpct_video
+     000044E2  cpct_setVideoMode_asm              cpct_video
+     000044EF  _cpct_disableFirmware              cpct_firmware
+     000044EF  _cpct_removeInterruptHandler       cpct_firmware
+     000044EF  cpct_disableFirmware_asm           cpct_firmware
+     000044EF  cpct_removeInterruptHandler_asm    cpct_firmware
+     000044FF  cpct_drawSolidBox_asm              cpct_sprites
+     000045AB  _cpct_mode_rom_status              cpct_firmware
+     000045AC  cpct_getScreenPtr_asm              cpct_video
+     000045C8  _cpct_scanKeyboard                 cpct_keyboard
+     000045C8  cpct_scanKeyboard_asm              cpct_keyboard
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 
@@ -199,48 +116,44 @@ obj/sprites/ball.rel                      [ ball ]
 obj/sprites/cubeline.rel                  [ cubeline ]
 obj/sprites/bar.rel                       [ bar ]
 obj/main.rel                              [ cpct_keyboard ]
-obj/render.rel                            [  ]
-obj/barra.h.rel                           [  ]
-obj/ball.h.rel                            [  ]
-obj/main.h.rel                            [  ]
-obj/barra.rel                             [ cpct_keyboard ]
-obj/ball.rel                              [ cpct_keyboard ]
-obj/cube.h.rel                            [  ]
-obj/render.h.rel                          [  ]
 obj/cube.rel                              [  ]
+obj/cube.h.rel                            [  ]
+obj/barra.rel                             [ cpct_keyboard ]
+obj/main.h.rel                            [  ]
+obj/ball.h.rel                            [  ]
+obj/barra.h.rel                           [  ]
+obj/ball.rel                              [ cpct_keyboard ]
+obj/render.h.rel                          [  ]
+obj/render.rel                            [  ]
 
 
 Libraries Linked                          [ object file ]
 
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_memset_f64_asmbinding.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_isKeyPressed.rel ]
-<<<<<<< HEAD
 /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setPalette_asmbindings.rel ]
 /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_drawSprite_asmbindings.rel ]
 /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
-=======
-/home/diego/cpctelera/cpctelera/cpctelera.lib
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
                                           [ keyboard.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setVideoMemoryPage.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_waitVSYNC.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setVideoMode_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_removeInterruptHandler.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_drawSolidBox_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpc_mode_rom_status.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_getScreenPtr_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_scanKeyboard.rel ]
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.

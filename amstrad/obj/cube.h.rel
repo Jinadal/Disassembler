@@ -1,9 +1,5 @@
 XL2
-<<<<<<< HEAD
 H 1 areas 12 global symbols
-=======
-H 1 areas 1C global symbols
->>>>>>> 57a80898dd8c9252894ecb236b019674046fa86e
 S cube_drawAll Ref0000
 S cube_clear Ref0000
 S destroy_cube Ref0000
