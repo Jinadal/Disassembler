@@ -73,23 +73,33 @@ Symbol Table
     cpct_pag=  0020     |     cpct_pag=  0030     |     cpct_sca   **** GX
     cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
     cpct_wai   **** GX  |     cube_cle   **** GX  |     cube_cle   **** GX
-    cube_dra   **** GX  |     cube_dra   **** GX  |     cube_res   **** GX
+    cube_dra   **** GX  |     cube_dra   **** GX  |     cube_los   **** GX
+    cube_res   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     dc_h    =  0003     |     dc_sp_h =  0005 
-    dc_sp_l =  0004     |     dc_w    =  0002     |     dc_x    =  0000 
-    dc_y    =  0001     |     destroy_   **** GX  |     k_max_cu   **** GX
-  0 loop       0014 R   |     m_back_b   **** GX  |     m_front_   **** GX
-    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |     ren_clea   **** GX  |     ren_newS   **** GX
-    render_d   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     dc_h    =  0003 
+    dc_sp_h =  0005     |     dc_sp_l =  0004     |     dc_w    =  0002 
+    dc_x    =  0000     |     dc_y    =  0001     |     destroy_   **** GX
+    k_cube_s   **** GX  |     k_max_cu   **** GX  |   0 loop       0014 R
+    m_back_b   **** GX  |     m_front_   **** GX  |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   35   flags    0
+   0 _CODE      size   32   flags    0
    1 _DATA      size    0   flags    0
 

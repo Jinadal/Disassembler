@@ -189,17 +189,15 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 
 	ld ix,#ball
-	 ld a,#0  
-	 sub bl_vy(ix) 
-	 
+	ld a,#0  
+	sub bl_vy(ix) 
 
-	 
-	 ld bl_vy(ix),a
-	 call colisionX
+	ld bl_vy(ix),a
+	call colisionX
 
 	;; ld dc_col(ix),#255
 
-    call destroy_cube
+    call cube_loses_life
 
 	 ret
 

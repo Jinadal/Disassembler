@@ -45,6 +45,8 @@ $(eval $(call IMG2SP, SET_FOLDER      , src/sprites/               ))
 $(eval $(call IMG2SP, SET_PALETTE_FW  , $(PALETTE)         ))
 $(eval $(call IMG2SP, CONVERT, img/bar.png , 16, 4, bar_sp, bar_pal))
 $(eval $(call IMG2SP, CONVERT, img/cubeline.png , 16, 8, cubeline_sp, cubeline_pal))
+$(eval $(call IMG2SP, CONVERT, img/cubeline2.png , 16, 8, cubeline2_sp, cubeline2_pal))
+$(eval $(call IMG2SP, CONVERT, img/cubeline3.png , 16, 8, cubeline3_sp, cubeline3_pal))
 $(eval $(call IMG2SP, CONVERT, img/ball.png , 4, 4, ball_sp, ball_pal))
 
 ##

@@ -6,11 +6,22 @@ Symbol Table
     .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
     .__.H$L.=  0000 L   |     c_de    =  0000     |     c_de_siz=  0006 
     c_hp    =  0006     |     cube_cle   **** GX  |     cube_cle   **** GX
-    cube_dra   **** GX  |     cube_dra   **** GX  |     cube_res   **** GX
+    cube_dra   **** GX  |     cube_dra   **** GX  |     cube_los   **** GX
+    cube_res   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    cubeline   **** GX  |     destroy_   **** GX  |     k_max_cu   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
+    cubeline   **** GX  |     cubeline   **** GX  |     destroy_   **** GX
+    k_cube_s   **** GX  |     k_max_cu   **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]

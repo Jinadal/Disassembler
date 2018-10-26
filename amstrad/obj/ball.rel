@@ -1,7 +1,8 @@
 XL2
-H 1 areas 30 global symbols
+H 1 areas 50 global symbols
 M cpct_keyboard
 S _cpct_memset_f64_asm Ref0000
+S k_cube_size Ref0000
 S cpct_setPalette_asm Ref0000
 S cpct_isKeyPressed_asm Ref0000
 S cube_drawAll Ref0000
@@ -20,22 +21,53 @@ S barra_move Ref0000
 S .__.ABS. Def0000
 S cube_reset Ref0000
 S cpct_setVideoMemoryPage_asm Ref0000
+S cube_loses_life Ref0000
 S cubeline10 Ref0000
+S cubeline20 Ref0000
 S cubeline11 Ref0000
 S ren_clearBackBuffers Ref0000
+S cubeline30 Ref0000
+S cubeline21 Ref0000
 S cubeline12 Ref0000
 S barra_update Ref0000
+S cubeline40 Ref0000
+S cubeline31 Ref0000
+S cubeline22 Ref0000
 S cubeline13 Ref0000
+S cubeline41 Ref0000
+S cubeline32 Ref0000
+S cubeline23 Ref0000
 S cubeline14 Ref0000
 S cube_draw Ref0000
+S cubeline42 Ref0000
+S cubeline33 Ref0000
+S cubeline24 Ref0000
 S cubeline15 Ref0000
+S cubeline43 Ref0000
+S cubeline34 Ref0000
+S cubeline25 Ref0000
 S cubeline16 Ref0000
 S barra_clear Ref0000
+S cubeline44 Ref0000
+S cubeline35 Ref0000
+S cubeline26 Ref0000
 S cubeline17 Ref0000
+S cubeline45 Ref0000
+S cubeline36 Ref0000
+S cubeline27 Ref0000
 S cubeline18 Ref0000
+S cubeline46 Ref0000
+S cubeline37 Ref0000
+S cubeline28 Ref0000
 S cubeline19 Ref0000
 S cpct_setVideoMode_asm Ref0000
 S cpct_waitVSYNC_asm Ref0000
+S cubeline47 Ref0000
+S cubeline38 Ref0000
+S cubeline29 Ref0000
+S cubeline48 Ref0000
+S cubeline39 Ref0000
+S cubeline49 Ref0000
 S m_back_buffer Ref0000
 S cpct_disableFirmware_asm Ref0000
 S cpct_drawSolidBox_asm Ref0000
@@ -55,17 +87,17 @@ R 00 00 00 00
 T 00 00
 R 00 00 00 00
 T 00 00 28 4E 01 04 00 00 01 02 26 00 03
-R 00 00 00 00 02 06 26 00 00 0A 00 00
+R 00 00 00 00 02 06 46 00 00 0A 00 00
 T 0B 00
 R 00 00 00 00
 T 0B 00
 R 00 00 00 00
 T 0B 00 28 4E 01 04 00 00 01 02 26 00 03
-R 00 00 00 00 02 06 26 00 00 0A 00 00
+R 00 00 00 00 02 06 46 00 00 0A 00 00
 T 16 00
 R 00 00 00 00
 T 16 00 DD 21 00 00 C3 00 00 C9
-R 00 00 00 00 00 04 00 00 02 07 07 00
+R 00 00 00 00 00 04 00 00 02 07 08 00
 T 1E 00
 R 00 00 00 00
 T 1E 00 C9
@@ -83,11 +115,11 @@ R 00 00 00 00
 T 42 00 4D 28 5B DD 7E 00 D6 01 28 54 DD 7E 01 D6
 R 00 00 00 00
 T 50 00 BE 28 65 DD 7E 01 D6 02 28 3D 21 00 00 16
-R 00 00 00 00 02 0D 06 00
+R 00 00 00 00 02 0D 07 00
 T 5E 00 01 CD BB 00 7A D6 01 20 30 21 00 00 1E
-R 00 00 00 00 00 04 00 00 02 0C 13 00
+R 00 00 00 00 00 04 00 00 02 0C 15 00
 T 6B 00 00 00
-R 00 00 00 00 0B 02 0B 00
+R 00 00 00 00 0B 02 0C 00
 T 6C 00
 R 00 00 00 00
 T 6C 00 16 01 CD BB 00 7A D6 01 20 0E 23 23 23 23
@@ -99,7 +131,7 @@ R 00 00 00 00
 T 84 00 DD 21 00 00 3E 00 DD 96 07 DD 77 07 CD
 R 00 00 00 00 00 04 00 00
 T 91 00 A0 00 CD 00 00 C9
-R 00 00 00 00 00 02 00 00 02 05 05 00
+R 00 00 00 00 00 02 00 00 02 05 14 00
 T 97 00
 R 00 00 00 00
 T 97 00 3E 00 DD 96 07 DD 77 07 C9
@@ -151,4 +183,4 @@ R 00 00 00 00 00 03 00 00
 T 2B 01
 R 00 00 00 00
 T 2B 01 DD 7E 0A C6 03 DD 77 0A CD 00 00 C9
-R 00 00 00 00 02 0B 11 00
+R 00 00 00 00 02 0B 12 00

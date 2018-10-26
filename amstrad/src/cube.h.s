@@ -32,11 +32,12 @@ c_hp        = 0 + c_de_size
 .globl cube_draw
 .globl cube_drawAll
 .globl cube_clearAll
-
+.globl cube_loses_life
 .globl cube_reset
 
 .globl destroy_cube
 
+.globl k_cube_size
 .globl k_max_cube_line	
 
 .globl cubeline10
@@ -49,3 +50,36 @@ c_hp        = 0 + c_de_size
 .globl cubeline17
 .globl cubeline18
 .globl cubeline19
+
+.globl cubeline20
+.globl cubeline21
+.globl cubeline22
+.globl cubeline23
+.globl cubeline24
+.globl cubeline25
+.globl cubeline26
+.globl cubeline27
+.globl cubeline28
+.globl cubeline29
+
+.globl cubeline30
+.globl cubeline31
+.globl cubeline32
+.globl cubeline33
+.globl cubeline34
+.globl cubeline35
+.globl cubeline36
+.globl cubeline37
+.globl cubeline38
+.globl cubeline39
+
+.globl cubeline40
+.globl cubeline41
+.globl cubeline42
+.globl cubeline43
+.globl cubeline44
+.globl cubeline45
+.globl cubeline46
+.globl cubeline47
+.globl cubeline48
+.globl cubeline49

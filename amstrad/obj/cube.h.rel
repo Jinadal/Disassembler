@@ -1,5 +1,6 @@
 XL2
-H 1 areas 12 global symbols
+H 1 areas 32 global symbols
+S k_cube_size Ref0000
 S cube_drawAll Ref0000
 S cube_clear Ref0000
 S destroy_cube Ref0000
@@ -7,15 +8,46 @@ S k_max_cube_line Ref0000
 S cube_clearAll Ref0000
 S .__.ABS. Def0000
 S cube_reset Ref0000
+S cube_loses_life Ref0000
 S cubeline10 Ref0000
+S cubeline20 Ref0000
 S cubeline11 Ref0000
+S cubeline30 Ref0000
+S cubeline21 Ref0000
 S cubeline12 Ref0000
+S cubeline40 Ref0000
+S cubeline31 Ref0000
+S cubeline22 Ref0000
 S cubeline13 Ref0000
+S cubeline41 Ref0000
+S cubeline32 Ref0000
+S cubeline23 Ref0000
 S cubeline14 Ref0000
 S cube_draw Ref0000
+S cubeline42 Ref0000
+S cubeline33 Ref0000
+S cubeline24 Ref0000
 S cubeline15 Ref0000
+S cubeline43 Ref0000
+S cubeline34 Ref0000
+S cubeline25 Ref0000
 S cubeline16 Ref0000
+S cubeline44 Ref0000
+S cubeline35 Ref0000
+S cubeline26 Ref0000
 S cubeline17 Ref0000
+S cubeline45 Ref0000
+S cubeline36 Ref0000
+S cubeline27 Ref0000
 S cubeline18 Ref0000
+S cubeline46 Ref0000
+S cubeline37 Ref0000
+S cubeline28 Ref0000
 S cubeline19 Ref0000
+S cubeline47 Ref0000
+S cubeline38 Ref0000
+S cubeline29 Ref0000
+S cubeline48 Ref0000
+S cubeline39 Ref0000
+S cubeline49 Ref0000
 A _CODE size 0 flags 0 addr 0

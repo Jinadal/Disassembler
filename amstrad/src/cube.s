@@ -4,51 +4,68 @@
 .include "ball.h.s"
 
 .globl _cubeline_sp
+.globl _cubeline2_sp
+.globl _cubeline3_sp
 
-
-k_max_cube_line = 10
+k_max_cube_line = 40
 k_cube_size = 7
 
 
-DefineCubeLine1 cubedefault, 0x00, 0x10, 0x04, 0x08, _cubeline_sp, 0x01
+DefineCubeLine1 cubedefault, 0x00, 0x28, 0x04, 0x08, _cubeline_sp, 0x01
+DefineCubeLine1 cubedefault1, 0x00, 0x18, 0x04, 0x08, _cubeline_sp, 0x01
+DefineCubeLine1 cubedefault2, 0x00, 0x10, 0x04, 0x08, _cubeline2_sp, 0x01
 
 
-DefineCubeLine1 cubeline10, 0x00, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline11, 0x08, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline12, 0x10, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline13, 0x18, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline14, 0x20, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline15, 0x28, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline16, 0x30, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline17, 0x38, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline18, 0x40, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
-DefineCubeLine1 cubeline19, 0x48, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline10, 0x00, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline11, 0x08, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline12, 0x10, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline13, 0x18, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline14, 0x20, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline15, 0x28, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline16, 0x30, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline17, 0x38, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline18, 0x40, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+DefineCubeLine1 cubeline19, 0x48, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
+
+DefineCubeLine1 cubeline20, 0x00, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline21, 0x08, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline22, 0x10, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline23, 0x18, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline24, 0x20, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline25, 0x28, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline26, 0x30, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline27, 0x38, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline28, 0x40, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline29, 0x48, 0x10, 0x08, 0x08,_cubeline_sp, 0x01
+
+DefineCubeLine1 cubeline30, 0x00, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline31, 0x08, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline32, 0x10, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline33, 0x18, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline34, 0x20, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline35, 0x28, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline36, 0x30, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline37, 0x38, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline38, 0x40, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+DefineCubeLine1 cubeline39, 0x48, 0x18, 0x08, 0x08,_cubeline_sp, 0x01
+;;
+DefineCubeLine1 cubeline40, 0x00, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline41, 0x08, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline42, 0x10, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline43, 0x18, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline44, 0x20, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline45, 0x28, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline46, 0x30, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline47, 0x38, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline48, 0x40, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
+DefineCubeLine1 cubeline49, 0x48, 0x20, 0x08, 0x08,_cubeline2_sp, 0x02
 
 
-m_num_cube: .db 2
+m_num_cube: .db 40
 
 
 cube_clear:
-ld ix,#cubeline10
-call cube_clearAll
-ld ix,#cubeline11
-call cube_clearAll
-ld ix,#cubeline12
-call cube_clearAll
-ld ix,#cubeline13
-call cube_clearAll
-ld ix,#cubeline14
-call cube_clearAll
-ld ix,#cubeline15
-call cube_clearAll
-ld ix,#cubeline16
-call cube_clearAll
-ld ix,#cubeline17
-call cube_clearAll
-ld ix,#cubeline18
-call cube_clearAll
-ld ix,#cubeline19
-call cube_clearAll
+
 ret
 
 cube_draw:
@@ -77,15 +94,29 @@ ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 cube_drawAll:
 
-	ld a,c_hp(ix)
-	sub #1
+	ld a,c_hp(ix)			;;IF HP != 1 CHECK AGAIN
+	sub #1					;;
 
 	jp nz, ommit
 
 	call render_drawCube
+	ret
+	ommit:					;;IF HP != 2 CHECK AGAIN
+	sub #1					;;
 	
-	ommit:
-   	ret
+	jp nz, ommit2
+
+	call render_drawCube
+
+ 	ommit2:					;;IF HP != 3 CHECK AGAIN
+	sub #1					;;
+	
+	jp nz, ommit3
+
+	call render_drawCube
+
+ 	ommit3:					;;HP == 0 ;NOT DRAW
+	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; BORRA UNA ENTIDAD
 ;; PARA CUADRADOS UNICAMENTE
@@ -188,29 +219,48 @@ cube_reset:
 
  ret
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; CUBE LOOSES 1 LIFE
+;; REGISTERS DESTROYED: DE, AF
+;; INPUT: HL -> CUBE_X
+;; OUTPUT : HL -> CUBE_X
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+cube_loses_life:
+	
+	ld de, #6			;;DE = 6
+	add hl,de			;;HL + DE 
+
+	ld a,(hl)			;;A = C_HP
+	sub #1				
+	ld (hl),a			;;C_HP = C_HP - 1
+
+	jp z,destroy_cube	;;IF C_HP = 0 DESTROY IT
+
+	ld de, #-6			;;IF NOT, HL -> DC_X
+	add hl,de
+
+
+ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; CUBE GETS DESTROYED
+;; REGISTERS DESTROYED: DE, AF
+;; INPUT: HL -> CUBE_HP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 destroy_cube:
-	ld (hl),#0xFF
-	inc hl			;;	Y		
-	inc hl			;;	W
-	inc hl			;;	H
-	inc hl			;;	SP_L
-	inc hl			;;	SP_H
-	inc hl			;;  HP
+	ld de, #-6			;; 
+	add hl,de			;; HL -> DC_X
+	ld 	(hl),#0xFF		;; DC_X = 0xFF OUT OF SCREEN
+	inc hl
+	ld	(hl),#0xFF		;; DC_Y = 0xFF OUT OF SCREEN
+	dec hl				;; HL -> DC_X
 
-	ld (hl),#0
+	ld a, (m_num_cube)	;;
+	sub #1				;;
+	ld (m_num_cube),a	;; m_num_cube = m_num_cube - 1
 
-	dec hl			;; SP_H
-	dec hl			;; SP_L
-	dec hl			;; H 
-	dec hl			;; W
-	dec hl			;; Y
-	dec hl			;; X
-
-	ld a, (m_num_cube)
-	sub #1
-	ld (m_num_cube),a
-
-	jp z, cube_reset
+	jp z, cube_reset	;; IF m_num_cube == 0, END GAME, RESET ALL
 
 ret
 

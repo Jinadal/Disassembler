@@ -23,7 +23,7 @@ _main::
     ld   de, #16
     call cpct_setPalette_asm
 loop:
-    call cube_clear
+   ;; call cube_clear
 
     call barra_clear
     call ball_clear
