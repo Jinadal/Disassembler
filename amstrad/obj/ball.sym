@@ -57,7 +57,7 @@ Symbol Table
     _ball_sp   **** GX  |     _cpct_me   **** GX  |     b_vx    =  0006 
     b_vy    =  0007     |   0 ball       0000 GR  |   0 ball_cle   001E GR
   0 ball_col   00BB R   |   0 ball_dra   0016 GR  |   0 ball_dw    0000 R
-    ball_dw_=  0006     |   0 ball_fal   0111 R   |   0 ball_mov   0026 GR
+    ball_dw_=  0006     |   0 ball_fal   0119 R   |   0 ball_mov   0026 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
@@ -87,12 +87,12 @@ Symbol Table
   0 no_coll    00EC R   |     opc_DI  =  00F3     |     opc_EI  =  00FB 
     opc_JR  =  0018     |     opc_LD_D=  0016     |     ren_clea   **** GX
     ren_newS   **** GX  |     render_d   **** GX  |   0 resetThe   00B8 R
-  0 restart    0123 R
+  0 restart    012B R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  12F   flags    0
+   0 _CODE      size  137   flags    0
 

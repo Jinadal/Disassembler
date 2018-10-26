@@ -2710,32 +2710,32 @@ Hexadecimal [16-Bits]
    4098 31 00 80      [10]   14     ld  sp, #0x8000
                              15 
                              16     ;; Disable firmware to prevent it from interfering with string drawing
-   409B CD EF 44      [17]   17     call cpct_disableFirmware_asm
+   409B CD E9 44      [17]   17     call cpct_disableFirmware_asm
                              18 
    409E 0E 00         [ 7]   19     ld    c, #0
-   40A0 CD E2 44      [17]   20     call cpct_setVideoMode_asm
+   40A0 CD DC 44      [17]   20     call cpct_setVideoMode_asm
                              21 
    40A3 21 68 40      [10]   22     ld   hl, #_bar_pal
    40A6 11 10 00      [10]   23     ld   de, #16
-   40A9 CD 14 44      [17]   24     call cpct_setPalette_asm
+   40A9 CD 0E 44      [17]   24     call cpct_setPalette_asm
    40AC                      25 loop:
    40AC CD 1B 41      [17]   26     call cube_clear
                              27 
-   40AF CD F8 41      [17]   28     call barra_clear
-   40B2 CD 66 42      [17]   29     call ball_clear
+   40AF CD EA 41      [17]   28     call barra_clear
+   40B2 CD 58 42      [17]   29     call ball_clear
                              30 
                              31     
-   40B5 CD FC 41      [17]   32     call barra_update
-   40B8 CD 67 42      [17]   33     call ball_update
+   40B5 CD EE 41      [17]   32     call barra_update
+   40B8 CD 59 42      [17]   33     call ball_update
                              34 
    40BB CD 62 41      [17]   35     call cube_draw
                              36 
-   40BE CD F0 41      [17]   37     call barra_draw
-   40C1 CD 5E 42      [17]   38     call ball_draw
+   40BE CD E2 41      [17]   37     call barra_draw
+   40C1 CD 50 42      [17]   38     call ball_draw
                              39 
-   40C4 CD DA 44      [17]   40     call cpct_waitVSYNC_asm
+   40C4 CD D4 44      [17]   40     call cpct_waitVSYNC_asm
                              41     ;;call ren_switchBuffers
-   40C7 CD 79 43      [17]   42     call ren_newScene
+   40C7 CD 73 43      [17]   42     call ren_newScene
                              43     
                              44    ;; Loop forever
    40CA C3 AC 40      [10]   45    jp    loop

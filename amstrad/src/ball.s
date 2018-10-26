@@ -163,6 +163,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
     	inc hl
     	inc hl
 		inc hl
+
   	ld a,e
   	sub #1
 
@@ -360,7 +361,13 @@ ball_reset:
 	inc hl
 
 	ld a, (hl)
+	ld dc_sp_l(ix), a
 ;;	ld dc_col(ix), a
+
+	inc hl
+
+	ld a, (hl)
+	ld dc_sp_h(ix), a
 
 	inc hl
 

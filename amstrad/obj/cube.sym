@@ -10,34 +10,33 @@ Symbol Table
     balldefa   **** GX  |     bl_hp   =  000A     |     bl_up_h =  0009 
     bl_up_l =  0008     |     bl_vx   =  0006     |     bl_vy   =  0007 
   0 bucl       00C7 R   |     c_de    =  0000     |     c_de_siz=  0006 
-    c_hp    =  0006     |   0 colorok    00F2 R   |     cpct_dis   **** GX
-    cpct_dra   **** GX  |     cpct_dra   **** GX  |     cpct_get   **** GX
-    cpct_isK   **** GX  |     cpct_sca   **** GX  |     cpct_set   **** GX
-    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
-  0 cube_cle   004E GR  |   0 cube_cle   00B6 GR  |   0 cube_dra   0095 GR
-  0 cube_dra   00AA GR  |   0 cube_res   00B7 GR  |   0 cubedefa   0000 R
-  0 cubedefa   0000 R   |     cubedefa=  0006     |   0 cubeline   0007 GR
-  0 cubeline   0007 R   |     cubeline=  0006     |   0 cubeline   000E GR
-  0 cubeline   000E R   |     cubeline=  0006     |   0 cubeline   0015 GR
-  0 cubeline   0015 R   |     cubeline=  0006     |   0 cubeline   001C GR
-  0 cubeline   001C R   |     cubeline=  0006     |   0 cubeline   0023 GR
-  0 cubeline   0023 R   |     cubeline=  0006     |   0 cubeline   002A GR
-  0 cubeline   002A R   |     cubeline=  0006     |   0 cubeline   0031 GR
-  0 cubeline   0031 R   |     cubeline=  0006     |   0 cubeline   0038 GR
-  0 cubeline   0038 R   |     cubeline=  0006     |   0 cubeline   003F GR
-  0 cubeline   003F R   |     cubeline=  0006     |   0 cubeline   0046 GR
-  0 cubeline   0046 R   |     cubeline=  0006     |     dc_h    =  0003 
-    dc_sp_h =  0005     |     dc_sp_l =  0004     |     dc_w    =  0002 
-    dc_x    =  0000     |     dc_y    =  0001     |   0 destroy_   00FD GR
-    k_cube_s=  0007     |     k_max_cu=  000A G   |     m_back_b   **** GX
-    m_front_   **** GX  |   0 m_num_cu   004D R   |   0 ommit      00B5 R
-    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
-  0 rep        009B R   |   0 rojo       00EB R
+    c_hp    =  0006     |     cpct_dis   **** GX  |     cpct_dra   **** GX
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
+    cpct_set   **** GX  |     cpct_wai   **** GX  |   0 cube_cle   004E GR
+  0 cube_cle   00B6 GR  |   0 cube_dra   0095 GR  |   0 cube_dra   00AA GR
+  0 cube_res   00B7 GR  |   0 cubedefa   0000 R   |   0 cubedefa   0000 R
+    cubedefa=  0006     |   0 cubeline   0007 GR  |   0 cubeline   0007 R
+    cubeline=  0006     |   0 cubeline   000E GR  |   0 cubeline   000E R
+    cubeline=  0006     |   0 cubeline   0015 GR  |   0 cubeline   0015 R
+    cubeline=  0006     |   0 cubeline   001C GR  |   0 cubeline   001C R
+    cubeline=  0006     |   0 cubeline   0023 GR  |   0 cubeline   0023 R
+    cubeline=  0006     |   0 cubeline   002A GR  |   0 cubeline   002A R
+    cubeline=  0006     |   0 cubeline   0031 GR  |   0 cubeline   0031 R
+    cubeline=  0006     |   0 cubeline   0038 GR  |   0 cubeline   0038 R
+    cubeline=  0006     |   0 cubeline   003F GR  |   0 cubeline   003F R
+    cubeline=  0006     |   0 cubeline   0046 GR  |   0 cubeline   0046 R
+    cubeline=  0006     |     dc_h    =  0003     |     dc_sp_h =  0005 
+    dc_sp_l =  0004     |     dc_w    =  0002     |     dc_x    =  0000 
+    dc_y    =  0001     |   0 destroy_   00EF GR  |     k_cube_s=  0007 
+    k_max_cu=  000A G   |     m_back_b   **** GX  |     m_front_   **** GX
+  0 m_num_cu   004D R   |   0 ommit      00B5 R   |     ren_clea   **** GX
+    ren_newS   **** GX  |     render_d   **** GX  |   0 rep        009B R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  119   flags    0
+   0 _CODE      size  10B   flags    0
 

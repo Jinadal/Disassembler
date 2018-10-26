@@ -134,50 +134,63 @@ cube_reset:
 	ld a, dc_y(ix)
 	ld (hl),a
 	
-    	inc hl
+    inc hl
 
-
-    	ld a, dc_w(ix)
+    ld a, dc_w(ix)
 	ld (hl),a
-    	inc hl
+    
+	inc hl
 
-
-    	ld a, dc_h(ix)
+    ld a, dc_h(ix)
 	ld (hl),a
-    	inc hl
     	
-    	ld a,c
-    	sub #1
-
-    	jp z, rojo
-
-    	add #2
-    	ld c,a
-	ld a, #15
-
-    	ld (hl),a
-
-    	jp colorok
-    	rojo:
-    	ld c,a
+	inc hl
     	
-    	ld a, #255
+	ld a, dc_sp_l(ix)
+	ld (hl),a
 
-    	ld (hl),a
+	inc hl
 
-    	jp colorok
-  	
-	colorok:
+	ld a, dc_sp_h(ix)
+	ld (hl),a
 
-    	inc hl
+	inc hl
 
-    	;;hp
-    	inc hl
-
-  	ld a,e
-  	add #1
-
-  	ld e,a
+	ld a, c_hp(ix)
+	ld (hl),a
+;;    ld a,c
+;;    sub #1
+;;
+;;    jp z, rojo
+;;
+;;    add #2
+;;    ld c,a
+;;	
+;;	ld a, #15
+;;
+;;    ld (hl),a
+;;
+;;    jp colorok
+;;    rojo:
+;;    ld c,a
+;;    
+;;    ld a, #255
+;;
+;;    ld (hl),a
+;;
+;;    jp colorok
+;;  	
+;;	colorok:
+;;
+;;    inc hl
+;;
+;;    	;;hp
+;;    inc hl
+;;
+;;  	ld a,e
+;;  	add #1
+;;
+;;  	ld e,a
 
   	sub #k_max_cube_line
 

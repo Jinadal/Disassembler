@@ -354,7 +354,7 @@ Hexadecimal [16-Bits]
                              82 
    417C C2 82 41      [10]   83 	jp nz, ommit
                              84 
-   417F CD A5 43      [17]   85 	call render_drawCube
+   417F CD 9F 43      [17]   85 	call render_drawCube
                              86 	
    4182                      87 	ommit:
    4182 C9            [10]   88    	ret
@@ -384,7 +384,7 @@ Hexadecimal [16-Bits]
                             112 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
    4184                     113 cube_reset:
                             114 
-   4184 CD 35 43      [17]  115 	call ball_reset
+   4184 CD 27 43      [17]  115 	call ball_reset
                             116 
    4187 21 D4 40      [10]  117 	ld hl, #cubeline10
    418A 1E 00         [ 7]  118 	ld e, #0
@@ -411,87 +411,100 @@ Hexadecimal [16-Bits]
    419A DD 7E 01      [19]  134 	ld a, dc_y(ix)
    419D 77            [ 7]  135 	ld (hl),a
                             136 	
-   419E 23            [ 6]  137     	inc hl
+   419E 23            [ 6]  137     inc hl
                             138 
-                            139 
-   419F DD 7E 02      [19]  140     	ld a, dc_w(ix)
-   41A2 77            [ 7]  141 	ld (hl),a
-   41A3 23            [ 6]  142     	inc hl
+   419F DD 7E 02      [19]  139     ld a, dc_w(ix)
+   41A2 77            [ 7]  140 	ld (hl),a
+                            141     
+   41A3 23            [ 6]  142 	inc hl
                             143 
-                            144 
-   41A4 DD 7E 03      [19]  145     	ld a, dc_h(ix)
-   41A7 77            [ 7]  146 	ld (hl),a
-   41A8 23            [ 6]  147     	inc hl
+   41A4 DD 7E 03      [19]  144     ld a, dc_h(ix)
+   41A7 77            [ 7]  145 	ld (hl),a
+                            146     	
+   41A8 23            [ 6]  147 	inc hl
                             148     	
-   41A9 79            [ 4]  149     	ld a,c
-   41AA D6 01         [ 7]  150     	sub #1
+   41A9 DD 7E 04      [19]  149 	ld a, dc_sp_l(ix)
+   41AC 77            [ 7]  150 	ld (hl),a
                             151 
-   41AC CA B8 41      [10]  152     	jp z, rojo
+   41AD 23            [ 6]  152 	inc hl
                             153 
-   41AF C6 02         [ 7]  154     	add #2
-   41B1 4F            [ 4]  155     	ld c,a
-   41B2 3E 0F         [ 7]  156 	ld a, #15
-                            157 
-   41B4 77            [ 7]  158     	ld (hl),a
-                            159 
-   41B5 C3 BF 41      [10]  160     	jp colorok
-   41B8                     161     	rojo:
-   41B8 4F            [ 4]  162     	ld c,a
-                            163     	
-   41B9 3E FF         [ 7]  164     	ld a, #255
-                            165 
-   41BB 77            [ 7]  166     	ld (hl),a
-                            167 
-   41BC C3 BF 41      [10]  168     	jp colorok
-                            169   	
-   41BF                     170 	colorok:
-                            171 
-   41BF 23            [ 6]  172     	inc hl
-                            173 
-                            174     	;;hp
-   41C0 23            [ 6]  175     	inc hl
-                            176 
-   41C1 7B            [ 4]  177   	ld a,e
-   41C2 C6 01         [ 7]  178   	add #1
-                            179 
-   41C4 5F            [ 4]  180   	ld e,a
+   41AE DD 7E 05      [19]  154 	ld a, dc_sp_h(ix)
+   41B1 77            [ 7]  155 	ld (hl),a
+                            156 
+   41B2 23            [ 6]  157 	inc hl
+                            158 
+   41B3 DD 7E 06      [19]  159 	ld a, c_hp(ix)
+   41B6 77            [ 7]  160 	ld (hl),a
+                            161 ;;    ld a,c
+                            162 ;;    sub #1
+                            163 ;;
+                            164 ;;    jp z, rojo
+                            165 ;;
+                            166 ;;    add #2
+                            167 ;;    ld c,a
+                            168 ;;	
+                            169 ;;	ld a, #15
+                            170 ;;
+                            171 ;;    ld (hl),a
+                            172 ;;
+                            173 ;;    jp colorok
+                            174 ;;    rojo:
+                            175 ;;    ld c,a
+                            176 ;;    
+                            177 ;;    ld a, #255
+                            178 ;;
+                            179 ;;    ld (hl),a
+                            180 ;;
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
 Hexadecimal [16-Bits]
 
 
 
-                            181 
-   41C5 D6 0A         [ 7]  182   	sub #k_max_cube_line
-                            183 
-   41C7 20 CB         [12]  184     	jr nz, bucl
-                            185 
-                            186     	
-                            187 
-   41C9 C9            [10]  188  ret
-                            189 
-   41CA                     190 destroy_cube:
-   41CA 36 FF         [10]  191 	ld (hl),#0xFF
-   41CC 23            [ 6]  192 	inc hl			;;	Y		
-   41CD 23            [ 6]  193 	inc hl			;;	W
-   41CE 23            [ 6]  194 	inc hl			;;	H
-   41CF 23            [ 6]  195 	inc hl			;;	SP_L
-   41D0 23            [ 6]  196 	inc hl			;;	SP_H
-   41D1 23            [ 6]  197 	inc hl			;;  HP
+                            181 ;;    jp colorok
+                            182 ;;  	
+                            183 ;;	colorok:
+                            184 ;;
+                            185 ;;    inc hl
+                            186 ;;
+                            187 ;;    	;;hp
+                            188 ;;    inc hl
+                            189 ;;
+                            190 ;;  	ld a,e
+                            191 ;;  	add #1
+                            192 ;;
+                            193 ;;  	ld e,a
+                            194 
+   41B7 D6 0A         [ 7]  195   	sub #k_max_cube_line
+                            196 
+   41B9 20 D9         [12]  197     	jr nz, bucl
                             198 
-   41D2 36 00         [10]  199 	ld (hl),#0
+                            199     	
                             200 
-   41D4 2B            [ 6]  201 	dec hl			;; SP_H
-   41D5 2B            [ 6]  202 	dec hl			;; SP_L
-   41D6 2B            [ 6]  203 	dec hl			;; H 
-   41D7 2B            [ 6]  204 	dec hl			;; W
-   41D8 2B            [ 6]  205 	dec hl			;; Y
-   41D9 2B            [ 6]  206 	dec hl			;; X
-                            207 
-   41DA 3A 1A 41      [13]  208 	ld a, (m_num_cube)
-   41DD D6 01         [ 7]  209 	sub #1
-   41DF 32 1A 41      [13]  210 	ld (m_num_cube),a
+   41BB C9            [10]  201  ret
+                            202 
+   41BC                     203 destroy_cube:
+   41BC 36 FF         [10]  204 	ld (hl),#0xFF
+   41BE 23            [ 6]  205 	inc hl			;;	Y		
+   41BF 23            [ 6]  206 	inc hl			;;	W
+   41C0 23            [ 6]  207 	inc hl			;;	H
+   41C1 23            [ 6]  208 	inc hl			;;	SP_L
+   41C2 23            [ 6]  209 	inc hl			;;	SP_H
+   41C3 23            [ 6]  210 	inc hl			;;  HP
                             211 
-   41E2 CA 84 41      [10]  212 	jp z, cube_reset
+   41C4 36 00         [10]  212 	ld (hl),#0
                             213 
-   41E5 C9            [10]  214 ret
-                            215 
+   41C6 2B            [ 6]  214 	dec hl			;; SP_H
+   41C7 2B            [ 6]  215 	dec hl			;; SP_L
+   41C8 2B            [ 6]  216 	dec hl			;; H 
+   41C9 2B            [ 6]  217 	dec hl			;; W
+   41CA 2B            [ 6]  218 	dec hl			;; Y
+   41CB 2B            [ 6]  219 	dec hl			;; X
+                            220 
+   41CC 3A 1A 41      [13]  221 	ld a, (m_num_cube)
+   41CF D6 01         [ 7]  222 	sub #1
+   41D1 32 1A 41      [13]  223 	ld (m_num_cube),a
+                            224 
+   41D4 CA 84 41      [10]  225 	jp z, cube_reset
+                            226 
+   41D7 C9            [10]  227 ret
+                            228 
