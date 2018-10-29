@@ -2760,21 +2760,21 @@ Hexadecimal [16-Bits]
    414C                      25 loop:
                              26    ;; call cube_clear
                              27 
-   414C CD CA 41      [17]   28     call barra_clear
-   414F CD 38 42      [17]   29     call ball_clear
+   414C CD 4A 43      [17]   28     call barra_clear
+   414F CD B8 43      [17]   29     call ball_clear
                              30 
                              31     
-   4152 CD CE 41      [17]   32     call barra_update
-   4155 CD 39 42      [17]   33     call ball_update
+   4152 CD 4E 43      [17]   32     call barra_update
+   4155 CD B9 43      [17]   33     call ball_update
                              34 
-   4158 CD B2 44      [17]   35     call cube_draw
+   4158 CD 99 42      [17]   35     call cube_draw
                              36 
-   415B CD C2 41      [17]   37     call barra_draw
-   415E CD 30 42      [17]   38     call ball_draw
+   415B CD 42 43      [17]   37     call barra_draw
+   415E CD B0 43      [17]   38     call ball_draw
                              39 
    4161 CD 66 46      [17]   40     call cpct_waitVSYNC_asm
                              41     ;;call ren_switchBuffers
-   4164 CD 6C 41      [17]   42     call ren_newScene
+   4164 CD 05 45      [17]   42     call ren_newScene
                              43     
                              44    ;; Loop forever
    4167 C3 4C 41      [10]   45    jp    loop

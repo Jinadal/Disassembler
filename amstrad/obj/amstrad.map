@@ -48,45 +48,45 @@ _CODE                               00004000    00000785 =        1925. bytes (R
      00004108  _bar_pal                           bar
      00004118  _bar_sp                            bar
      00004138  _main                              cpct_keyboard
-     0000416A  m_front_buffer                     
-     0000416B  m_back_buffer                      
-     0000416C  ren_newScene                       
-     00004173  ren_clearBackBuffers               
-     00004198  render_drawCube                    
-     000041B8  barra                              cpct_keyboard
-     000041C2  barra_draw                         cpct_keyboard
-     000041CA  barra_clear                        cpct_keyboard
-     000041CE  barra_update                       cpct_keyboard
-     000041D5  barra_moveKeyboard                 cpct_keyboard
-     000041F4  barra_move                         cpct_keyboard
-     0000421A  ball                               cpct_keyboard
-     00004225  balldefault                        cpct_keyboard
-     00004230  ball_draw                          cpct_keyboard
-     00004238  ball_clear                         cpct_keyboard
-     00004239  ball_update                        cpct_keyboard
-     00004240  ball_move                          cpct_keyboard
-     00004339  ball_reset                         cpct_keyboard
-     00004398  cubeline10                         
-     0000439F  cubeline11                         
-     000043A6  cubeline12                         
-     000043AD  cubeline13                         
-     000043B4  cubeline14                         
-     000043BB  cubeline15                         
-     000043C2  cubeline16                         
-     000043C9  cubeline17                         
-     000043D0  cubeline18                         
-     000043D7  cubeline19                         
-     000043DE  cubeline20                         
-     000043E5  cubeline21                         
-     000043EC  cubeline22                         
-     000043F3  cubeline23                         
-     000043FA  cubeline24                         
-     00004401  cubeline25                         
-     00004408  cubeline26                         
-     0000440F  cubeline27                         
-     00004416  cubeline28                         
-     0000441D  cubeline29                         
-     00004424  cubeline30                         
+     0000417F  cubeline10                         
+     00004186  cubeline11                         
+     0000418D  cubeline12                         
+     00004194  cubeline13                         
+     0000419B  cubeline14                         
+     000041A2  cubeline15                         
+     000041A9  cubeline16                         
+     000041B0  cubeline17                         
+     000041B7  cubeline18                         
+     000041BE  cubeline19                         
+     000041C5  cubeline20                         
+     000041CC  cubeline21                         
+     000041D3  cubeline22                         
+     000041DA  cubeline23                         
+     000041E1  cubeline24                         
+     000041E8  cubeline25                         
+     000041EF  cubeline26                         
+     000041F6  cubeline27                         
+     000041FD  cubeline28                         
+     00004204  cubeline29                         
+     0000420B  cubeline30                         
+     00004212  cubeline31                         
+     00004219  cubeline32                         
+     00004220  cubeline33                         
+     00004227  cubeline34                         
+     0000422E  cubeline35                         
+     00004235  cubeline36                         
+     0000423C  cubeline37                         
+     00004243  cubeline38                         
+     0000424A  cubeline39                         
+     00004251  cubeline40                         
+     00004258  cubeline41                         
+     0000425F  cubeline42                         
+     00004266  cubeline43                         
+     0000426D  cubeline44                         
+     00004274  cubeline45                         
+     0000427B  cubeline46                         
+     00004282  cubeline47                         
+     00004289  cubeline48                         
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
@@ -96,32 +96,32 @@ _CODE                               00004000    00000785 =        1925. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000442B  cubeline31                         
-     00004432  cubeline32                         
-     00004439  cubeline33                         
-     00004440  cubeline34                         
-     00004447  cubeline35                         
-     0000444E  cubeline36                         
-     00004455  cubeline37                         
-     0000445C  cubeline38                         
-     00004463  cubeline39                         
-     0000446A  cubeline40                         
-     00004471  cubeline41                         
-     00004478  cubeline42                         
-     0000447F  cubeline43                         
-     00004486  cubeline44                         
-     0000448D  cubeline45                         
-     00004494  cubeline46                         
-     0000449B  cubeline47                         
-     000044A2  cubeline48                         
-     000044A9  cubeline49                         
-     000044B1  cube_clear                         
-     000044B2  cube_draw                          
-     000044C7  cube_drawAll                       
-     000044E4  cube_clearAll                      
-     000044E5  cube_reset                         
-     0000452B  cube_loses_life                    
-     0000453B  destroy_cube                       
+     00004290  cubeline49                         
+     00004298  cube_clear                         
+     00004299  cube_draw                          
+     000042AE  cube_drawAll                       
+     000042CB  cube_clearAll                      
+     000042CC  cube_reset                         
+     00004312  cube_loses_life                    
+     00004322  destroy_cube                       
+     00004338  barra                              cpct_keyboard
+     00004342  barra_draw                         cpct_keyboard
+     0000434A  barra_clear                        cpct_keyboard
+     0000434E  barra_update                       cpct_keyboard
+     00004355  barra_moveKeyboard                 cpct_keyboard
+     00004374  barra_move                         cpct_keyboard
+     0000439A  ball                               cpct_keyboard
+     000043A5  balldefault                        cpct_keyboard
+     000043B0  ball_draw                          cpct_keyboard
+     000043B8  ball_clear                         cpct_keyboard
+     000043B9  ball_update                        cpct_keyboard
+     000043C0  ball_move                          cpct_keyboard
+     000044B9  ball_reset                         cpct_keyboard
+     00004503  m_front_buffer                     
+     00004504  m_back_buffer                      
+     00004505  ren_newScene                       
+     0000450C  ren_clearBackBuffers               
+     00004531  render_drawCube                    
      00004551  _cpct_memset_f64_asm               cpct_memutils
      00004594  _cpct_isKeyPressed                 cpct_keyboard
      00004594  cpct_isKeyPressed_asm              cpct_keyboard
@@ -152,44 +152,44 @@ obj/sprites/cubeline2.rel                 [ cubeline2 ]
 obj/sprites/cubeline.rel                  [ cubeline ]
 obj/sprites/bar.rel                       [ bar ]
 obj/main.rel                              [ cpct_keyboard ]
-obj/render.rel                            [  ]
-obj/barra.h.rel                           [  ]
-obj/ball.h.rel                            [  ]
-obj/main.h.rel                            [  ]
-obj/barra.rel                             [ cpct_keyboard ]
-obj/ball.rel                              [ cpct_keyboard ]
-obj/cube.h.rel                            [  ]
-obj/render.h.rel                          [  ]
 obj/cube.rel                              [  ]
+obj/cube.h.rel                            [  ]
+obj/barra.rel                             [ cpct_keyboard ]
+obj/main.h.rel                            [  ]
+obj/ball.h.rel                            [  ]
+obj/barra.h.rel                           [  ]
+obj/ball.rel                              [ cpct_keyboard ]
+obj/render.h.rel                          [  ]
+obj/render.rel                            [  ]
 
 
 Libraries Linked                          [ object file ]
 
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_memset_f64_asmbinding.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_isKeyPressed.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setPalette_asmbindings.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_drawSprite_asmbindings.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ keyboard.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setVideoMemoryPage.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_waitVSYNC.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_setVideoMode_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_removeInterruptHandler.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_drawSolidBox_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpc_mode_rom_status.rel ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_getScreenPtr_asmbindings.re ]
-/home/diego/cpctelera/cpctelera/cpctelera.lib
+/home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
                                           [ cpct_scanKeyboard.rel ]
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
