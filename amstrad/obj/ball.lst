@@ -2886,7 +2886,7 @@ Hexadecimal [16-Bits]
    0006 01 02                 6    .db   1, 2    ;; VX, VY
    0008 26 00                 7    .dw   ball_move        ;; Update 
    000A 03                    8    .db 3
-   000B                      32 	DefineBall balldefault, 40,78,1,4,_ball_sp,1,2, ball_move,3
+   000B                      32 	DefineBall balldefault, 40,78,1,4,_ball_sp,-1,2, ball_move,3
    000B                       1 balldefault: 
    000B                       2 	DefineDrawableEntity balldefault_dw, 40, 78, 1, 4, _ball_sp
    000B                       1 balldefault_dw:
@@ -2898,7 +2898,7 @@ Hexadecimal [16-Bits]
                               3   ; .db    _x, _y     ;; X, Y
                               4    ;.db    _w, _h     ;; W, H
                               5     ;.db   _col        ;; Color
-   0011 01 02                 6    .db   1, 2    ;; VX, VY
+   0011 FF 02                 6    .db   -1, 2    ;; VX, VY
    0013 26 00                 7    .dw   ball_move        ;; Update 
    0015 03                    8    .db 3
                              33 

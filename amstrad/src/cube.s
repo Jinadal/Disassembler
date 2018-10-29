@@ -28,12 +28,18 @@
 .globl _cubeline3_sp
 
 k_max_cube_line = 40
+k_cubos_linea = 10
+k_num_line = 4
+
+
 k_cube_size = 7
 
 
-DefineCubeLine1 cubedefault, 0x00, 0x28, 0x04, 0x08, _cubeline_sp, 0x01
-DefineCubeLine1 cubedefault1, 0x00, 0x18, 0x04, 0x08, _cubeline_sp, 0x01
-DefineCubeLine1 cubedefault2, 0x00, 0x10, 0x04, 0x08, _cubeline2_sp, 0x01
+DefineCubeLine1 cubedefault, 0x00, 0x08, 0x08, 0x08, _cubeline3_sp, 0x03
+DefineCubeLine1 cubedefault1, 0x00, 0x10, 0x08, 0x08, _cubeline_sp, 0x01
+DefineCubeLine1 cubedefault2, 0x00, 0x18, 0x08, 0x08, _cubeline_sp, 0x01
+DefineCubeLine1 cubedefault3, 0x00, 0x20, 0x08, 0x08, _cubeline2_sp, 0x02
+
 
 
 DefineCubeLine1 cubeline10, 0x00, 0x08, 0x08, 0x08,_cubeline3_sp, 0x03
@@ -170,13 +176,15 @@ cube_reset:
 	ld d, #0
 	ld c, #0
 	ld ix, #cubedefault
+
+	bucl2:
 	bucl:
 
 	ld a,d 
 
 	ld (hl),a
 
-	add #4
+	add #8
 
 	ld d,a
 	inc hl
@@ -197,33 +205,19 @@ cube_reset:
     	
 	inc hl
     	
-    ld a,c
-    sub #1
-
-    jp z, rojo
-
-    add #2
-    ld c,a
-	
-	ld a, #15
-
-    ld (hl),a
-
-    jp colorok
-    rojo:
-    	ld c,a
-    	
-    	ld a, #255
-
-    	ld (hl),a
-
-    	jp colorok
-  	
-	colorok:
+   ld a, dc_sp_l(ix)
+   ld (hl), a
 
     	inc hl
 
-    	;;hp
+    ld a, dc_sp_h(ix)
+    ld (hl),a
+
+   	inc hl	
+
+    ld a, c_hp(ix)
+    ld (hl),a
+
     	inc hl
 
   	ld a,e
@@ -231,9 +225,25 @@ cube_reset:
 
   	ld e,a
 
-  	sub #k_max_cube_line
+  	sub #k_cubos_linea
 
     	jr nz, bucl
+
+    	ld a, c
+
+    	add #1
+
+    	ld c, a
+
+    	sub #k_num_line
+
+    	ld de, #k_cube_size
+	add ix, de
+
+	ld d, #0
+	ld e, #0
+
+    	jr nz, bucl2
 
     	
 

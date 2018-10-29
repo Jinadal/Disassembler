@@ -2910,10 +2910,10 @@ Hexadecimal [16-Bits]
    0032 CD 00 00      [17]   67     call ren_newScene
                              68 
                              69 
-   0035                      70     repite:
+   0035                      70     repite:                         ;;Loop for playing the song x3 faster 
                              71 
-                             72 
-   0035 CD 00 00      [17]   73     call cpct_akp_musicPlay_asm
+   0035 CD 00 00      [17]   72     call cpct_akp_musicPlay_asm
+                             73  
    0038 3A 4B 00      [13]   74     ld a, (variable)
    003B D6 01         [ 7]   75     sub #1
    003D 32 4B 00      [13]   76     ld (variable), a

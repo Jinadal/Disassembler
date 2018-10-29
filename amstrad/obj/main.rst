@@ -2878,42 +2878,42 @@ Hexadecimal [16-Bits]
    08B7 31 00 80      [10]   35     ld  sp, #0x8000
                              36 
                              37     ;; Disable firmware to prevent it from interfering with string drawing
-   08BA CD 3D 16      [17]   38     call cpct_disableFirmware_asm
+   08BA CD 4C 16      [17]   38     call cpct_disableFirmware_asm
                              39 
    08BD 0E 00         [ 7]   40     ld    c, #0
-   08BF CD 07 0E      [17]   41     call cpct_setVideoMode_asm
+   08BF CD 16 0E      [17]   41     call cpct_setVideoMode_asm
                              42 
    08C2 21 87 08      [10]   43     ld   hl, #_bar_pal
    08C5 11 10 00      [10]   44     ld   de, #16
-   08C8 CD 39 0D      [17]   45     call cpct_setPalette_asm
+   08C8 CD 48 0D      [17]   45     call cpct_setPalette_asm
                              46 
                              47     ;;Initialize music
    08CB 11 40 00      [10]   48     ld de, #_song_ingame
-   08CE CD 20 15      [17]   49     call cpct_akp_musicInit_asm
+   08CE CD 2F 15      [17]   49     call cpct_akp_musicInit_asm
                              50 
    08D1                      51 loop:
                              52    ;; call cube_clear
                              53 
-   08D1 CD E3 0A      [17]   54     call barra_clear
-   08D4 CD 51 0B      [17]   55     call ball_clear
+   08D1 CD 63 09      [17]   54     call barra_clear
+   08D4 CD D1 09      [17]   55     call ball_clear
                              56 
                              57     
-   08D7 CD E7 0A      [17]   58     call barra_update
-   08DA CD 52 0B      [17]   59     call ball_update
+   08D7 CD 67 09      [17]   58     call barra_update
+   08DA CD D2 09      [17]   59     call ball_update
                              60 
-   08DD CD 32 0A      [17]   61     call cube_draw
+   08DD CD 52 0C      [17]   61     call cube_draw
                              62 
-   08E0 CD DB 0A      [17]   63     call barra_draw
-   08E3 CD 49 0B      [17]   64     call ball_draw
+   08E0 CD 5B 09      [17]   63     call barra_draw
+   08E3 CD C9 09      [17]   64     call ball_draw
                              65 
-   08E6 CD FF 0D      [17]   66     call cpct_waitVSYNC_asm
-   08E9 CD 9E 0C      [17]   67     call ren_newScene
+   08E6 CD 0E 0E      [17]   66     call cpct_waitVSYNC_asm
+   08E9 CD 05 09      [17]   67     call ren_newScene
                              68 
                              69 
-   08EC                      70     repite:
+   08EC                      70     repite:                         ;;Loop for playing the song x3 faster 
                              71 
-                             72 
-   08EC CD 16 0E      [17]   73     call cpct_akp_musicPlay_asm
+   08EC CD 25 0E      [17]   72     call cpct_akp_musicPlay_asm
+                             73  
    08EF 3A 02 09      [13]   74     ld a, (variable)
    08F2 D6 01         [ 7]   75     sub #1
    08F4 32 02 09      [13]   76     ld (variable), a

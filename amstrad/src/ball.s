@@ -29,7 +29,7 @@
 
 
 	DefineBall ball, 40,78,1,4,_ball_sp,1,2, ball_move, 3
-	DefineBall balldefault, 40,78,1,4,_ball_sp,1,2, ball_move,3
+	DefineBall balldefault, 40,78,1,4,_ball_sp,-1,2, ball_move,3
 
 
 
