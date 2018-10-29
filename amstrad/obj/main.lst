@@ -3,7 +3,32 @@ Hexadecimal [16-Bits]
 
 
 
-                              1 .include "cpctelera.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
+                             21 .include "cpctelera.h.s"
                               1 ;;-----------------------------LICENSE NOTICE------------------------------------
                               2 ;;  This file is part of CPCtelera: An Amstrad CPC Game Engine
                               3 ;;  Copyright (C) 2017 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -23,7 +48,7 @@ Hexadecimal [16-Bits]
                              17 ;;-------------------------------------------------------------------------------
                              18 
                              19 ;; All CPCtelera include files
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 
@@ -47,7 +72,7 @@ Hexadecimal [16-Bits]
                              16 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
                              17 ;;-------------------------------------------------------------------------------
                              18 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
 Hexadecimal [16-Bits]
 
 
@@ -107,7 +132,7 @@ Hexadecimal [16-Bits]
                              52 ;;    5 bytes
                              53 ;;
                              54 ;; Time Measures:
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
 Hexadecimal [16-Bits]
 
 
@@ -167,7 +192,7 @@ Hexadecimal [16-Bits]
                             107 ;; ------------------------------------
                             108 ;; (end code)
                             109 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
 Hexadecimal [16-Bits]
 
 
@@ -227,7 +252,7 @@ Hexadecimal [16-Bits]
                             162 ;;
                             163 ;; Parameters:
                             164 ;;    None
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
 Hexadecimal [16-Bits]
 
 
@@ -287,7 +312,7 @@ Hexadecimal [16-Bits]
                             217 ;;    This macro performs the subtraction of RH:RL - A and stores it directly on RH:RL.
                             218 ;; It uses only RH:RL and A to perform the operation.
                             219 ;;    With respect to the optional label ?JMPLBL, it is often better not to provide 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
 Hexadecimal [16-Bits]
 
 
@@ -347,7 +372,7 @@ Hexadecimal [16-Bits]
                             272 ;;
                             273 ;; Required memory:
                             274 ;;    7 bytes
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
 Hexadecimal [16-Bits]
 
 
@@ -407,7 +432,7 @@ Hexadecimal [16-Bits]
                             327 ;;
                             328 ;;    Performs the operation BC = BC - A. BC is any given pair of 8-bit registers.
                             329 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
 Hexadecimal [16-Bits]
 
 
@@ -443,7 +468,7 @@ Hexadecimal [16-Bits]
                             358 .macro sub_bc_a
                             359    sub_REGPAIR_a  b, c
                             360 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
 Hexadecimal [16-Bits]
 
 
@@ -489,7 +514,7 @@ Hexadecimal [16-Bits]
                              38 ;; Constant: opc_DI
                              39 ;;    Opcode for "DI" instruction. 
                      00F3    40 opc_DI = 0xF3
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
 Hexadecimal [16-Bits]
 
 
@@ -549,7 +574,7 @@ Hexadecimal [16-Bits]
                              52 ;;    3. Combines both reorders into final result using a *SelectionMask*. Each 
                              53 ;; 0 bit from the selection mask means "select bit from A2", whereas each 1 bit
                              54 ;; means "select bit from TReg2".
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
 Hexadecimal [16-Bits]
 
 
@@ -609,7 +634,7 @@ Hexadecimal [16-Bits]
                             107    xor TReg          ;; [1]   A2 = [xxxxxxxx] final value: bits of A reversed and selected using *SelectionMask*
                             108 .endm
                             109 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
 Hexadecimal [16-Bits]
 
 
@@ -669,7 +694,7 @@ Hexadecimal [16-Bits]
                             162 ;;
                             163 ;; Parameters:
                             164 ;;    TReg - An 8-bits register that will be used for intermediate calculations.
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
 Hexadecimal [16-Bits]
 
 
@@ -729,7 +754,7 @@ Hexadecimal [16-Bits]
                             217 ;; This register may be one of these: B, C, D, E, H, L
                             218 ;; 
                             219 ;; Input Registers: 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
 Hexadecimal [16-Bits]
 
 
@@ -778,7 +803,7 @@ Hexadecimal [16-Bits]
                             261    xor TReg        ;; [1] |   A2 = [03254761]
                             262    rrca            ;; [1] Rotate right to get pixels reversed A = [10325476]
                             263 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
 Hexadecimal [16-Bits]
 
 
@@ -838,7 +863,7 @@ Hexadecimal [16-Bits]
                              52 
                              53 ;; Macro: sll__d
                              54 ;;    Opcode for "SLL d" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
 Hexadecimal [16-Bits]
 
 
@@ -898,7 +923,7 @@ Hexadecimal [16-Bits]
                             107 .macro ld__ixl    Value 
                             108    .db #0xDD, #0x2E, Value  ;; Opcode for ld ixl, Value
                             109 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
 Hexadecimal [16-Bits]
 
 
@@ -958,7 +983,7 @@ Hexadecimal [16-Bits]
                             162 ;; 
                             163 .macro ld__b_ixl
                             164    .dw #0x45DD  ;; Opcode for ld b, ixl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
 Hexadecimal [16-Bits]
 
 
@@ -1018,7 +1043,7 @@ Hexadecimal [16-Bits]
                             217 ;;    Opcode for "AND ixl" instruction
                             218 ;; 
                             219 .macro and__ixl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
 Hexadecimal [16-Bits]
 
 
@@ -1078,7 +1103,7 @@ Hexadecimal [16-Bits]
                             272    .db #0xDD, #0x26, Value  ;; Opcode for ld ixh, Value
                             273 .endm
                             274 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
 Hexadecimal [16-Bits]
 
 
@@ -1138,7 +1163,7 @@ Hexadecimal [16-Bits]
                             327 .macro ld__b_ixh
                             328    .dw #0x44DD  ;; Opcode for ld b, ixh
                             329 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
 Hexadecimal [16-Bits]
 
 
@@ -1198,7 +1223,7 @@ Hexadecimal [16-Bits]
                             382 ;; 
                             383 .macro and__ixh
                             384    .dw #0xA4DD  ;; Opcode for and ixh
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
 Hexadecimal [16-Bits]
 
 
@@ -1258,7 +1283,7 @@ Hexadecimal [16-Bits]
                             437 
                             438 ;; Macro: ld__iyl_a
                             439 ;;    Opcode for "LD iyl, a" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
 Hexadecimal [16-Bits]
 
 
@@ -1318,7 +1343,7 @@ Hexadecimal [16-Bits]
                             492 .endm
                             493 
                             494 ;; Macro: ld__c_iyl
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 25.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
 Hexadecimal [16-Bits]
 
 
@@ -1378,7 +1403,7 @@ Hexadecimal [16-Bits]
                             547    .dw #0xA5FD  ;; Opcode for and iyl
                             548 .endm
                             549 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 26.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
 Hexadecimal [16-Bits]
 
 
@@ -1438,7 +1463,7 @@ Hexadecimal [16-Bits]
                             602 ;;    Opcode for "LD iyh, a" instruction
                             603 ;; 
                             604 .macro ld__iyh_a
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 27.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
 Hexadecimal [16-Bits]
 
 
@@ -1498,7 +1523,7 @@ Hexadecimal [16-Bits]
                             657 ;; Macro: ld__c_iyh
                             658 ;;    Opcode for "LD c, iyh" instruction
                             659 ;; 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 28.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
 Hexadecimal [16-Bits]
 
 
@@ -1558,7 +1583,7 @@ Hexadecimal [16-Bits]
                             712 
                             713 ;; Macro: or__iyh
                             714 ;;    Opcode for "OR iyh" instruction
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 29.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
 Hexadecimal [16-Bits]
 
 
@@ -1595,7 +1620,7 @@ Hexadecimal [16-Bits]
                             744 .macro inc__iyh
                             745    .dw #0x24FD  ;; Opcode for inc iyh
                             746 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 30.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
 Hexadecimal [16-Bits]
 
 
@@ -1651,7 +1676,7 @@ Hexadecimal [16-Bits]
                              71       halt
                              72    .endm
                              73 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 31.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
 Hexadecimal [16-Bits]
 
 
@@ -1711,7 +1736,7 @@ Hexadecimal [16-Bits]
                              52 ;;   0x4001 | Key_F2          ||  0x0205 | Key_7         ||  0x1008 |  Key_Tab
                              53 ;;   0x8001 | Key_F0          ||  0x0405 | Key_U         ||  0x2008 |  Key_A
                              54 ;;   0x0102 | Key_Clr         ||  0x0805 | Key_Y         ||  0x4008 |  Key_CapsLock
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 32.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 33.
 Hexadecimal [16-Bits]
 
 
@@ -1771,7 +1796,7 @@ Hexadecimal [16-Bits]
                      0803   107 Key_P            = #0x0803
                      1003   108 Key_SemiColon    = #0x1003
                      2003   109 Key_Colon        = #0x2003
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 33.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 34.
 Hexadecimal [16-Bits]
 
 
@@ -1831,7 +1856,7 @@ Hexadecimal [16-Bits]
                      4008   162 Key_CapsLock     = #0x4008
                      8008   163 Key_Z            = #0x8008
                             164 ;; Matrix Line 0x09
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 34.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 35.
 Hexadecimal [16-Bits]
 
 
@@ -1844,7 +1869,7 @@ Hexadecimal [16-Bits]
                      2009   170 Joy0_Fire2       = #0x2009
                      4009   171 Joy0_Fire3       = #0x4009
                      8009   172 Key_Del          = #0x8009
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 35.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 36.
 Hexadecimal [16-Bits]
 
 
@@ -1872,7 +1897,7 @@ Hexadecimal [16-Bits]
                              20 ;;
                              21 ;; Includes
                              22 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 36.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 37.
 Hexadecimal [16-Bits]
 
 
@@ -1932,7 +1957,7 @@ Hexadecimal [16-Bits]
                      0030    52 cpct_pageC0_asm = 0x30
                      0020    53 cpct_page80_asm = 0x20
                      0010    54 cpct_page40_asm = 0x10
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 37.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 38.
 Hexadecimal [16-Bits]
 
 
@@ -1992,7 +2017,7 @@ Hexadecimal [16-Bits]
                             107 ;; Parameters:
                             108 ;;    (__) REG16 - 16-bits register where the resulting value will be loaded
                             109 ;;    (2B) VMEM  - Start of video memory buffer where (*X*, *Y*) coordinates will be calculated
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 38.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 39.
 Hexadecimal [16-Bits]
 
 
@@ -2052,7 +2077,7 @@ Hexadecimal [16-Bits]
                             162 ;; Macro: cpctm_setCRTCReg
                             163 ;;
                             164 ;;    Macro that sets a new value for a given CRTC register.
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 39.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 40.
 Hexadecimal [16-Bits]
 
 
@@ -2112,7 +2137,7 @@ Hexadecimal [16-Bits]
                             217 ;;
                             218 ;; Macro: cpctm_setBorder_asm
                             219 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 40.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 41.
 Hexadecimal [16-Bits]
 
 
@@ -2172,7 +2197,7 @@ Hexadecimal [16-Bits]
                             272 ;; ASM Definition:
                             273 ;;   .macro <cpct_clearScreen_asm> COL
                             274 ;;
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 41.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 42.
 Hexadecimal [16-Bits]
 
 
@@ -2210,7 +2235,7 @@ Hexadecimal [16-Bits]
                             305    ld   (hl), #COL      ;; [3] First Byte = given Colour
                             306    ldir                 ;; [98297] Perform the copy
                             307 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 42.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 43.
 Hexadecimal [16-Bits]
 
 
@@ -2270,7 +2295,7 @@ Hexadecimal [16-Bits]
                      0001    52 FW_BLUE           =  1
                      0002    53 FW_BRIGHT_BLUE    =  2
                      0003    54 FW_RED            =  3
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 43.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 44.
 Hexadecimal [16-Bits]
 
 
@@ -2330,7 +2355,7 @@ Hexadecimal [16-Bits]
                      0015   107 HW_BRIGHT_BLUE    = 0x15
                      001C   108 HW_RED            = 0x1C
                      0018   109 HW_MAGENTA        = 0x18
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 44.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 45.
 Hexadecimal [16-Bits]
 
 
@@ -2357,7 +2382,7 @@ Hexadecimal [16-Bits]
                      000A   129 HW_BRIGHT_YELLOW  = 0x0A
                      0003   130 HW_PASTEL_YELLOW  = 0x03
                      000B   131 HW_BRIGHT_WHITE   = 0x0B
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 45.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 46.
 Hexadecimal [16-Bits]
 
 
@@ -2373,7 +2398,7 @@ Hexadecimal [16-Bits]
                      00F5    33 PPI_PORT_B     = 0xF5    ;; Port B of the PPI, used to read Vsync/Jumpers/PrinterBusy/CasIn/Exp information
                      00BC    34 CRTC_SELECTREG = 0xBC    ;; CRTC Port and command "Select Register"
                      00BD    35 CRTC_SETVAL    = 0xBD    ;; CRTC Port and command "Set Value"
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 46.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 47.
 Hexadecimal [16-Bits]
 
 
@@ -2404,7 +2429,7 @@ Hexadecimal [16-Bits]
                              23 ;;### in assembler code
                              24 ;;#####################################################################
                              25 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 47.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 48.
 Hexadecimal [16-Bits]
 
 
@@ -2464,7 +2489,7 @@ Hexadecimal [16-Bits]
                              52 ;;
                              53 ;; Returns:
                              54 ;;    REG = X * (Y - 1) ;; Register loaded with the offset
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 48.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
 Hexadecimal [16-Bits]
 
 
@@ -2490,12 +2515,12 @@ Hexadecimal [16-Bits]
                              73 .macro cpctm_ld_sblo REG, X, Y
                              74    ld    REG, #X * (Y-1)
                              75 .endm
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 49.
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
 Hexadecimal [16-Bits]
 
 
 
-                              2 .include "barra.h.s"
+                             22 .include "barra.h.s"
                               1 .globl barra_clear
                               2 .globl barra_draw
                               3 .globl barra_update
@@ -2504,279 +2529,404 @@ Hexadecimal [16-Bits]
                               6 
                               7 
                               8 
-                              9 
-                             10 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             11 ;;
-                             12 ;;MACROS
+                              9 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             10 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                             11 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                             12 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
                              13 ;;
-                             14 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             15 
-                             16    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
-                             17 _name: 
-                             18 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
-                             19  ;  .db    _x, _y     ;; X, Y
-                             20   ; .db    _w, _h     ;; W, H
-                             21   ; .db   _col        ;; Color
-                             22    .db   _vx, _vy    ;; VX, VY
-                             23    .dw   _upd        ;; Update 
-                             24   
-                             25 .endm
-                             26 ;b_x = 0
-                             27 ;b_y = 1
-                             28 ;b_w = 2
-                             29 ;b_h = 3
-                             30 ;b_col = 4
-                     0006    31 b_vx = 6
-                     0007    32 b_vy = 7
-                             33 	
-                             34 
-                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             36 ;;
-                             37 ;;OBJETOS CREADOS CON LA MACROS
-                             38 ;;
-                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             40 
-                             41 .globl barra
-                             42 
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 50.
-Hexadecimal [16-Bits]
-
-
-
-                              3 .include "ball.h.s"
-                              1 
-                              2 
-                              3 
-                              4 .globl ball_clear
-                              5 .globl ball_draw
-                              6 .globl ball_update
-                              7 .globl ball_move
-                              8 .globl ball_reset
-                              9 
-                             10 
-                             11 
-                             12 
-                             13 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             14 ;;
-                             15 ;;MACROS
-                             16 ;;
-                             17 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             18 
-                             19    .macro DefineBall _name, _x, _y, _w, _h, _sprite,  _vx, _vy,_upd,_hp
-                             20 _name: 
-                             21 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _sprite
-                             22   ; .db    _x, _y     ;; X, Y
-                             23    ;.db    _w, _h     ;; W, H
-                             24     ;.db   _col        ;; Color
-                             25    .db   _vx, _vy    ;; VX, VY
-                             26    .dw   _upd        ;; Update 
-                             27    .db _hp
-                             28 .endm
-                             29 ;bl_x = 0
-                             30 ;bl_y = 1
-                             31 ;bl_w = 2
-                             32 ;bl_h = 3
-                             33 ;bl_col = 4
-                     0006    34 bl_vx = 6
-                     0007    35 bl_vy = 7
-                     0008    36 bl_up_l = 8
-                     0009    37 bl_up_h = 9
-                     000A    38 bl_hp = 10
-                             39 	
-                             40 
-                             41 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             42 ;;
-                             43 ;;OBJETOS CREADOS CON LA MACROS
-                             44 ;;
-                             45 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             46 
-                             47 .globl ball
-                             48 .globl balldefault
-                             49 ;.globl screenPointer
-                             50 
+                             14 ;;  This program is free software: you can redistribute it and/or modify
+                             15 ;;  it under the terms of the GNU Lesser General Public License as published by
+                             16 ;;  the Free Software Foundation, either version 3 of the License, or
+                             17 ;;  (at your option) any later version.
+                             18 ;;
+                             19 ;;  This program is distributed in the hope that it will be useful,
+                             20 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             21 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             22 ;;  GNU Lesser General Public License for more details.
+                             23 ;;
+                             24 ;;  You should have received a copy of the GNU Lesser General Public License
+                             25 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             26 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             27 
+                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             29 ;;
+                             30 ;;MACROS
+                             31 ;;
+                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             33 
+                             34    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
+                             35 _name: 
+                             36 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             37  ;  .db    _x, _y     ;; X, Y
+                             38   ; .db    _w, _h     ;; W, H
+                             39   ; .db   _col        ;; Color
+                             40    .db   _vx, _vy    ;; VX, VY
+                             41    .dw   _upd        ;; Update 
+                             42   
+                             43 .endm
+                             44 ;b_x = 0
+                             45 ;b_y = 1
+                             46 ;b_w = 2
+                             47 ;b_h = 3
+                             48 ;b_col = 4
+                     0006    49 b_vx = 6
+                     0007    50 b_vy = 7
+                             51 	
+                             52 
+                             53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             54 ;;
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
-                              4 .include "main.h.s"
-                              1 .globl cpct_disableFirmware_asm
-                              2 .globl cpct_drawSolidBox_asm
-                              3 .globl cpct_getScreenPtr_asm
-                              4 .globl cpct_waitVSYNC_asm
-                              5 .globl cpct_setVideoMode_asm
-                              6 .globl cpct_scanKeyboard_asm
-                              7 .globl cpct_isKeyPressed_asm
-                              8 .globl cpct_setVideoMemoryPage_asm
-                              9 .globl _cpct_memset_f64_asm
-                             10 .globl cpct_drawSprite_asm
-                             11 .globl cpct_setPalette_asm
+                             55 ;;OBJETOS CREADOS CON LA MACROS
+                             56 ;;
+                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             58 
+                             59 .globl barra
+                             60 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
-                              5 .include "cube.h.s"
-                              1 
-                              2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                              3 ;;MACROS
-                              4 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                              5 .macro DefineCubeLine1 _name, _x, _y, _w, _h, _col, _hp
-                              6 _name:
-                              7     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
-                              8     .db     _hp     ;; Hitpoints
-                              9 .endm
-                     0000    10 c_de        = 0
-                     0006    11 c_de_size   = 6
-                     0006    12 c_hp        = 0 + c_de_size
-                             13 ;;.macro DefineCubeLine1Default _name, _suf
-                             14 ;;    DefineCubeLine1 _name'_suf, 0, 0, 0, 0, 0xFF, 0
-                             15 ;;.endm
-                             16 ;;.macro DefineNCubeLine1 _name, _n
-                             17 
-                             18 ;;    _s = 0
-                             19 ;;    .rept _n
-                             20 ;;        DefineCubeLine1Default _name, \_s
+                             23 .include "ball.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 
                              21 
-                             22 ;;        _s = _s + 1
-                             23 ;;    .endm
-                             24 ;;.endm
-                             25 
-                             26 
+                             22 .globl ball_clear
+                             23 .globl ball_draw
+                             24 .globl ball_update
+                             25 .globl ball_move
+                             26 .globl ball_reset
                              27 
-                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             29 ;;OBJECTS CREATED WITH MACROS
-                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             31 .globl cube_clear
-                             32 .globl cube_draw
-                             33 .globl cube_drawAll
-                             34 .globl cube_clearAll
-                             35 .globl cube_loses_life
-                             36 .globl cube_reset
-                             37 
-                             38 .globl destroy_cube
-                             39 
-                             40 .globl k_cube_size
-                             41 .globl k_max_cube_line	
-                             42 
-                             43 .globl cubeline10
-                             44 .globl cubeline11
-                             45 .globl cubeline12
-                             46 .globl cubeline13
-                             47 .globl cubeline14
-                             48 .globl cubeline15
-                             49 .globl cubeline16
-                             50 .globl cubeline17
-                             51 .globl cubeline18
-                             52 .globl cubeline19
-                             53 
-                             54 .globl cubeline20
+                             28 
+                             29 
+                             30 
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             32 ;;
+                             33 ;;MACROS
+                             34 ;;
+                             35 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             36 
+                             37    .macro DefineBall _name, _x, _y, _w, _h, _sprite,  _vx, _vy,_upd,_hp
+                             38 _name: 
+                             39 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _sprite
+                             40   ; .db    _x, _y     ;; X, Y
+                             41    ;.db    _w, _h     ;; W, H
+                             42     ;.db   _col        ;; Color
+                             43    .db   _vx, _vy    ;; VX, VY
+                             44    .dw   _upd        ;; Update 
+                             45    .db _hp
+                             46 .endm
+                             47 ;bl_x = 0
+                             48 ;bl_y = 1
+                             49 ;bl_w = 2
+                             50 ;bl_h = 3
+                             51 ;bl_col = 4
+                     0006    52 bl_vx = 6
+                     0007    53 bl_vy = 7
+                     0008    54 bl_up_l = 8
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
 
 
-                             55 .globl cubeline21
-                             56 .globl cubeline22
-                             57 .globl cubeline23
-                             58 .globl cubeline24
-                             59 .globl cubeline25
-                             60 .globl cubeline26
-                             61 .globl cubeline27
-                             62 .globl cubeline28
-                             63 .globl cubeline29
+                     0009    55 bl_up_h = 9
+                     000A    56 bl_hp = 10
+                             57 	
+                             58 
+                             59 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             60 ;;
+                             61 ;;OBJETOS CREADOS CON LA MACROS
+                             62 ;;
+                             63 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              64 
-                             65 .globl cubeline30
-                             66 .globl cubeline31
-                             67 .globl cubeline32
-                             68 .globl cubeline33
-                             69 .globl cubeline34
-                             70 .globl cubeline35
-                             71 .globl cubeline36
-                             72 .globl cubeline37
-                             73 .globl cubeline38
-                             74 .globl cubeline39
-                             75 
-                             76 .globl cubeline40
-                             77 .globl cubeline41
-                             78 .globl cubeline42
-                             79 .globl cubeline43
-                             80 .globl cubeline44
-                             81 .globl cubeline45
-                             82 .globl cubeline46
-                             83 .globl cubeline47
-                             84 .globl cubeline48
-                             85 .globl cubeline49
+                             65 .globl ball
+                             66 .globl balldefault
+                             67 ;.globl screenPointer
+                             68 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
 
 
-                              6 .include "render.h.s"
-                              1 
-                              2 
-                              3 ;;Drawable Entity
-                              4 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _sprite
-                              5 _name:
-                              6     .db _x, _y
-                              7     .db _w, _h
-                              8     .dw _sprite
-                              9 
-                             10 _name'_size = . - _name
-                             11 .endm
-                     0001    12 dc_x    = 0     dc_y    = 1
-                     0003    13 dc_w    = 2     dc_h    = 3
-                     0005    14 dc_sp_l  = 4    dc_sp_h  = 5
-                             15 
-                             16 .globl ren_clearBackBuffers
-                             17 ;;.globl ren_switchBuffers
-                             18 .globl render_drawCube
-                             19 .globl ren_newScene
-                             20 .globl m_back_buffer
-                             21 .globl m_front_buffer
+                             24 .include "main.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 .globl cpct_disableFirmware_asm
+                             21 .globl cpct_drawSolidBox_asm
+                             22 .globl cpct_getScreenPtr_asm
+                             23 .globl cpct_waitVSYNC_asm
+                             24 .globl cpct_setVideoMode_asm
+                             25 .globl cpct_scanKeyboard_asm
+                             26 .globl cpct_isKeyPressed_asm
+                             27 .globl cpct_setVideoMemoryPage_asm
+                             28 .globl _cpct_memset_f64_asm
+                             29 .globl cpct_drawSprite_asm
+                             30 .globl cpct_setPalette_asm
+                             31 .globl cpct_akp_musicInit_asm
+                             32 .globl cpct_akp_musicPlay_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
 
 
-                              7 
-                              8 .globl _bar_pal
-                              9 
-                             10 .area _DATA
-                             11 .area _CODE
-                             12 
-   0000                      13 _main::
-   0000 31 00 80      [10]   14     ld  sp, #0x8000
-                             15 
-                             16     ;; Disable firmware to prevent it from interfering with string drawing
-   0003 CD 00 00      [17]   17     call cpct_disableFirmware_asm
-                             18 
-   0006 0E 00         [ 7]   19     ld    c, #0
-   0008 CD 00 00      [17]   20     call cpct_setVideoMode_asm
-                             21 
-   000B 21 00 00      [10]   22     ld   hl, #_bar_pal
-   000E 11 10 00      [10]   23     ld   de, #16
-   0011 CD 00 00      [17]   24     call cpct_setPalette_asm
-   0014                      25 loop:
-                             26    ;; call cube_clear
-                             27 
-   0014 CD 00 00      [17]   28     call barra_clear
-   0017 CD 00 00      [17]   29     call ball_clear
-                             30 
-                             31     
-   001A CD 00 00      [17]   32     call barra_update
-   001D CD 00 00      [17]   33     call ball_update
-                             34 
-   0020 CD 00 00      [17]   35     call cube_draw
-                             36 
-   0023 CD 00 00      [17]   37     call barra_draw
-   0026 CD 00 00      [17]   38     call ball_draw
+                             25 .include "cube.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             21 ;;MACROS
+                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             23 .macro DefineCubeLine1 _name, _x, _y, _w, _h, _col, _hp
+                             24 _name:
+                             25     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             26     .db     _hp     ;; Hitpoints
+                             27 .endm
+                     0000    28 c_de        = 0
+                     0006    29 c_de_size   = 6
+                     0006    30 c_hp        = 0 + c_de_size
+                             31 ;;.macro DefineCubeLine1Default _name, _suf
+                             32 ;;    DefineCubeLine1 _name'_suf, 0, 0, 0, 0, 0xFF, 0
+                             33 ;;.endm
+                             34 ;;.macro DefineNCubeLine1 _name, _n
+                             35 
+                             36 ;;    _s = 0
+                             37 ;;    .rept _n
+                             38 ;;        DefineCubeLine1Default _name, \_s
                              39 
-   0029 CD 00 00      [17]   40     call cpct_waitVSYNC_asm
-                             41     ;;call ren_switchBuffers
-   002C CD 00 00      [17]   42     call ren_newScene
-                             43     
-                             44    ;; Loop forever
-   002F C3 14 00      [10]   45    jp    loop
+                             40 ;;        _s = _s + 1
+                             41 ;;    .endm
+                             42 ;;.endm
+                             43 
+                             44 
+                             45 
+                             46 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             47 ;;OBJECTS CREATED WITH MACROS
+                             48 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             49 .globl cube_clear
+                             50 .globl cube_draw
+                             51 .globl cube_drawAll
+                             52 .globl cube_clearAll
+                             53 .globl cube_loses_life
+                             54 .globl cube_reset
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
+Hexadecimal [16-Bits]
+
+
+
+                             55 
+                             56 .globl destroy_cube
+                             57 
+                             58 .globl k_cube_size
+                             59 .globl k_max_cube_line	
+                             60 
+                             61 .globl cubeline10
+                             62 .globl cubeline11
+                             63 .globl cubeline12
+                             64 .globl cubeline13
+                             65 .globl cubeline14
+                             66 .globl cubeline15
+                             67 .globl cubeline16
+                             68 .globl cubeline17
+                             69 .globl cubeline18
+                             70 .globl cubeline19
+                             71 
+                             72 .globl cubeline20
+                             73 .globl cubeline21
+                             74 .globl cubeline22
+                             75 .globl cubeline23
+                             76 .globl cubeline24
+                             77 .globl cubeline25
+                             78 .globl cubeline26
+                             79 .globl cubeline27
+                             80 .globl cubeline28
+                             81 .globl cubeline29
+                             82 
+                             83 .globl cubeline30
+                             84 .globl cubeline31
+                             85 .globl cubeline32
+                             86 .globl cubeline33
+                             87 .globl cubeline34
+                             88 .globl cubeline35
+                             89 .globl cubeline36
+                             90 .globl cubeline37
+                             91 .globl cubeline38
+                             92 .globl cubeline39
+                             93 
+                             94 .globl cubeline40
+                             95 .globl cubeline41
+                             96 .globl cubeline42
+                             97 .globl cubeline43
+                             98 .globl cubeline44
+                             99 .globl cubeline45
+                            100 .globl cubeline46
+                            101 .globl cubeline47
+                            102 .globl cubeline48
+                            103 .globl cubeline49
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 57.
+Hexadecimal [16-Bits]
+
+
+
+                             26 .include "render.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 
+                             21 ;;Drawable Entity
+                             22 .macro DefineDrawableEntity _name, _x, _y, _w, _h, _sprite
+                             23 _name:
+                             24     .db _x, _y
+                             25     .db _w, _h
+                             26     .dw _sprite
+                             27 
+                             28 _name'_size = . - _name
+                             29 .endm
+                     0001    30 dc_x    = 0     dc_y    = 1
+                     0003    31 dc_w    = 2     dc_h    = 3
+                     0005    32 dc_sp_l  = 4    dc_sp_h  = 5
+                             33 
+                             34 .globl ren_clearBackBuffers
+                             35 ;;.globl ren_switchBuffers
+                             36 .globl render_drawCube
+                             37 .globl ren_newScene
+                             38 .globl m_back_buffer
+                             39 .globl m_front_buffer
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 58.
+Hexadecimal [16-Bits]
+
+
+
+                             27 
+                             28 .globl _bar_pal
+                             29 .globl _song_ingame
+                             30 
+                             31 .area _DATA
+                             32 .area _CODE
+                             33 
+   0000                      34 _main::
+   0000 31 00 80      [10]   35     ld  sp, #0x8000
+                             36 
+                             37     ;; Disable firmware to prevent it from interfering with string drawing
+   0003 CD 00 00      [17]   38     call cpct_disableFirmware_asm
+                             39 
+   0006 0E 00         [ 7]   40     ld    c, #0
+   0008 CD 00 00      [17]   41     call cpct_setVideoMode_asm
+                             42 
+   000B 21 00 00      [10]   43     ld   hl, #_bar_pal
+   000E 11 10 00      [10]   44     ld   de, #16
+   0011 CD 00 00      [17]   45     call cpct_setPalette_asm
                              46 
-                             47    
+                             47     ;;Initialize music
+   0014 11 00 00      [10]   48     ld de, #_song_ingame
+   0017 CD 00 00      [17]   49     call cpct_akp_musicInit_asm
+                             50 
+   001A                      51 loop:
+                             52    ;; call cube_clear
+                             53 
+   001A CD 00 00      [17]   54     call barra_clear
+   001D CD 00 00      [17]   55     call ball_clear
+                             56 
+                             57     
+   0020 CD 00 00      [17]   58     call barra_update
+   0023 CD 00 00      [17]   59     call ball_update
+                             60 
+   0026 CD 00 00      [17]   61     call cube_draw
+                             62 
+   0029 CD 00 00      [17]   63     call barra_draw
+   002C CD 00 00      [17]   64     call ball_draw
+                             65 
+   002F CD 00 00      [17]   66     call cpct_waitVSYNC_asm
+   0032 CD 00 00      [17]   67     call ren_newScene
+                             68 
+                             69 
+   0035                      70     repite:
+                             71 
+                             72 
+   0035 CD 00 00      [17]   73     call cpct_akp_musicPlay_asm
+   0038 3A 4B 00      [13]   74     ld a, (variable)
+   003B D6 01         [ 7]   75     sub #1
+   003D 32 4B 00      [13]   76     ld (variable), a
+   0040 C2 35 00      [10]   77     jp nz, repite
+                             78 
+   0043 3E 03         [ 7]   79     ld a,#3
+   0045 32 4B 00      [13]   80     ld (variable), a
+                             81    ;; Loop forever
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
+Hexadecimal [16-Bits]
+
+
+
+   0048 C3 1A 00      [10]   82    jp    loop
+                             83 
+   004B 03                   84 variable: .db #3

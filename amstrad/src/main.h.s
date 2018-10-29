@@ -28,3 +28,5 @@
 .globl _cpct_memset_f64_asm
 .globl cpct_drawSprite_asm
 .globl cpct_setPalette_asm
+.globl cpct_akp_musicInit_asm
+.globl cpct_akp_musicPlay_asm

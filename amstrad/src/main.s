@@ -26,6 +26,7 @@
 .include "render.h.s"
 
 .globl _bar_pal
+.globl _song_ingame
 
 .area _DATA
 .area _CODE
@@ -42,6 +43,11 @@ _main::
     ld   hl, #_bar_pal
     ld   de, #16
     call cpct_setPalette_asm
+
+    ;;Initialize music
+    ld de, #_song_ingame
+    call cpct_akp_musicInit_asm
+
 loop:
    ;; call cube_clear
 
@@ -58,10 +64,21 @@ loop:
     call ball_draw
 
     call cpct_waitVSYNC_asm
-    ;;call ren_switchBuffers
     call ren_newScene
-    
+
+
+    repite:                         ;;Loop for playing the song x3 faster 
+
+    call cpct_akp_musicPlay_asm
+ 
+    ld a, (variable)
+    sub #1
+    ld (variable), a
+    jp nz, repite
+
+    ld a,#3
+    ld (variable), a
    ;; Loop forever
    jp    loop
 
-   
+variable: .db #3
