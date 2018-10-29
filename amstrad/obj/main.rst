@@ -2910,16 +2910,16 @@ Hexadecimal [16-Bits]
    08E9 CD 9E 0C      [17]   67     call ren_newScene
                              68 
                              69 
-   08EC                      70     repite:
+   08EC                      70     repite:                         ;;Loop for playing the song x3 faster 
                              71 
-                             72 
-   08EC CD 16 0E      [17]   73     call cpct_akp_musicPlay_asm
+   08EC CD 16 0E      [17]   72     call cpct_akp_musicPlay_asm
+                             73  
    08EF 3A 02 09      [13]   74     ld a, (variable)
    08F2 D6 01         [ 7]   75     sub #1
    08F4 32 02 09      [13]   76     ld (variable), a
    08F7 C2 EC 08      [10]   77     jp nz, repite
                              78 
-   08FA 3E 03         [ 7]   79     ld a,#3
+   08FA 3E 02         [ 7]   79     ld a,#2
    08FC 32 02 09      [13]   80     ld (variable), a
                              81    ;; Loop forever
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
@@ -2929,4 +2929,4 @@ Hexadecimal [16-Bits]
 
    08FF C3 D1 08      [10]   82    jp    loop
                              83 
-   0902 03                   84 variable: .db #3
+   0902 02                   84 variable: .db #2
