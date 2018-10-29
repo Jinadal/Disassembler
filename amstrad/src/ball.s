@@ -83,14 +83,14 @@ ball_move:
  ld    a, dc_x(ix)     ;; Since screen max x is79
   sub  #77            ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, colisionX       ;;
+ jp z, colisionX       ;;
 
 
 
   ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
   sub #1            ;;
                     ;;
-    jr z, colisionX  ;;
+    jp z, colisionX  ;;
 
 ;;  END MAX MIN X CHECK
 
@@ -107,7 +107,7 @@ ball_move:
 ld    a, dc_y(ix)     ;; Since screen max x is79
   sub  # 190           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
- jr z, resetTheBall       
+ jp z, resetTheBall       
 
  
 
@@ -181,7 +181,7 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 ;; COMPROBAR POR DONDE ME ENTRA LA COLISION
 
-;; MIRAR CON RESPECTO AL OBSTACULO SI LAS YS DE LA BOLA ESTAN DENTRO DE LAS DEL OBSTACULO Y QUE LAS X Y MANEJAR LOS 2 CASOS
+
 	
 
 	
@@ -189,14 +189,53 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 
 	ld ix,#ball
+
+	push hl
+
+  	ld      a, (m_front_buffer)  ;; DE = Back buffer
+   	ld      d, a
+   	ld      e, #0
+
+ 	ld a,dc_x(ix)
+   	sub #1
+  
+
+	    ld      c, a        ;; C = Entity Y
+
+     	 ld a,dc_y(ix)
+   	add #1
+   	 ld      b, a        	;; B = Entity X
+ 	call cpct_getScreenPtr_asm
+
+
+	 
+
+	 ld a, (hl)
+	 sub #0
+
+	 jp nz, colisionX2
+
+	 inc hl
+	 inc hl
+
+	ld a , (hl)
+	 sub #0
+
+	 jp nz, colisionX2
+	
+	; si la x(bola) > x(caja) -> entro por la derecha
+
+
+
+
 	ld a,#0  
 	sub bl_vy(ix) 
 
 	ld bl_vy(ix),a
-	call colisionX
+	;call colisionX
 
 	;; ld dc_col(ix),#255
-
+	pop hl
     call cube_loses_life
 
 	 ret
@@ -216,6 +255,24 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 	;; ld dc_col(ix),#200
 
 	 ret
+
+
+	  colisionX2:
+		
+	 ld a,#0  
+	 sub bl_vx(ix) 
+	 
+
+	 
+	 ld bl_vx(ix),a
+	 
+	pop hl
+    call cube_loses_life
+
+
+
+
+	ret
 
 	 colisionX:
 		
