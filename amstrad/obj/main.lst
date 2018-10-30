@@ -2949,70 +2949,73 @@ Hexadecimal [16-Bits]
                              51 
    0014 CD 00 00      [17]   52     call ren_newScene
                              53   
-   0017 CD 00 00      [17]   54       call cpct_akp_stop_asm
-   001A 11 00 00      [10]   55      ld de, #_song_ingame
-   001D CD 00 00      [17]   56     call cpct_akp_musicInit_asm
-                             57 
-   0020 3E 01         [ 7]   58    ld a, #1
-                             59      
-   0022 32 6D 00      [13]   60     ld (state),a
-                             61 
-   0025 CD 00 00      [17]   62   call cpct_scanKeyboard_asm
-                             63       
-   0028 21 07 80      [10]   64    ld hl, #Key_X ;;O
-   002B CD 00 00      [17]   65     call cpct_isKeyPressed_asm
-   002E 28 E4         [12]   66     jr z, menu
-                             67    
-                             68 
-   0030                      69 loop:
-                             70    ;; call cube_clear
+                             54 
+                             55 
+                             56 
+   0017 CD 00 00      [17]   57       call cpct_akp_stop_asm
+   001A 11 00 00      [10]   58      ld de, #_song_ingame
+   001D CD 00 00      [17]   59     call cpct_akp_musicInit_asm
+                             60 
+   0020 3E 01         [ 7]   61    ld a, #1
+                             62      
+   0022 32 6D 00      [13]   63     ld (state),a
+                             64 
+   0025 CD 00 00      [17]   65   call cpct_scanKeyboard_asm
+                             66       
+   0028 21 07 80      [10]   67    ld hl, #Key_X ;;O
+   002B CD 00 00      [17]   68     call cpct_isKeyPressed_asm
+   002E 28 E4         [12]   69     jr z, menu
+                             70    
                              71 
-                             72 
-                             73 
+   0030                      72 loop:
+                             73    ;; call cube_clear
                              74 
-   0030 CD 00 00      [17]   75     call barra_clear
-   0033 CD 00 00      [17]   76     call ball_clear
+                             75 
+                             76 
                              77 
-                             78     
-   0036 CD 00 00      [17]   79     call barra_update
-   0039 CD 00 00      [17]   80     call ball_update
-                             81 
-   003C CD 00 00      [17]   82     call cube_draw
+   0030 CD 00 00      [17]   78     call barra_clear
+   0033 CD 00 00      [17]   79     call ball_clear
+                             80 
+                             81     
+   0036 CD 00 00      [17]   82     call barra_update
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
-                             83 
-   003F CD 00 00      [17]   84     call barra_draw
-   0042 CD 00 00      [17]   85     call ball_draw
-   0045 CD 00 00      [17]   86     call life_draw
-                             87 
-   0048 CD 00 00      [17]   88     call cpct_waitVSYNC_asm
-   004B CD 00 00      [17]   89     call ren_newScene
+   0039 CD 00 00      [17]   83     call ball_update
+                             84 
+   003C CD 00 00      [17]   85     call cube_draw
+                             86 
+   003F CD 00 00      [17]   87     call barra_draw
+   0042 CD 00 00      [17]   88     call ball_draw
+   0045 CD 00 00      [17]   89     call life_draw
                              90 
-                             91 
-                             92 
-   004E                      93     repite:                         ;;Loop for playing the song x3 faster 
+   0048 CD 00 00      [17]   91     call cpct_waitVSYNC_asm
+   004B CD 00 00      [17]   92     call ren_newScene
+                             93 
                              94 
-   004E CD 00 00      [17]   95     call cpct_akp_musicPlay_asm
-                             96  
-   0051 3A 6C 00      [13]   97     ld a, (variable)
-   0054 D6 01         [ 7]   98     sub #1
-   0056 32 6C 00      [13]   99     ld (variable), a
-   0059 C2 4E 00      [10]  100     jp nz, repite
-                            101 
-   005C 3E 03         [ 7]  102     ld a,#3
-   005E 32 6C 00      [13]  103     ld (variable), a
+                             95 
+   004E                      96     repite:                         ;;Loop for playing the song x3 faster 
+                             97 
+   004E CD 00 00      [17]   98     call cpct_akp_musicPlay_asm
+                             99  
+   0051 3A 6C 00      [13]  100     ld a, (variable)
+   0054 D6 01         [ 7]  101     sub #1
+   0056 32 6C 00      [13]  102     ld (variable), a
+   0059 C2 4E 00      [10]  103     jp nz, repite
                             104 
-                            105 
-   0061 3A 6D 00      [13]  106     ld a, (state)
-   0064 D6 01         [ 7]  107     sub  #1
-                            108     
-   0066 C2 14 00      [10]  109     jp nz, menu
-                            110    ;; Loop forever
-   0069 C3 30 00      [10]  111    jp    loop
-                            112 
-   006C 03                  113 variable: .db #3
-   006D 01                  114 state: .db #1
+   005C 3E 03         [ 7]  105     ld a,#3
+   005E 32 6C 00      [13]  106     ld (variable), a
+                            107 
+                            108 
+   0061 3A 6D 00      [13]  109     ld a, (state)
+   0064 D6 01         [ 7]  110     sub  #1
+                            111     
+   0066 C2 14 00      [10]  112     jp nz, menu
+                            113    ;; Loop forever
+   0069 C3 30 00      [10]  114    jp    loop
                             115 
+   006C 03                  116 variable: .db #3
+   006D 01                  117 state: .db #1
+                            118 

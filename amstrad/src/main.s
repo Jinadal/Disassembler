@@ -51,6 +51,9 @@ _main::
 
     call ren_newScene
   
+
+
+
       call cpct_akp_stop_asm
      ld de, #_song_ingame
     call cpct_akp_musicInit_asm
