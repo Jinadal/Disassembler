@@ -2958,7 +2958,7 @@ Hexadecimal [16-Bits]
                              60 
    0020 3E 01         [ 7]   61    ld a, #1
                              62      
-   0022 32 6D 00      [13]   63     ld (state),a
+   0022 32 97 00      [13]   63     ld (state),a
                              64 
    0025 CD 00 00      [17]   65   call cpct_scanKeyboard_asm
                              66       
@@ -2970,52 +2970,86 @@ Hexadecimal [16-Bits]
    0030                      72 loop:
                              73    ;; call cube_clear
                              74 
-                             75 
-                             76 
-                             77 
-   0030 CD 00 00      [17]   78     call barra_clear
-   0033 CD 00 00      [17]   79     call ball_clear
+   0030 CD 00 00      [17]   75 call cpct_scanKeyboard_asm
+                             76       
+   0033 21 04 40      [10]   77    ld hl, #Key_M ;;O
+   0036 CD 00 00      [17]   78     call cpct_isKeyPressed_asm
+   0039 20 44         [12]   79     jr nz, mute
                              80 
-                             81     
-   0036 CD 00 00      [17]   82     call barra_update
+                             81 
+   003B CD 00 00      [17]   82     call barra_clear
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
-   0039 CD 00 00      [17]   83     call ball_update
+   003E CD 00 00      [17]   83     call ball_clear
                              84 
-   003C CD 00 00      [17]   85     call cube_draw
-                             86 
-   003F CD 00 00      [17]   87     call barra_draw
-   0042 CD 00 00      [17]   88     call ball_draw
-   0045 CD 00 00      [17]   89     call life_draw
+                             85     
+   0041 CD 00 00      [17]   86     call barra_update
+   0044 CD 00 00      [17]   87     call ball_update
+                             88 
+   0047 CD 00 00      [17]   89     call cube_draw
                              90 
-   0048 CD 00 00      [17]   91     call cpct_waitVSYNC_asm
-   004B CD 00 00      [17]   92     call ren_newScene
-                             93 
+   004A CD 00 00      [17]   91     call barra_draw
+   004D CD 00 00      [17]   92     call ball_draw
+   0050 CD 00 00      [17]   93     call life_draw
                              94 
-                             95 
-   004E                      96     repite:                         ;;Loop for playing the song x3 faster 
+   0053 CD 00 00      [17]   95     call cpct_waitVSYNC_asm
+   0056 CD 00 00      [17]   96     call ren_newScene
                              97 
-   004E CD 00 00      [17]   98     call cpct_akp_musicPlay_asm
-                             99  
-   0051 3A 6C 00      [13]  100     ld a, (variable)
-   0054 D6 01         [ 7]  101     sub #1
-   0056 32 6C 00      [13]  102     ld (variable), a
-   0059 C2 4E 00      [10]  103     jp nz, repite
+                             98 
+                             99 
+   0059                     100     repite:                         ;;Loop for playing the song x3 faster 
+                            101 
+   0059 3A 98 00      [13]  102     ld a, (volume)
+   005C D6 01         [ 7]  103     sub #1
                             104 
-   005C 3E 03         [ 7]  105     ld a,#3
-   005E 32 6C 00      [13]  106     ld (variable), a
-                            107 
+   005E C2 74 00      [10]  105     jp nz, muted
+                            106 
+   0061 CD 00 00      [17]  107     call cpct_akp_musicPlay_asm
                             108 
-   0061 3A 6D 00      [13]  109     ld a, (state)
-   0064 D6 01         [ 7]  110     sub  #1
-                            111     
-   0066 C2 14 00      [10]  112     jp nz, menu
-                            113    ;; Loop forever
-   0069 C3 30 00      [10]  114    jp    loop
+                            109    
+                            110  
+   0064 3A 96 00      [13]  111     ld a, (variable)
+   0067 D6 01         [ 7]  112     sub #1
+   0069 32 96 00      [13]  113     ld (variable), a
+   006C C2 59 00      [10]  114     jp nz, repite
                             115 
-   006C 03                  116 variable: .db #3
-   006D 01                  117 state: .db #1
+   006F 3E 03         [ 7]  116     ld a,#3
+   0071 32 96 00      [13]  117     ld (variable), a
                             118 
+   0074                     119  muted:
+   0074 3A 97 00      [13]  120     ld a, (state)
+   0077 D6 01         [ 7]  121     sub  #1
+                            122     
+   0079 C2 14 00      [10]  123     jp nz, menu
+                            124    ;; Loop forever
+   007C C3 30 00      [10]  125    jp    loop
+                            126 
+                            127 
+   007F                     128 mute: 
+                            129 
+   007F 3A 98 00      [13]  130     ld a, (volume)
+   0082 D6 01         [ 7]  131     sub #1
+   0084 CA 8A 00      [10]  132     jp z, silencio
+   0087 C2 90 00      [10]  133     jp nz, sonido
+   008A                     134     silencio:
+   008A 3E 00         [ 7]  135     ld a, #0
+   008C 32 98 00      [13]  136     ld (volume),a
+   008F C9            [10]  137     ret
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 61.
+Hexadecimal [16-Bits]
+
+
+
+   0090                     138     sonido:
+   0090 3E 01         [ 7]  139     ld a, #1
+                            140 
+   0092 32 98 00      [13]  141     ld (volume),a
+                            142 
+   0095 C9            [10]  143     ret
+                            144 
+   0096 03                  145 variable: .db #3
+   0097 01                  146 state: .db #1
+   0098 01                  147 volume: .db #1

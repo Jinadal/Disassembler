@@ -96,16 +96,18 @@ Symbol Table
     l_hp    =  0006     |     life1      **** GX  |     life2      **** GX
     life3      **** GX  |     life_dra   **** GX  |   0 loop       0030 R
     m_back_b   **** GX  |     m_front_   **** GX  |   0 menu       0014 GR
-    opc_DI  =  00F3     |     opc_EI  =  00FB     |     opc_JR  =  0018 
-    opc_LD_D=  0016     |     ren_clea   **** GX  |     ren_newS   **** GX
-    render_d   **** GX  |   0 repite     004E R   |     reset_li   **** GX
-  0 state      006D GR  |   0 variable   006C R
+  0 mute       007F R   |   0 muted      0074 R   |     opc_DI  =  00F3 
+    opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
+    ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
+  0 repite     0059 R   |     reset_li   **** GX  |   0 silencio   008A R
+  0 sonido     0090 R   |   0 state      0097 GR  |   0 variable   0096 R
+  0 volume     0098 R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size   6E   flags    0
+   0 _CODE      size   99   flags    0
    1 _DATA      size    0   flags    0
 
