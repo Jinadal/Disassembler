@@ -46,11 +46,31 @@ _main::
     call cpct_setPalette_asm
 
     ;;Initialize music
-    ld de, #_song_ingame
+    
+  menu:
+
+    call ren_newScene
+  
+      call cpct_akp_stop_asm
+     ld de, #_song_ingame
     call cpct_akp_musicInit_asm
+
+   ld a, #1
+     
+    ld (state),a
+
+  call cpct_scanKeyboard_asm
+      
+   ld hl, #Key_X ;;O
+    call cpct_isKeyPressed_asm
+    jr z, menu
+   
 
 loop:
    ;; call cube_clear
+
+
+
 
     call barra_clear
     call ball_clear
@@ -69,6 +89,7 @@ loop:
     call ren_newScene
 
 
+
     repite:                         ;;Loop for playing the song x3 faster 
 
     call cpct_akp_musicPlay_asm
@@ -80,7 +101,15 @@ loop:
 
     ld a,#3
     ld (variable), a
+
+
+    ld a, (state)
+    sub  #1
+    
+    jp nz, menu
    ;; Loop forever
    jp    loop
 
 variable: .db #3
+state: .db #1
+

@@ -487,6 +487,7 @@ ball_reset:
 	;ld a, #50
 	;ld dc_col(ix), a
 	call cube_reset
+	
 
 	
 

@@ -1,4 +1,4 @@
-;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+ ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
@@ -108,5 +108,73 @@ delete_life:
     ld l_hp(ix),a
     jp z, finish
     finish:
+
+    ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RESET A LIFE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+reset_life:
+    ld ix,#defaultlife1
+    ld hl, #life1
+    ld b, #20
+    ld c, #0
+
+    bucl:
+
+    ld a, b
+
+    ld (hl), a
+    sub #8
+
+    ld b,a
+
+    inc hl
+
+    ld a, dc_y(ix)
+
+    ld (hl), a
+
+    inc hl
+     ld a, dc_w(ix)
+
+    ld (hl), a
+
+    inc hl
+
+    ld a, dc_h(ix)
+
+    ld (hl), a
+
+    inc hl
+
+    ld a, dc_sp_l(ix)
+    ld (hl), a
+
+    inc hl
+
+    ld a, dc_sp_h(ix)
+    ld (hl),a
+
+    inc hl  
+
+    ld a, l_hp(ix)
+    ld (hl),a
+
+    inc hl
+
+
+
+
+    ld a, c
+    add #1
+    ld c,a
+    sub #3
+
+    jp nz, bucl
+
+
+
+
+
 
     ret

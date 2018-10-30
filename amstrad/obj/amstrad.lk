@@ -3,9 +3,9 @@
 -b _CODE = 0x077f
 -b _DATA = 0x0000
 -u
--k /home/nacho/Escritorio/cpctelera-development/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80
--k /home/nacho/Escritorio/cpctelera-development/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
--l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
+-k /home/diego/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80
+-k /home/diego/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
+-l /home/diego/cpctelera/cpctelera/cpctelera.lib
 -l z80
 obj/sprites/life.rel
 obj/sprites/ball.rel
@@ -18,16 +18,16 @@ obj/sprites/num3.rel
 obj/sprites/num1.rel
 obj/sprites/num2.rel
 obj/main.rel
-obj/cube.rel
-obj/life.rel
-obj/cube.h.rel
-obj/barra.rel
-obj/main.h.rel
-obj/ball.h.rel
-obj/barra.h.rel
-obj/ball.rel
-obj/render.h.rel
 obj/render.rel
 obj/life.h.rel
+obj/life.rel
+obj/barra.h.rel
+obj/ball.h.rel
+obj/main.h.rel
+obj/barra.rel
+obj/ball.rel
+obj/cube.h.rel
+obj/render.h.rel
+obj/cube.rel
 
 -e

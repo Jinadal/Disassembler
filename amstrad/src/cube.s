@@ -22,6 +22,8 @@
 .include "cube.h.s"
 .include "render.h.s"
 .include "ball.h.s"
+.include "life.h.s"
+
 
 .globl _cubeline_sp
 .globl _cubeline2_sp
@@ -245,6 +247,12 @@ cube_reset:
 
     	jr nz, bucl2
 
+
+
+	call reset_life
+	ld a, (state)
+	sub #1
+	ld (state), a
     	
 
  ret
@@ -291,6 +299,7 @@ destroy_cube:
 	ld (m_num_cube),a	;; m_num_cube = m_num_cube - 1
 
 	jp z, cube_reset	;; IF m_num_cube == 0, END GAME, RESET ALL
+	
 
 ret
 
