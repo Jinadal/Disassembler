@@ -35,3 +35,4 @@ Hexadecimal [16-Bits]
                              30 .globl cpct_setPalette_asm
                              31 .globl cpct_akp_musicInit_asm
                              32 .globl cpct_akp_musicPlay_asm
+                             33 .globl cpct_drawSpriteMasked_asm

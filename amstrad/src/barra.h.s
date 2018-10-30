@@ -1,11 +1,3 @@
-.globl barra_clear
-.globl barra_draw
-.globl barra_update
-.globl barra_move
-.globl barra_moveKeyboard
-
-
-
 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
@@ -24,6 +16,13 @@
 ;;  You should have received a copy of the GNU Lesser General Public License
 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+
+.globl barra_clear
+.globl barra_draw
+.globl barra_update
+.globl barra_move
+.globl barra_moveKeyboard
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 ;;

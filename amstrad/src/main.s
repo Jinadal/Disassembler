@@ -24,6 +24,7 @@
 .include "main.h.s"
 .include "cube.h.s"
 .include "render.h.s"
+.include "life.h.s"
 
 .globl _bar_pal
 .globl _song_ingame
@@ -62,6 +63,7 @@ loop:
 
     call barra_draw
     call ball_draw
+    call life_draw
 
     call cpct_waitVSYNC_asm
     call ren_newScene

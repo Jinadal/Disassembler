@@ -2521,71 +2521,70 @@ Hexadecimal [16-Bits]
 
 
                              22 .include "barra.h.s"
-                              1 .globl barra_clear
-                              2 .globl barra_draw
-                              3 .globl barra_update
-                              4 .globl barra_move
-                              5 .globl barra_moveKeyboard
-                              6 
-                              7 
-                              8 
-                              9 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
-                             10 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
-                             11 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
-                             12 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-                             13 ;;
-                             14 ;;  This program is free software: you can redistribute it and/or modify
-                             15 ;;  it under the terms of the GNU Lesser General Public License as published by
-                             16 ;;  the Free Software Foundation, either version 3 of the License, or
-                             17 ;;  (at your option) any later version.
-                             18 ;;
-                             19 ;;  This program is distributed in the hope that it will be useful,
-                             20 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                             21 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                             22 ;;  GNU Lesser General Public License for more details.
-                             23 ;;
-                             24 ;;  You should have received a copy of the GNU Lesser General Public License
-                             25 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                             26 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
-                             27 
-                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             29 ;;
-                             30 ;;MACROS
-                             31 ;;
-                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             33 
-                             34    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
-                             35 _name: 
-                             36 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
-                             37  ;  .db    _x, _y     ;; X, Y
-                             38   ; .db    _w, _h     ;; W, H
-                             39   ; .db   _col        ;; Color
-                             40    .db   _vx, _vy    ;; VX, VY
-                             41    .dw   _upd        ;; Update 
-                             42   
-                             43 .endm
-                             44 ;b_x = 0
-                             45 ;b_y = 1
-                             46 ;b_w = 2
-                             47 ;b_h = 3
-                             48 ;b_col = 4
-                     0006    49 b_vx = 6
-                     0007    50 b_vy = 7
-                             51 	
-                             52 
-                             53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             54 ;;
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 .globl barra_clear
+                             21 .globl barra_draw
+                             22 .globl barra_update
+                             23 .globl barra_move
+                             24 .globl barra_moveKeyboard
+                             25 
+                             26 
+                             27 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             28 ;;
+                             29 ;;MACROS
+                             30 ;;
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             32 
+                             33    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
+                             34 _name: 
+                             35 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             36  ;  .db    _x, _y     ;; X, Y
+                             37   ; .db    _w, _h     ;; W, H
+                             38   ; .db   _col        ;; Color
+                             39    .db   _vx, _vy    ;; VX, VY
+                             40    .dw   _upd        ;; Update 
+                             41   
+                             42 .endm
+                             43 ;b_x = 0
+                             44 ;b_y = 1
+                             45 ;b_w = 2
+                             46 ;b_h = 3
+                             47 ;b_col = 4
+                     0006    48 b_vx = 6
+                     0007    49 b_vy = 7
+                             50 	
+                             51 
+                             52 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             53 ;;
+                             54 ;;OBJETOS CREADOS CON LA MACROS
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 51.
 Hexadecimal [16-Bits]
 
 
 
-                             55 ;;OBJETOS CREADOS CON LA MACROS
-                             56 ;;
-                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             58 
-                             59 .globl barra
-                             60 
+                             55 ;;
+                             56 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             57 
+                             58 .globl barra
+                             59 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
@@ -2703,6 +2702,7 @@ Hexadecimal [16-Bits]
                              30 .globl cpct_setPalette_asm
                              31 .globl cpct_akp_musicInit_asm
                              32 .globl cpct_akp_musicPlay_asm
+                             33 .globl cpct_drawSpriteMasked_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
@@ -2867,66 +2867,119 @@ Hexadecimal [16-Bits]
 
 
 
-                             27 
-                             28 .globl _bar_pal
-                             29 .globl _song_ingame
-                             30 
-                             31 .area _DATA
-                             32 .area _CODE
-                             33 
-   08B7                      34 _main::
-   08B7 31 00 80      [10]   35     ld  sp, #0x8000
-                             36 
-                             37     ;; Disable firmware to prevent it from interfering with string drawing
-   08BA CD 3D 16      [17]   38     call cpct_disableFirmware_asm
-                             39 
-   08BD 0E 00         [ 7]   40     ld    c, #0
-   08BF CD 07 0E      [17]   41     call cpct_setVideoMode_asm
-                             42 
-   08C2 21 87 08      [10]   43     ld   hl, #_bar_pal
-   08C5 11 10 00      [10]   44     ld   de, #16
-   08C8 CD 39 0D      [17]   45     call cpct_setPalette_asm
-                             46 
-                             47     ;;Initialize music
-   08CB 11 40 00      [10]   48     ld de, #_song_ingame
-   08CE CD 20 15      [17]   49     call cpct_akp_musicInit_asm
-                             50 
-   08D1                      51 loop:
-                             52    ;; call cube_clear
-                             53 
-   08D1 CD E3 0A      [17]   54     call barra_clear
-   08D4 CD 51 0B      [17]   55     call ball_clear
-                             56 
-                             57     
-   08D7 CD E7 0A      [17]   58     call barra_update
-   08DA CD 52 0B      [17]   59     call ball_update
-                             60 
-   08DD CD 32 0A      [17]   61     call cube_draw
-                             62 
-   08E0 CD DB 0A      [17]   63     call barra_draw
-   08E3 CD 49 0B      [17]   64     call ball_draw
-                             65 
-   08E6 CD FF 0D      [17]   66     call cpct_waitVSYNC_asm
-   08E9 CD 9E 0C      [17]   67     call ren_newScene
-                             68 
-                             69 
-   08EC                      70     repite:                         ;;Loop for playing the song x3 faster 
-                             71 
-   08EC CD 16 0E      [17]   72     call cpct_akp_musicPlay_asm
-                             73  
-   08EF 3A 02 09      [13]   74     ld a, (variable)
-   08F2 D6 01         [ 7]   75     sub #1
-   08F4 32 02 09      [13]   76     ld (variable), a
-   08F7 C2 EC 08      [10]   77     jp nz, repite
-                             78 
-   08FA 3E 02         [ 7]   79     ld a,#2
-   08FC 32 02 09      [13]   80     ld (variable), a
-                             81    ;; Loop forever
+                             27 .include "life.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 ;;.globl life_clear
+                             21 .globl life_draw
+                             22 .globl delete_life
+                             23 ;;.globl life_update
+                             24 
+                             25 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             26 ;;
+                             27 ;;MACROS
+                             28 ;;
+                             29 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             30 .macro DefineLife _name, _x, _y, _w, _h, _col,_hp
+                             31 _name:
+                             32     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             33         .db     _hp     ;; Hitpoints
+                             34 .endm
+                     0000    35 l_de        = 0
+                     0006    36 l_hp        = 6
+                             37 
+                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             39 ;;
+                             40 ;;OBJETOS CREADOS CON LA MACROS
+                             41 ;;
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             43 
+                             44 .globl life1
+                             45 .globl life2
+                             46 .globl life3
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
 Hexadecimal [16-Bits]
 
 
 
-   08FF C3 D1 08      [10]   82    jp    loop
-                             83 
-   0902 02                   84 variable: .db #2
+                             28 
+                             29 .globl _bar_pal
+                             30 .globl _song_ingame
+                             31 
+                             32 .area _DATA
+                             33 .area _CODE
+                             34 
+   0CF7                      35 _main::
+   0CF7 31 00 80      [10]   36     ld  sp, #0x8000
+                             37 
+                             38     ;; Disable firmware to prevent it from interfering with string drawing
+   0CFA CD 5B 1B      [17]   39     call cpct_disableFirmware_asm
+                             40 
+   0CFD 0E 00         [ 7]   41     ld    c, #0
+   0CFF CD 25 13      [17]   42     call cpct_setVideoMode_asm
+                             43 
+   0D02 21 97 09      [10]   44     ld   hl, #_bar_pal
+   0D05 11 10 00      [10]   45     ld   de, #16
+   0D08 CD 2D 12      [17]   46     call cpct_setPalette_asm
+                             47 
+                             48     ;;Initialize music
+   0D0B 11 40 00      [10]   49     ld de, #_song_ingame
+   0D0E CD 3E 1A      [17]   50     call cpct_akp_musicInit_asm
+                             51 
+   0D11                      52 loop:
+                             53    ;; call cube_clear
+                             54 
+   0D11 CD D0 0F      [17]   55     call barra_clear
+   0D14 CD 3E 10      [17]   56     call ball_clear
+                             57 
+                             58     
+   0D17 CD D4 0F      [17]   59     call barra_update
+   0D1A CD 3F 10      [17]   60     call ball_update
+                             61 
+   0D1D CD 7C 0E      [17]   62     call cube_draw
+                             63 
+   0D20 CD C8 0F      [17]   64     call barra_draw
+   0D23 CD 36 10      [17]   65     call ball_draw
+   0D26 CD 4E 0F      [17]   66     call life_draw
+                             67 
+   0D29 CD 1D 13      [17]   68     call cpct_waitVSYNC_asm
+   0D2C CD 92 11      [17]   69     call ren_newScene
+                             70 
+                             71 
+   0D2F                      72     repite:                         ;;Loop for playing the song x3 faster 
+                             73 
+   0D2F CD 34 13      [17]   74     call cpct_akp_musicPlay_asm
+                             75  
+   0D32 3A 45 0D      [13]   76     ld a, (variable)
+   0D35 D6 01         [ 7]   77     sub #1
+   0D37 32 45 0D      [13]   78     ld (variable), a
+   0D3A C2 2F 0D      [10]   79     jp nz, repite
+                             80 
+   0D3D 3E 03         [ 7]   81     ld a,#3
+   0D3F 32 45 0D      [13]   82     ld (variable), a
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
+Hexadecimal [16-Bits]
+
+
+
+                             83    ;; Loop forever
+   0D42 C3 11 0D      [10]   84    jp    loop
+                             85 
+   0D45 03                   86 variable: .db #3

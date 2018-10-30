@@ -1,11 +1,12 @@
 XL2
-H 1 areas E global symbols
+H 1 areas F global symbols
 S _cpct_memset_f64_asm Ref0000
 S cpct_setPalette_asm Ref0000
 S cpct_isKeyPressed_asm Ref0000
 S cpct_drawSprite_asm Ref0000
 S .__.ABS. Def0000
 S cpct_setVideoMemoryPage_asm Ref0000
+S cpct_drawSpriteMasked_asm Ref0000
 S cpct_setVideoMode_asm Ref0000
 S cpct_waitVSYNC_asm Ref0000
 S cpct_akp_musicInit_asm Ref0000

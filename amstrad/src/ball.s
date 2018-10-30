@@ -24,12 +24,12 @@
 .include "main.h.s"
 .include "ball.h.s"
 .include "cube.h.s"
-
+.include "life.h.s"
 .globl _ball_sp
 
 
 	DefineBall ball, 40,78,1,4,_ball_sp,1,2, ball_move, 3
-	DefineBall balldefault, 40,78,1,4,_ball_sp,1,2, ball_move,3
+	DefineBall balldefault, 40,78,1,4,_ball_sp,-1,2, ball_move,3
 
 
 
@@ -125,7 +125,7 @@ ball_move:
 ;; CHECK MAX AND MIN SCREEN Y AND PREVENT PLAYER TO GO FURTHER
 
 ld    a, dc_y(ix)     ;; Since screen max x is79
-  sub  # 190           ;; check if is going to move further or outta screen
+  sub  # 170           ;; check if is going to move further or outta screen
                       ;; if true we will go to the reassingnament part
  jp z, resetTheBall       
 
@@ -455,7 +455,7 @@ ball_reset:
 	ld bl_vy(ix), a
 
 	inc hl
-
+	;;call change_life
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -468,6 +468,8 @@ ball_reset:
 
 	;ld hl, #balldefault
 	call ball_reset
+	call delete_life
+	ld ix,#ball
 	ld a, bl_hp(ix)
 	sub #1
 

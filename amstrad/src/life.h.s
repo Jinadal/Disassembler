@@ -17,17 +17,30 @@
 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
 
-.globl cpct_disableFirmware_asm
-.globl cpct_drawSolidBox_asm
-.globl cpct_getScreenPtr_asm
-.globl cpct_waitVSYNC_asm
-.globl cpct_setVideoMode_asm
-.globl cpct_scanKeyboard_asm
-.globl cpct_isKeyPressed_asm
-.globl cpct_setVideoMemoryPage_asm
-.globl _cpct_memset_f64_asm
-.globl cpct_drawSprite_asm
-.globl cpct_setPalette_asm
-.globl cpct_akp_musicInit_asm
-.globl cpct_akp_musicPlay_asm
-.globl cpct_drawSpriteMasked_asm
+;;.globl life_clear
+.globl life_draw
+.globl delete_life
+;;.globl life_update
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+;;
+;;MACROS
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.macro DefineLife _name, _x, _y, _w, _h, _col,_hp
+_name:
+    DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+        .db     _hp     ;; Hitpoints
+.endm
+l_de        = 0
+l_hp        = 6
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;OBJETOS CREADOS CON LA MACROS
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+.globl life1
+.globl life2
+.globl life3

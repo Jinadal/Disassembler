@@ -9,74 +9,76 @@ Symbol Table
     ball_cle   **** GX  |     ball_dra   **** GX  |     ball_mov   **** GX
     ball_res   **** GX  |     ball_upd   **** GX  |     balldefa   **** GX
     bl_hp   =  000A     |     bl_up_h =  0009     |     bl_up_l =  0008 
-    bl_vx   =  0006     |     bl_vy   =  0007     |   0 bucl       0172 R
-    c_de    =  0000     |     c_de_siz=  0006     |     c_hp    =  0006 
-  0 colorok    019D R   |     cpct_akp   **** GX  |     cpct_akp   **** GX
+    bl_vx   =  0006     |     bl_vy   =  0007     |   0 bucl       0179 R
+  0 bucl2      0179 R   |     c_de    =  0000     |     c_de_siz=  0006 
+    c_hp    =  0006     |     cpct_akp   **** GX  |     cpct_akp   **** GX
     cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_dra   **** GX
-    cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_sca   **** GX
-    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
-    cpct_wai   **** GX  |   0 cube_cle   012E GR  |   0 cube_cle   0161 GR
-  0 cube_dra   012F GR  |   0 cube_dra   0144 GR  |   0 cube_los   01A8 GR
-  0 cube_res   0162 GR  |   0 cubedefa   0000 R   |   0 cubedefa   0007 R
-  0 cubedefa   0007 R   |     cubedefa=  0006     |   0 cubedefa   000E R
-  0 cubedefa   000E R   |     cubedefa=  0006     |   0 cubedefa   0000 R
-    cubedefa=  0006     |   0 cubeline   0015 GR  |   0 cubeline   0015 R
-    cubeline=  0006     |   0 cubeline   001C GR  |   0 cubeline   001C R
-    cubeline=  0006     |   0 cubeline   0023 GR  |   0 cubeline   0023 R
-    cubeline=  0006     |   0 cubeline   002A GR  |   0 cubeline   002A R
-    cubeline=  0006     |   0 cubeline   0031 GR  |   0 cubeline   0031 R
-    cubeline=  0006     |   0 cubeline   0038 GR  |   0 cubeline   0038 R
-    cubeline=  0006     |   0 cubeline   003F GR  |   0 cubeline   003F R
-    cubeline=  0006     |   0 cubeline   0046 GR  |   0 cubeline   0046 R
-    cubeline=  0006     |   0 cubeline   004D GR  |   0 cubeline   004D R
-    cubeline=  0006     |   0 cubeline   0054 GR  |   0 cubeline   0054 R
-    cubeline=  0006     |   0 cubeline   005B GR  |   0 cubeline   005B R
-    cubeline=  0006     |   0 cubeline   0062 GR  |   0 cubeline   0062 R
-    cubeline=  0006     |   0 cubeline   0069 GR  |   0 cubeline   0069 R
-    cubeline=  0006     |   0 cubeline   0070 GR  |   0 cubeline   0070 R
-    cubeline=  0006     |   0 cubeline   0077 GR  |   0 cubeline   0077 R
-    cubeline=  0006     |   0 cubeline   007E GR  |   0 cubeline   007E R
-    cubeline=  0006     |   0 cubeline   0085 GR  |   0 cubeline   0085 R
-    cubeline=  0006     |   0 cubeline   008C GR  |   0 cubeline   008C R
-    cubeline=  0006     |   0 cubeline   0093 GR  |   0 cubeline   0093 R
-    cubeline=  0006     |   0 cubeline   009A GR  |   0 cubeline   009A R
-    cubeline=  0006     |   0 cubeline   00A1 GR  |   0 cubeline   00A1 R
-    cubeline=  0006     |   0 cubeline   00A8 GR  |   0 cubeline   00A8 R
-    cubeline=  0006     |   0 cubeline   00AF GR  |   0 cubeline   00AF R
-    cubeline=  0006     |   0 cubeline   00B6 GR  |   0 cubeline   00B6 R
-    cubeline=  0006     |   0 cubeline   00BD GR  |   0 cubeline   00BD R
-    cubeline=  0006     |   0 cubeline   00C4 GR  |   0 cubeline   00C4 R
-    cubeline=  0006     |   0 cubeline   00CB GR  |   0 cubeline   00CB R
-    cubeline=  0006     |   0 cubeline   00D2 GR  |   0 cubeline   00D2 R
-    cubeline=  0006     |   0 cubeline   00D9 GR  |   0 cubeline   00D9 R
-    cubeline=  0006     |   0 cubeline   00E0 GR  |   0 cubeline   00E0 R
-    cubeline=  0006     |   0 cubeline   00E7 GR  |   0 cubeline   00E7 R
-    cubeline=  0006     |   0 cubeline   00EE GR  |   0 cubeline   00EE R
-    cubeline=  0006     |   0 cubeline   00F5 GR  |   0 cubeline   00F5 R
-    cubeline=  0006     |   0 cubeline   00FC GR  |   0 cubeline   00FC R
-    cubeline=  0006     |   0 cubeline   0103 GR  |   0 cubeline   0103 R
-    cubeline=  0006     |   0 cubeline   010A GR  |   0 cubeline   010A R
-    cubeline=  0006     |   0 cubeline   0111 GR  |   0 cubeline   0111 R
-    cubeline=  0006     |   0 cubeline   0118 GR  |   0 cubeline   0118 R
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
+    cpct_set   **** GX  |     cpct_wai   **** GX  |   0 cube_cle   0135 GR
+  0 cube_cle   0168 GR  |   0 cube_dra   0136 GR  |   0 cube_dra   014B GR
+  0 cube_los   01B7 GR  |   0 cube_res   0169 GR  |   0 cubedefa   0000 R
+  0 cubedefa   0007 R   |   0 cubedefa   0007 R   |     cubedefa=  0006 
+  0 cubedefa   000E R   |   0 cubedefa   000E R   |     cubedefa=  0006 
+  0 cubedefa   0015 R   |   0 cubedefa   0015 R   |     cubedefa=  0006 
+  0 cubedefa   0000 R   |     cubedefa=  0006     |   0 cubeline   001C GR
+  0 cubeline   001C R   |     cubeline=  0006     |   0 cubeline   0023 GR
+  0 cubeline   0023 R   |     cubeline=  0006     |   0 cubeline   002A GR
+  0 cubeline   002A R   |     cubeline=  0006     |   0 cubeline   0031 GR
+  0 cubeline   0031 R   |     cubeline=  0006     |   0 cubeline   0038 GR
+  0 cubeline   0038 R   |     cubeline=  0006     |   0 cubeline   003F GR
+  0 cubeline   003F R   |     cubeline=  0006     |   0 cubeline   0046 GR
+  0 cubeline   0046 R   |     cubeline=  0006     |   0 cubeline   004D GR
+  0 cubeline   004D R   |     cubeline=  0006     |   0 cubeline   0054 GR
+  0 cubeline   0054 R   |     cubeline=  0006     |   0 cubeline   005B GR
+  0 cubeline   005B R   |     cubeline=  0006     |   0 cubeline   0062 GR
+  0 cubeline   0062 R   |     cubeline=  0006     |   0 cubeline   0069 GR
+  0 cubeline   0069 R   |     cubeline=  0006     |   0 cubeline   0070 GR
+  0 cubeline   0070 R   |     cubeline=  0006     |   0 cubeline   0077 GR
+  0 cubeline   0077 R   |     cubeline=  0006     |   0 cubeline   007E GR
+  0 cubeline   007E R   |     cubeline=  0006     |   0 cubeline   0085 GR
+  0 cubeline   0085 R   |     cubeline=  0006     |   0 cubeline   008C GR
+  0 cubeline   008C R   |     cubeline=  0006     |   0 cubeline   0093 GR
+  0 cubeline   0093 R   |     cubeline=  0006     |   0 cubeline   009A GR
+  0 cubeline   009A R   |     cubeline=  0006     |   0 cubeline   00A1 GR
+  0 cubeline   00A1 R   |     cubeline=  0006     |   0 cubeline   00A8 GR
+  0 cubeline   00A8 R   |     cubeline=  0006     |   0 cubeline   00AF GR
+  0 cubeline   00AF R   |     cubeline=  0006     |   0 cubeline   00B6 GR
+  0 cubeline   00B6 R   |     cubeline=  0006     |   0 cubeline   00BD GR
+  0 cubeline   00BD R   |     cubeline=  0006     |   0 cubeline   00C4 GR
+  0 cubeline   00C4 R   |     cubeline=  0006     |   0 cubeline   00CB GR
+  0 cubeline   00CB R   |     cubeline=  0006     |   0 cubeline   00D2 GR
+  0 cubeline   00D2 R   |     cubeline=  0006     |   0 cubeline   00D9 GR
+  0 cubeline   00D9 R   |     cubeline=  0006     |   0 cubeline   00E0 GR
+  0 cubeline   00E0 R   |     cubeline=  0006     |   0 cubeline   00E7 GR
+  0 cubeline   00E7 R   |     cubeline=  0006     |   0 cubeline   00EE GR
+  0 cubeline   00EE R   |     cubeline=  0006     |   0 cubeline   00F5 GR
+  0 cubeline   00F5 R   |     cubeline=  0006     |   0 cubeline   00FC GR
+  0 cubeline   00FC R   |     cubeline=  0006     |   0 cubeline   0103 GR
+  0 cubeline   0103 R   |     cubeline=  0006     |   0 cubeline   010A GR
+  0 cubeline   010A R   |     cubeline=  0006     |   0 cubeline   0111 GR
+  0 cubeline   0111 R   |     cubeline=  0006     |   0 cubeline   0118 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-    cubeline=  0006     |   0 cubeline   011F GR  |   0 cubeline   011F R
-    cubeline=  0006     |   0 cubeline   0126 GR  |   0 cubeline   0126 R
-    cubeline=  0006     |     dc_h    =  0003     |     dc_sp_h =  0005 
-    dc_sp_l =  0004     |     dc_w    =  0002     |     dc_x    =  0000 
-    dc_y    =  0001     |   0 destroy_   01B8 GR  |     k_cube_s=  0007 G
-    k_max_cu=  0028 G   |     m_back_b   **** GX  |     m_front_   **** GX
-  0 m_num_cu   012D R   |   0 ommit      0150 R   |   0 ommit2     0158 R
-  0 ommit3     0160 R   |     ren_clea   **** GX  |     ren_newS   **** GX
-    render_d   **** GX  |   0 rep        0135 R   |   0 rojo       0196 R
+  0 cubeline   0118 R   |     cubeline=  0006     |   0 cubeline   011F GR
+  0 cubeline   011F R   |     cubeline=  0006     |   0 cubeline   0126 GR
+  0 cubeline   0126 R   |     cubeline=  0006     |   0 cubeline   012D GR
+  0 cubeline   012D R   |     cubeline=  0006     |     dc_h    =  0003 
+    dc_sp_h =  0005     |     dc_sp_l =  0004     |     dc_w    =  0002 
+    dc_x    =  0000     |     dc_y    =  0001     |   0 destroy_   01C7 GR
+    k_cube_s=  0007 G   |     k_cubos_=  000A     |     k_max_cu=  0028 G
+    k_num_li=  0004     |     m_back_b   **** GX  |     m_front_   **** GX
+  0 m_num_cu   0134 R   |   0 ommit      0157 R   |   0 ommit2     015F R
+  0 ommit3     0167 R   |     ren_clea   **** GX  |     ren_newS   **** GX
+    render_d   **** GX  |   0 rep        013C R
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  1CE   flags    0
+   0 _CODE      size  1DD   flags    0
 

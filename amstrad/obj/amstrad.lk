@@ -7,14 +7,19 @@
 -k /home/nacho/Escritorio/cpctelera-development/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
 -l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
 -l z80
+obj/sprites/life.rel
 obj/sprites/ball.rel
 obj/sprites/cubeline3.rel
 obj/sprites/cubeline2.rel
 obj/sprites/cubeline.rel
 obj/sprites/bar.rel
 obj/music/Disassembler.rel
+obj/sprites/num3.rel
+obj/sprites/num1.rel
+obj/sprites/num2.rel
 obj/main.rel
 obj/cube.rel
+obj/life.rel
 obj/cube.h.rel
 obj/barra.rel
 obj/main.h.rel
@@ -23,5 +28,6 @@ obj/barra.h.rel
 obj/ball.rel
 obj/render.h.rel
 obj/render.rel
+obj/life.h.rel
 
 -e

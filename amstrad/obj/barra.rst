@@ -2566,71 +2566,70 @@ Hexadecimal [16-Bits]
 
 
                              23 .include "barra.h.s"
-                              1 .globl barra_clear
-                              2 .globl barra_draw
-                              3 .globl barra_update
-                              4 .globl barra_move
-                              5 .globl barra_moveKeyboard
-                              6 
-                              7 
-                              8 
-                              9 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
-                             10 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
-                             11 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
-                             12 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
-                             13 ;;
-                             14 ;;  This program is free software: you can redistribute it and/or modify
-                             15 ;;  it under the terms of the GNU Lesser General Public License as published by
-                             16 ;;  the Free Software Foundation, either version 3 of the License, or
-                             17 ;;  (at your option) any later version.
-                             18 ;;
-                             19 ;;  This program is distributed in the hope that it will be useful,
-                             20 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                             21 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                             22 ;;  GNU Lesser General Public License for more details.
-                             23 ;;
-                             24 ;;  You should have received a copy of the GNU Lesser General Public License
-                             25 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                             26 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
-                             27 
-                             28 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             29 ;;
-                             30 ;;MACROS
-                             31 ;;
-                             32 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             33 
-                             34    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
-                             35 _name: 
-                             36 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
-                             37  ;  .db    _x, _y     ;; X, Y
-                             38   ; .db    _w, _h     ;; W, H
-                             39   ; .db   _col        ;; Color
-                             40    .db   _vx, _vy    ;; VX, VY
-                             41    .dw   _upd        ;; Update 
-                             42   
-                             43 .endm
-                             44 ;b_x = 0
-                             45 ;b_y = 1
-                             46 ;b_w = 2
-                             47 ;b_h = 3
-                             48 ;b_col = 4
-                     0006    49 b_vx = 6
-                     0007    50 b_vy = 7
-                             51 	
-                             52 
-                             53 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             54 ;;
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 .globl barra_clear
+                             21 .globl barra_draw
+                             22 .globl barra_update
+                             23 .globl barra_move
+                             24 .globl barra_moveKeyboard
+                             25 
+                             26 
+                             27 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             28 ;;
+                             29 ;;MACROS
+                             30 ;;
+                             31 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             32 
+                             33    .macro DefineBarra _name, _x, _y, _w, _h, _col, _vx, _vy, _upd
+                             34 _name: 
+                             35 	DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             36  ;  .db    _x, _y     ;; X, Y
+                             37   ; .db    _w, _h     ;; W, H
+                             38   ; .db   _col        ;; Color
+                             39    .db   _vx, _vy    ;; VX, VY
+                             40    .dw   _upd        ;; Update 
+                             41   
+                             42 .endm
+                             43 ;b_x = 0
+                             44 ;b_y = 1
+                             45 ;b_w = 2
+                             46 ;b_h = 3
+                             47 ;b_col = 4
+                     0006    48 b_vx = 6
+                     0007    49 b_vy = 7
+                             50 	
+                             51 
+                             52 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             53 ;;
+                             54 ;;OBJETOS CREADOS CON LA MACROS
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
-                             55 ;;OBJETOS CREADOS CON LA MACROS
-                             56 ;;
-                             57 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             58 
-                             59 .globl barra
-                             60 
+                             55 ;;
+                             56 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             57 
+                             58 .globl barra
+                             59 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
 Hexadecimal [16-Bits]
 
@@ -2669,6 +2668,7 @@ Hexadecimal [16-Bits]
                              30 .globl cpct_setPalette_asm
                              31 .globl cpct_akp_musicInit_asm
                              32 .globl cpct_akp_musicPlay_asm
+                             33 .globl cpct_drawSpriteMasked_asm
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
 Hexadecimal [16-Bits]
 
@@ -2678,20 +2678,20 @@ Hexadecimal [16-Bits]
                              26 .globl _bar_sp
                              27 
                              28 
-   0AD1                      29 	DefineBarra barra, 40, 190, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
-   0AD1                       1 barra: 
-   0000                       2 	DefineDrawableEntity barra_dw, 40, 190, 8, 4, _bar_sp
+   0FBE                      29 	DefineBarra barra, 40, 170, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
+   0FBE                       1 barra: 
+   0000                       2 	DefineDrawableEntity barra_dw, 40, 170, 8, 4, _bar_sp
    0000                       1 barra_dw:
-   0AD1 28 BE                 2     .db 40, 190
-   0AD3 08 04                 3     .db 8, 4
-   0AD5 97 08                 4     .dw _bar_sp
+   0FBE 28 AA                 2     .db 40, 170
+   0FC0 08 04                 3     .db 8, 4
+   0FC2 A7 09                 4     .dw _bar_sp
                               5 
                      0006     6 barra_dw_size = . - barra_dw
                               3  ;  .db    _x, _y     ;; X, Y
                               4   ; .db    _w, _h     ;; W, H
                               5   ; .db   _col        ;; Color
-   0AD7 00 00                 6    .db   0, 0    ;; VX, VY
-   0AD9 EE 0A                 7    .dw   barra_moveKeyboard        ;; Update 
+   0FC4 00 00                 6    .db   0, 0    ;; VX, VY
+   0FC6 DB 0F                 7    .dw   barra_moveKeyboard        ;; Update 
                               8   
                              30 
                              31 
@@ -2701,20 +2701,20 @@ Hexadecimal [16-Bits]
                              35 ;; PARA CUADRADOS UNICAMENTE
                              36 ;; ENTRADA: IX -> Puntero a entidad
                              37 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0ADB                      38 barra_draw:
-   0ADB DD 21 D1 0A   [14]   39       ld ix,#barra
-   0ADF C3 CA 0C      [10]   40 	jp render_drawCube
+   0FC8                      38 barra_draw:
+   0FC8 DD 21 BE 0F   [14]   39       ld ix,#barra
+   0FCC C3 BE 11      [10]   40 	jp render_drawCube
                              41   
                              42 
-   0AE2 C9            [10]   43    ret
+   0FCF C9            [10]   43    ret
                              44 
                              45 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                              46 ;; BORRA UNA ENTIDAD
                              47 ;; PARA CUADRADOS UNICAMENTE
                              48 ;; ENTRADA: IX -> Puntero a entidad
                              49 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0AE3                      50 barra_clear:
-   0AE3 DD 21 D1 0A   [14]   51   ld ix,#barra
+   0FD0                      50 barra_clear:
+   0FD0 DD 21 BE 0F   [14]   51   ld ix,#barra
                              52   ;;
                              53   ;;ld  a, dc_col(ix)
                              54   ;;ex af, af'
@@ -2736,9 +2736,9 @@ Hexadecimal [16-Bits]
 
                              66 ;; ENTRADA: IX -> Puntero a entidad
                              67 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0AE7                      68 barra_update:
-   0AE7 DD 21 D1 0A   [14]   69   ld ix,#barra
-   0AEB C3 EE 0A      [10]   70  jp barra_moveKeyboard 
+   0FD4                      68 barra_update:
+   0FD4 DD 21 BE 0F   [14]   69   ld ix,#barra
+   0FD8 C3 DB 0F      [10]   70  jp barra_moveKeyboard 
                              71    ;; ld     h, b_up_h(ix)
                              72     ;ld     l, b_up_l(ix)
                              73     ;jp    (hl)  
@@ -2750,75 +2750,75 @@ Hexadecimal [16-Bits]
                              79 ;;          W(ARRIBA)
                              80 ;; A (IZDA) S(ABAJO) D(DERECHA)
                              81 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   0AEE                      82 barra_moveKeyboard:
-   0AEE CD 16 17      [17]   83     call cpct_scanKeyboard_asm
+   0FDB                      82 barra_moveKeyboard:
+   0FDB CD 34 1C      [17]   83     call cpct_scanKeyboard_asm
                              84       
-   0AF1 21 08 20      [10]   85    ld hl, #Key_A ;;O
-   0AF4 CD 2D 0D      [17]   86     call cpct_isKeyPressed_asm
-   0AF7 28 04         [12]   87     jr z, a_no_pulsada
+   0FDE 21 08 20      [10]   85    ld hl, #Key_A ;;O
+   0FE1 CD 21 12      [17]   86     call cpct_isKeyPressed_asm
+   0FE4 28 04         [12]   87     jr z, a_no_pulsada
                              88     
-   0AF9 DD 36 06 FE   [19]   89     ld b_vx(ix), #-2
+   0FE6 DD 36 06 FE   [19]   89     ld b_vx(ix), #-2
                              90     
-   0AFD                      91  a_no_pulsada:   
+   0FEA                      91  a_no_pulsada:   
                              92     
                              93     
-   0AFD 21 07 20      [10]   94       ld hl, #Key_D ;;P
-   0B00 CD 2D 0D      [17]   95     call cpct_isKeyPressed_asm
-   0B03 28 04         [12]   96     jr z, d_no_pulsada
+   0FEA 21 07 20      [10]   94       ld hl, #Key_D ;;P
+   0FED CD 21 12      [17]   95     call cpct_isKeyPressed_asm
+   0FF0 28 04         [12]   96     jr z, d_no_pulsada
                              97     
-   0B05 DD 36 06 02   [19]   98     ld b_vx(ix), #2
+   0FF2 DD 36 06 02   [19]   98     ld b_vx(ix), #2
                              99     
-   0B09                     100  d_no_pulsada:
+   0FF6                     100  d_no_pulsada:
                             101     
                             102     
                             103 
-   0B09 CD 0D 0B      [17]  104     call barra_move
+   0FF6 CD FA 0F      [17]  104     call barra_move
                             105     
-   0B0C C9            [10]  106     ret
+   0FF9 C9            [10]  106     ret
                             107  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                             108 ;; MOVER UNA ENTIDAD
                             109 ;; 
                             110 ;; ENTRADA: IX -> Puntero a entidad
                             111 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                             112 
-   0B0D                     113 barra_move:
-   0B0D DD 46 00      [19]  114 	ld b, dc_x(ix) ;; save current x position in b
+   0FFA                     113 barra_move:
+   0FFA DD 46 00      [19]  114 	ld b, dc_x(ix) ;; save current x position in b
                             115 
                             116 
                             117 
                             118 
-   0B10 DD 7E 00      [19]  119   	ld    a, dc_x(ix) ;;
-   0B13 DD 86 06      [19]  120   	add   b_vx(ix)   ;;
+   0FFD DD 7E 00      [19]  119   	ld    a, dc_x(ix) ;;
+   1000 DD 86 06      [19]  120   	add   b_vx(ix)   ;;
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 56.
 Hexadecimal [16-Bits]
 
 
 
-   0B16 DD 77 00      [19]  121    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
+   1003 DD 77 00      [19]  121    	ld    dc_x(ix), a ;; next "x" postion = current "x" + velocity
                             122 
-   0B19 DD 36 06 00   [19]  123     	ld b_vx(ix), #0;;
+   1006 DD 36 06 00   [19]  123     	ld b_vx(ix), #0;;
                             124    
                             125 
                             126 ;; CHECK MAX AND MIN SCREEN X AND PREVENT PLAYER TO GO FURTHER
                             127 
-   0B1D DD 7E 00      [19]  128  	ld    a, dc_x(ix)
-   0B20 DD 86 02      [19]  129  	add dc_w(ix)     ;; Since screen max x is79
-   0B23 D6 4E         [ 7]  130   	sub  #78           ;; check if is going to move further or outta screen
+   100A DD 7E 00      [19]  128  	ld    a, dc_x(ix)
+   100D DD 86 02      [19]  129  	add dc_w(ix)     ;; Since screen max x is79
+   1010 D6 4E         [ 7]  130   	sub  #78           ;; check if is going to move further or outta screen
                             131                       ;; if true we will go to the reassingnament part
-   0B25 28 08         [12]  132  	jr z, colisionX       ;;
+   1012 28 08         [12]  132  	jr z, colisionX       ;;
                             133 
                             134 
                             135 
-   0B27 DD 7E 00      [19]  136   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
-   0B2A D6 00         [ 7]  137   	sub #0            ;;
+   1014 DD 7E 00      [19]  136   	ld    a, dc_x(ix)  ;; Same as before but now with the leftest position
+   1017 D6 00         [ 7]  137   	sub #0            ;;
                             138                     ;;
-   0B2C 28 01         [12]  139     	jr z, colisionX  ;;
+   1019 28 01         [12]  139     	jr z, colisionX  ;;
                             140 
                             141 ;;  END MAX MIN X CHECK
-   0B2E C9            [10]  142 	ret
-   0B2F                     143  colisionX:
+   101B C9            [10]  142 	ret
+   101C                     143  colisionX:
                             144    
                             145      
-   0B2F DD 70 00      [19]  146     ld dc_x(ix), b
+   101C DD 70 00      [19]  146     ld dc_x(ix), b
                             147    
-   0B32 C9            [10]  148    ret
+   101F C9            [10]  148    ret

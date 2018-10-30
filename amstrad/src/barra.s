@@ -26,7 +26,7 @@
 .globl _bar_sp
 
 
-	DefineBarra barra, 40, 190, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
+	DefineBarra barra, 40, 170, 8, 4,_bar_sp, 0, 0,  barra_moveKeyboard 
 
 
 
