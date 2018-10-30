@@ -1,0 +1,28 @@
+
+  
+
+                ================
+                - DISASSEMBLER -
+                ================
+
+
+    DISASSEMBLER has been developed by Machinegun, a team formed by students from University of Alicante:
+    
+    
+    - Z80 Assembly code written by Diego Cárcamo Porres and José Ignancio Nadal Sánchez
+    - Grafics and music by José Ignancio Nadal Sánchez
+
+    
+    
+    Our game uses:
+    - CPCtelera by Fran Gallego (and other contributors and suporters)
+    - Arkos Tracker by Targhan
+    - Aseprite by David Capello
+    
+    
+    
+    
+    
+    
+    
+
