@@ -55,6 +55,7 @@ _main::
 
 
 
+<<<<<<< HEAD
     call cpct_akp_stop_asm
     ld de, #_song_ingame
     call cpct_akp_musicInit_asm
@@ -73,6 +74,20 @@ _main::
     call cpct_isKeyPressed_asm
 
 
+=======
+      call cpct_akp_stop_asm
+     ld de, #_song_ingame
+    call cpct_akp_musicInit_asm
+
+   ld a, #1
+     
+    ld (state),a
+
+  call cpct_scanKeyboard_asm
+      
+   ld hl, #Key_X ;;O
+    call cpct_isKeyPressed_asm
+>>>>>>> 289dfdaa53ee212f4bbf48a812531e43209ac817
     jr z, menu
    
 
