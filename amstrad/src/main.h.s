@@ -30,4 +30,7 @@
 .globl cpct_setPalette_asm
 .globl cpct_akp_musicInit_asm
 .globl cpct_akp_musicPlay_asm
+.globl cpct_akp_stop_asm
 .globl cpct_drawSpriteMasked_asm
+.globl menu
+.globl state

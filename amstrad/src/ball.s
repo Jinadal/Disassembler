@@ -164,14 +164,17 @@ ld    a, dc_y(ix)     ;; Since screen max x is79
 
 
 	ld d, #1
-
+	ld a,c_hp(ix)
+	inc a
+	dec a
+	jp z,next
 	call ball_collide
-	ld a,d          ;;d is changed in collide if a collision happened 
+	
+	next:
+
+    ld a,d          ;;d is changed in collide if a collision happened 
     sub #1              ;;holding a 0 otherwise it will be a 1
     	
-
-
-    
 	
     jr nz, colisionY1  ;; if there is a 0 in D we will go to the reassingnament part
   	
@@ -487,6 +490,7 @@ ball_reset:
 	;ld a, #50
 	;ld dc_col(ix), a
 	call cube_reset
+	
 
 	
 

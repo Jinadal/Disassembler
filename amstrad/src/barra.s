@@ -82,7 +82,7 @@ barra_update:
 barra_moveKeyboard:
     call cpct_scanKeyboard_asm
       
-   ld hl, #Key_A ;;O
+   ld hl, #Key_O ;;O
     call cpct_isKeyPressed_asm
     jr z, a_no_pulsada
     
@@ -91,7 +91,7 @@ barra_moveKeyboard:
  a_no_pulsada:   
     
     
-      ld hl, #Key_D ;;P
+      ld hl, #Key_P ;;P
     call cpct_isKeyPressed_asm
     jr z, d_no_pulsada
     

@@ -8,6 +8,15 @@
 -l /home/nacho/Escritorio/cpctelera-development/cpctelera/cpctelera.lib
 -l z80
 obj/sprites/life.rel
+obj/sprites/press.rel
+obj/sprites/menu24.rel
+obj/sprites/menu23.rel
+obj/sprites/menu22.rel
+obj/sprites/menu21.rel
+obj/sprites/menu14.rel
+obj/sprites/menu13.rel
+obj/sprites/menu12.rel
+obj/sprites/menu11.rel
 obj/sprites/ball.rel
 obj/sprites/cubeline3.rel
 obj/sprites/cubeline2.rel
@@ -17,11 +26,13 @@ obj/music/Disassembler.rel
 obj/sprites/num3.rel
 obj/sprites/num1.rel
 obj/sprites/num2.rel
+obj/sprites/menu.rel
 obj/main.rel
 obj/cube.rel
 obj/life.rel
 obj/cube.h.rel
 obj/barra.rel
+obj/menu.h.rel
 obj/main.h.rel
 obj/ball.h.rel
 obj/barra.h.rel
@@ -29,5 +40,6 @@ obj/ball.rel
 obj/render.h.rel
 obj/render.rel
 obj/life.h.rel
+obj/menu.rel
 
 -e

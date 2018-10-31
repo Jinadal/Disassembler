@@ -2702,7 +2702,10 @@ Hexadecimal [16-Bits]
                              30 .globl cpct_setPalette_asm
                              31 .globl cpct_akp_musicInit_asm
                              32 .globl cpct_akp_musicPlay_asm
-                             33 .globl cpct_drawSpriteMasked_asm
+                             33 .globl cpct_akp_stop_asm
+                             34 .globl cpct_drawSpriteMasked_asm
+                             35 .globl menu
+                             36 .globl state
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 55.
 Hexadecimal [16-Bits]
 
@@ -2890,96 +2893,195 @@ Hexadecimal [16-Bits]
                              20 ;;.globl life_clear
                              21 .globl life_draw
                              22 .globl delete_life
-                             23 ;;.globl life_update
-                             24 
-                             25 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
-                             26 ;;
-                             27 ;;MACROS
-                             28 ;;
-                             29 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             30 .macro DefineLife _name, _x, _y, _w, _h, _col,_hp
-                             31 _name:
-                             32     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
-                             33         .db     _hp     ;; Hitpoints
-                             34 .endm
-                     0000    35 l_de        = 0
-                     0006    36 l_hp        = 6
-                             37 
-                             38 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             39 ;;
-                             40 ;;OBJETOS CREADOS CON LA MACROS
-                             41 ;;
-                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                             43 
-                             44 .globl life1
-                             45 .globl life2
-                             46 .globl life3
+                             23 .globl reset_life
+                             24 ;;.globl life_update
+                             25 
+                             26 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+                             27 ;;
+                             28 ;;MACROS
+                             29 ;;
+                             30 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             31 .macro DefineLife _name, _x, _y, _w, _h, _col,_hp
+                             32 _name:
+                             33     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             34         .db     _hp     ;; Hitpoints
+                             35 .endm
+                     0000    36 l_de        = 0
+                     0006    37 l_hp        = 6
+                             38 
+                             39 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             40 ;;
+                             41 ;;OBJETOS CREADOS CON LA MACROS
+                             42 ;;
+                             43 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             44 
+                             45 .globl life1
+                             46 .globl life2
+                             47 .globl life3
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 59.
 Hexadecimal [16-Bits]
 
 
 
-                             28 
-                             29 .globl _bar_pal
-                             30 .globl _song_ingame
+                             28 .include "menu.h.s"
+                              1 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;  This file is part of Amstrad CPC videogame "DisAssembler"
+                              3 ;;  Copyright (C) 2018 Machinegun / Jose Ignacio Nadal Sanchez / Diego Carcamo Porres
+                              4 ;;  Copyright (C) 2015-2016 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
+                              5 ;;
+                              6 ;;  This program is free software: you can redistribute it and/or modify
+                              7 ;;  it under the terms of the GNU Lesser General Public License as published by
+                              8 ;;  the Free Software Foundation, either version 3 of the License, or
+                              9 ;;  (at your option) any later version.
+                             10 ;;
+                             11 ;;  This program is distributed in the hope that it will be useful,
+                             12 ;;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             14 ;;  GNU Lesser General Public License for more details.
+                             15 ;;
+                             16 ;;  You should have received a copy of the GNU Lesser General Public License
+                             17 ;;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             18 ;;-----------------------------LICENSE NOTICE-----------------------------------------------------
+                             19 
+                             20 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             21 ;;MACROS
+                             22 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             23 .macro DefineSpriteMenu _name, _x, _y, _w, _h, _col
+                             24 _name:
+                             25     DefineDrawableEntity _name'_dw, _x, _y, _w, _h, _col
+                             26 .endm
+                             27 ;;.macro DefineCubeLine1Default _name, _suf
+                             28 ;;    DefineCubeLine1 _name'_suf, 0, 0, 0, 0, 0xFF, 0
+                             29 ;;.endm
+                             30 ;;.macro DefineNCubeLine1 _name, _n
                              31 
-                             32 .area _DATA
-                             33 .area _CODE
-                             34 
-   0CF7                      35 _main::
-   0CF7 31 00 80      [10]   36     ld  sp, #0x8000
-                             37 
-                             38     ;; Disable firmware to prevent it from interfering with string drawing
-   0CFA CD 5B 1B      [17]   39     call cpct_disableFirmware_asm
-                             40 
-   0CFD 0E 00         [ 7]   41     ld    c, #0
-   0CFF CD 25 13      [17]   42     call cpct_setVideoMode_asm
-                             43 
-   0D02 21 97 09      [10]   44     ld   hl, #_bar_pal
-   0D05 11 10 00      [10]   45     ld   de, #16
-   0D08 CD 2D 12      [17]   46     call cpct_setPalette_asm
-                             47 
-                             48     ;;Initialize music
-   0D0B 11 40 00      [10]   49     ld de, #_song_ingame
-   0D0E CD 3E 1A      [17]   50     call cpct_akp_musicInit_asm
-                             51 
-   0D11                      52 loop:
-                             53    ;; call cube_clear
-                             54 
-   0D11 CD D0 0F      [17]   55     call barra_clear
-   0D14 CD 3E 10      [17]   56     call ball_clear
-                             57 
-                             58     
-   0D17 CD D4 0F      [17]   59     call barra_update
-   0D1A CD 3F 10      [17]   60     call ball_update
-                             61 
-   0D1D CD 7C 0E      [17]   62     call cube_draw
-                             63 
-   0D20 CD C8 0F      [17]   64     call barra_draw
-   0D23 CD 36 10      [17]   65     call ball_draw
-   0D26 CD 4E 0F      [17]   66     call life_draw
-                             67 
-   0D29 CD 1D 13      [17]   68     call cpct_waitVSYNC_asm
-   0D2C CD 92 11      [17]   69     call ren_newScene
-                             70 
-                             71 
-   0D2F                      72     repite:                         ;;Loop for playing the song x3 faster 
-                             73 
-   0D2F CD 34 13      [17]   74     call cpct_akp_musicPlay_asm
-                             75  
-   0D32 3A 45 0D      [13]   76     ld a, (variable)
-   0D35 D6 01         [ 7]   77     sub #1
-   0D37 32 45 0D      [13]   78     ld (variable), a
-   0D3A C2 2F 0D      [10]   79     jp nz, repite
-                             80 
-   0D3D 3E 03         [ 7]   81     ld a,#3
-   0D3F 32 45 0D      [13]   82     ld (variable), a
+                             32 ;;    _s = 0
+                             33 ;;    .rept _n
+                             34 ;;        DefineCubeLine1Default _name, \_s
+                             35 
+                             36 ;;        _s = _s + 1
+                             37 ;;    .endm
+                             38 ;;.endm
+                             39 
+                             40 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             41 ;;OBJECTS CREATED WITH MACROS
+                             42 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             43 .globl menu_draw
+                             44 
+                             45 .globl top1
+                             46 .globl top2
+                             47 .globl top3
+                             48 .globl top4
+                             49 .globl bot1
+                             50 .globl bot2
+                             51 .globl bot3
+                             52 .globl bot4
+                             53 .globl press
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 60.
 Hexadecimal [16-Bits]
 
 
 
-                             83    ;; Loop forever
-   0D42 C3 11 0D      [10]   84    jp    loop
-                             85 
-   0D45 03                   86 variable: .db #3
+                             29 
+                             30 .globl _bar_pal
+                             31 .globl _song_ingame
+                             32 
+                             33 .area _DATA
+                             34 .area _CODE
+                             35 
+   45D7                      36 _main::
+   45D7 31 00 80      [10]   37     ld  sp, #0x8000
+                             38 
+                             39     ;; Disable firmware to prevent it from interfering with string drawing
+   45DA CD 22 55      [17]   40     call cpct_disableFirmware_asm
+                             41 
+   45DD 0E 00         [ 7]   42     ld    c, #0
+   45DF CD 15 55      [17]   43     call cpct_setVideoMode_asm
+                             44 
+   45E2 21 67 29      [10]   45     ld   hl, #_bar_pal
+   45E5 11 10 00      [10]   46     ld   de, #16
+   45E8 CD F4 4B      [17]   47     call cpct_setPalette_asm
+                             48 
+                             49     ;;Initialize music
+                             50     
+   45EB                      51   menu:
+                             52 
+   45EB CD E3 4A      [17]   53     call ren_newScene
+                             54   
+                             55 
+                             56 
+                             57 
+   45EE CD 6C 53      [17]   58     call cpct_akp_stop_asm
+   45F1 11 40 00      [10]   59     ld de, #_song_ingame
+   45F4 CD 13 53      [17]   60     call cpct_akp_musicInit_asm
+                             61 
+   45F7 3E 01         [ 7]   62     ld a, #1
+                             63      
+   45F9 32 4A 46      [13]   64     ld (state),a
+                             65 
+   45FC CD FB 55      [17]   66     call cpct_scanKeyboard_asm
+   45FF CD 65 4B      [17]   67     call menu_draw
+                             68 
+   4602 CD 0D 55      [17]   69     call cpct_waitVSYNC_asm
+                             70 
+                             71 
+   4605 21 07 80      [10]   72     ld hl, #Key_X ;;O
+   4608 CD E8 4B      [17]   73     call cpct_isKeyPressed_asm
+                             74 
+                             75 
+   460B 28 DE         [12]   76     jr z, menu
+                             77    
+                             78 
+   460D                      79 loop:
+                             80    ;; call cube_clear
+                             81 
+                             82 
+                             83 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 61.
+Hexadecimal [16-Bits]
+
+
+
+                             84 
+   460D CD 19 49      [17]   85     call barra_clear
+   4610 CD 87 49      [17]   86     call ball_clear
+                             87 
+                             88     
+   4613 CD 1D 49      [17]   89     call barra_update
+   4616 CD 88 49      [17]   90     call ball_update
+                             91 
+                             92 
+   4619 CD 81 47      [17]   93     call cube_draw
+                             94 
+   461C CD 11 49      [17]   95     call barra_draw
+   461F CD 7F 49      [17]   96     call ball_draw
+   4622 CD 5E 48      [17]   97     call life_draw
+                             98 
+   4625 CD 0D 55      [17]   99     call cpct_waitVSYNC_asm
+   4628 CD E3 4A      [17]  100     call ren_newScene
+                            101 
+                            102 
+                            103 
+   462B                     104     repite:                         ;;Loop for playing the song x3 faster 
+                            105 
+   462B CD 09 4C      [17]  106     call cpct_akp_musicPlay_asm
+                            107  
+   462E 3A 49 46      [13]  108     ld a, (variable)
+   4631 D6 01         [ 7]  109     sub #1
+   4633 32 49 46      [13]  110     ld (variable), a
+   4636 C2 2B 46      [10]  111     jp nz, repite
+                            112 
+   4639 3E 03         [ 7]  113     ld a,#3
+   463B 32 49 46      [13]  114     ld (variable), a
+                            115 
+                            116 
+   463E 3A 4A 46      [13]  117     ld a, (state)
+   4641 D6 01         [ 7]  118     sub  #1
+                            119     
+   4643 C2 EB 45      [10]  120     jp nz, menu
+                            121    ;; Loop forever
+   4646 C3 0D 46      [10]  122    jp    loop
+                            123 
+   4649 03                  124 variable: .db #3
+   464A 01                  125 state: .db #1
+                            126 

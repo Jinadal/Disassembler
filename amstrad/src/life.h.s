@@ -20,6 +20,7 @@
 ;;.globl life_clear
 .globl life_draw
 .globl delete_life
+.globl reset_life
 ;;.globl life_update
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,

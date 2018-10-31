@@ -56,29 +56,29 @@ Symbol Table
     PAL_INKR=  0040     |     PAL_PENR=  0000     |     PPI_PORT=  00F5 
     _ball_sp   **** GX  |     _cpct_me   **** GX  |     b_vx    =  0006 
     b_vy    =  0007     |   0 ball       0000 GR  |   0 ball_cle   001E GR
-  0 ball_col   00ED R   |   0 ball_dra   0016 GR  |   0 ball_dw    0000 R
-    ball_dw_=  0006     |   0 ball_fal   014B R   |   0 ball_mov   0026 GR
+  0 ball_col   00F5 R   |   0 ball_dra   0016 GR  |   0 ball_dw    0000 R
+    ball_dw_=  0006     |   0 ball_fal   0153 R   |   0 ball_mov   0026 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Symbol Table
 
-  0 ball_res   011F GR  |   0 ball_upd   001F GR  |   0 balldefa   000B GR
+  0 ball_res   0127 GR  |   0 ball_upd   001F GR  |   0 balldefa   000B GR
   0 balldefa   000B R   |     balldefa=  0006     |     barra      **** GX
     barra_cl   **** GX  |     barra_dr   **** GX  |     barra_mo   **** GX
     barra_mo   **** GX  |     barra_up   **** GX  |     bl_hp   =  000A 
     bl_up_h =  0009     |     bl_up_l =  0008     |     bl_vx   =  0006 
     bl_vy   =  0007     |   0 bucl       006F R   |     c_de    =  0000 
-    c_de_siz=  0006     |     c_hp    =  0006     |   0 colision   00D2 R
-  0 colision   00C5 R   |   0 colision   0087 R   |   0 colision   00BC R
-    cpct_akp   **** GX  |     cpct_akp   **** GX  |     cpct_dis   **** GX
-    cpct_dra   **** GX  |     cpct_dra   **** GX  |     cpct_dra   **** GX
-    cpct_get   **** GX  |     cpct_isK   **** GX  |     cpct_pag=  0000 
-    cpct_pag=  0010     |     cpct_pag=  0020     |     cpct_pag=  0030 
-    cpct_sca   **** GX  |     cpct_set   **** GX  |     cpct_set   **** GX
-    cpct_set   **** GX  |     cpct_wai   **** GX  |     cube_cle   **** GX
-    cube_cle   **** GX  |     cube_dra   **** GX  |     cube_dra   **** GX
-    cube_los   **** GX  |     cube_res   **** GX  |     cubeline   **** GX
+    c_de_siz=  0006     |     c_hp    =  0006     |   0 colision   00DA R
+  0 colision   00CD R   |   0 colision   008F R   |   0 colision   00C4 R
+    cpct_akp   **** GX  |     cpct_akp   **** GX  |     cpct_akp   **** GX
+    cpct_dis   **** GX  |     cpct_dra   **** GX  |     cpct_dra   **** GX
+    cpct_dra   **** GX  |     cpct_get   **** GX  |     cpct_isK   **** GX
+    cpct_pag=  0000     |     cpct_pag=  0010     |     cpct_pag=  0020 
+    cpct_pag=  0030     |     cpct_sca   **** GX  |     cpct_set   **** GX
+    cpct_set   **** GX  |     cpct_set   **** GX  |     cpct_wai   **** GX
+    cube_cle   **** GX  |     cube_cle   **** GX  |     cube_dra   **** GX
+    cube_dra   **** GX  |     cube_los   **** GX  |     cube_res   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
@@ -92,21 +92,23 @@ Symbol Table
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
     cubeline   **** GX  |     cubeline   **** GX  |     cubeline   **** GX
-    dc_h    =  0003     |     dc_sp_h =  0005     |     dc_sp_l =  0004 
-    dc_w    =  0002     |     dc_x    =  0000     |     dc_y    =  0001 
-    delete_l   **** GX  |     destroy_   **** GX  |   0 goodYcol   00DB R
-    k_cube_s   **** GX  |     k_max_cu   **** GX  |     l_de    =  0000 
-    l_hp    =  0006     |     life1      **** GX  |     life2      **** GX
-    life3      **** GX  |     life_dra   **** GX  |     m_back_b   **** GX
-    m_front_   **** GX  |   0 no_coll    011E R   |     opc_DI  =  00F3 
+    cubeline   **** GX  |     dc_h    =  0003     |     dc_sp_h =  0005 
+    dc_sp_l =  0004     |     dc_w    =  0002     |     dc_x    =  0000 
+    dc_y    =  0001     |     delete_l   **** GX  |     destroy_   **** GX
+  0 goodYcol   00E3 R   |     k_cube_s   **** GX  |     k_max_cu   **** GX
+    l_de    =  0000     |     l_hp    =  0006     |     life1      **** GX
+    life2      **** GX  |     life3      **** GX  |     life_dra   **** GX
+    m_back_b   **** GX  |     m_front_   **** GX  |     menu       **** GX
+  0 next       007C R   |   0 no_coll    0126 R   |     opc_DI  =  00F3 
     opc_EI  =  00FB     |     opc_JR  =  0018     |     opc_LD_D=  0016 
     ren_clea   **** GX  |     ren_newS   **** GX  |     render_d   **** GX
-  0 resetThe   00EA R   |   0 restart    0164 R
+  0 resetThe   00F2 R   |     reset_li   **** GX  |   0 restart    016C R
+    state      **** GX
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE      size  170   flags    0
+   0 _CODE      size  178   flags    0
 

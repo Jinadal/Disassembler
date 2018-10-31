@@ -49,6 +49,15 @@ $(eval $(call IMG2SP, CONVERT, img/cubeline.png , 16, 8, cubeline_sp, cubeline_p
 $(eval $(call IMG2SP, CONVERT, img/cubeline2.png , 16, 8, cubeline2_sp, cubeline2_pal))
 $(eval $(call IMG2SP, CONVERT, img/cubeline3.png , 16, 8, cubeline3_sp, cubeline3_pal))
 $(eval $(call IMG2SP, CONVERT, img/ball.png , 4, 4, ball_sp, ball_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu11.png , 40, 40, menu11_sp, menu11_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu12.png , 40, 40, menu12_sp, menu12_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu13.png , 40, 40, menu13_sp, menu13_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu14.png , 40, 40, menu14_sp, menu14_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu21.png , 40, 40, menu21_sp, menu21_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu22.png , 40, 40, menu22_sp, menu22_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu23.png , 40, 40, menu23_sp, menu23_pal))
+$(eval $(call IMG2SP, CONVERT, img/menu24.png , 40, 40, menu24_sp, menu24_pal))
+$(eval $(call IMG2SP, CONVERT, img/press.png , 80, 40, press_sp, press_pal))
 
 $(eval $(call IMG2SP, SET_MASK        , interlaced             ))  #{ interlaced, none }
 $(eval $(call IMG2SP, SET_PALETTE_FW  , $(PALETTE)         ))
